@@ -4,6 +4,7 @@ import { Weather }  from './Weather'
 import { Wind } from './Wind'
 import { Cloud }  from './Cloud'
 import { WeatherRowsPrinter } from './WeatherRowsPrinter'
+import { MapRender } from './MapRender'
 
 export class WeatherCitiesLoader {
     loadCities(): void {
@@ -14,6 +15,9 @@ export class WeatherCitiesLoader {
 
         document.getElementsByClassName("latitude")[0].innerHTML = pos.coords.latitude.toString();
         document.getElementsByClassName("longitude")[0].innerHTML = pos.coords.longitude.toString();
+
+        let mapRender = new MapRender();
+        mapRender.showMap(pos);
 
         let xhr = new XMLHttpRequest();
         xhr.open('GET', 'http://api.openweathermap.org/data/2.5/find?lat=' +
