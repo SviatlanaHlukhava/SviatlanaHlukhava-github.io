@@ -1,0 +1,22 @@
+{
+  "name": "weather",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "googlemaps": "^1.11.1",
+    "typescript": "^2.0.10"
+  },
+  "devDependencies": {
+    "tslint-loader": "^3.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "SviatlanaHlukhava-github.io"
+  },
+  "author": "SviatlanaHlukhava",
+  "license": "ISC"
+}
