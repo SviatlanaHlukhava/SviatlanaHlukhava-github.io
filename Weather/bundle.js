@@ -86,7 +86,7 @@
 	
 	
 	// module
-	exports.push([module.id, "table {\r\n    text-align: center;\r\n    width: 100%;\r\n    margin-top: 50px;\r\n    border-collapse: collapse;\r\n}\r\n\r\ntd {\r\n    width:33%;\r\n    border: 1px solid black;\r\n    padding: 10px;\r\n}\r\n\r\n.position {\r\n    text-align: center;\r\n    margin-top: 10px;\r\n    color: red;\r\n}", ""]);
+	exports.push([module.id, "table {\r\n    text-align: center;\r\n    width: 100%;\r\n    margin-top: 20px;\r\n    border-collapse: collapse;\r\n    margin-bottom: 30px;\r\n}\r\n\r\ntd {\r\n    width:33%;\r\n    border: 1px solid black;\r\n    padding: 10px;\r\n}\r\n\r\n.position {\r\n    text-align: center;\r\n    margin-top: 10px;\r\n    color: red;\r\n}", ""]);
 	
 	// exports
 
@@ -410,6 +410,7 @@
 	var Wind_1 = __webpack_require__(9);
 	var Cloud_1 = __webpack_require__(10);
 	var WeatherRowsPrinter_1 = __webpack_require__(11);
+	var MapRender_1 = __webpack_require__(12);
 	var WeatherCitiesLoader = (function () {
 	    function WeatherCitiesLoader() {
 	    }
@@ -419,6 +420,8 @@
 	    WeatherCitiesLoader.prototype.getWeatherCitiesList = function (pos) {
 	        document.getElementsByClassName("latitude")[0].innerHTML = pos.coords.latitude.toString();
 	        document.getElementsByClassName("longitude")[0].innerHTML = pos.coords.longitude.toString();
+	        var mapRender = new MapRender_1.MapRender();
+	        mapRender.showMap(pos);
 	        var xhr = new XMLHttpRequest();
 	        xhr.open('GET', 'http://api.openweathermap.org/data/2.5/find?lat=' +
 	            pos.coords.latitude + '&lon=' + pos.coords.longitude +
@@ -439,14 +442,12 @@
 	                }
 	                var weatherRowsPrinter = new WeatherRowsPrinter_1.WeatherRowsPrinter();
 	                weatherRowsPrinter.printWeatherTable(list);
-	                console.log(data.list);
 	            }
 	        };
 	    };
 	    return WeatherCitiesLoader;
 	}());
 	exports.WeatherCitiesLoader = WeatherCitiesLoader;
-	;
 
 
 /***/ },
@@ -474,7 +475,6 @@
 	    return Coordinate;
 	}());
 	exports.Coordinate = Coordinate;
-	;
 
 
 /***/ },
@@ -509,7 +509,6 @@
 	    return MainWeather;
 	}());
 	exports.MainWeather = MainWeather;
-	;
 
 
 /***/ },
@@ -558,7 +557,6 @@
 	    return Weather;
 	}());
 	exports.Weather = Weather;
-	;
 
 
 /***/ },
@@ -586,7 +584,6 @@
 	    return Wind;
 	}());
 	exports.Wind = Wind;
-	;
 
 
 /***/ },
@@ -607,7 +604,6 @@
 	    return Cloud;
 	}());
 	exports.Cloud = Cloud;
-	;
 
 
 /***/ },
@@ -637,7 +633,27 @@
 	    return WeatherRowsPrinter;
 	}());
 	exports.WeatherRowsPrinter = WeatherRowsPrinter;
-	;
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	"use strict";
+	var MapRender = (function () {
+	    function MapRender() {
+	    }
+	    MapRender.prototype.showMap = function (pos) {
+	        var mapCanvas = document.getElementById("map");
+	        var mapOptions = {
+	            center: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+	            zoom: 5
+	        };
+	        var map = new google.maps.Map(mapCanvas, mapOptions);
+	    };
+	    return MapRender;
+	}());
+	exports.MapRender = MapRender;
 
 
 /***/ }
