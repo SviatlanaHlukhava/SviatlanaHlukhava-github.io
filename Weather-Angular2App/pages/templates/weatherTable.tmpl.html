@@ -1,0 +1,30 @@
+<div *ngIf="weatherList && weatherList.length">
+    <table>
+        <thead>
+            <tr>
+                <td>City</td>
+                <td>Latitude</td>
+                <td>Longitude</td>
+                <td>Temperature</td>
+                <td>Humidity</td>
+                <td>Pressure</td>
+                <td>Wind degree</td>
+                <td>Wind speed</td>
+                <td>Clouds</td>
+            </tr>
+        </thead>
+        <tbody class="weather-table-body">   
+            <tr *ngFor="let weather of weatherList">
+                <td>{{weather.getCity()}}</td>
+                <td>{{weather.getCoordinate().getLatitude()}}</td>
+                <td>{{weather.getCoordinate().getLongitude()}}</td>
+                <td>{{weather.getMainParams().getTemperature()}}</td>
+                <td>{{weather.getMainParams().getHumidity()}}</td>
+                <td>{{weather.getMainParams().getPressure()}}</td>
+                <td>{{weather.getWind().getDegree()}}</td>
+                <td>{{weather.getWind().getSpeed()}}</td>
+                <td>{{weather.getCloud().getAll()}}</td>
+            </tr>             
+        </tbody>           
+    </table>
+</div>
