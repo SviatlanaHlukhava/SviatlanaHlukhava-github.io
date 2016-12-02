@@ -7,8 +7,8 @@ import { Cloud }  from './../Cloud'
 
 @Component({
   selector: 'weather-table',
-  templateUrl: './../../pages/templates/weatherTable.tmpl.html',
-  styleUrls: ['./../../css/weatherTable.css']
+  templateUrl: 'pages/templates/weatherTable.tmpl.html',
+  styleUrls: ['css/weatherTable.css']
 })
 export class WeatherTable implements OnChanges {
   @Input() latitude: number;
