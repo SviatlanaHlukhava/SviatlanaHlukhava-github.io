@@ -5,11 +5,10 @@ import { WeatherTable }  from './weatherTable.component'
 
 @Component({
   selector: 'app',
-  template: `<div class="position">Current position: latitude - {{coordinate.getLatitude()}}, longitude - {{coordinate.getLongitude()}}</div>
+  template: `<header [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></header>
     <weather-table [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></weather-table>
     <map [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></map>
-    <footer></footer>`,
-  styles: ['.position {text-align: center;margin-top: 10px;color: red;}']
+    <footer></footer>`
 })
 export class App implements OnInit {
   coordinate: Coordinate;

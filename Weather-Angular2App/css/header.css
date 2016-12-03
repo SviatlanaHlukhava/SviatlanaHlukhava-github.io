@@ -1,5 +1,26 @@
+.header {
+    margin-bottom: 20px;
+    min-width: 400px;
+}
+.links {
+    background-color: lightblue
+}
 .position {
-    text-align: center;
+    background-color: lightblue;
     margin-top: 10px;
-    color: red;
+    padding: 10px;
+}
+.logo {
+    color: mediumblue;
+    font-size: 40px;
+    font-weight: bold;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    margin: 10px;
+}
+.back {
+    float: right;
+    margin: 10px;
+    line-height: 44px;
 }

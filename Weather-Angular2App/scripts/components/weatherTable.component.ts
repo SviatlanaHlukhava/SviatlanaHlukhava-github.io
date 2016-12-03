@@ -20,6 +20,7 @@ export class WeatherTable implements OnChanges {
   }
   ngOnChanges(): void {
     if (this.latitude !== undefined && this.longitude !== undefined) {
+      // TODO move to service
       let xhr = new XMLHttpRequest();
       let self = this;
       let coord = new Coordinate (self.latitude, self.longitude);

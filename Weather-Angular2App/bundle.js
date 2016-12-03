@@ -35051,13 +35051,14 @@
 	const map_component_1 = __webpack_require__(26);
 	const weatherTable_component_1 = __webpack_require__(27);
 	const footer_component_1 = __webpack_require__(32);
+	const header_component_1 = __webpack_require__(33);
 	let AppModule = class AppModule {
 	};
 	AppModule = __decorate([
 	    core_1.NgModule({
 	        imports: [platform_browser_1.BrowserModule],
 	        bootstrap: [app_component_1.App],
-	        declarations: [app_component_1.App, map_component_1.Map, weatherTable_component_1.WeatherTable, footer_component_1.Footer],
+	        declarations: [app_component_1.App, map_component_1.Map, weatherTable_component_1.WeatherTable, footer_component_1.Footer, header_component_1.Header],
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], AppModule);
@@ -35096,11 +35097,10 @@
 	App = __decorate([
 	    core_1.Component({
 	        selector: 'app',
-	        template: `<div class="position">Current position: latitude - {{coordinate.getLatitude()}}, longitude - {{coordinate.getLongitude()}}</div>
+	        template: `<header [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></header>
 	    <weather-table [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></weather-table>
 	    <map [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></map>
-	    <footer></footer>`,
-	        styles: ['.position {text-align: center;margin-top: 10px;color: red;}']
+	    <footer></footer>`
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], App);
@@ -35210,6 +35210,7 @@
 	    }
 	    ngOnChanges() {
 	        if (this.latitude !== undefined && this.longitude !== undefined) {
+	            // TODO move to service
 	            let xhr = new XMLHttpRequest();
 	            let self = this;
 	            let coord = new Coordinate_1.Coordinate(self.latitude, self.longitude);
@@ -35409,6 +35410,44 @@
 	    __metadata('design:paramtypes', [])
 	], Footer);
 	exports.Footer = Footer;
+
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	let Header = class Header {
+	    constructor() {
+	    }
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Number)
+	], Header.prototype, "latitude", void 0);
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Number)
+	], Header.prototype, "longitude", void 0);
+	Header = __decorate([
+	    core_1.Component({
+	        selector: 'header',
+	        templateUrl: 'pages/templates/header.tmpl.html',
+	        styleUrls: ['css/header.css']
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], Header);
+	exports.Header = Header;
 
 
 /***/ }
