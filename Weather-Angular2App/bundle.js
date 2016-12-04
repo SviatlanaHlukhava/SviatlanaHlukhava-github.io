@@ -35052,13 +35052,14 @@
 	const weatherTable_component_1 = __webpack_require__(27);
 	const footer_component_1 = __webpack_require__(32);
 	const header_component_1 = __webpack_require__(33);
+	const loader_component_1 = __webpack_require__(34);
 	let AppModule = class AppModule {
 	};
 	AppModule = __decorate([
 	    core_1.NgModule({
 	        imports: [platform_browser_1.BrowserModule],
 	        bootstrap: [app_component_1.App],
-	        declarations: [app_component_1.App, map_component_1.Map, weatherTable_component_1.WeatherTable, footer_component_1.Footer, header_component_1.Header],
+	        declarations: [app_component_1.App, map_component_1.Map, weatherTable_component_1.WeatherTable, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader],
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], AppModule);
@@ -35087,18 +35088,27 @@
 	    }
 	    ngOnInit() {
 	        let self = this;
-	        navigator.geolocation.getCurrentPosition(setPosition);
+	        self.isLoading = true;
+	        navigator.geolocation.getCurrentPosition(setPosition, onError);
 	        function setPosition(pos) {
 	            self.coordinate.setLatitude(pos.coords.latitude);
 	            self.coordinate.setLongitude(pos.coords.longitude);
 	        }
+	        function onError() {
+	            self.isLoading = false;
+	        }
+	    }
+	    isLoadingChange($event) {
+	        this.isLoading = $event;
 	    }
 	};
 	App = __decorate([
 	    core_1.Component({
 	        selector: 'app',
-	        template: `<header [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></header>
-	    <weather-table [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></weather-table>
+	        template: `<loader [isLoading]="isLoading" #loader></loader>
+	    <header [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></header>
+	    <weather-table [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()" (loadingNotify)="isLoadingChange($event)">
+	    </weather-table>
 	    <map [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></map>
 	    <footer></footer>`
 	    }), 
@@ -35204,8 +35214,9 @@
 	const Weather_1 = __webpack_require__(29);
 	const Wind_1 = __webpack_require__(30);
 	const Cloud_1 = __webpack_require__(31);
-	let WeatherTable = class WeatherTable {
+	let WeatherTable_1 = class WeatherTable {
 	    constructor() {
+	        this.loadingNotify = new core_1.EventEmitter();
 	        this.weatherList = [];
 	    }
 	    ngOnChanges() {
@@ -35213,30 +35224,40 @@
 	            // TODO move to service
 	            let xhr = new XMLHttpRequest();
 	            let self = this;
+	            self.loadingNotify.emit(true);
+	            WeatherTable_1.openWearterMapRqsts++;
 	            let coord = new Coordinate_1.Coordinate(self.latitude, self.longitude);
 	            xhr.open('GET', 'http://api.openweathermap.org/data/2.5/find?lat=' +
 	                coord.getLatitude() + '&lon=' + coord.getLongitude() +
 	                '&cnt=50&appid=5e704282bf38a873419932de2553f5bb', true);
 	            xhr.send();
 	            xhr.onreadystatechange = function () {
-	                if (xhr.status === 200 && xhr.responseText && self.latitude === coord.getLatitude() && self.longitude === coord.getLongitude()) {
-	                    let response = xhr.responseText;
-	                    let data = response !== '' ? JSON.parse(xhr.responseText) : { list: [] };
-	                    let list = [];
-	                    for (let i = 0; i < data.list.length; i++) {
-	                        let coordinate = new Coordinate_1.Coordinate(data.list[i].coord.lat, data.list[i].coord.lon);
-	                        let mainParams = new MainWeather_1.MainWeather(data.list[i].main.temp, data.list[i].main.humidity, data.list[i].main.pressure);
-	                        let wind = new Wind_1.Wind(data.list[i].wind.deg, data.list[i].wind.speed);
-	                        let clouds = new Cloud_1.Cloud(data.list[i].clouds.all);
-	                        let weather = new Weather_1.Weather(data.list[i].name, coordinate, mainParams, wind, clouds);
-	                        list.push(weather);
+	                if (xhr.readyState === 4) {
+	                    if (xhr.status === 200 && xhr.responseText && self.latitude === coord.getLatitude() && self.longitude === coord.getLongitude()) {
+	                        let response = xhr.responseText;
+	                        let data = response !== '' ? JSON.parse(xhr.responseText) : { list: [] };
+	                        let list = [];
+	                        for (let i = 0; i < data.list.length; i++) {
+	                            let coordinate = new Coordinate_1.Coordinate(data.list[i].coord.lat, data.list[i].coord.lon);
+	                            let mainParams = new MainWeather_1.MainWeather(data.list[i].main.temp, data.list[i].main.humidity, data.list[i].main.pressure);
+	                            let wind = new Wind_1.Wind(data.list[i].wind.deg, data.list[i].wind.speed);
+	                            let clouds = new Cloud_1.Cloud(data.list[i].clouds.all);
+	                            let weather = new Weather_1.Weather(data.list[i].name, coordinate, mainParams, wind, clouds);
+	                            list.push(weather);
+	                        }
+	                        self.weatherList = list;
 	                    }
-	                    self.weatherList = list;
+	                    WeatherTable_1.openWearterMapRqsts--;
+	                    if (WeatherTable_1.openWearterMapRqsts === 0) {
+	                        self.loadingNotify.emit(false);
+	                    }
 	                }
 	            };
 	        }
 	    }
 	};
+	let WeatherTable = WeatherTable_1;
+	WeatherTable.openWearterMapRqsts = 0;
 	__decorate([
 	    core_1.Input(), 
 	    __metadata('design:type', Number)
@@ -35245,7 +35266,11 @@
 	    core_1.Input(), 
 	    __metadata('design:type', Number)
 	], WeatherTable.prototype, "longitude", void 0);
-	WeatherTable = __decorate([
+	__decorate([
+	    core_1.Output(), 
+	    __metadata('design:type', Object)
+	], WeatherTable.prototype, "loadingNotify", void 0);
+	WeatherTable = WeatherTable_1 = __decorate([
 	    core_1.Component({
 	        selector: 'weather-table',
 	        templateUrl: 'pages/templates/weatherTable.tmpl.html',
@@ -35448,6 +35473,40 @@
 	    __metadata('design:paramtypes', [])
 	], Header);
 	exports.Header = Header;
+
+
+/***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	let Loader = class Loader {
+	    constructor() {
+	    }
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Boolean)
+	], Loader.prototype, "isLoading", void 0);
+	Loader = __decorate([
+	    core_1.Component({
+	        selector: 'loader',
+	        templateUrl: 'pages/templates/loader.tmpl.html',
+	        styleUrls: ['css/loader.css']
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], Loader);
+	exports.Loader = Loader;
 
 
 /***/ }

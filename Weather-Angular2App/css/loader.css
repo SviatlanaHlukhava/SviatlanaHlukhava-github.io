@@ -1,0 +1,24 @@
+.loader {
+    background-color: white;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.loader::before {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    content: "";
+}
+
+.loading-text {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+}

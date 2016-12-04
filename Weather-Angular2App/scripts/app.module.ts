@@ -5,10 +5,11 @@ import { Map }   from './components/map.component';
 import { WeatherTable }   from './components/weatherTable.component';
 import { Footer }   from './components/footer.component';
 import { Header }   from './components/header.component';
+import { Loader }   from './components/loader.component';
 
 @NgModule({
     imports:      [BrowserModule],
     bootstrap:    [App],
-    declarations: [App, Map, WeatherTable, Footer, Header],
+    declarations: [App, Map, WeatherTable, Footer, Header, Loader],
 })
 export class AppModule {}
