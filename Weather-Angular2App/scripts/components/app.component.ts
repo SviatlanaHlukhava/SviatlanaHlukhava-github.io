@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Coordinate }  from './../Coordinate'
 import { Map }  from './map.component'
 import { WeatherTable }  from './weatherTable.component'
+import { WeatherCityInfo }  from './weatherCityInfo.component'
 
 @Component({
   selector: 'app',
@@ -10,6 +11,7 @@ import { WeatherTable }  from './weatherTable.component'
     <weather-table [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()" (loadingNotify)="isLoadingChange($event)">
     </weather-table>
     <map [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></map>
+    <weather-city-info></weather-city-info>
     <footer></footer>`
 })
 export class App implements OnInit {

@@ -1,0 +1,26 @@
+<div class="weather-search">
+    <form class="city-form">
+        <input type="text" [(ngModel)]="city" name="city"/>
+        <button (click)="search()">Search</button>
+    </form>
+    <div *ngIf="weatherInfo">
+        <div class="header">Main Parameters</div>
+        <div class="row">
+            <div class="col-md-4 col-xs-6">Temperature: {{weatherInfo.getMainParams().getTemperature() | kelvinToCelsius}}</div>
+            <div class="col-md-4 col-xs-6">Humidity: {{weatherInfo.getMainParams().getHumidity()}}</div>
+            <div class="col-md-4 col-xs-6">Pressure: {{weatherInfo.getMainParams().getPressure()}}</div>
+        </div>
+        <div class="header">Wind</div>
+        <div class="row">
+            <div class="col-md-4 col-xs-6">Degree: {{weatherInfo.getWind().getDegree()}}</div>
+            <div class="col-md-4 col-xs-6">Speed: {{weatherInfo.getWind().getSpeed()}}</div>
+        </div>
+            <div class="header">Clouds</div>
+        <div class="row">
+            <div class="col-md-4 col-xs-6">All: {{weatherInfo.getCloud().getAll()}}</div>
+        </div>
+    </div>
+    <div *ngIf="isError">
+        <div class="header">City / weather has not found</div>
+    </div>
+</div>
