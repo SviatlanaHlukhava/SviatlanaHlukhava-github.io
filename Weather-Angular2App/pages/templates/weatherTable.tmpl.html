@@ -1,11 +1,11 @@
-<div *ngIf="weatherList && weatherList.length">
+<div *ngIf="weatherPromise | async">
     <table>
         <thead>
             <tr>
                 <td>City</td>
                 <td>Latitude</td>
                 <td>Longitude</td>
-                <td>Temperature</td>
+                <td>Temperature, &#8451;</td>
                 <td>Humidity</td>
                 <td>Pressure</td>
                 <td>Wind degree</td>
@@ -14,11 +14,11 @@
             </tr>
         </thead>
         <tbody class="weather-table-body">   
-            <tr *ngFor="let weather of weatherList">
+            <tr *ngFor="let weather of weatherPromise | async">
                 <td>{{weather.getCity()}}</td>
-                <td>{{weather.getCoordinate().getLatitude()}}</td>
-                <td>{{weather.getCoordinate().getLongitude()}}</td>
-                <td>{{weather.getMainParams().getTemperature()}}</td>
+                <td>{{weather.getCoordinate().getLatitude() | number : '1.0-3'}}</td>
+                <td>{{weather.getCoordinate().getLongitude() | number : '1.0-3'}}</td>
+                <td>{{weather.getMainParams().getTemperature() | kelvinToCelsius : 1 }}</td>
                 <td>{{weather.getMainParams().getHumidity()}}</td>
                 <td>{{weather.getMainParams().getPressure()}}</td>
                 <td>{{weather.getWind().getDegree()}}</td>

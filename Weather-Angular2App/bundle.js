@@ -35053,13 +35053,14 @@
 	const footer_component_1 = __webpack_require__(32);
 	const header_component_1 = __webpack_require__(33);
 	const loader_component_1 = __webpack_require__(34);
+	const kelvinToCelsius_pipe_1 = __webpack_require__(35);
 	let AppModule = class AppModule {
 	};
 	AppModule = __decorate([
 	    core_1.NgModule({
 	        imports: [platform_browser_1.BrowserModule],
 	        bootstrap: [app_component_1.App],
-	        declarations: [app_component_1.App, map_component_1.Map, weatherTable_component_1.WeatherTable, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader],
+	        declarations: [app_component_1.App, map_component_1.Map, weatherTable_component_1.WeatherTable, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader, kelvinToCelsius_pipe_1.KelvinToCelsiusPipe],
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], AppModule);
@@ -35165,7 +35166,7 @@
 	        let mapCanvas = document.getElementById("map");
 	        let mapOptions = {
 	            center: new google.maps.LatLng(this.latitude, this.longitude),
-	            zoom: 5
+	            zoom: 10
 	        };
 	        this.map = new google.maps.Map(mapCanvas, mapOptions);
 	    }
@@ -35217,42 +35218,43 @@
 	let WeatherTable_1 = class WeatherTable {
 	    constructor() {
 	        this.loadingNotify = new core_1.EventEmitter();
-	        this.weatherList = [];
 	    }
 	    ngOnChanges() {
 	        if (this.latitude !== undefined && this.longitude !== undefined) {
 	            // TODO move to service
-	            let xhr = new XMLHttpRequest();
 	            let self = this;
-	            self.loadingNotify.emit(true);
-	            WeatherTable_1.openWearterMapRqsts++;
-	            let coord = new Coordinate_1.Coordinate(self.latitude, self.longitude);
-	            xhr.open('GET', 'http://api.openweathermap.org/data/2.5/find?lat=' +
-	                coord.getLatitude() + '&lon=' + coord.getLongitude() +
-	                '&cnt=50&appid=5e704282bf38a873419932de2553f5bb', true);
-	            xhr.send();
-	            xhr.onreadystatechange = function () {
-	                if (xhr.readyState === 4) {
-	                    if (xhr.status === 200 && xhr.responseText && self.latitude === coord.getLatitude() && self.longitude === coord.getLongitude()) {
-	                        let response = xhr.responseText;
-	                        let data = response !== '' ? JSON.parse(xhr.responseText) : { list: [] };
-	                        let list = [];
-	                        for (let i = 0; i < data.list.length; i++) {
-	                            let coordinate = new Coordinate_1.Coordinate(data.list[i].coord.lat, data.list[i].coord.lon);
-	                            let mainParams = new MainWeather_1.MainWeather(data.list[i].main.temp, data.list[i].main.humidity, data.list[i].main.pressure);
-	                            let wind = new Wind_1.Wind(data.list[i].wind.deg, data.list[i].wind.speed);
-	                            let clouds = new Cloud_1.Cloud(data.list[i].clouds.all);
-	                            let weather = new Weather_1.Weather(data.list[i].name, coordinate, mainParams, wind, clouds);
-	                            list.push(weather);
+	            this.weatherPromise = new Promise(function (resolve, reject) {
+	                let xhr = new XMLHttpRequest();
+	                self.loadingNotify.emit(true);
+	                WeatherTable_1.openWearterMapRqsts++;
+	                let coord = new Coordinate_1.Coordinate(self.latitude, self.longitude);
+	                xhr.open('GET', 'http://api.openweathermap.org/data/2.5/find?lat=' +
+	                    coord.getLatitude() + '&lon=' + coord.getLongitude() +
+	                    '&cnt=50&appid=5e704282bf38a873419932de2553f5bb', true);
+	                xhr.send();
+	                xhr.onreadystatechange = function () {
+	                    if (xhr.readyState === 4) {
+	                        if (xhr.status === 200 && xhr.responseText && self.latitude === coord.getLatitude() && self.longitude === coord.getLongitude()) {
+	                            let response = xhr.responseText;
+	                            let data = response !== '' ? JSON.parse(xhr.responseText) : { list: [] };
+	                            let list = [];
+	                            for (let i = 0; i < data.list.length; i++) {
+	                                let coordinate = new Coordinate_1.Coordinate(data.list[i].coord.lat, data.list[i].coord.lon);
+	                                let mainParams = new MainWeather_1.MainWeather(data.list[i].main.temp, data.list[i].main.humidity, data.list[i].main.pressure);
+	                                let wind = new Wind_1.Wind(data.list[i].wind.deg, data.list[i].wind.speed);
+	                                let clouds = new Cloud_1.Cloud(data.list[i].clouds.all);
+	                                let weather = new Weather_1.Weather(data.list[i].name, coordinate, mainParams, wind, clouds);
+	                                list.push(weather);
+	                            }
+	                            resolve(list);
 	                        }
-	                        self.weatherList = list;
+	                        WeatherTable_1.openWearterMapRqsts--;
+	                        if (WeatherTable_1.openWearterMapRqsts === 0) {
+	                            self.loadingNotify.emit(false);
+	                        }
 	                    }
-	                    WeatherTable_1.openWearterMapRqsts--;
-	                    if (WeatherTable_1.openWearterMapRqsts === 0) {
-	                        self.loadingNotify.emit(false);
-	                    }
-	                }
-	            };
+	                };
+	            });
 	        }
 	    }
 	};
@@ -35454,6 +35456,7 @@
 	const core_1 = __webpack_require__(3);
 	let Header = class Header {
 	    constructor() {
+	        this.currentDate = new Date();
 	    }
 	};
 	__decorate([
@@ -35507,6 +35510,38 @@
 	    __metadata('design:paramtypes', [])
 	], Loader);
 	exports.Loader = Loader;
+
+
+/***/ },
+/* 35 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	let KelvinToCelsiusPipe = class KelvinToCelsiusPipe {
+	    transform(value, digits = 0) {
+	        let celsiusNumber = (value - 273);
+	        let celsiusString = celsiusNumber.toFixed(digits);
+	        celsiusString = (celsiusNumber < 0) ? celsiusString : ('+' + celsiusString);
+	        return celsiusString;
+	    }
+	};
+	KelvinToCelsiusPipe = __decorate([
+	    core_1.Pipe({
+	        name: 'kelvinToCelsius'
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], KelvinToCelsiusPipe);
+	exports.KelvinToCelsiusPipe = KelvinToCelsiusPipe;
 
 
 /***/ }

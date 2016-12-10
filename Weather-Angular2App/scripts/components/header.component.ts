@@ -8,6 +8,8 @@ import { Component, Input } from '@angular/core';
 export class Header {
   @Input() latitude: number;
   @Input() longitude: number;
+  currentDate: Date;
   constructor() {
+    this.currentDate = new Date();
   }
 }
