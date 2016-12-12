@@ -40227,11 +40227,18 @@
 	    constructor() {
 	        this.weatherInfoMap = new Map();
 	    }
-	    transform(value) {
+	    transform(value, time = undefined) {
 	        let self = this;
 	        return new Promise(function (resolve, reject) {
-	            if (self.weatherInfoMap.has(value)) {
-	                resolve(self.weatherInfoMap.get(value));
+	            let currentDate = new Date();
+	            let oldSearchWeather;
+	            for (let [key, val] of self.weatherInfoMap) {
+	                if (((currentDate.valueOf() - key.valueOf()) / 1000 < time || time === undefined) && val.getCity() === value) {
+	                    oldSearchWeather = val;
+	                }
+	            }
+	            if (oldSearchWeather) {
+	                resolve(oldSearchWeather);
 	            }
 	            else {
 	                let xhr = new XMLHttpRequest();
@@ -40248,7 +40255,7 @@
 	                        let wind = new Wind_1.Wind(data.wind.deg, data.wind.speed);
 	                        let clouds = new Cloud_1.Cloud(data.clouds.all);
 	                        weather = new Weather_1.Weather(value, coordinate, mainParams, wind, clouds);
-	                        self.weatherInfoMap.set(value, weather);
+	                        self.weatherInfoMap.set(currentDate, weather);
 	                        resolve(weather);
 	                    }
 	                    else {

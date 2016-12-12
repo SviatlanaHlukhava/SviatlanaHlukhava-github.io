@@ -9,15 +9,22 @@ import { Cloud }  from './../Cloud'
   name: 'cityWeather'
 })
 export class CityWeatherPipe implements PipeTransform {
-  weatherInfoMap: Map<String, Weather>;
+  weatherInfoMap: Map<Date, Weather>;
   constructor() {
-      this.weatherInfoMap = new Map <String, Weather> ();
+      this.weatherInfoMap = new Map <Date, Weather> ();
   }
-  transform (value: string): Promise<Weather> {
+  transform (value: string, time: number = undefined): Promise<Weather> {
       let self = this;
       return new Promise(function(resolve, reject) {
-          if (self.weatherInfoMap.has(value)) {
-              resolve(self.weatherInfoMap.get(value));
+          let currentDate = new Date();
+          let oldSearchWeather: Weather;
+          for (let [key, val] of self.weatherInfoMap) {
+              if (((currentDate.valueOf() - key.valueOf()) / 1000 < time || time === undefined) && val.getCity() === value) {
+                  oldSearchWeather = val;
+              }
+          }
+          if (oldSearchWeather) {
+              resolve(oldSearchWeather);
           } else {
             let xhr = new XMLHttpRequest();
             xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + value +
@@ -33,7 +40,7 @@ export class CityWeatherPipe implements PipeTransform {
                     let wind = new Wind(data.wind.deg, data.wind.speed);
                     let clouds = new Cloud(data.clouds.all);
                     weather = new Weather(value, coordinate, mainParams, wind, clouds);
-                    self.weatherInfoMap.set(value, weather);
+                    self.weatherInfoMap.set(currentDate, weather);
                     resolve(weather);
                 } else {
                     reject(weather)
