@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Coordinate }  from './../Coordinate'
 import { MainWeather } from './../MainWeather'
 import { Weather }  from './../Weather'
@@ -9,7 +9,8 @@ import { KelvinToCelsiusPipe } from './../pipes/kelvinToCelsius.pipe'
 @Component({
   selector: 'weather-table',
   templateUrl: 'pages/templates/weatherTable.tmpl.html',
-  styleUrls: ['css/weatherTable.css']
+  styleUrls: ['css/weatherTable.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherTable implements OnChanges {
   @Input() latitude: number;

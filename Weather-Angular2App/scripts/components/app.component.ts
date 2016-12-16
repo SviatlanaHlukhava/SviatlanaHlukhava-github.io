@@ -1,18 +1,16 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Coordinate }  from './../Coordinate'
-import { Map }  from './map.component'
-import { WeatherTable }  from './weatherTable.component'
-import { WeatherCityInfo }  from './weatherCityInfo.component'
 
 @Component({
   selector: 'app',
-  template: `<loader [isLoading]="isLoading" #loader></loader>
+  template: `<loader [isLoading]="isLoading"></loader>
     <header [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></header>
     <weather-table [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()" (loadingNotify)="isLoadingChange($event)">
     </weather-table>
+    <city-weather-section></city-weather-section>
     <map [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></map>
-    <weather-city-info></weather-city-info>
-    <footer></footer>`
+    <footer></footer>`,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App implements OnInit {
   isLoading: boolean;

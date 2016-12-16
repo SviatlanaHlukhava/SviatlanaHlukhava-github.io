@@ -35051,19 +35051,21 @@
 	const app_component_1 = __webpack_require__(28);
 	const map_component_1 = __webpack_require__(30);
 	const weatherTable_component_1 = __webpack_require__(31);
-	const footer_component_1 = __webpack_require__(36);
-	const header_component_1 = __webpack_require__(37);
-	const loader_component_1 = __webpack_require__(38);
-	const weatherCityInfo_component_1 = __webpack_require__(39);
-	const kelvinToCelsius_pipe_1 = __webpack_require__(41);
-	const cityWeather_pipe_1 = __webpack_require__(40);
+	const cityWeatherTable_component_1 = __webpack_require__(36);
+	const cityWeatherSection_component_1 = __webpack_require__(37);
+	const cityWeather_component_1 = __webpack_require__(39);
+	const footer_component_1 = __webpack_require__(40);
+	const header_component_1 = __webpack_require__(41);
+	const loader_component_1 = __webpack_require__(42);
+	const kelvinToCelsius_pipe_1 = __webpack_require__(43);
+	const cityWeather_pipe_1 = __webpack_require__(38);
 	let AppModule = class AppModule {
 	};
 	AppModule = __decorate([
 	    core_1.NgModule({
 	        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
 	        bootstrap: [app_component_1.App],
-	        declarations: [app_component_1.App, map_component_1.Map, weatherTable_component_1.WeatherTable, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader, weatherCityInfo_component_1.WeatherCityInfo,
+	        declarations: [app_component_1.App, map_component_1.Map, weatherTable_component_1.WeatherTable, cityWeatherSection_component_1.CityWeatherSection, cityWeatherTable_component_1.CityWeatherTable, cityWeather_component_1.CityWeather, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader,
 	            kelvinToCelsius_pipe_1.KelvinToCelsiusPipe, cityWeather_pipe_1.CityWeatherPipe]
 	    }), 
 	    __metadata('design:paramtypes', [])
@@ -39752,13 +39754,14 @@
 	App = __decorate([
 	    core_1.Component({
 	        selector: 'app',
-	        template: `<loader [isLoading]="isLoading" #loader></loader>
+	        template: `<loader [isLoading]="isLoading"></loader>
 	    <header [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></header>
 	    <weather-table [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()" (loadingNotify)="isLoadingChange($event)">
 	    </weather-table>
+	    <city-weather-section></city-weather-section>
 	    <map [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></map>
-	    <weather-city-info></weather-city-info>
-	    <footer></footer>`
+	    <footer></footer>`,
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], App);
@@ -39835,7 +39838,8 @@
 	    core_1.Component({
 	        selector: 'map',
 	        template: '<div id="map" class="google-map"></div>',
-	        styles: ['.google-map {width: 100%; height: 500px}']
+	        styles: ['.google-map {width: 100%; height: 500px}'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], Map);
@@ -39923,7 +39927,8 @@
 	    core_1.Component({
 	        selector: 'weather-table',
 	        templateUrl: 'pages/templates/weatherTable.tmpl.html',
-	        styleUrls: ['css/weatherTable.css']
+	        styleUrls: ['css/weatherTable.css'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], WeatherTable);
@@ -39975,12 +39980,19 @@
 	        this.mainParams = mainParams;
 	        this.wind = wind;
 	        this.cloud = cloud;
+	        this.selected = false;
 	    }
 	    getCity() {
 	        return this.city;
 	    }
 	    setCity(city) {
 	        this.city = city;
+	    }
+	    getSelected() {
+	        return this.selected;
+	    }
+	    setSelected(selected) {
+	        this.selected = selected;
 	    }
 	    getCoordinate() {
 	        return this.coordinate;
@@ -40070,20 +40082,40 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	const core_1 = __webpack_require__(3);
-	let Footer = class Footer {
+	let CityWeatherTable = class CityWeatherTable {
 	    constructor() {
-	        this.year = new Date().getFullYear();
+	        this.deleteNotify = new core_1.EventEmitter();
+	        this.selectNotify = new core_1.EventEmitter();
+	    }
+	    remove($event) {
+	        this.deleteNotify.emit($event);
+	    }
+	    select($event) {
+	        this.selectNotify.emit($event);
 	    }
 	};
-	Footer = __decorate([
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Array)
+	], CityWeatherTable.prototype, "weatherList", void 0);
+	__decorate([
+	    core_1.Output(), 
+	    __metadata('design:type', Object)
+	], CityWeatherTable.prototype, "deleteNotify", void 0);
+	__decorate([
+	    core_1.Output(), 
+	    __metadata('design:type', Object)
+	], CityWeatherTable.prototype, "selectNotify", void 0);
+	CityWeatherTable = __decorate([
 	    core_1.Component({
-	        selector: 'footer',
-	        template: '<div class="footer">Copyright &copy; {{year}}. All rights reserved</div>',
-	        styleUrls: ['css/footer.css']
+	        selector: 'city-weather-table',
+	        templateUrl: 'pages/templates/cityWeatherTable.tmpl.html',
+	        styleUrls: ['css/weatherTable.css'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	    }), 
 	    __metadata('design:paramtypes', [])
-	], Footer);
-	exports.Footer = Footer;
+	], CityWeatherTable);
+	exports.CityWeatherTable = CityWeatherTable;
 
 
 /***/ },
@@ -40101,110 +40133,56 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	const core_1 = __webpack_require__(3);
-	let Header = class Header {
-	    constructor() {
-	        this.currentDate = new Date();
+	const Weather_1 = __webpack_require__(33);
+	const cityWeather_pipe_1 = __webpack_require__(38);
+	let CityWeatherSection = class CityWeatherSection {
+	    constructor(changeDetectorRef) {
+	        this.changeDetectorRef = changeDetectorRef;
+	        this.cityWeatherPipe = new cityWeather_pipe_1.CityWeatherPipe();
+	        this.weatherList = [];
+	    }
+	    add() {
+	        this.cityWeatherPipe.transform(this.city).then((result) => {
+	            const weatherList = this.weatherList;
+	            weatherList.push(new Weather_1.Weather(result.getCity(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud()));
+	            this.weatherList = weatherList.slice(0);
+	            this.changeDetectorRef.markForCheck();
+	        });
+	    }
+	    remove($event) {
+	        const weatherList = this.weatherList;
+	        weatherList.splice($event, 1);
+	        this.weatherList = weatherList.slice(0);
+	    }
+	    select($event) {
+	        const weatherList = this.weatherList;
+	        weatherList[$event].setSelected(!weatherList[$event].getSelected());
+	        if (weatherList[$event].getSelected()) {
+	            weatherList.forEach((value, i) => {
+	                if (value.getSelected() && i !== $event) {
+	                    let weather = new Weather_1.Weather(value.getCity(), value.getCoordinate(), value.getMainParams(), value.getWind(), value.getCloud());
+	                    weather.setSelected(false);
+	                    weatherList.splice(i, 1, weather);
+	                }
+	            });
+	        }
+	        this.weatherList = weatherList.slice(0);
 	    }
 	};
-	__decorate([
-	    core_1.Input(), 
-	    __metadata('design:type', Number)
-	], Header.prototype, "latitude", void 0);
-	__decorate([
-	    core_1.Input(), 
-	    __metadata('design:type', Number)
-	], Header.prototype, "longitude", void 0);
-	Header = __decorate([
+	CityWeatherSection = __decorate([
 	    core_1.Component({
-	        selector: 'header',
-	        templateUrl: 'pages/templates/header.tmpl.html',
-	        styleUrls: ['css/header.css']
+	        selector: 'city-weather-section',
+	        templateUrl: 'pages/templates/cityWeatherSection.tmpl.html',
+	        styleUrls: ['css/weatherTable.css'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	    }), 
-	    __metadata('design:paramtypes', [])
-	], Header);
-	exports.Header = Header;
+	    __metadata('design:paramtypes', [core_1.ChangeDetectorRef])
+	], CityWeatherSection);
+	exports.CityWeatherSection = CityWeatherSection;
 
 
 /***/ },
 /* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	const core_1 = __webpack_require__(3);
-	let Loader = class Loader {
-	    constructor() {
-	    }
-	};
-	__decorate([
-	    core_1.Input(), 
-	    __metadata('design:type', Boolean)
-	], Loader.prototype, "isLoading", void 0);
-	Loader = __decorate([
-	    core_1.Component({
-	        selector: 'loader',
-	        templateUrl: 'pages/templates/loader.tmpl.html',
-	        styleUrls: ['css/loader.css']
-	    }), 
-	    __metadata('design:paramtypes', [])
-	], Loader);
-	exports.Loader = Loader;
-
-
-/***/ },
-/* 39 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	const core_1 = __webpack_require__(3);
-	const cityWeather_pipe_1 = __webpack_require__(40);
-	let WeatherCityInfo = class WeatherCityInfo {
-	    constructor() {
-	        this.city = "";
-	        this.cityWeatherPipe = new cityWeather_pipe_1.CityWeatherPipe();
-	        this.isError = false;
-	    }
-	    search() {
-	        let self = this;
-	        this.cityWeatherPipe.transform(this.city).then(function (result) {
-	            self.weatherInfo = result;
-	            self.isError = false;
-	        }, function () {
-	            self.weatherInfo = undefined;
-	            self.isError = true;
-	        });
-	    }
-	};
-	WeatherCityInfo = __decorate([
-	    core_1.Component({
-	        selector: 'weather-city-info',
-	        templateUrl: 'pages/templates/weatherCityInfo.tmpl.html',
-	        styleUrls: ['css/weatherCityInfo.css']
-	    }), 
-	    __metadata('design:paramtypes', [])
-	], WeatherCityInfo);
-	exports.WeatherCityInfo = WeatherCityInfo;
-
-
-/***/ },
-/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40279,7 +40257,170 @@
 
 
 /***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	const Weather_1 = __webpack_require__(33);
+	let CityWeather = class CityWeather {
+	    constructor() {
+	        this.deleteNotify = new core_1.EventEmitter();
+	        this.selectNotify = new core_1.EventEmitter();
+	    }
+	    remove() {
+	        this.deleteNotify.emit(this.index);
+	    }
+	    select() {
+	        this.selectNotify.emit(this.index);
+	    }
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Weather_1.Weather)
+	], CityWeather.prototype, "weather", void 0);
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Number)
+	], CityWeather.prototype, "index", void 0);
+	__decorate([
+	    core_1.Output(), 
+	    __metadata('design:type', Object)
+	], CityWeather.prototype, "deleteNotify", void 0);
+	__decorate([
+	    core_1.Output(), 
+	    __metadata('design:type', Object)
+	], CityWeather.prototype, "selectNotify", void 0);
+	CityWeather = __decorate([
+	    core_1.Component({
+	        selector: '[city-weather]',
+	        templateUrl: 'pages/templates/cityWeather.tmpl.html',
+	        styleUrls: ['css/weatherTable.css'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], CityWeather);
+	exports.CityWeather = CityWeather;
+
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	let Footer = class Footer {
+	    constructor() {
+	        this.year = new Date().getFullYear();
+	    }
+	};
+	Footer = __decorate([
+	    core_1.Component({
+	        selector: 'footer',
+	        template: '<div class="footer">Copyright &copy; {{year}}. All rights reserved</div>',
+	        styleUrls: ['css/footer.css'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], Footer);
+	exports.Footer = Footer;
+
+
+/***/ },
 /* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	let Header = class Header {
+	    constructor() {
+	        this.currentDate = new Date();
+	    }
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Number)
+	], Header.prototype, "latitude", void 0);
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Number)
+	], Header.prototype, "longitude", void 0);
+	Header = __decorate([
+	    core_1.Component({
+	        selector: 'header',
+	        templateUrl: 'pages/templates/header.tmpl.html',
+	        styleUrls: ['css/header.css'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], Header);
+	exports.Header = Header;
+
+
+/***/ },
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	let Loader = class Loader {
+	    constructor() {
+	    }
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Boolean)
+	], Loader.prototype, "isLoading", void 0);
+	Loader = __decorate([
+	    core_1.Component({
+	        selector: 'loader',
+	        templateUrl: 'pages/templates/loader.tmpl.html',
+	        styleUrls: ['css/loader.css'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], Loader);
+	exports.Loader = Loader;
+
+
+/***/ },
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

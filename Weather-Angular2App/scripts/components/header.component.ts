@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'header',
   templateUrl: 'pages/templates/header.tmpl.html',
-  styleUrls: ['css/header.css']
+  styleUrls: ['css/header.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Header {
   @Input() latitude: number;

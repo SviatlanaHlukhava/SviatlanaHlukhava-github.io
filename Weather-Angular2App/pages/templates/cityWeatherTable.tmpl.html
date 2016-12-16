@@ -1,0 +1,20 @@
+<table *ngIf="weatherList && weatherList.length">
+    <thead>
+        <tr>
+            <td>City</td>
+            <td>Latitude</td>
+            <td>Longitude</td>
+            <td>Temperature, &#8451;</td>
+            <td>Humidity</td>
+            <td>Pressure</td>
+            <td>Wind degree</td>
+            <td>Wind speed</td>
+            <td>Clouds</td>
+            <td>Actions</td>
+        </tr>
+    </thead>
+    <tbody class="weather-table-body">   
+        <tr *ngFor="let weather of weatherList; let i = index" city-weather [weather]="weather" [index]="i" (deleteNotify)="remove($event)" (selectNotify)="select($event)">
+        </tr>             
+    </tbody>           
+</table>

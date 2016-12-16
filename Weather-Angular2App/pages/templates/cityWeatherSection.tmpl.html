@@ -1,0 +1,8 @@
+<div class="user-weather-table">
+    <form class="city-form">
+        <label for="city">City</label>
+        <input type="text" [(ngModel)]="city" name="city"/>
+        <button (click)="add()">Add</button>
+    </form>
+    <city-weather-table [weatherList]="weatherList" (deleteNotify)="remove($event)" (selectNotify)="select($event)"></city-weather-table>
+</div>

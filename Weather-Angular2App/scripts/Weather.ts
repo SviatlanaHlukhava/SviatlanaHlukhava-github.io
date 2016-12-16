@@ -4,6 +4,7 @@ import { Wind } from './Wind'
 import { Cloud }  from './Cloud'
 export class Weather {
     private city: string;
+    private selected: boolean;
     private coordinate: Coordinate;
     private mainParams: MainWeather;
     private wind: Wind;
@@ -15,12 +16,19 @@ export class Weather {
         this.mainParams = mainParams;
         this.wind = wind;
         this.cloud = cloud;
+        this.selected = false;
     }
     getCity(): string {
         return this.city;
     }
     setCity(city: string): void {
         this.city = city;
+    }
+    getSelected(): boolean {
+        return this.selected;
+    }
+    setSelected(selected: boolean): void {
+        this.selected = selected;
     }
     getCoordinate(): Coordinate {
         return this.coordinate;

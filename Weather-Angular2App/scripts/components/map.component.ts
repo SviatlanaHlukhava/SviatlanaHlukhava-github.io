@@ -1,9 +1,10 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'map',
   template: '<div id="map" class="google-map"></div>',
-  styles: ['.google-map {width: 100%; height: 500px}']
+  styles: ['.google-map {width: 100%; height: 500px}'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Map implements OnInit, OnChanges {
   @Input() latitude: number;

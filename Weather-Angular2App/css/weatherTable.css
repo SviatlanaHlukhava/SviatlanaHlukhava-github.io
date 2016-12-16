@@ -11,14 +11,25 @@ td {
     padding: 10px;
 }
 @media screen and (min-width: 900px) {
-    table {
+    table, .city-form {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
     }
 }
 @media screen and (max-width: 899px) {
-    table {
+    table, .city-form {
         width: 100%;
     }
+}
+.user-weather-table {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.city-form {
+    margin-bottom: 10px;
+}
+.table-btn {
+    margin: 10px;
+    width: 70px;
 }
