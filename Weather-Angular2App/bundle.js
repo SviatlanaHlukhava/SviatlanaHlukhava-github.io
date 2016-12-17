@@ -35049,16 +35049,16 @@
 	const platform_browser_1 = __webpack_require__(1);
 	const forms_1 = __webpack_require__(24);
 	const app_component_1 = __webpack_require__(28);
-	const map_component_1 = __webpack_require__(30);
-	const weatherTable_component_1 = __webpack_require__(31);
-	const cityWeatherTable_component_1 = __webpack_require__(36);
-	const cityWeatherSection_component_1 = __webpack_require__(37);
-	const cityWeather_component_1 = __webpack_require__(39);
-	const footer_component_1 = __webpack_require__(40);
-	const header_component_1 = __webpack_require__(41);
-	const loader_component_1 = __webpack_require__(42);
-	const kelvinToCelsius_pipe_1 = __webpack_require__(43);
-	const cityWeather_pipe_1 = __webpack_require__(38);
+	const map_component_1 = __webpack_require__(31);
+	const weatherTable_component_1 = __webpack_require__(32);
+	const cityWeatherTable_component_1 = __webpack_require__(37);
+	const cityWeatherSection_component_1 = __webpack_require__(38);
+	const cityWeather_component_1 = __webpack_require__(40);
+	const footer_component_1 = __webpack_require__(41);
+	const header_component_1 = __webpack_require__(42);
+	const loader_component_1 = __webpack_require__(43);
+	const kelvinToCelsius_pipe_1 = __webpack_require__(44);
+	const cityWeather_pipe_1 = __webpack_require__(39);
 	let AppModule = class AppModule {
 	};
 	AppModule = __decorate([
@@ -39731,9 +39731,14 @@
 	};
 	const core_1 = __webpack_require__(3);
 	const Coordinate_1 = __webpack_require__(29);
+	const Profiler_1 = __webpack_require__(30);
 	let App = class App {
-	    constructor() {
+	    constructor(zone, changeDetectorRef) {
+	        this.zone = zone;
+	        this.changeDetectorRef = changeDetectorRef;
 	        this.coordinate = new Coordinate_1.Coordinate(0, 0);
+	        this.profiler = new Profiler_1.Profiler(this.zone);
+	        this.profiler.profile();
 	    }
 	    ngOnInit() {
 	        let self = this;
@@ -39742,6 +39747,7 @@
 	        function setPosition(pos) {
 	            self.coordinate.setLatitude(pos.coords.latitude);
 	            self.coordinate.setLongitude(pos.coords.longitude);
+	            self.changeDetectorRef.markForCheck();
 	        }
 	        function onError() {
 	            self.isLoading = false;
@@ -39763,7 +39769,7 @@
 	    <footer></footer>`,
 	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	    }), 
-	    __metadata('design:paramtypes', [])
+	    __metadata('design:paramtypes', [core_1.NgZone, core_1.ChangeDetectorRef])
 	], App);
 	exports.App = App;
 
@@ -39796,6 +39802,32 @@
 
 /***/ },
 /* 30 */
+/***/ function(module, exports) {
+
+	"use strict";
+	class Profiler {
+	    constructor(zone) {
+	        this.zone = zone;
+	    }
+	    profile() {
+	        this.zone.onUnstable.subscribe(() => {
+	            console.log("become unstable");
+	            this.time = new Date();
+	        });
+	        this.zone.onStable.subscribe(() => {
+	            if (this.time) {
+	                let time = new Date();
+	                let diff = time.getTime() - this.time.getTime();
+	                console.log("become stable, " + Math.floor(diff * 100) / 100 + ' ms');
+	            }
+	        });
+	    }
+	}
+	exports.Profiler = Profiler;
+
+
+/***/ },
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39847,7 +39879,7 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39862,26 +39894,43 @@
 	};
 	const core_1 = __webpack_require__(3);
 	const Coordinate_1 = __webpack_require__(29);
-	const MainWeather_1 = __webpack_require__(32);
-	const Weather_1 = __webpack_require__(33);
-	const Wind_1 = __webpack_require__(34);
-	const Cloud_1 = __webpack_require__(35);
+	const MainWeather_1 = __webpack_require__(33);
+	const Weather_1 = __webpack_require__(34);
+	const Wind_1 = __webpack_require__(35);
+	const Cloud_1 = __webpack_require__(36);
 	let WeatherTable_1 = class WeatherTable {
-	    constructor() {
+	    constructor(changeDetectorRef) {
+	        this.changeDetectorRef = changeDetectorRef;
 	        this.loadingNotify = new core_1.EventEmitter();
 	    }
-	    ngOnChanges() {
+	    ngOnInit() {
+	        this.changeDetectorRef.detach();
+	        setInterval(() => {
+	            this.updateWeatherList();
+	            this.weatherPromise.then((result) => {
+	                this.weatherList = result.slice(0);
+	                this.changeDetectorRef.reattach();
+	                this.changeDetectorRef.detectChanges();
+	                this.changeDetectorRef.detach();
+	            });
+	        }, 5000);
+	    }
+	    /*ngOnChange(): void {
+	      this.updateWeatherList();
+	    }*/
+	    updateWeatherList() {
 	        if (this.latitude !== undefined && this.longitude !== undefined) {
 	            // TODO move to service
 	            let self = this;
 	            this.weatherPromise = new Promise(function (resolve, reject) {
 	                let xhr = new XMLHttpRequest();
-	                self.loadingNotify.emit(true);
 	                WeatherTable_1.openWearterMapRqsts++;
 	                let coord = new Coordinate_1.Coordinate(self.latitude, self.longitude);
-	                xhr.open('GET', 'http://api.openweathermap.org/data/2.5/find?lat=' +
+	                /*let url = 'http://api.openweathermap.org/data/2.5/find?lat=' +
 	                    coord.getLatitude() + '&lon=' + coord.getLongitude() +
-	                    '&cnt=50&appid=5e704282bf38a873419932de2553f5bb', true);
+	                    '&cnt=50&appid=5e704282bf38a873419932de2553f5bb';*/
+	                let url = 'scripts/mocks/cityWeatherList.mock.json';
+	                xhr.open('GET', url, true);
 	                xhr.send();
 	                xhr.onreadystatechange = function () {
 	                    if (xhr.readyState === 4) {
@@ -39930,13 +39979,13 @@
 	        styleUrls: ['css/weatherTable.css'],
 	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	    }), 
-	    __metadata('design:paramtypes', [])
+	    __metadata('design:paramtypes', [core_1.ChangeDetectorRef])
 	], WeatherTable);
 	exports.WeatherTable = WeatherTable;
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -39969,7 +40018,7 @@
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -40023,7 +40072,7 @@
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -40049,7 +40098,7 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -40068,7 +40117,7 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40119,7 +40168,7 @@
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40133,8 +40182,8 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	const core_1 = __webpack_require__(3);
-	const Weather_1 = __webpack_require__(33);
-	const cityWeather_pipe_1 = __webpack_require__(38);
+	const Weather_1 = __webpack_require__(34);
+	const cityWeather_pipe_1 = __webpack_require__(39);
 	let CityWeatherSection = class CityWeatherSection {
 	    constructor(changeDetectorRef) {
 	        this.changeDetectorRef = changeDetectorRef;
@@ -40182,7 +40231,7 @@
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40197,10 +40246,10 @@
 	};
 	const core_1 = __webpack_require__(3);
 	const Coordinate_1 = __webpack_require__(29);
-	const MainWeather_1 = __webpack_require__(32);
-	const Weather_1 = __webpack_require__(33);
-	const Wind_1 = __webpack_require__(34);
-	const Cloud_1 = __webpack_require__(35);
+	const MainWeather_1 = __webpack_require__(33);
+	const Weather_1 = __webpack_require__(34);
+	const Wind_1 = __webpack_require__(35);
+	const Cloud_1 = __webpack_require__(36);
 	let CityWeatherPipe = class CityWeatherPipe {
 	    constructor() {
 	        this.weatherInfoMap = new Map();
@@ -40257,7 +40306,7 @@
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40271,7 +40320,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	const core_1 = __webpack_require__(3);
-	const Weather_1 = __webpack_require__(33);
+	const Weather_1 = __webpack_require__(34);
 	let CityWeather = class CityWeather {
 	    constructor() {
 	        this.deleteNotify = new core_1.EventEmitter();
@@ -40313,7 +40362,7 @@
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40345,7 +40394,7 @@
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40385,7 +40434,7 @@
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40420,7 +40469,7 @@
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";

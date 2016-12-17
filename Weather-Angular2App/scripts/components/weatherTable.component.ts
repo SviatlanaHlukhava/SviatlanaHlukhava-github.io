@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Coordinate }  from './../Coordinate'
 import { MainWeather } from './../MainWeather'
 import { Weather }  from './../Weather'
@@ -12,25 +12,43 @@ import { KelvinToCelsiusPipe } from './../pipes/kelvinToCelsius.pipe'
   styleUrls: ['css/weatherTable.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WeatherTable implements OnChanges {
+export class WeatherTable implements OnInit {
   @Input() latitude: number;
   @Input() longitude: number;
   @Output() loadingNotify = new EventEmitter();
   weatherPromise: Promise<Weather[]>;
+  weatherList: Weather[];
   static openWearterMapRqsts = 0;
-
-  ngOnChanges(): void {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
+  }
+  ngOnInit(): void {
+    this.changeDetectorRef.detach();
+    setInterval(() => {
+      this.updateWeatherList();
+      this.weatherPromise.then((result) => {
+        this.weatherList = result.slice(0);
+        this.changeDetectorRef.reattach();
+        this.changeDetectorRef.detectChanges();
+        this.changeDetectorRef.detach();
+      });
+    }, 5000);
+  }
+  /*ngOnChange(): void {
+    this.updateWeatherList();
+  }*/
+  updateWeatherList() {
     if (this.latitude !== undefined && this.longitude !== undefined) {
       // TODO move to service
       let self = this;
       this.weatherPromise = new Promise(function(resolve, reject) {
         let xhr = new XMLHttpRequest();
-        self.loadingNotify.emit(true);
         WeatherTable.openWearterMapRqsts++;
         let coord = new Coordinate (self.latitude, self.longitude);
-        xhr.open('GET', 'http://api.openweathermap.org/data/2.5/find?lat=' +
+        /*let url = 'http://api.openweathermap.org/data/2.5/find?lat=' +
             coord.getLatitude() + '&lon=' + coord.getLongitude() +
-            '&cnt=50&appid=5e704282bf38a873419932de2553f5bb', true);
+            '&cnt=50&appid=5e704282bf38a873419932de2553f5bb';*/
+        let url = 'scripts/mocks/cityWeatherList.mock.json';
+        xhr.open('GET', url, true);
         xhr.send();
 
         xhr.onreadystatechange = function () {

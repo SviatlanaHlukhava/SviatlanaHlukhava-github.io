@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, ChangeDetectionStrategy, NgZone, ChangeDetectorRef } from '@angular/core';
 import { Coordinate }  from './../Coordinate'
+import { Profiler } from './../services/Profiler'
+import { Loader }   from './loader.component';
 
 @Component({
   selector: 'app',
@@ -15,8 +17,11 @@ import { Coordinate }  from './../Coordinate'
 export class App implements OnInit {
   isLoading: boolean;
   coordinate: Coordinate;
-  constructor() {
+  profiler: Profiler;
+  constructor(private zone: NgZone, private changeDetectorRef: ChangeDetectorRef) {
     this.coordinate = new Coordinate(0, 0);
+    this.profiler = new Profiler(this.zone);
+    this.profiler.profile();
   }
   ngOnInit(): void {
     let self = this;
@@ -25,6 +30,7 @@ export class App implements OnInit {
     function setPosition(pos: Position): void {
        self.coordinate.setLatitude(pos.coords.latitude);
        self.coordinate.setLongitude(pos.coords.longitude);
+       self.changeDetectorRef.markForCheck();
     }
     function onError(): void {
       self.isLoading = false;
@@ -33,4 +39,5 @@ export class App implements OnInit {
   isLoadingChange($event: boolean) {
     this.isLoading = $event;
   }
+
 }
