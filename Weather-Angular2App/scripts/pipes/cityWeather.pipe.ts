@@ -27,8 +27,9 @@ export class CityWeatherPipe implements PipeTransform {
               resolve(oldSearchWeather);
           } else {
             let xhr = new XMLHttpRequest();
-            xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + value +
-            '&appid=5e704282bf38a873419932de2553f5bb', true);
+            let url = 'http://api.openweathermap.org/data/2.5/weather?q=' + value +
+            '&appid=5e704282bf38a873419932de2553f5bb'
+            xhr.open('GET', url, true);
             xhr.send();
             let weather: Weather;
             xhr.onload = function () {

@@ -7,9 +7,7 @@ import { Loader }   from './loader.component';
   selector: 'app',
   template: `<loader [isLoading]="isLoading"></loader>
     <header [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></header>
-    <weather-table [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()" (loadingNotify)="isLoadingChange($event)">
-    </weather-table>
-    <city-weather-section></city-weather-section>
+    <city-weather-section [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()" (loadingNotify)="isLoadingChange($event)"></city-weather-section>
     <map [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></map>
     <footer></footer>`,
     changeDetection: ChangeDetectionStrategy.OnPush

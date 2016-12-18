@@ -35050,22 +35050,21 @@
 	const forms_1 = __webpack_require__(24);
 	const app_component_1 = __webpack_require__(28);
 	const map_component_1 = __webpack_require__(31);
-	const weatherTable_component_1 = __webpack_require__(32);
-	const cityWeatherTable_component_1 = __webpack_require__(37);
-	const cityWeatherSection_component_1 = __webpack_require__(38);
-	const cityWeather_component_1 = __webpack_require__(40);
-	const footer_component_1 = __webpack_require__(41);
-	const header_component_1 = __webpack_require__(42);
-	const loader_component_1 = __webpack_require__(43);
-	const kelvinToCelsius_pipe_1 = __webpack_require__(44);
-	const cityWeather_pipe_1 = __webpack_require__(39);
+	const cityWeatherTable_component_1 = __webpack_require__(32);
+	const cityWeatherSection_component_1 = __webpack_require__(33);
+	const cityWeather_component_1 = __webpack_require__(39);
+	const footer_component_1 = __webpack_require__(40);
+	const header_component_1 = __webpack_require__(41);
+	const loader_component_1 = __webpack_require__(42);
+	const kelvinToCelsius_pipe_1 = __webpack_require__(43);
+	const cityWeather_pipe_1 = __webpack_require__(38);
 	let AppModule = class AppModule {
 	};
 	AppModule = __decorate([
 	    core_1.NgModule({
 	        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
 	        bootstrap: [app_component_1.App],
-	        declarations: [app_component_1.App, map_component_1.Map, weatherTable_component_1.WeatherTable, cityWeatherSection_component_1.CityWeatherSection, cityWeatherTable_component_1.CityWeatherTable, cityWeather_component_1.CityWeather, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader,
+	        declarations: [app_component_1.App, map_component_1.Map, cityWeatherSection_component_1.CityWeatherSection, cityWeatherTable_component_1.CityWeatherTable, cityWeather_component_1.CityWeather, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader,
 	            kelvinToCelsius_pipe_1.KelvinToCelsiusPipe, cityWeather_pipe_1.CityWeatherPipe]
 	    }), 
 	    __metadata('design:paramtypes', [])
@@ -39762,9 +39761,7 @@
 	        selector: 'app',
 	        template: `<loader [isLoading]="isLoading"></loader>
 	    <header [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></header>
-	    <weather-table [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()" (loadingNotify)="isLoadingChange($event)">
-	    </weather-table>
-	    <city-weather-section></city-weather-section>
+	    <city-weather-section [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()" (loadingNotify)="isLoadingChange($event)"></city-weather-section>
 	    <map [latitude]="coordinate.getLatitude()" [longitude]="coordinate.getLongitude()"></map>
 	    <footer></footer>`,
 	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
@@ -39893,43 +39890,92 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	const core_1 = __webpack_require__(3);
+	let CityWeatherTable = class CityWeatherTable {
+	    constructor() {
+	        this.deleteNotify = new core_1.EventEmitter();
+	        this.selectNotify = new core_1.EventEmitter();
+	    }
+	    remove($event) {
+	        this.deleteNotify.emit($event);
+	    }
+	    select($event) {
+	        this.selectNotify.emit($event);
+	    }
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Array)
+	], CityWeatherTable.prototype, "weatherList", void 0);
+	__decorate([
+	    core_1.Output(), 
+	    __metadata('design:type', Object)
+	], CityWeatherTable.prototype, "deleteNotify", void 0);
+	__decorate([
+	    core_1.Output(), 
+	    __metadata('design:type', Object)
+	], CityWeatherTable.prototype, "selectNotify", void 0);
+	CityWeatherTable = __decorate([
+	    core_1.Component({
+	        selector: 'city-weather-table',
+	        templateUrl: 'pages/templates/cityWeatherTable.tmpl.html',
+	        styleUrls: ['css/weatherTable.css'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], CityWeatherTable);
+	exports.CityWeatherTable = CityWeatherTable;
+
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
 	const Coordinate_1 = __webpack_require__(29);
-	const MainWeather_1 = __webpack_require__(33);
-	const Weather_1 = __webpack_require__(34);
-	const Wind_1 = __webpack_require__(35);
-	const Cloud_1 = __webpack_require__(36);
-	let WeatherTable_1 = class WeatherTable {
+	const MainWeather_1 = __webpack_require__(34);
+	const Weather_1 = __webpack_require__(35);
+	const Wind_1 = __webpack_require__(36);
+	const Cloud_1 = __webpack_require__(37);
+	const cityWeather_pipe_1 = __webpack_require__(38);
+	let CityWeatherSection_1 = class CityWeatherSection {
 	    constructor(changeDetectorRef) {
 	        this.changeDetectorRef = changeDetectorRef;
 	        this.loadingNotify = new core_1.EventEmitter();
+	        this.cityWeatherPipe = new cityWeather_pipe_1.CityWeatherPipe();
+	        this.weatherList = [];
 	    }
 	    ngOnInit() {
 	        this.changeDetectorRef.detach();
 	        setInterval(() => {
-	            this.updateWeatherList();
-	            this.weatherPromise.then((result) => {
-	                this.weatherList = result.slice(0);
-	                this.changeDetectorRef.reattach();
-	                this.changeDetectorRef.detectChanges();
-	                this.changeDetectorRef.detach();
-	            });
+	            this.updateWeather();
+	        }, 500);
+	        setInterval(() => {
+	            this.detectChanges();
 	        }, 5000);
 	    }
-	    /*ngOnChange(): void {
-	      this.updateWeatherList();
-	    }*/
-	    updateWeatherList() {
-	        if (this.latitude !== undefined && this.longitude !== undefined) {
+	    ngOnChanges() {
+	        if (this.latitude !== undefined && this.longitude !== undefined &&
+	            (this.oldLatitude === undefined || this.oldLatitude !== this.latitude) ||
+	            (this.oldLongitude === undefined || this.oldLongitude !== this.longitude)) {
 	            // TODO move to service
 	            let self = this;
 	            this.weatherPromise = new Promise(function (resolve, reject) {
 	                let xhr = new XMLHttpRequest();
-	                WeatherTable_1.openWearterMapRqsts++;
+	                CityWeatherSection_1.openWearterMapRqsts++;
 	                let coord = new Coordinate_1.Coordinate(self.latitude, self.longitude);
-	                /*let url = 'http://api.openweathermap.org/data/2.5/find?lat=' +
+	                let url = 'http://api.openweathermap.org/data/2.5/find?lat=' +
 	                    coord.getLatitude() + '&lon=' + coord.getLongitude() +
-	                    '&cnt=50&appid=5e704282bf38a873419932de2553f5bb';*/
-	                let url = 'scripts/mocks/cityWeatherList.mock.json';
+	                    '&cnt=50&appid=5e704282bf38a873419932de2553f5bb';
 	                xhr.open('GET', url, true);
 	                xhr.send();
 	                xhr.onreadystatechange = function () {
@@ -39948,44 +39994,118 @@
 	                            }
 	                            resolve(list);
 	                        }
-	                        WeatherTable_1.openWearterMapRqsts--;
-	                        if (WeatherTable_1.openWearterMapRqsts === 0) {
+	                        CityWeatherSection_1.openWearterMapRqsts--;
+	                        if (CityWeatherSection_1.openWearterMapRqsts === 0) {
 	                            self.loadingNotify.emit(false);
 	                        }
 	                    }
 	                };
 	            });
+	            this.weatherPromise.then((result) => {
+	                this.weatherList = result.slice(0);
+	                this.detectChanges();
+	            });
+	            this.oldLatitude = this.latitude;
+	            this.oldLongitude - this.longitude;
 	        }
 	    }
+	    add() {
+	        this.cityWeatherPipe.transform(this.city).then((result) => {
+	            const weatherList = this.weatherList;
+	            weatherList.push(new Weather_1.Weather(result.getCity(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud()));
+	            this.weatherList = weatherList.slice(0);
+	            this.detectChanges();
+	        });
+	    }
+	    remove($event) {
+	        const weatherList = this.weatherList;
+	        weatherList.splice($event, 1);
+	        this.weatherList = weatherList.slice(0);
+	        this.detectChanges();
+	    }
+	    select($event) {
+	        const weatherList = this.weatherList;
+	        weatherList[$event].setSelected(!weatherList[$event].getSelected());
+	        if (weatherList[$event].getSelected()) {
+	            weatherList.forEach((value, i) => {
+	                if (value.getSelected() && i !== $event) {
+	                    let weather = new Weather_1.Weather(value.getCity(), value.getCoordinate(), value.getMainParams(), value.getWind(), value.getCloud());
+	                    weather.setSelected(false);
+	                    weatherList.splice(i, 1, weather);
+	                }
+	            });
+	        }
+	        this.weatherList = weatherList.slice(0);
+	        this.detectChanges();
+	    }
+	    detectChanges() {
+	        this.changeDetectorRef.reattach();
+	        this.changeDetectorRef.detectChanges();
+	        this.changeDetectorRef.detach();
+	    }
+	    updateWeather() {
+	        this.weatherList.forEach((value) => {
+	            // TODO move to service
+	            let promise = new Promise(function (resolve, reject) {
+	                let xhr = new XMLHttpRequest();
+	                let url = 'scripts/mocks/' + value.getCity() + '.mock.json';
+	                xhr.open('GET', url, true);
+	                xhr.send();
+	                let weather;
+	                xhr.onload = function () {
+	                    if (xhr.status === 200 && xhr.responseText) {
+	                        let response = xhr.responseText;
+	                        let data = response !== '' ? JSON.parse(xhr.responseText) : "";
+	                        let coordinate = new Coordinate_1.Coordinate(data.coord.lat, data.coord.lon);
+	                        let mainParams = new MainWeather_1.MainWeather(data.main.temp, data.main.humidity, data.main.pressure);
+	                        let wind = new Wind_1.Wind(data.wind.deg, data.wind.speed);
+	                        let clouds = new Cloud_1.Cloud(data.clouds.all);
+	                        weather = new Weather_1.Weather(value.getCity(), coordinate, mainParams, wind, clouds);
+	                        resolve(weather);
+	                    }
+	                };
+	            });
+	            promise.then((result) => {
+	                let weatherList = this.weatherList;
+	                let index = weatherList.findIndex((weather) => weather.getCity() === value.getCity());
+	                if (index !== -1) {
+	                    let newWeather = new Weather_1.Weather(result.getCity(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud());
+	                    newWeather.setSelected(weatherList[index].getSelected());
+	                    weatherList.splice(index, 1, newWeather);
+	                    this.weatherList = weatherList.slice(0);
+	                }
+	            });
+	        });
+	    }
 	};
-	let WeatherTable = WeatherTable_1;
-	WeatherTable.openWearterMapRqsts = 0;
+	let CityWeatherSection = CityWeatherSection_1;
+	CityWeatherSection.openWearterMapRqsts = 0;
 	__decorate([
 	    core_1.Input(), 
 	    __metadata('design:type', Number)
-	], WeatherTable.prototype, "latitude", void 0);
+	], CityWeatherSection.prototype, "latitude", void 0);
 	__decorate([
 	    core_1.Input(), 
 	    __metadata('design:type', Number)
-	], WeatherTable.prototype, "longitude", void 0);
+	], CityWeatherSection.prototype, "longitude", void 0);
 	__decorate([
 	    core_1.Output(), 
 	    __metadata('design:type', Object)
-	], WeatherTable.prototype, "loadingNotify", void 0);
-	WeatherTable = WeatherTable_1 = __decorate([
+	], CityWeatherSection.prototype, "loadingNotify", void 0);
+	CityWeatherSection = CityWeatherSection_1 = __decorate([
 	    core_1.Component({
-	        selector: 'weather-table',
-	        templateUrl: 'pages/templates/weatherTable.tmpl.html',
+	        selector: 'city-weather-section',
+	        templateUrl: 'pages/templates/cityWeatherSection.tmpl.html',
 	        styleUrls: ['css/weatherTable.css'],
 	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
 	    }), 
 	    __metadata('design:paramtypes', [core_1.ChangeDetectorRef])
-	], WeatherTable);
-	exports.WeatherTable = WeatherTable;
+	], CityWeatherSection);
+	exports.CityWeatherSection = CityWeatherSection;
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -40018,7 +40138,7 @@
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -40072,7 +40192,7 @@
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -40098,7 +40218,7 @@
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -40117,57 +40237,6 @@
 
 
 /***/ },
-/* 37 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	const core_1 = __webpack_require__(3);
-	let CityWeatherTable = class CityWeatherTable {
-	    constructor() {
-	        this.deleteNotify = new core_1.EventEmitter();
-	        this.selectNotify = new core_1.EventEmitter();
-	    }
-	    remove($event) {
-	        this.deleteNotify.emit($event);
-	    }
-	    select($event) {
-	        this.selectNotify.emit($event);
-	    }
-	};
-	__decorate([
-	    core_1.Input(), 
-	    __metadata('design:type', Array)
-	], CityWeatherTable.prototype, "weatherList", void 0);
-	__decorate([
-	    core_1.Output(), 
-	    __metadata('design:type', Object)
-	], CityWeatherTable.prototype, "deleteNotify", void 0);
-	__decorate([
-	    core_1.Output(), 
-	    __metadata('design:type', Object)
-	], CityWeatherTable.prototype, "selectNotify", void 0);
-	CityWeatherTable = __decorate([
-	    core_1.Component({
-	        selector: 'city-weather-table',
-	        templateUrl: 'pages/templates/cityWeatherTable.tmpl.html',
-	        styleUrls: ['css/weatherTable.css'],
-	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
-	    }), 
-	    __metadata('design:paramtypes', [])
-	], CityWeatherTable);
-	exports.CityWeatherTable = CityWeatherTable;
-
-
-/***/ },
 /* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -40182,74 +40251,11 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	const core_1 = __webpack_require__(3);
-	const Weather_1 = __webpack_require__(34);
-	const cityWeather_pipe_1 = __webpack_require__(39);
-	let CityWeatherSection = class CityWeatherSection {
-	    constructor(changeDetectorRef) {
-	        this.changeDetectorRef = changeDetectorRef;
-	        this.cityWeatherPipe = new cityWeather_pipe_1.CityWeatherPipe();
-	        this.weatherList = [];
-	    }
-	    add() {
-	        this.cityWeatherPipe.transform(this.city).then((result) => {
-	            const weatherList = this.weatherList;
-	            weatherList.push(new Weather_1.Weather(result.getCity(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud()));
-	            this.weatherList = weatherList.slice(0);
-	            this.changeDetectorRef.markForCheck();
-	        });
-	    }
-	    remove($event) {
-	        const weatherList = this.weatherList;
-	        weatherList.splice($event, 1);
-	        this.weatherList = weatherList.slice(0);
-	    }
-	    select($event) {
-	        const weatherList = this.weatherList;
-	        weatherList[$event].setSelected(!weatherList[$event].getSelected());
-	        if (weatherList[$event].getSelected()) {
-	            weatherList.forEach((value, i) => {
-	                if (value.getSelected() && i !== $event) {
-	                    let weather = new Weather_1.Weather(value.getCity(), value.getCoordinate(), value.getMainParams(), value.getWind(), value.getCloud());
-	                    weather.setSelected(false);
-	                    weatherList.splice(i, 1, weather);
-	                }
-	            });
-	        }
-	        this.weatherList = weatherList.slice(0);
-	    }
-	};
-	CityWeatherSection = __decorate([
-	    core_1.Component({
-	        selector: 'city-weather-section',
-	        templateUrl: 'pages/templates/cityWeatherSection.tmpl.html',
-	        styleUrls: ['css/weatherTable.css'],
-	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
-	    }), 
-	    __metadata('design:paramtypes', [core_1.ChangeDetectorRef])
-	], CityWeatherSection);
-	exports.CityWeatherSection = CityWeatherSection;
-
-
-/***/ },
-/* 39 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	const core_1 = __webpack_require__(3);
 	const Coordinate_1 = __webpack_require__(29);
-	const MainWeather_1 = __webpack_require__(33);
-	const Weather_1 = __webpack_require__(34);
-	const Wind_1 = __webpack_require__(35);
-	const Cloud_1 = __webpack_require__(36);
+	const MainWeather_1 = __webpack_require__(34);
+	const Weather_1 = __webpack_require__(35);
+	const Wind_1 = __webpack_require__(36);
+	const Cloud_1 = __webpack_require__(37);
 	let CityWeatherPipe = class CityWeatherPipe {
 	    constructor() {
 	        this.weatherInfoMap = new Map();
@@ -40269,8 +40275,9 @@
 	            }
 	            else {
 	                let xhr = new XMLHttpRequest();
-	                xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?q=' + value +
-	                    '&appid=5e704282bf38a873419932de2553f5bb', true);
+	                let url = 'http://api.openweathermap.org/data/2.5/weather?q=' + value +
+	                    '&appid=5e704282bf38a873419932de2553f5bb';
+	                xhr.open('GET', url, true);
 	                xhr.send();
 	                let weather;
 	                xhr.onload = function () {
@@ -40306,7 +40313,7 @@
 
 
 /***/ },
-/* 40 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40320,7 +40327,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	const core_1 = __webpack_require__(3);
-	const Weather_1 = __webpack_require__(34);
+	const Weather_1 = __webpack_require__(35);
 	let CityWeather = class CityWeather {
 	    constructor() {
 	        this.deleteNotify = new core_1.EventEmitter();
@@ -40362,7 +40369,7 @@
 
 
 /***/ },
-/* 41 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40394,7 +40401,7 @@
 
 
 /***/ },
-/* 42 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40434,7 +40441,7 @@
 
 
 /***/ },
-/* 43 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -40469,7 +40476,7 @@
 
 
 /***/ },
-/* 44 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
