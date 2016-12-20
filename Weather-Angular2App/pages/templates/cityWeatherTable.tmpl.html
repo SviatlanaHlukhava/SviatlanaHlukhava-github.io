@@ -14,7 +14,8 @@
         </tr>
     </thead>
     <tbody class="weather-table-body">   
-        <tr *ngFor="let weather of weatherList; let i = index" city-weather [weather]="weather" [index]="i" (deleteNotify)="remove($event)" (selectNotify)="select($event)">
+        <tr *ngFor="let weather of weatherList; let i = index" city-weather weather-color
+            [weather]="weather" [index]="i" (deleteNotify)="remove($event)" (selectNotify)="select($event)">
         </tr>             
     </tbody>           
 </table>

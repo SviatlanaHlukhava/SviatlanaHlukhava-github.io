@@ -11,11 +11,12 @@ import { Header }   from './components/header.component';
 import { Loader }   from './components/loader.component';
 import { KelvinToCelsiusPipe } from './pipes/kelvinToCelsius.pipe'
 import { CityWeatherPipe } from './pipes/cityWeather.pipe'
+import { WeatherColor }   from './directives/weatherColor.directive';
 
 @NgModule({
     imports:      [BrowserModule, FormsModule],
     bootstrap:    [App],
     declarations: [App, Map, CityWeatherSection, CityWeatherTable, CityWeather, Footer, Header, Loader,
-      KelvinToCelsiusPipe, CityWeatherPipe]
+      KelvinToCelsiusPipe, CityWeatherPipe,  WeatherColor]
 })
 export class AppModule {}

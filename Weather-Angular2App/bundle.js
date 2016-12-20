@@ -35058,6 +35058,7 @@
 	const loader_component_1 = __webpack_require__(42);
 	const kelvinToCelsius_pipe_1 = __webpack_require__(43);
 	const cityWeather_pipe_1 = __webpack_require__(38);
+	const weatherColor_directive_1 = __webpack_require__(44);
 	let AppModule = class AppModule {
 	};
 	AppModule = __decorate([
@@ -35065,7 +35066,7 @@
 	        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
 	        bootstrap: [app_component_1.App],
 	        declarations: [app_component_1.App, map_component_1.Map, cityWeatherSection_component_1.CityWeatherSection, cityWeatherTable_component_1.CityWeatherTable, cityWeather_component_1.CityWeather, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader,
-	            kelvinToCelsius_pipe_1.KelvinToCelsiusPipe, cityWeather_pipe_1.CityWeatherPipe]
+	            kelvinToCelsius_pipe_1.KelvinToCelsiusPipe, cityWeather_pipe_1.CityWeatherPipe, weatherColor_directive_1.WeatherColor]
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], AppModule);
@@ -40505,6 +40506,93 @@
 	    __metadata('design:paramtypes', [])
 	], KelvinToCelsiusPipe);
 	exports.KelvinToCelsiusPipe = KelvinToCelsiusPipe;
+
+
+/***/ },
+/* 44 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	const Weather_1 = __webpack_require__(35);
+	const TemperatureColor_1 = __webpack_require__(45);
+	let WeatherColor = class WeatherColor {
+	    constructor(el) {
+	        this.el = el;
+	        this.colorsList = [
+	            new TemperatureColor_1.TemperatureColor('#819FF7', undefined, 243),
+	            new TemperatureColor_1.TemperatureColor('#81DAF5', 243, 253),
+	            new TemperatureColor_1.TemperatureColor('#81F7F3', 253, 263),
+	            new TemperatureColor_1.TemperatureColor('#81F7BE', 263, 273),
+	            new TemperatureColor_1.TemperatureColor('#BCF5A9', 273, 283),
+	            new TemperatureColor_1.TemperatureColor('#F3F781', 283, 293),
+	            new TemperatureColor_1.TemperatureColor('#F7D358', 293, 303),
+	            new TemperatureColor_1.TemperatureColor('#F5A9A9', 303, undefined)
+	        ];
+	    }
+	    ngOnChanges() {
+	        const temperature = this.weather.getMainParams().getTemperature();
+	        this.colorsList.forEach((colorElem) => {
+	            if ((temperature > colorElem.getMin() && temperature <= colorElem.getMax() && colorElem.getMin() && colorElem.getMax()) ||
+	                (temperature <= colorElem.getMax() && !colorElem.getMin()) || (temperature > colorElem.getMin() && !colorElem.getMax())) {
+	                this.el.nativeElement.style.backgroundColor = colorElem.getColor();
+	            }
+	        });
+	    }
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Weather_1.Weather)
+	], WeatherColor.prototype, "weather", void 0);
+	WeatherColor = __decorate([
+	    core_1.Directive({
+	        selector: '[weather-color]'
+	    }), 
+	    __metadata('design:paramtypes', [core_1.ElementRef])
+	], WeatherColor);
+	exports.WeatherColor = WeatherColor;
+
+
+/***/ },
+/* 45 */
+/***/ function(module, exports) {
+
+	"use strict";
+	class TemperatureColor {
+	    constructor(color, min, max) {
+	        this.color = color;
+	        this.min = min;
+	        this.max = max;
+	    }
+	    getColor() {
+	        return this.color;
+	    }
+	    setColor(color) {
+	        this.color = color;
+	    }
+	    getMin() {
+	        return this.min;
+	    }
+	    setMin(min) {
+	        this.min = min;
+	    }
+	    getMax() {
+	        return this.max;
+	    }
+	    setMax(max) {
+	        this.max = max;
+	    }
+	}
+	exports.TemperatureColor = TemperatureColor;
 
 
 /***/ }
