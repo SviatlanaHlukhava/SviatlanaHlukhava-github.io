@@ -1,0 +1,4 @@
+<div class="wind">
+    <div class="wind-icon" *ngIf="wind.getDegree()" wind-icon [degree]="wind.getDegree()"></div>
+    <div class="wind-speed">{{wind.getSpeed()}}</div>
+</div>

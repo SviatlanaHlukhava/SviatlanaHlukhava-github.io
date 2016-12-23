@@ -1,7 +1,6 @@
 import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { Weather }  from './../Weather'
 import { CityWeather } from './cityWeather.component'
-import { WeatherColor }   from './../directives/weatherColor.directive';
 
 @Component({
   selector: 'city-weather-table',

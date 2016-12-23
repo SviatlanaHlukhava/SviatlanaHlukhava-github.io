@@ -1,6 +1,7 @@
 import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { Weather }  from './../Weather'
 import { CityWeatherPipe } from './../pipes/cityWeather.pipe'
+import { WindIcon }   from './../directives/WindIcon.directive';
 
 @Component({
   selector: '[city-weather]',

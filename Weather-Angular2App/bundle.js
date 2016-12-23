@@ -35059,6 +35059,8 @@
 	const kelvinToCelsius_pipe_1 = __webpack_require__(43);
 	const cityWeather_pipe_1 = __webpack_require__(38);
 	const weatherColor_directive_1 = __webpack_require__(44);
+	const windIcon_directive_1 = __webpack_require__(46);
+	const windSection_component_1 = __webpack_require__(47);
 	let AppModule = class AppModule {
 	};
 	AppModule = __decorate([
@@ -35066,7 +35068,7 @@
 	        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
 	        bootstrap: [app_component_1.App],
 	        declarations: [app_component_1.App, map_component_1.Map, cityWeatherSection_component_1.CityWeatherSection, cityWeatherTable_component_1.CityWeatherTable, cityWeather_component_1.CityWeather, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader,
-	            kelvinToCelsius_pipe_1.KelvinToCelsiusPipe, cityWeather_pipe_1.CityWeatherPipe, weatherColor_directive_1.WeatherColor]
+	            kelvinToCelsius_pipe_1.KelvinToCelsiusPipe, cityWeather_pipe_1.CityWeatherPipe, weatherColor_directive_1.WeatherColor, windIcon_directive_1.WindIcon, windSection_component_1.WindSection]
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], AppModule);
@@ -40593,6 +40595,78 @@
 	    }
 	}
 	exports.TemperatureColor = TemperatureColor;
+
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	let WindIcon = class WindIcon {
+	    constructor(elementRef) {
+	        this.elementRef = elementRef;
+	    }
+	    ngOnChanges() {
+	        if (this.degree) {
+	            this.elementRef.nativeElement.style.transform = 'rotate(' + this.degree + 'deg)';
+	        }
+	    }
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Number)
+	], WindIcon.prototype, "degree", void 0);
+	WindIcon = __decorate([
+	    core_1.Directive({
+	        selector: '[wind-icon]'
+	    }), 
+	    __metadata('design:paramtypes', [core_1.ElementRef])
+	], WindIcon);
+	exports.WindIcon = WindIcon;
+
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	const Wind_1 = __webpack_require__(36);
+	let WindSection = class WindSection {
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', Wind_1.Wind)
+	], WindSection.prototype, "wind", void 0);
+	WindSection = __decorate([
+	    core_1.Component({
+	        selector: 'wind-section',
+	        templateUrl: 'pages/templates/windSection.tmpl.html',
+	        styleUrls: ['css/windSection.css'],
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], WindSection);
+	exports.WindSection = WindSection;
 
 
 /***/ }

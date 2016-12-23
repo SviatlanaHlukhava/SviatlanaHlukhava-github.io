@@ -4,8 +4,7 @@
 <td>{{weather.getMainParams().getTemperature() | kelvinToCelsius : 1 }}</td>
 <td>{{weather.getMainParams().getHumidity()}}</td>
 <td>{{weather.getMainParams().getPressure()}}</td>
-<td>{{weather.getWind().getDegree()}}</td>
-<td>{{weather.getWind().getSpeed()}}</td>
+<td><wind-section [wind]="weather.getWind()"></wind-section></td>
 <td>{{weather.getCloud().getAll()}}</td>
 <td>
     <button class="table-btn" (click)="remove()">Delete</button>
