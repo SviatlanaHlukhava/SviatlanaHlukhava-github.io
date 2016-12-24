@@ -35061,6 +35061,7 @@
 	const weatherColor_directive_1 = __webpack_require__(44);
 	const windIcon_directive_1 = __webpack_require__(46);
 	const windSection_component_1 = __webpack_require__(47);
+	const weatherIcon_component_1 = __webpack_require__(48);
 	let AppModule = class AppModule {
 	};
 	AppModule = __decorate([
@@ -35068,7 +35069,7 @@
 	        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
 	        bootstrap: [app_component_1.App],
 	        declarations: [app_component_1.App, map_component_1.Map, cityWeatherSection_component_1.CityWeatherSection, cityWeatherTable_component_1.CityWeatherTable, cityWeather_component_1.CityWeather, footer_component_1.Footer, header_component_1.Header, loader_component_1.Loader,
-	            kelvinToCelsius_pipe_1.KelvinToCelsiusPipe, cityWeather_pipe_1.CityWeatherPipe, weatherColor_directive_1.WeatherColor, windIcon_directive_1.WindIcon, windSection_component_1.WindSection]
+	            kelvinToCelsius_pipe_1.KelvinToCelsiusPipe, cityWeather_pipe_1.CityWeatherPipe, weatherColor_directive_1.WeatherColor, windIcon_directive_1.WindIcon, windSection_component_1.WindSection, weatherIcon_component_1.WeatherIcon]
 	    }), 
 	    __metadata('design:paramtypes', [])
 	], AppModule);
@@ -39848,7 +39849,7 @@
 	        let mapCanvas = document.getElementById("map");
 	        let mapOptions = {
 	            center: new google.maps.LatLng(this.latitude, this.longitude),
-	            zoom: 5
+	            zoom: 8
 	        };
 	        this.map = new google.maps.Map(mapCanvas, mapOptions);
 	    }
@@ -39992,7 +39993,7 @@
 	                                let mainParams = new MainWeather_1.MainWeather(data.list[i].main.temp, data.list[i].main.humidity, data.list[i].main.pressure);
 	                                let wind = new Wind_1.Wind(data.list[i].wind.deg, data.list[i].wind.speed);
 	                                let clouds = new Cloud_1.Cloud(data.list[i].clouds.all);
-	                                let weather = new Weather_1.Weather(data.list[i].name, coordinate, mainParams, wind, clouds);
+	                                let weather = new Weather_1.Weather(data.list[i].name, data.list[i].weather[0].description, coordinate, mainParams, wind, clouds);
 	                                list.push(weather);
 	                            }
 	                            resolve(list);
@@ -40015,7 +40016,7 @@
 	    add() {
 	        this.cityWeatherPipe.transform(this.city).then((result) => {
 	            const weatherList = this.weatherList;
-	            weatherList.push(new Weather_1.Weather(result.getCity(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud()));
+	            weatherList.push(new Weather_1.Weather(result.getCity(), result.getDescription(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud()));
 	            this.weatherList = weatherList.slice(0);
 	            this.detectChanges();
 	        });
@@ -40032,7 +40033,7 @@
 	        if (weatherList[$event].getSelected()) {
 	            weatherList.forEach((value, i) => {
 	                if (value.getSelected() && i !== $event) {
-	                    let weather = new Weather_1.Weather(value.getCity(), value.getCoordinate(), value.getMainParams(), value.getWind(), value.getCloud());
+	                    let weather = new Weather_1.Weather(value.getCity(), value.getDescription(), value.getCoordinate(), value.getMainParams(), value.getWind(), value.getCloud());
 	                    weather.setSelected(false);
 	                    weatherList.splice(i, 1, weather);
 	                }
@@ -40063,7 +40064,7 @@
 	                        let mainParams = new MainWeather_1.MainWeather(data.main.temp, data.main.humidity, data.main.pressure);
 	                        let wind = new Wind_1.Wind(data.wind.deg, data.wind.speed);
 	                        let clouds = new Cloud_1.Cloud(data.clouds.all);
-	                        weather = new Weather_1.Weather(value.getCity(), coordinate, mainParams, wind, clouds);
+	                        weather = new Weather_1.Weather(value.getCity(), data.weather[0].description, coordinate, mainParams, wind, clouds);
 	                        resolve(weather);
 	                    }
 	                };
@@ -40072,7 +40073,7 @@
 	                let weatherList = this.weatherList;
 	                let index = weatherList.findIndex((weather) => weather.getCity() === value.getCity());
 	                if (index !== -1) {
-	                    let newWeather = new Weather_1.Weather(result.getCity(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud());
+	                    let newWeather = new Weather_1.Weather(result.getCity(), result.getDescription(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud());
 	                    newWeather.setSelected(weatherList[index].getSelected());
 	                    weatherList.splice(index, 1, newWeather);
 	                    this.weatherList = weatherList.slice(0);
@@ -40146,8 +40147,9 @@
 
 	"use strict";
 	class Weather {
-	    constructor(city, coordinate, mainParams, wind, cloud) {
+	    constructor(city, description, coordinate, mainParams, wind, cloud) {
 	        this.city = city;
+	        this.description = description;
 	        this.coordinate = coordinate;
 	        this.mainParams = mainParams;
 	        this.wind = wind;
@@ -40159,6 +40161,12 @@
 	    }
 	    setCity(city) {
 	        this.city = city;
+	    }
+	    getDescription() {
+	        return this.description;
+	    }
+	    setDescription(desc) {
+	        this.description = desc;
 	    }
 	    getSelected() {
 	        return this.selected;
@@ -40291,7 +40299,7 @@
 	                        let mainParams = new MainWeather_1.MainWeather(data.main.temp, data.main.humidity, data.main.pressure);
 	                        let wind = new Wind_1.Wind(data.wind.deg, data.wind.speed);
 	                        let clouds = new Cloud_1.Cloud(data.clouds.all);
-	                        weather = new Weather_1.Weather(value, coordinate, mainParams, wind, clouds);
+	                        weather = new Weather_1.Weather(value, data.weather[0].description, coordinate, mainParams, wind, clouds);
 	                        self.weatherInfoMap.set(currentDate, weather);
 	                        resolve(weather);
 	                    }
@@ -40667,6 +40675,38 @@
 	    __metadata('design:paramtypes', [])
 	], WindSection);
 	exports.WindSection = WindSection;
+
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	const core_1 = __webpack_require__(3);
+	let WeatherIcon = class WeatherIcon {
+	};
+	__decorate([
+	    core_1.Input(), 
+	    __metadata('design:type', String)
+	], WeatherIcon.prototype, "description", void 0);
+	WeatherIcon = __decorate([
+	    core_1.Component({
+	        selector: 'weather-icon',
+	        templateUrl: 'pages/templates/weatherIcon.tmpl.html',
+	        changeDetection: core_1.ChangeDetectionStrategy.OnPush
+	    }), 
+	    __metadata('design:paramtypes', [])
+	], WeatherIcon);
+	exports.WeatherIcon = WeatherIcon;
 
 
 /***/ }

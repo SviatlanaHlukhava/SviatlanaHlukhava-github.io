@@ -64,7 +64,7 @@ export class CityWeatherSection implements OnChanges {
                 let mainParams = new MainWeather(data.list[i].main.temp, data.list[i].main.humidity, data.list[i].main.pressure);
                 let wind = new Wind(data.list[i].wind.deg, data.list[i].wind.speed);
                 let clouds = new Cloud(data.list[i].clouds.all);
-                let weather = new Weather(data.list[i].name, coordinate, mainParams, wind, clouds);
+                let weather = new Weather(data.list[i].name, data.list[i].weather[0].description, coordinate, mainParams, wind, clouds);
                 list.push(weather);
               }
               resolve(list);
@@ -87,7 +87,8 @@ export class CityWeatherSection implements OnChanges {
   add() {
     this.cityWeatherPipe.transform(this.city).then((result) => {
         const weatherList = this.weatherList;
-        weatherList.push(new Weather(result.getCity(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud()));
+        weatherList.push(new Weather(result.getCity(), result.getDescription(), result.getCoordinate(),
+            result.getMainParams(), result.getWind(), result.getCloud()));
         this.weatherList = weatherList.slice(0);
         this.detectChanges();
     });
@@ -104,7 +105,8 @@ export class CityWeatherSection implements OnChanges {
       if (weatherList[$event].getSelected()) {
         weatherList.forEach((value, i) => {
             if (value.getSelected() && i !== $event) {
-                let weather = new Weather(value.getCity(), value.getCoordinate(), value.getMainParams(), value.getWind(), value.getCloud());
+                let weather = new Weather(value.getCity(), value.getDescription(), value.getCoordinate(),
+                    value.getMainParams(), value.getWind(), value.getCloud());
                 weather.setSelected(false);
                 weatherList.splice(i, 1, weather);
             }
@@ -135,7 +137,7 @@ export class CityWeatherSection implements OnChanges {
             let mainParams = new MainWeather(data.main.temp, data.main.humidity, data.main.pressure);
             let wind = new Wind(data.wind.deg, data.wind.speed);
             let clouds = new Cloud(data.clouds.all);
-            weather = new Weather(value.getCity(), coordinate, mainParams, wind, clouds);
+            weather = new Weather(value.getCity(), data.weather[0].description, coordinate, mainParams, wind, clouds);
             resolve(weather);
             }
         }
@@ -144,7 +146,8 @@ export class CityWeatherSection implements OnChanges {
         let weatherList = this.weatherList;
         let index = weatherList.findIndex((weather) => weather.getCity() === value.getCity());
         if (index !== -1) {
-          let newWeather = new Weather(result.getCity(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud());
+          let newWeather = new Weather(result.getCity(), result.getDescription(), result.getCoordinate(),
+            result.getMainParams(), result.getWind(), result.getCloud());
           newWeather.setSelected(weatherList[index].getSelected());
           weatherList.splice(index, 1, newWeather);
           this.weatherList = weatherList.slice(0);

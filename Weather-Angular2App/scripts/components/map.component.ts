@@ -16,7 +16,7 @@ export class Map implements OnInit, OnChanges {
     let mapCanvas = document.getElementById("map");
     let mapOptions = {
       center: new google.maps.LatLng(this.latitude, this.longitude),
-      zoom: 5
+      zoom: 8
     };
     this.map = new google.maps.Map(mapCanvas, mapOptions);
   }

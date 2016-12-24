@@ -1,6 +1,7 @@
 <td>{{weather.getCity() + (weather.getSelected() ? ' *' : '')}}</td>
 <td>{{weather.getCoordinate().getLatitude() | number : '1.0-3'}}</td>
 <td>{{weather.getCoordinate().getLongitude() | number : '1.0-3'}}</td>
+<td><weather-icon [description]="weather.getDescription()"></weather-icon></td>
 <td>{{weather.getMainParams().getTemperature() | kelvinToCelsius : 1 }}</td>
 <td>{{weather.getMainParams().getHumidity()}}</td>
 <td>{{weather.getMainParams().getPressure()}}</td>

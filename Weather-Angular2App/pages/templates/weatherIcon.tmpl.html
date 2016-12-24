@@ -1,0 +1,14 @@
+<div [ngSwitch]="description">
+    <span *ngSwitchCase="'clear sky'"><img src="images/weather/sun.png"></span>
+    <span *ngSwitchCase="'few clouds'"><img src="images/weather/clouds1.png"></span>
+    <span *ngSwitchCase="'scattered clouds'"><img src="images/weather/clouds2.png"></span>
+    <span *ngSwitchCase="'broken clouds'"><img src="images/weather/clouds3.png"></span>
+    <span *ngSwitchCase="'overcast clouds'"><img src="images/weather/clouds3.png"></span>
+    <span *ngSwitchCase="'shower rain'"><img src="images/weather/rain1.png"></span>
+    <span *ngSwitchCase="'rain'"><img src="images/weather/rain2.png"></span>
+    <span *ngSwitchCase="'thunderstorm'"><img src="images/weather/thunderstorm.png"></span>
+    <span *ngSwitchCase="'light snow'"><img src="images/weather/snow.png"></span>
+    <span *ngSwitchCase="'snow'"><img src="images/weather/snow.png"></span>
+    <span *ngSwitchCase="'mist'"><img src="images/weather/mist.png"></span>
+    <span *ngSwitchDefault>{{description}}</span>
+</div>

@@ -14,11 +14,12 @@ import { CityWeatherPipe } from './pipes/cityWeather.pipe'
 import { WeatherColor }   from './directives/weatherColor.directive';
 import { WindIcon } from './directives/windIcon.directive'
 import { WindSection }   from './components/windSection.component';
+import { WeatherIcon }   from './components/weatherIcon.component';
 
 @NgModule({
     imports:      [BrowserModule, FormsModule],
     bootstrap:    [App],
     declarations: [App, Map, CityWeatherSection, CityWeatherTable, CityWeather, Footer, Header, Loader,
-      KelvinToCelsiusPipe, CityWeatherPipe,  WeatherColor, WindIcon, WindSection]
+      KelvinToCelsiusPipe, CityWeatherPipe,  WeatherColor, WindIcon, WindSection, WeatherIcon]
 })
 export class AppModule {}

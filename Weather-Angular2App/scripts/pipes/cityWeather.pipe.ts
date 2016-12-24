@@ -40,7 +40,7 @@ export class CityWeatherPipe implements PipeTransform {
                     let mainParams = new MainWeather(data.main.temp, data.main.humidity, data.main.pressure);
                     let wind = new Wind(data.wind.deg, data.wind.speed);
                     let clouds = new Cloud(data.clouds.all);
-                    weather = new Weather(value, coordinate, mainParams, wind, clouds);
+                    weather = new Weather(value, data.weather[0].description, coordinate, mainParams, wind, clouds);
                     self.weatherInfoMap.set(currentDate, weather);
                     resolve(weather);
                 } else {
