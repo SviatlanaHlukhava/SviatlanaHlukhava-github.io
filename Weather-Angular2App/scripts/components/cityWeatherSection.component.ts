@@ -1,10 +1,10 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { Coordinate }  from './../Coordinate'
-import { MainWeather } from './../MainWeather'
-import { Weather }  from './../Weather'
-import { Wind } from './../Wind'
-import { Cloud }  from './../Cloud'
+import { Coordinate }  from './../model/Coordinate'
+import { Weather }  from './../model/Weather'
+import { WeatherDTO } from './../dto/WeatherDTO'
 import { CityWeatherPipe } from './../pipes/cityWeather.pipe'
+import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter'
+import { Observable, Observer, Subscription } from 'rxjs'
 
 @Component({
   selector: 'city-weather-section',
@@ -17,8 +17,9 @@ export class CityWeatherSection implements OnChanges {
   @Input() latitude: number;
   @Input() longitude: number;
   @Output() loadingNotify = new EventEmitter();
-  weatherPromise: Promise<Weather[]>;
-  static openWearterMapRqsts = 0;
+  $weatherObservableMap: Map <string, Subscription>;
+  weatherListSubscription: Subscription;
+  // weatherPromise: Promise<Weather[]>;
   city: string;
   cityWeatherPipe: CityWeatherPipe;
   oldLatitude: number;
@@ -26,16 +27,19 @@ export class CityWeatherSection implements OnChanges {
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {
     this.cityWeatherPipe = new CityWeatherPipe();
+    this.$weatherObservableMap = new Map <string, Subscription>();
     this.weatherList = [];
   }
   ngOnInit(): void {
     this.changeDetectorRef.detach();
-    setInterval(() => {
-      this.updateWeather();
-    }, 500);
-    setInterval(() => {
+    let $changesObserver = Observable.interval(5000);
+    $changesObserver.subscribe(() => {
       this.detectChanges();
-    }, 5000);
+    });
+    let addButton = document.getElementsByClassName("add-button")[0];
+    Observable.fromEvent(addButton, "click").subscribe(() => {
+      this.add();
+    });
   }
   ngOnChanges(): void {
     if (this.latitude !== undefined && this.longitude !== undefined &&
@@ -43,42 +47,44 @@ export class CityWeatherSection implements OnChanges {
     (this.oldLongitude === undefined || this.oldLongitude !== this.longitude)) {
       // TODO move to service
       let self = this;
-      this.weatherPromise = new Promise(function(resolve, reject) {
+      this.weatherList = [];
+      self.loadingNotify.emit(true);
+      if (this.weatherListSubscription) {
+        this.weatherListSubscription.unsubscribe();
+      }
+      let $weatherObservable = Observable.create((observer: Observer<string>) => {
         let xhr = new XMLHttpRequest();
-        CityWeatherSection.openWearterMapRqsts++;
-        let coord = new Coordinate (self.latitude, self.longitude);
         let url = 'http://api.openweathermap.org/data/2.5/find?lat=' +
-            coord.getLatitude() + '&lon=' + coord.getLongitude() +
+            this.latitude + '&lon=' + this.longitude +
             '&cnt=50&appid=5e704282bf38a873419932de2553f5bb';
         xhr.open('GET', url, true);
         xhr.send();
 
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4) {
-            if (xhr.status === 200 && xhr.responseText && self.latitude === coord.getLatitude() && self.longitude === coord.getLongitude()) {
-              let response = xhr.responseText;
-              let data = response !== '' ? JSON.parse(xhr.responseText) : { list: [] };
-              let list: Weather[] = [];
-              for (let i = 0; i < data.list.length; i++) {
-                let coordinate = new Coordinate(data.list[i].coord.lat, data.list[i].coord.lon);
-                let mainParams = new MainWeather(data.list[i].main.temp, data.list[i].main.humidity, data.list[i].main.pressure);
-                let wind = new Wind(data.list[i].wind.deg, data.list[i].wind.speed);
-                let clouds = new Cloud(data.list[i].clouds.all);
-                let weather = new Weather(data.list[i].name, data.list[i].weather[0].description, coordinate, mainParams, wind, clouds);
-                list.push(weather);
-              }
-              resolve(list);
-            }
-            CityWeatherSection.openWearterMapRqsts--;
-            if (CityWeatherSection.openWearterMapRqsts === 0) {
-              self.loadingNotify.emit(false);
-            }
+        xhr.onload = function () {
+          if (xhr.status === 200 && xhr.responseText ) {
+            let response = xhr.responseText;
+              observer.next(response);
+              observer.complete();
+          } else {
+            observer.error("Weather list is not loaded");
           }
         }
+        xhr.onerror = function () {
+            observer.error("Weather list is not loaded");
+        }
+      }).retry(2).flatMap((response: string) => {
+        let data = response !== '' ? JSON.parse(response) : { list: [] };
+        return Observable.from(data.list);
+      }).map((data: WeatherDTO) => {
+        return WeatherDTOtoWeatherConverter.convert(data);
       });
-      this.weatherPromise.then((result) => {
-        this.weatherList = result.slice(0);
+      this.weatherListSubscription = $weatherObservable.subscribe((result: Weather) => {
+        this.addToWeatherList(result);
+      }, () => {
+        self.loadingNotify.emit(false);
+      }, () => {
         this.detectChanges();
+        self.loadingNotify.emit(false);
       });
       this.oldLatitude = this.latitude;
       this.oldLongitude - this.longitude;
@@ -86,18 +92,17 @@ export class CityWeatherSection implements OnChanges {
   }
   add() {
     this.cityWeatherPipe.transform(this.city).then((result) => {
-        const weatherList = this.weatherList;
-        weatherList.push(new Weather(result.getCity(), result.getDescription(), result.getCoordinate(),
-            result.getMainParams(), result.getWind(), result.getCloud()));
-        this.weatherList = weatherList.slice(0);
+        this.addToWeatherList(result);
         this.detectChanges();
     });
   }
   remove($event: number) {
       const weatherList = this.weatherList;
+      const city = weatherList[$event].getCity();
       weatherList.splice($event, 1);
       this.weatherList = weatherList.slice(0);
       this.detectChanges();
+      this.weatherObservableUnsubscribe(city);
   }
   select($event: number) {
       const weatherList = this.weatherList;
@@ -115,44 +120,52 @@ export class CityWeatherSection implements OnChanges {
       this.weatherList = weatherList.slice(0);
       this.detectChanges();
   }
-  detectChanges() {
+  private detectChanges() {
       this.changeDetectorRef.reattach();
       this.changeDetectorRef.detectChanges();
       this.changeDetectorRef.detach();
   }
-  updateWeather() {
-    this.weatherList.forEach((value) => {
-      // TODO move to service
-      let promise = new Promise(function(resolve, reject) {
+  private addToWeatherList(weather: Weather) {
+      const weatherList = this.weatherList;
+      weatherList.push(new Weather(weather.getCity(), weather.getDescription(), weather.getCoordinate(),
+          weather.getMainParams(), weather.getWind(), weather.getCloud()));
+      this.weatherList = weatherList.slice(0);
+      this.weatherObservableSubscribe(weather.getCity());
+  }
+  private weatherObservableSubscribe(city: string) {
+    let $intervalObservable = Observable.interval(500).flatMap(() => {
+      return Observable.create(function(observer: Observer<string>) {
+        // TODO move to service
         let xhr = new XMLHttpRequest();
-        let url = 'scripts/mocks/' + value.getCity() + '.mock.json';
+        let url = 'scripts/mocks/' + city + '.mock.json';
         xhr.open('GET', url, true);
         xhr.send();
-        let weather: Weather;
         xhr.onload = function () {
           if (xhr.status === 200 && xhr.responseText) {
             let response = xhr.responseText;
-            let data = response !== '' ? JSON.parse(xhr.responseText) : "";
-            let coordinate = new Coordinate(data.coord.lat, data.coord.lon);
-            let mainParams = new MainWeather(data.main.temp, data.main.humidity, data.main.pressure);
-            let wind = new Wind(data.wind.deg, data.wind.speed);
-            let clouds = new Cloud(data.clouds.all);
-            weather = new Weather(value.getCity(), data.weather[0].description, coordinate, mainParams, wind, clouds);
-            resolve(weather);
+            observer.next(response);
             }
         }
-      });
-      promise.then((result: Weather) => {
-        let weatherList = this.weatherList;
-        let index = weatherList.findIndex((weather) => weather.getCity() === value.getCity());
-        if (index !== -1) {
-          let newWeather = new Weather(result.getCity(), result.getDescription(), result.getCoordinate(),
-            result.getMainParams(), result.getWind(), result.getCloud());
-          newWeather.setSelected(weatherList[index].getSelected());
-          weatherList.splice(index, 1, newWeather);
-          this.weatherList = weatherList.slice(0);
-        }
+      }).map((response: string) => {
+        return JSON.parse(response);
+      }).map((data: WeatherDTO) => {
+        return WeatherDTOtoWeatherConverter.convert(data);
       });
     });
+    let subscription = $intervalObservable.subscribe((result: Weather) => {
+      let weatherList = this.weatherList;
+      let index = weatherList.findIndex((weather) => weather.getCity() === result.getCity());
+      if (index !== -1) {
+        let newWeather = new Weather(result.getCity(), result.getDescription(), result.getCoordinate(),
+          result.getMainParams(), result.getWind(), result.getCloud());
+        newWeather.setSelected(weatherList[index].getSelected());
+        weatherList.splice(index, 1, newWeather);
+        this.weatherList = weatherList.slice(0);
+      }
+    })
+    this.$weatherObservableMap.set(city, subscription);
+  }
+  private weatherObservableUnsubscribe(city: string) {
+    this.$weatherObservableMap.get(city).unsubscribe();
   }
 }

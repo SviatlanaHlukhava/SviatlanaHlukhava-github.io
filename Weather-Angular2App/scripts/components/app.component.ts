@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, ChangeDetectionStrategy, NgZone, ChangeDetectorRef } from '@angular/core';
-import { Coordinate }  from './../Coordinate'
+import { Coordinate }  from './../model/Coordinate'
 import { Profiler } from './../services/Profiler'
 import { Loader }   from './loader.component';
 

@@ -1,9 +1,6 @@
 import { Pipe, PipeTransform} from '@angular/core';
-import { Coordinate }  from './../Coordinate'
-import { MainWeather } from './../MainWeather'
-import { Weather }  from './../Weather'
-import { Wind } from './../Wind'
-import { Cloud }  from './../Cloud'
+import { Weather }  from './../model/Weather'
+import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter'
 
 @Pipe({
   name: 'cityWeather'
@@ -36,11 +33,7 @@ export class CityWeatherPipe implements PipeTransform {
                 if (xhr.status === 200 && xhr.responseText) {
                     let response = xhr.responseText;
                     let data = response !== '' ? JSON.parse(xhr.responseText) : "";
-                    let coordinate = new Coordinate(data.coord.lat, data.coord.lon);
-                    let mainParams = new MainWeather(data.main.temp, data.main.humidity, data.main.pressure);
-                    let wind = new Wind(data.wind.deg, data.wind.speed);
-                    let clouds = new Cloud(data.clouds.all);
-                    weather = new Weather(value, data.weather[0].description, coordinate, mainParams, wind, clouds);
+                    let weather = WeatherDTOtoWeatherConverter.convert(data);
                     self.weatherInfoMap.set(currentDate, weather);
                     resolve(weather);
                 } else {

@@ -1,6 +1,6 @@
 import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
-import { Weather }  from './../Weather'
-import { TemperatureColor }  from './../TemperatureColor'
+import { Weather }  from './../model/Weather'
+import { TemperatureColor }  from './../model/TemperatureColor'
 
 @Directive({
   selector: '[weather-color]'

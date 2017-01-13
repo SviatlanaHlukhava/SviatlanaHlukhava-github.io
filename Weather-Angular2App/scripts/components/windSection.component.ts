@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Wind }  from './../Wind'
+import { Wind }  from './../model/Wind'
 
 @Component({
   selector: 'wind-section',
