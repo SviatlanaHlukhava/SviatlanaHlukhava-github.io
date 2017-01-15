@@ -47,6 +47,9 @@ export class CityWeatherSection implements OnChanges {
     (this.oldLongitude === undefined || this.oldLongitude !== this.longitude)) {
       // TODO move to service
       let self = this;
+      this.weatherList.forEach((weather: Weather) => {
+        this.$weatherObservableMap.get(weather.getCity()).unsubscribe();
+      })
       this.weatherList = [];
       self.loadingNotify.emit(true);
       if (this.weatherListSubscription) {
@@ -91,9 +94,9 @@ export class CityWeatherSection implements OnChanges {
     }
   }
   add() {
-    this.cityWeatherPipe.transform(this.city).then((result) => {
-        this.addToWeatherList(result);
-        this.detectChanges();
+    this.cityWeatherPipe.transform(this.city).subscribe((result: Weather) => {
+      this.addToWeatherList(result);
+      this.detectChanges();
     });
   }
   remove($event: number) {

@@ -39974,6 +39974,9 @@
 	            (this.oldLongitude === undefined || this.oldLongitude !== this.longitude)) {
 	            // TODO move to service
 	            let self = this;
+	            this.weatherList.forEach((weather) => {
+	                this.$weatherObservableMap.get(weather.getCity()).unsubscribe();
+	            });
 	            this.weatherList = [];
 	            self.loadingNotify.emit(true);
 	            if (this.weatherListSubscription) {
@@ -40018,7 +40021,7 @@
 	        }
 	    }
 	    add() {
-	        this.cityWeatherPipe.transform(this.city).then((result) => {
+	        this.cityWeatherPipe.transform(this.city).subscribe((result) => {
 	            this.addToWeatherList(result);
 	            this.detectChanges();
 	        });
@@ -40194,47 +40197,54 @@
 	};
 	const core_1 = __webpack_require__(3);
 	const WeatherDTOtoWeatherConverter_1 = __webpack_require__(36);
+	const rxjs_1 = __webpack_require__(40);
 	let CityWeatherPipe = class CityWeatherPipe {
 	    constructor() {
 	        this.weatherInfoMap = new Map();
 	    }
 	    transform(value, time = undefined) {
 	        let self = this;
-	        return new Promise(function (resolve, reject) {
-	            let currentDate = new Date();
-	            let oldSearchWeather;
-	            for (let [key, val] of self.weatherInfoMap) {
-	                if (((currentDate.valueOf() - key.valueOf()) / 1000 < time || time === undefined) && val.getCity() === value) {
-	                    oldSearchWeather = val;
-	                }
+	        let currentDate = new Date();
+	        this.currentWeather = undefined;
+	        let oldSearchWeather;
+	        for (let [key, val] of self.weatherInfoMap) {
+	            if (((currentDate.valueOf() - key.valueOf()) / 1000 < time || time === undefined) && val.getCity() === value) {
+	                oldSearchWeather = val;
 	            }
-	            if (oldSearchWeather) {
-	                resolve(oldSearchWeather);
-	            }
-	            else {
+	        }
+	        if (oldSearchWeather) {
+	            return rxjs_1.Observable.create((observer) => {
+	                observer.next(oldSearchWeather);
+	            });
+	        }
+	        else {
+	            let $observable = rxjs_1.Observable.create((observer) => {
 	                let xhr = new XMLHttpRequest();
 	                let url = 'http://api.openweathermap.org/data/2.5/weather?q=' + value +
 	                    '&appid=5e704282bf38a873419932de2553f5bb';
 	                xhr.open('GET', url, true);
 	                xhr.send();
-	                let weather;
 	                xhr.onload = function () {
 	                    if (xhr.status === 200 && xhr.responseText) {
-	                        let response = xhr.responseText;
-	                        let data = response !== '' ? JSON.parse(xhr.responseText) : "";
-	                        let weather = WeatherDTOtoWeatherConverter_1.WeatherDTOtoWeatherConverter.convert(data);
-	                        self.weatherInfoMap.set(currentDate, weather);
-	                        resolve(weather);
+	                        observer.next(xhr.responseText);
 	                    }
 	                    else {
-	                        reject(weather);
+	                        observer.error("Weather is not found");
 	                    }
 	                };
 	                xhr.onerror = function () {
-	                    reject(weather);
+	                    observer.error("Weather is not found");
 	                };
-	            }
-	        });
+	            }).map((data) => {
+	                return JSON.parse(data);
+	            }).map((data) => {
+	                return WeatherDTOtoWeatherConverter_1.WeatherDTOtoWeatherConverter.convert(data);
+	            });
+	            $observable.subscribe((result) => {
+	                this.weatherInfoMap.set(currentDate, result);
+	            });
+	            return $observable;
+	        }
 	    }
 	};
 	CityWeatherPipe = __decorate([
