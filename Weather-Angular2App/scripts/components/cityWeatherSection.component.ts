@@ -1,9 +1,9 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, EventEmitter, OnChanges, OnInit } from '@angular/core';
 import { Coordinate }  from './../model/Coordinate'
 import { Weather }  from './../model/Weather'
-import { WeatherDTO } from './../dto/WeatherDTO'
 import { CityWeatherPipe } from './../pipes/cityWeather.pipe'
-import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter'
+import { WeatherApiService } from './../services/WeatherAPI'
+import { LoggerService } from './../services/Logger'
 import { Observable, Observer, Subscription } from 'rxjs'
 
 @Component({
@@ -12,7 +12,7 @@ import { Observable, Observer, Subscription } from 'rxjs'
   styleUrls: ['css/weatherTable.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CityWeatherSection implements OnChanges {
+export class CityWeatherSectionComponent implements OnChanges, OnInit {
   weatherList: Weather[];
   @Input() latitude: number;
   @Input() longitude: number;
@@ -25,8 +25,9 @@ export class CityWeatherSection implements OnChanges {
   oldLatitude: number;
   oldLongitude: number;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
-    this.cityWeatherPipe = new CityWeatherPipe();
+  constructor(private changeDetectorRef: ChangeDetectorRef,
+    private weatherApiService: WeatherApiService, private loggerService: LoggerService) {
+    this.cityWeatherPipe = new CityWeatherPipe(weatherApiService);
     this.$weatherObservableMap = new Map <string, Subscription>();
     this.weatherList = [];
   }
@@ -55,35 +56,10 @@ export class CityWeatherSection implements OnChanges {
       if (this.weatherListSubscription) {
         this.weatherListSubscription.unsubscribe();
       }
-      let $weatherObservable = Observable.create((observer: Observer<string>) => {
-        let xhr = new XMLHttpRequest();
-        let url = 'http://api.openweathermap.org/data/2.5/find?lat=' +
-            this.latitude + '&lon=' + this.longitude +
-            '&cnt=50&appid=5e704282bf38a873419932de2553f5bb';
-        xhr.open('GET', url, true);
-        xhr.send();
-
-        xhr.onload = function () {
-          if (xhr.status === 200 && xhr.responseText ) {
-            let response = xhr.responseText;
-              observer.next(response);
-              observer.complete();
-          } else {
-            observer.error("Weather list is not loaded");
-          }
-        }
-        xhr.onerror = function () {
-            observer.error("Weather list is not loaded");
-        }
-      }).retry(2).flatMap((response: string) => {
-        let data = response !== '' ? JSON.parse(response) : { list: [] };
-        return Observable.from(data.list);
-      }).map((data: WeatherDTO) => {
-        return WeatherDTOtoWeatherConverter.convert(data);
-      });
-      this.weatherListSubscription = $weatherObservable.subscribe((result: Weather) => {
+      this.weatherListSubscription = this.weatherApiService.getWeatherList(this.latitude, this.longitude).subscribe((result: Weather) => {
         this.addToWeatherList(result);
-      }, () => {
+      }, (error: string) => {
+        this.loggerService.errorLog(error);
         self.loadingNotify.emit(false);
       }, () => {
         this.detectChanges();
@@ -136,26 +112,7 @@ export class CityWeatherSection implements OnChanges {
       this.weatherObservableSubscribe(weather.getCity());
   }
   private weatherObservableSubscribe(city: string) {
-    let $intervalObservable = Observable.interval(500).flatMap(() => {
-      return Observable.create(function(observer: Observer<string>) {
-        // TODO move to service
-        let xhr = new XMLHttpRequest();
-        let url = 'scripts/mocks/' + city + '.mock.json';
-        xhr.open('GET', url, true);
-        xhr.send();
-        xhr.onload = function () {
-          if (xhr.status === 200 && xhr.responseText) {
-            let response = xhr.responseText;
-            observer.next(response);
-            }
-        }
-      }).map((response: string) => {
-        return JSON.parse(response);
-      }).map((data: WeatherDTO) => {
-        return WeatherDTOtoWeatherConverter.convert(data);
-      });
-    });
-    let subscription = $intervalObservable.subscribe((result: Weather) => {
+    let subscription = this.weatherApiService.pollWeatherCityInfo(city).subscribe((result: Weather) => {
       let weatherList = this.weatherList;
       let index = weatherList.findIndex((weather) => weather.getCity() === result.getCity());
       if (index !== -1) {

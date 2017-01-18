@@ -1,7 +1,7 @@
 import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { Weather }  from './../model/Weather'
 import { CityWeatherPipe } from './../pipes/cityWeather.pipe'
-import { WindIcon }   from './../directives/WindIcon.directive';
+import { WindIconDirective }   from './../directives/WindIcon.directive';
 
 @Component({
   selector: '[city-weather]',
@@ -9,7 +9,7 @@ import { WindIcon }   from './../directives/WindIcon.directive';
   styleUrls: ['css/weatherTable.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CityWeather {
+export class CityWeatherComponent {
   @Input() weather: Weather;
   @Input() index: number;
   @Output() deleteNotify = new EventEmitter();

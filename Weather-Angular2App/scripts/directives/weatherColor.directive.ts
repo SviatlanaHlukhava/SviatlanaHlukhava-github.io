@@ -5,7 +5,7 @@ import { TemperatureColor }  from './../model/TemperatureColor'
 @Directive({
   selector: '[weather-color]'
 })
-export class WeatherColor implements OnChanges {
+export class WeatherColorDirective implements OnChanges {
   @Input() weather: Weather;
   colorsList: TemperatureColor [];
 

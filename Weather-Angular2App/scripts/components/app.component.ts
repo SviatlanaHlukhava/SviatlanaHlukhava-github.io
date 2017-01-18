@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, EventEmitter, ChangeDetectionStrategy, NgZone, ChangeDetectorRef } from '@angular/core';
 import { Coordinate }  from './../model/Coordinate'
 import { Profiler } from './../services/Profiler'
-import { Loader }   from './loader.component';
+import { LoaderComponent }   from './loader.component';
+import { LocationService } from './../services/Location'
+import { LoggerService } from './../services/Logger'
 
 @Component({
   selector: 'app',
@@ -12,27 +14,26 @@ import { Loader }   from './loader.component';
     <footer></footer>`,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class App implements OnInit {
+export class AppComponent implements OnInit {
   isLoading: boolean;
   coordinate: Coordinate;
-  profiler: Profiler;
-  constructor(private zone: NgZone, private changeDetectorRef: ChangeDetectorRef) {
+  constructor(private zone: NgZone, private changeDetectorRef: ChangeDetectorRef, private profiler: Profiler,
+    private locationService: LocationService, private loggerService: LoggerService) {
     this.coordinate = new Coordinate(0, 0);
-    this.profiler = new Profiler(this.zone);
+    this.profiler.setZone(zone);
     this.profiler.profile();
   }
   ngOnInit(): void {
     let self = this;
     self.isLoading = true;
-    navigator.geolocation.getCurrentPosition(setPosition, onError);
-    function setPosition(pos: Position): void {
+    this.locationService.getCurrentPosition().subscribe((pos: Position) => {
        self.coordinate.setLatitude(pos.coords.latitude);
        self.coordinate.setLongitude(pos.coords.longitude);
        self.changeDetectorRef.markForCheck();
-    }
-    function onError(): void {
-      self.isLoading = false;
-    }
+    }, (posError: PositionError) => {
+       this.loggerService.errorLog(posError.message);
+       self.isLoading = false;
+    });
   }
   isLoadingChange($event: boolean) {
     this.isLoading = $event;

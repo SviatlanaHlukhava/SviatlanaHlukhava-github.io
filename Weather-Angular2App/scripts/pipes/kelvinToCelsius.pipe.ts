@@ -1,7 +1,7 @@
-import { Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'kelvinToCelsius'
+  name: 'sgKelvinToCelsius'
 })
 export class KelvinToCelsiusPipe implements PipeTransform {
   transform (value: number, digits: number = 0): string {

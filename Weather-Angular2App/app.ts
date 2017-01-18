@@ -7,7 +7,7 @@ import '@angular/common';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // The app module
-import { AppModule } from './scripts/app.module';
+import { AppModule } from './scripts/modules/app.module';
 
 // Compile and launch the module
 platformBrowserDynamic().bootstrapModule(AppModule);

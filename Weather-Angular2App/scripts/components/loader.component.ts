@@ -6,7 +6,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['css/loader.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Loader {
+export class LoaderComponent {
   @Input() isLoading: boolean;
   constructor() {
   }

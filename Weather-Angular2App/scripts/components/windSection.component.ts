@@ -7,6 +7,6 @@ import { Wind }  from './../model/Wind'
   styleUrls: ['css/windSection.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WindSection {
+export class WindSectionComponent {
   @Input() wind: Wind;
 }

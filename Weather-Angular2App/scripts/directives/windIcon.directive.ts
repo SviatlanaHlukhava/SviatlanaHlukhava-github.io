@@ -3,7 +3,7 @@ import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
 @Directive({
   selector: '[wind-icon]'
 })
-export class WindIcon implements OnChanges {
+export class WindIconDirective implements OnChanges {
   @Input() degree: number;
   constructor(private elementRef: ElementRef) {
   }

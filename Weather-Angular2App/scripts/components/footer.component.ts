@@ -6,7 +6,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['css/footer.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Footer {
+export class FooterComponent {
   year: number;
   constructor() {
       this.year = new Date().getFullYear();

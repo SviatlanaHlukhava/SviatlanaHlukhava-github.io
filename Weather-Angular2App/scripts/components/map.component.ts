@@ -6,7 +6,7 @@ import { Component, Input, OnChanges, OnInit, ChangeDetectionStrategy } from '@a
   styles: ['.google-map {width: 100%; height: 500px}'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Map implements OnInit, OnChanges {
+export class MapComponent implements OnInit, OnChanges {
   @Input() latitude: number;
   @Input() longitude: number;
   map: google.maps.Map;

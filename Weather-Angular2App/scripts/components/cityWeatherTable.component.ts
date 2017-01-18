@@ -1,6 +1,6 @@
 import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { Weather }  from './../model/Weather'
-import { CityWeather } from './cityWeather.component'
+import { CityWeatherComponent } from './cityWeather.component'
 
 @Component({
   selector: 'city-weather-table',
@@ -8,7 +8,7 @@ import { CityWeather } from './cityWeather.component'
   styleUrls: ['css/weatherTable.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CityWeatherTable {
+export class CityWeatherTableComponent {
   @Input() weatherList: Weather[];
   @Output() deleteNotify = new EventEmitter();
   @Output() selectNotify = new EventEmitter();

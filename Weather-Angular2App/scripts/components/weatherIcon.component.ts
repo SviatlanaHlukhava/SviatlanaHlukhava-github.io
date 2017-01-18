@@ -5,6 +5,6 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   templateUrl: 'pages/templates/weatherIcon.tmpl.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WeatherIcon {
+export class WeatherIconComponent {
   @Input() description: string;
 }

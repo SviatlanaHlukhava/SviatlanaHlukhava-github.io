@@ -6,7 +6,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['css/header.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Header {
+export class HeaderComponent {
   @Input() latitude: number;
   @Input() longitude: number;
   currentDate: Date;
