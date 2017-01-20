@@ -4,8 +4,8 @@ import { CityWeatherComponent } from './cityWeather.component'
 
 @Component({
   selector: 'city-weather-table',
-  templateUrl: 'pages/templates/cityWeatherTable.tmpl.html',
-  styleUrls: ['css/weatherTable.css'],
+  templateUrl: './../../pages/templates/cityWeatherTable.tmpl.html',
+  styleUrls: ['./../../css/weatherTable.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CityWeatherTableComponent {

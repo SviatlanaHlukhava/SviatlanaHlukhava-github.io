@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
+import { Directive, Input, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { Weather }  from './../model/Weather'
 import { TemperatureColor }  from './../model/TemperatureColor'
 
@@ -22,7 +22,7 @@ export class WeatherColorDirective implements OnChanges {
     ];
   }
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
       const temperature = this.weather.getMainParams().getTemperature();
       this.colorsList.forEach((colorElem) => {
           if ((temperature > colorElem.getMin() && temperature <= colorElem.getMax() && colorElem.getMin() && colorElem.getMax()) ||

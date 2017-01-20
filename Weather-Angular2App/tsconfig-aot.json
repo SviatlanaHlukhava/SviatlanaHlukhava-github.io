@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "outDir": "./dist/unbundled-aot",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "types": ["node" ],
+    "lib": ["es2015", "dom"]
+  },
+  "files": [
+    "app-aot.ts",
+    "typings/tsd.d.ts",
+    "scripts/modules/app.module.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "angularCompilerOptions": {
+   "genDir": "./aot",
+   "skipMetadataEmit": true
+  }
+}

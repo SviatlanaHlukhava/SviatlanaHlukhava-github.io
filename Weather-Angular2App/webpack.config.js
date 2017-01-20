@@ -1,9 +1,11 @@
 var webpack = require('webpack');
+
 module.exports = {  
-  entry: './app.ts',
+  entry: process.env.IS_PROD == 1 ? './app-aot.ts' : './app.ts',
   output: {
     filename: 'bundle.js'
   },
+  publicPath: '/',
   // Turn on sourcemaps
   devtool: 'source-map',
   resolve: {
@@ -11,8 +13,10 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.ts$/, loader: 'ts' },
-      { test: /\.css$/, loader: "style!css" }
+      { test: /\.ts$/, loaders: ['awesome-typescript-loader', 'angular2-template-loader?keepUrl=true'] },
+      { test: /\.css$/, loaders: ['to-string-loader', 'css-loader?url=false'] },
+      { test: /\.html$/, loader: "raw-loader" },
+      { test: /\.png$/, loader: "file-loader" }
     ],
     preLoaders: [
       { test: /\.ts$/, loader: 'tslint-loader' }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ChangeDetectionStrategy, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'map',
@@ -20,7 +20,7 @@ export class MapComponent implements OnInit, OnChanges {
     };
     this.map = new google.maps.Map(mapCanvas, mapOptions);
   }
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.map) {
       this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
     }

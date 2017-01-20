@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, EventEmitter, OnChanges, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, EventEmitter, OnChanges, OnInit, SimpleChanges  } from '@angular/core';
 import { Coordinate }  from './../model/Coordinate'
 import { Weather }  from './../model/Weather'
 import { CityWeatherPipe } from './../pipes/cityWeather.pipe'
@@ -8,8 +8,8 @@ import { Observable, Observer, Subscription } from 'rxjs'
 
 @Component({
   selector: 'city-weather-section',
-  templateUrl: 'pages/templates/cityWeatherSection.tmpl.html',
-  styleUrls: ['css/weatherTable.css'],
+  templateUrl: './../../pages/templates/cityWeatherSection.tmpl.html',
+  styleUrls: ['./../../css/weatherTable.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CityWeatherSectionComponent implements OnChanges, OnInit {
@@ -42,7 +42,7 @@ export class CityWeatherSectionComponent implements OnChanges, OnInit {
       this.add();
     });
   }
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.latitude !== undefined && this.longitude !== undefined &&
     (this.oldLatitude === undefined || this.oldLatitude !== this.latitude) ||
     (this.oldLongitude === undefined || this.oldLongitude !== this.longitude)) {

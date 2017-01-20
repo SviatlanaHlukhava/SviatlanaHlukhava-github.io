@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, OnChanges } from '@angular/core';
+import { Directive, Input, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[wind-icon]'
@@ -8,7 +8,7 @@ export class WindIconDirective implements OnChanges {
   constructor(private elementRef: ElementRef) {
   }
 
-  ngOnChanges(): void {
+  ngOnChanges(changes: SimpleChanges): void {
       if (this.degree) {
          this.elementRef.nativeElement.style.transform = 'rotate(' + this.degree + 'deg)';
       }

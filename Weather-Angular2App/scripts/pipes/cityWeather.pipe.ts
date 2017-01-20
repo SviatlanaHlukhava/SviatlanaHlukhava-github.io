@@ -18,11 +18,11 @@ export class CityWeatherPipe implements PipeTransform {
       let currentDate = new Date();
       this.currentWeather = undefined;
       let oldSearchWeather: Weather;
-      for (let [key, val] of self.weatherInfoMap) {
+      self.weatherInfoMap.forEach((val: Weather, key: Date) => {
           if (((currentDate.valueOf() - key.valueOf()) / 1000 < time || time === undefined) && val.getCity() === value) {
               oldSearchWeather = val;
           }
-      }
+      });
       if (oldSearchWeather) {
           return Observable.create((observer: Observer<Weather>) => {
               observer.next(oldSearchWeather);
