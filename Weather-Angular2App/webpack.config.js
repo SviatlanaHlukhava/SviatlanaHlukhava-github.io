@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {  
-  entry: process.env.IS_PROD == 1 ? './app-aot.ts' : './app.ts',
+  entry: './app.ts',
   output: {
     filename: 'bundle.js'
   },

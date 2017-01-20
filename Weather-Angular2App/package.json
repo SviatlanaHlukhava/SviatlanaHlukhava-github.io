@@ -32,15 +32,23 @@
     "raw-loader": "^0.5.1",
     "resolve-url": "^0.2.1",
     "resolve-url-loader": "^1.6.1",
+    "rimraf": "^2.5.4",
+    "rollup": "^0.41.4",
+    "rollup-loader": "^0.1.1",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-webpack-loader": "^1.0.0",
     "to-string-loader": "^1.1.5",
     "tslint-loader": "^3.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile-aot": "node_modules\\.bin\\ngc -p tsconfig-aot.json",
+    "compile-aot": "node_modules\\.bin\\rimraf -- dist && node_modules\\.bin\\rimraf -- aot && node_modules\\.bin\\ngc -p tsconfig-aot.json",
     "debug-run": "node_modules\\.bin\\webpack-dev-server",
-    "build-dev": "set IS_PROD=0 && webpack",
-    "build-prod": "set IS_PROD=1 && npm run compile-aot && webpack"
+    "build-dev": "webpack",
+    "build-prod": "npm run compile-aot && node_modules\\.bin\\rollup -c rollup.config.js"
   },
   "repository": {
     "type": "git",
