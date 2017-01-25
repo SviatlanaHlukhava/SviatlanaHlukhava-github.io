@@ -10,6 +10,7 @@ import { WeatherColorDirective } from './../directives/weatherColor.directive';
 import { WindIconDirective } from './../directives/windIcon.directive';
 import { WindSectionComponent } from './../components/windSection.component';
 import { WeatherIconComponent } from './../components/weatherIcon.component';
+import { CityFormComponent } from './../components/cityForm.component';
 import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter';
 import { WeatherApiService } from './../services/WeatherAPI';
 export var WeatherModule = (function () {
@@ -18,7 +19,7 @@ export var WeatherModule = (function () {
     WeatherModule.decorators = [
         { type: NgModule, args: [{
                     imports: [FormsModule, SharedModule],
-                    declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent,
+                    declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent,
                         KelvinToCelsiusPipe, CityWeatherPipe, WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent],
                     exports: [CityWeatherSectionComponent],
                     providers: [WeatherDTOtoWeatherConverter, WeatherApiService]

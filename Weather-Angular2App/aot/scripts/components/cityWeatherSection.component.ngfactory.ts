@@ -16,20 +16,10 @@ import * as import7 from '@angular/core/src/linker/component_factory';
 import * as import8 from '../../../scripts/services/WeatherAPI';
 import * as import9 from '../../../scripts/services/Logger';
 import * as import10 from '../../css/weatherTable.css.shim';
-import * as import11 from '../../node_modules/@angular/forms/src/directives/ng_form.ngfactory';
-import * as import12 from '../../node_modules/@angular/forms/src/directives/ng_control_status.ngfactory';
-import * as import13 from '../../node_modules/@angular/forms/src/directives/default_value_accessor.ngfactory';
-import * as import14 from '../../node_modules/@angular/forms/src/directives/ng_model.ngfactory';
-import * as import15 from '../../../scripts/components/cityWeatherTable.component';
-import * as import16 from './cityWeatherTable.component.ngfactory';
-import * as import17 from '@angular/core/src/linker/element_ref';
-import * as import18 from '@angular/forms/src/directives/default_value_accessor';
-import * as import19 from '@angular/forms/src/directives/control_value_accessor';
-import * as import20 from '@angular/forms/src/directives/ng_model';
-import * as import21 from '@angular/forms/src/directives/ng_control';
-import * as import22 from '@angular/forms/src/directives/ng_control_status';
-import * as import23 from '@angular/forms/src/directives/ng_form';
-import * as import24 from '@angular/forms/src/directives/control_container';
+import * as import11 from '../../../scripts/components/cityForm.component';
+import * as import12 from './cityForm.component.ngfactory';
+import * as import13 from '../../../scripts/components/cityWeatherTable.component';
+import * as import14 from './cityWeatherTable.component.ngfactory';
 export class Wrapper_CityWeatherSectionComponent {
   /*private*/ _eventHandler:Function;
   context:import0.CityWeatherSectionComponent;
@@ -128,29 +118,14 @@ export class View_CityWeatherSectionComponent0 extends import2.AppView<import0.C
   _el_0:any;
   _text_1:any;
   _el_2:any;
-  _NgForm_2_3:import11.Wrapper_NgForm;
-  _ControlContainer_2_4:any;
-  _NgControlStatusGroup_2_5:import12.Wrapper_NgControlStatusGroup;
+  compView_2:import2.AppView<import11.CityFormComponent>;
+  _CityFormComponent_2_3:import12.Wrapper_CityFormComponent;
   _text_3:any;
-  _el_4:any;
-  _text_5:any;
+  _text_4:any;
+  _el_5:any;
+  compView_5:import2.AppView<import13.CityWeatherTableComponent>;
+  _CityWeatherTableComponent_5_3:import14.Wrapper_CityWeatherTableComponent;
   _text_6:any;
-  _el_7:any;
-  _DefaultValueAccessor_7_3:import13.Wrapper_DefaultValueAccessor;
-  _NG_VALUE_ACCESSOR_7_4:any[];
-  _NgModel_7_5:import14.Wrapper_NgModel;
-  _NgControl_7_6:any;
-  _NgControlStatus_7_7:import12.Wrapper_NgControlStatus;
-  _text_8:any;
-  _el_9:any;
-  _text_10:any;
-  _text_11:any;
-  _text_12:any;
-  _text_13:any;
-  _el_14:any;
-  compView_14:import2.AppView<import15.CityWeatherTableComponent>;
-  _CityWeatherTableComponent_14_3:import16.Wrapper_CityWeatherTableComponent;
-  _text_15:any;
   constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any) {
     super(View_CityWeatherSectionComponent0,renderType_CityWeatherSectionComponent,import6.ViewType.COMPONENT,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckOnce);
   }
@@ -158,125 +133,66 @@ export class View_CityWeatherSectionComponent0 extends import2.AppView<import0.C
     const parentRenderNode:any = this.renderer.createViewRoot(this.parentElement);
     this._el_0 = import3.createRenderElement(this.renderer,parentRenderNode,'div',new import3.InlineArray2(2,'class','user-weather-table'),(null as any));
     this._text_1 = this.renderer.createText(this._el_0,'\n    ',(null as any));
-    this._el_2 = import3.createRenderElement(this.renderer,this._el_0,'form',new import3.InlineArray2(2,'class','city-form'),(null as any));
-    this._NgForm_2_3 = new import11.Wrapper_NgForm((null as any),(null as any));
-    this._ControlContainer_2_4 = this._NgForm_2_3.context;
-    this._NgControlStatusGroup_2_5 = new import12.Wrapper_NgControlStatusGroup(this._ControlContainer_2_4);
-    this._text_3 = this.renderer.createText(this._el_2,'\n        ',(null as any));
-    this._el_4 = import3.createRenderElement(this.renderer,this._el_2,'label',new import3.InlineArray2(2,'for','city'),(null as any));
-    this._text_5 = this.renderer.createText(this._el_4,'City',(null as any));
-    this._text_6 = this.renderer.createText(this._el_2,'\n        ',(null as any));
-    this._el_7 = import3.createRenderElement(this.renderer,this._el_2,'input',new import3.InlineArray4(4,'name','city','type','text'),(null as any));
-    this._DefaultValueAccessor_7_3 = new import13.Wrapper_DefaultValueAccessor(this.renderer,new import17.ElementRef(this._el_7));
-    this._NG_VALUE_ACCESSOR_7_4 = [this._DefaultValueAccessor_7_3.context];
-    this._NgModel_7_5 = new import14.Wrapper_NgModel(this._ControlContainer_2_4,(null as any),(null as any),this._NG_VALUE_ACCESSOR_7_4);
-    this._NgControl_7_6 = this._NgModel_7_5.context;
-    this._NgControlStatus_7_7 = new import12.Wrapper_NgControlStatus(this._NgControl_7_6);
-    this._text_8 = this.renderer.createText(this._el_2,'\n        ',(null as any));
-    this._el_9 = import3.createRenderElement(this.renderer,this._el_2,'button',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_10 = this.renderer.createText(this._el_9,'Add',(null as any));
-    this._text_11 = this.renderer.createText(this._el_2,'\n    ',(null as any));
-    this._text_12 = this.renderer.createText(this._el_0,'\n    ',(null as any));
-    this._text_13 = this.renderer.createText(this._el_0,'\n    ',(null as any));
-    this._el_14 = import3.createRenderElement(this.renderer,this._el_0,'city-weather-table',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this.compView_14 = new import16.View_CityWeatherTableComponent0(this.viewUtils,this,14,this._el_14);
-    this._CityWeatherTableComponent_14_3 = new import16.Wrapper_CityWeatherTableComponent();
-    this.compView_14.create(this._CityWeatherTableComponent_14_3.context);
-    this._text_15 = this.renderer.createText(this._el_0,'\n',(null as any));
-    var disposable_0:Function = import3.subscribeToRenderElement(this,this._el_2,new import3.InlineArray4(4,'submit',(null as any),'reset',(null as any)),this.eventHandler(this.handleEvent_2));
-    var disposable_1:Function = import3.subscribeToRenderElement(this,this._el_7,new import3.InlineArray8(6,'ngModelChange',(null as any),'input',(null as any),'blur',(null as any)),this.eventHandler(this.handleEvent_7));
-    this._NgModel_7_5.subscribe(this,this.eventHandler(this.handleEvent_7),true);
-    var disposable_2:Function = import3.subscribeToRenderElement(this,this._el_9,new import3.InlineArray2(2,'click',(null as any)),this.eventHandler(this.handleEvent_9));
-    var disposable_3:Function = import3.subscribeToRenderElement(this,this._el_14,new import3.InlineArray4(4,'deleteNotify',(null as any),'selectNotify',(null as any)),this.eventHandler(this.handleEvent_14));
-    this._CityWeatherTableComponent_14_3.subscribe(this,this.eventHandler(this.handleEvent_14),true,true);
+    this._el_2 = import3.createRenderElement(this.renderer,this._el_0,'city-form',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this.compView_2 = new import12.View_CityFormComponent0(this.viewUtils,this,2,this._el_2);
+    this._CityFormComponent_2_3 = new import12.Wrapper_CityFormComponent();
+    this.compView_2.create(this._CityFormComponent_2_3.context);
+    this._text_3 = this.renderer.createText(this._el_0,'\n    ',(null as any));
+    this._text_4 = this.renderer.createText(this._el_0,'\n    ',(null as any));
+    this._el_5 = import3.createRenderElement(this.renderer,this._el_0,'city-weather-table',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this.compView_5 = new import14.View_CityWeatherTableComponent0(this.viewUtils,this,5,this._el_5);
+    this._CityWeatherTableComponent_5_3 = new import14.Wrapper_CityWeatherTableComponent();
+    this.compView_5.create(this._CityWeatherTableComponent_5_3.context);
+    this._text_6 = this.renderer.createText(this._el_0,'\n',(null as any));
+    var disposable_0:Function = import3.subscribeToRenderElement(this,this._el_2,new import3.InlineArray2(2,'addNotify',(null as any)),this.eventHandler(this.handleEvent_2));
+    this._CityFormComponent_2_3.subscribe(this,this.eventHandler(this.handleEvent_2),true);
+    var disposable_1:Function = import3.subscribeToRenderElement(this,this._el_5,new import3.InlineArray4(4,'deleteNotify',(null as any),'selectNotify',(null as any)),this.eventHandler(this.handleEvent_5));
+    this._CityWeatherTableComponent_5_3.subscribe(this,this.eventHandler(this.handleEvent_5),true,true);
     this.init((null as any),((<any>this.renderer).directRenderer? (null as any): [
       this._el_0,
       this._text_1,
       this._el_2,
       this._text_3,
-      this._el_4,
-      this._text_5,
-      this._text_6,
-      this._el_7,
-      this._text_8,
-      this._el_9,
-      this._text_10,
-      this._text_11,
-      this._text_12,
-      this._text_13,
-      this._el_14,
-      this._text_15
+      this._text_4,
+      this._el_5,
+      this._text_6
     ]
     ),[
       disposable_0,
-      disposable_1,
-      disposable_2,
-      disposable_3
+      disposable_1
     ]
     );
     return (null as any);
   }
   injectorGetInternal(token:any,requestNodeIndex:number,notFoundResult:any):any {
-    if (((token === import18.DefaultValueAccessor) && (7 === requestNodeIndex))) { return this._DefaultValueAccessor_7_3.context; }
-    if (((token === import19.NG_VALUE_ACCESSOR) && (7 === requestNodeIndex))) { return this._NG_VALUE_ACCESSOR_7_4; }
-    if (((token === import20.NgModel) && (7 === requestNodeIndex))) { return this._NgModel_7_5.context; }
-    if (((token === import21.NgControl) && (7 === requestNodeIndex))) { return this._NgControl_7_6; }
-    if (((token === import22.NgControlStatus) && (7 === requestNodeIndex))) { return this._NgControlStatus_7_7.context; }
-    if (((token === import23.NgForm) && ((2 <= requestNodeIndex) && (requestNodeIndex <= 11)))) { return this._NgForm_2_3.context; }
-    if (((token === import24.ControlContainer) && ((2 <= requestNodeIndex) && (requestNodeIndex <= 11)))) { return this._ControlContainer_2_4; }
-    if (((token === import22.NgControlStatusGroup) && ((2 <= requestNodeIndex) && (requestNodeIndex <= 11)))) { return this._NgControlStatusGroup_2_5.context; }
-    if (((token === import15.CityWeatherTableComponent) && (14 === requestNodeIndex))) { return this._CityWeatherTableComponent_14_3.context; }
+    if (((token === import11.CityFormComponent) && (2 === requestNodeIndex))) { return this._CityFormComponent_2_3.context; }
+    if (((token === import13.CityWeatherTableComponent) && (5 === requestNodeIndex))) { return this._CityWeatherTableComponent_5_3.context; }
     return notFoundResult;
   }
   detectChangesInternal(throwOnChange:boolean):void {
-    this._NgForm_2_3.ngDoCheck(this,this._el_2,throwOnChange);
-    this._NgControlStatusGroup_2_5.ngDoCheck(this,this._el_2,throwOnChange);
-    this._DefaultValueAccessor_7_3.ngDoCheck(this,this._el_7,throwOnChange);
-    const currVal_7_1_0:any = 'city';
-    this._NgModel_7_5.check_name(currVal_7_1_0,throwOnChange,false);
-    const currVal_7_1_1:any = this.context.city;
-    this._NgModel_7_5.check_model(currVal_7_1_1,throwOnChange,false);
-    this._NgModel_7_5.ngDoCheck(this,this._el_7,throwOnChange);
-    this._NgControlStatus_7_7.ngDoCheck(this,this._el_7,throwOnChange);
-    const currVal_14_0_0:any = this.context.weatherList;
-    this._CityWeatherTableComponent_14_3.check_weatherList(currVal_14_0_0,throwOnChange,false);
-    if (this._CityWeatherTableComponent_14_3.ngDoCheck(this,this._el_14,throwOnChange)) { this.compView_14.markAsCheckOnce(); }
-    this._NgControlStatusGroup_2_5.checkHost(this,this,this._el_2,throwOnChange);
-    this._NgControlStatus_7_7.checkHost(this,this,this._el_7,throwOnChange);
-    this.compView_14.detectChanges(throwOnChange);
+    if (this._CityFormComponent_2_3.ngDoCheck(this,this._el_2,throwOnChange)) { this.compView_2.markAsCheckOnce(); }
+    const currVal_5_0_0:any = this.context.weatherList;
+    this._CityWeatherTableComponent_5_3.check_weatherList(currVal_5_0_0,throwOnChange,false);
+    if (this._CityWeatherTableComponent_5_3.ngDoCheck(this,this._el_5,throwOnChange)) { this.compView_5.markAsCheckOnce(); }
+    this.compView_2.detectChanges(throwOnChange);
+    this.compView_5.detectChanges(throwOnChange);
   }
   destroyInternal():void {
-    this.compView_14.destroy();
-    this._NgModel_7_5.ngOnDestroy();
-    this._NgForm_2_3.ngOnDestroy();
-    this._CityWeatherTableComponent_14_3.ngOnDestroy();
+    this.compView_2.destroy();
+    this.compView_5.destroy();
+    this._CityFormComponent_2_3.ngOnDestroy();
+    this._CityWeatherTableComponent_5_3.ngOnDestroy();
   }
   handleEvent_2(eventName:string,$event:any):boolean {
     this.markPathToRootAsCheckOnce();
     var result:boolean = true;
-    result = (this._NgForm_2_3.handleEvent(eventName,$event) && result);
-    return result;
-  }
-  handleEvent_7(eventName:string,$event:any):boolean {
-    this.markPathToRootAsCheckOnce();
-    var result:boolean = true;
-    result = (this._DefaultValueAccessor_7_3.handleEvent(eventName,$event) && result);
-    if ((eventName == 'ngModelChange')) {
-      const pd_sub_0:any = ((<any>(this.context.city = $event)) !== false);
+    if ((eventName == 'addNotify')) {
+      const pd_sub_0:any = ((<any>this.context.add($event)) !== false);
       result = (pd_sub_0 && result);
     }
     return result;
   }
-  handleEvent_9(eventName:string,$event:any):boolean {
-    this.markPathToRootAsCheckOnce();
-    var result:boolean = true;
-    if ((eventName == 'click')) {
-      const pd_sub_0:any = ((<any>this.context.add()) !== false);
-      result = (pd_sub_0 && result);
-    }
-    return result;
-  }
-  handleEvent_14(eventName:string,$event:any):boolean {
+  handleEvent_5(eventName:string,$event:any):boolean {
     this.markPathToRootAsCheckOnce();
     var result:boolean = true;
     if ((eventName == 'deleteNotify')) {

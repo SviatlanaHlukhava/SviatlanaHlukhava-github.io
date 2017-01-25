@@ -20,7 +20,6 @@ export class CityWeatherSectionComponent implements OnChanges, OnInit {
   $weatherObservableMap: Map <string, Subscription>;
   weatherListSubscription: Subscription;
   // weatherPromise: Promise<Weather[]>;
-  city: string;
   cityWeatherPipe: CityWeatherPipe;
   oldLatitude: number;
   oldLongitude: number;
@@ -36,10 +35,6 @@ export class CityWeatherSectionComponent implements OnChanges, OnInit {
     let $changesObserver = Observable.interval(5000);
     $changesObserver.subscribe(() => {
       this.detectChanges();
-    });
-    let addButton = document.getElementsByClassName("add-button")[0];
-    Observable.fromEvent(addButton, "click").subscribe(() => {
-      this.add();
     });
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -69,8 +64,8 @@ export class CityWeatherSectionComponent implements OnChanges, OnInit {
       this.oldLongitude - this.longitude;
     }
   }
-  add() {
-    this.cityWeatherPipe.transform(this.city).subscribe((result: Weather) => {
+  add($event: string) {
+    this.cityWeatherPipe.transform($event).subscribe((result: Weather) => {
       this.addToWeatherList(result);
       this.detectChanges();
     });

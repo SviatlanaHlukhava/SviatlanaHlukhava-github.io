@@ -1,9 +1,5 @@
 <div class="user-weather-table">
-    <form class="city-form">
-        <label for="city">City</label>
-        <input type="text" [(ngModel)]="city" name="city"/>
-        <button (click)="add()">Add</button>
-    </form>
+    <city-form (addNotify)="add($event)"></city-form>
     <!--city-weather-table [weatherList]="weatherPromise | async" (deleteNotify)="remove($event)" (selectNotify)="select($event)"></city-weather-table-->
     <city-weather-table [weatherList]="weatherList" (deleteNotify)="remove($event)" (selectNotify)="select($event)"></city-weather-table>
 </div>

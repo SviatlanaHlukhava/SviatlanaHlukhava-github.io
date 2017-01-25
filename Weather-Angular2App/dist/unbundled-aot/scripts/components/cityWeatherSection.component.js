@@ -21,10 +21,6 @@ export var CityWeatherSectionComponent = (function () {
         $changesObserver.subscribe(function () {
             _this.detectChanges();
         });
-        var addButton = document.getElementsByClassName("add-button")[0];
-        Observable.fromEvent(addButton, "click").subscribe(function () {
-            _this.add();
-        });
     };
     CityWeatherSectionComponent.prototype.ngOnChanges = function (changes) {
         var _this = this;
@@ -54,9 +50,9 @@ export var CityWeatherSectionComponent = (function () {
             this.oldLongitude - this.longitude;
         }
     };
-    CityWeatherSectionComponent.prototype.add = function () {
+    CityWeatherSectionComponent.prototype.add = function ($event) {
         var _this = this;
-        this.cityWeatherPipe.transform(this.city).subscribe(function (result) {
+        this.cityWeatherPipe.transform($event).subscribe(function (result) {
             _this.addToWeatherList(result);
             _this.detectChanges();
         });
