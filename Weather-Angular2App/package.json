@@ -5,7 +5,6 @@
   "main": "app.ts",
   "dependencies": {
     "@angular/common": "^2.2.4",
-    "@angular/compiler": "^2.2.4",
     "@angular/compiler-cli": "^2.2.4",
     "@angular/core": "^2.2.4",
     "@angular/forms": "^2.2.4",

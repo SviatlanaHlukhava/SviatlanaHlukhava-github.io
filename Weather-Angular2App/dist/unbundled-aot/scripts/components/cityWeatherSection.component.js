@@ -1,12 +1,15 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
-import { Weather } from './../model/Weather';
+import { Store } from '@ngrx/store';
 import { CityWeatherPipe } from './../pipes/cityWeather.pipe';
 import { WeatherApiService } from './../services/WeatherAPI';
 import { LoggerService } from './../services/Logger';
 import { Observable } from 'rxjs';
+import { WeatherActions } from './../actions/WeatherActions';
 export var CityWeatherSectionComponent = (function () {
-    function CityWeatherSectionComponent(changeDetectorRef, weatherApiService, loggerService) {
+    function CityWeatherSectionComponent(changeDetectorRef, store, weatherActions, weatherApiService, loggerService) {
         this.changeDetectorRef = changeDetectorRef;
+        this.store = store;
+        this.weatherActions = weatherActions;
         this.weatherApiService = weatherApiService;
         this.loggerService = loggerService;
         this.loadingNotify = new EventEmitter();
@@ -21,19 +24,21 @@ export var CityWeatherSectionComponent = (function () {
         $changesObserver.subscribe(function () {
             _this.detectChanges();
         });
+        this.weatherListObservable = this.store.select("weatherList");
+        this.weatherListObservable.subscribe(function (weatherList) {
+            _this.weatherList = weatherList;
+        });
     };
     CityWeatherSectionComponent.prototype.ngOnChanges = function (changes) {
         var _this = this;
         if (this.latitude !== undefined && this.longitude !== undefined &&
             (this.oldLatitude === undefined || this.oldLatitude !== this.latitude) ||
             (this.oldLongitude === undefined || this.oldLongitude !== this.longitude)) {
-            // TODO move to service
-            var self_1 = this;
             this.weatherList.forEach(function (weather) {
                 _this.$weatherObservableMap.get(weather.getCity()).unsubscribe();
             });
-            this.weatherList = [];
-            self_1.loadingNotify.emit(true);
+            this.store.dispatch(this.weatherActions.clearWeatherList());
+            this.loadingNotify.emit(true);
             if (this.weatherListSubscription) {
                 this.weatherListSubscription.unsubscribe();
             }
@@ -41,10 +46,10 @@ export var CityWeatherSectionComponent = (function () {
                 _this.addToWeatherList(result);
             }, function (error) {
                 _this.loggerService.errorLog(error);
-                self_1.loadingNotify.emit(false);
+                _this.loadingNotify.emit(false);
             }, function () {
                 _this.detectChanges();
-                self_1.loadingNotify.emit(false);
+                _this.loadingNotify.emit(false);
             });
             this.oldLatitude = this.latitude;
             this.oldLongitude - this.longitude;
@@ -58,26 +63,13 @@ export var CityWeatherSectionComponent = (function () {
         });
     };
     CityWeatherSectionComponent.prototype.remove = function ($event) {
-        var weatherList = this.weatherList;
-        var city = weatherList[$event].getCity();
-        weatherList.splice($event, 1);
-        this.weatherList = weatherList.slice(0);
+        var city = this.weatherList[$event].getCity();
+        this.store.dispatch(this.weatherActions.removeWeather($event));
         this.detectChanges();
         this.weatherObservableUnsubscribe(city);
     };
     CityWeatherSectionComponent.prototype.select = function ($event) {
-        var weatherList = this.weatherList;
-        weatherList[$event].setSelected(!weatherList[$event].getSelected());
-        if (weatherList[$event].getSelected()) {
-            weatherList.forEach(function (value, i) {
-                if (value.getSelected() && i !== $event) {
-                    var weather = new Weather(value.getCity(), value.getDescription(), value.getCoordinate(), value.getMainParams(), value.getWind(), value.getCloud());
-                    weather.setSelected(false);
-                    weatherList.splice(i, 1, weather);
-                }
-            });
-        }
-        this.weatherList = weatherList.slice(0);
+        this.store.dispatch(this.weatherActions.selectWeather($event));
         this.detectChanges();
     };
     CityWeatherSectionComponent.prototype.detectChanges = function () {
@@ -86,22 +78,13 @@ export var CityWeatherSectionComponent = (function () {
         this.changeDetectorRef.detach();
     };
     CityWeatherSectionComponent.prototype.addToWeatherList = function (weather) {
-        var weatherList = this.weatherList;
-        weatherList.push(new Weather(weather.getCity(), weather.getDescription(), weather.getCoordinate(), weather.getMainParams(), weather.getWind(), weather.getCloud()));
-        this.weatherList = weatherList.slice(0);
+        this.store.dispatch(this.weatherActions.addWeather(weather));
         this.weatherObservableSubscribe(weather.getCity());
     };
     CityWeatherSectionComponent.prototype.weatherObservableSubscribe = function (city) {
         var _this = this;
         var subscription = this.weatherApiService.pollWeatherCityInfo(city).subscribe(function (result) {
-            var weatherList = _this.weatherList;
-            var index = weatherList.findIndex(function (weather) { return weather.getCity() === result.getCity(); });
-            if (index !== -1) {
-                var newWeather = new Weather(result.getCity(), result.getDescription(), result.getCoordinate(), result.getMainParams(), result.getWind(), result.getCloud());
-                newWeather.setSelected(weatherList[index].getSelected());
-                weatherList.splice(index, 1, newWeather);
-                _this.weatherList = weatherList.slice(0);
-            }
+            _this.store.dispatch(_this.weatherActions.updateWeatherSuccess(result));
         });
         this.$weatherObservableMap.set(city, subscription);
     };
@@ -119,6 +102,8 @@ export var CityWeatherSectionComponent = (function () {
     /** @nocollapse */
     CityWeatherSectionComponent.ctorParameters = [
         { type: ChangeDetectorRef, },
+        { type: Store, },
+        { type: WeatherActions, },
         { type: WeatherApiService, },
         { type: LoggerService, },
     ];

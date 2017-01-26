@@ -13,13 +13,16 @@ import * as import4 from '@angular/core/src/render/api';
 import * as import5 from '@angular/core/src/metadata/view';
 import * as import6 from '@angular/core/src/linker/view_type';
 import * as import7 from '@angular/core/src/linker/component_factory';
-import * as import8 from '../../../scripts/services/WeatherAPI';
-import * as import9 from '../../../scripts/services/Logger';
-import * as import10 from '../../css/weatherTable.css.shim';
-import * as import11 from '../../../scripts/components/cityForm.component';
-import * as import12 from './cityForm.component.ngfactory';
-import * as import13 from '../../../scripts/components/cityWeatherTable.component';
-import * as import14 from './cityWeatherTable.component.ngfactory';
+import * as import8 from '@ngrx/store/src/store';
+import * as import9 from '../../../scripts/actions/WeatherActions';
+import * as import10 from '../../../scripts/services/WeatherAPI';
+import * as import11 from '../../../scripts/services/Logger';
+import * as import12 from '../../css/weatherTable.css.shim';
+import * as import13 from '../../../scripts/components/cityForm.component';
+import * as import14 from './cityForm.component.ngfactory';
+import * as import15 from '../../../scripts/components/cityWeatherTable.component';
+import * as import16 from './cityWeatherTable.component.ngfactory';
+import * as import17 from '@angular/common/src/pipes/async_pipe';
 export class Wrapper_CityWeatherSectionComponent {
   /*private*/ _eventHandler:Function;
   context:import0.CityWeatherSectionComponent;
@@ -28,10 +31,10 @@ export class Wrapper_CityWeatherSectionComponent {
   /*private*/ _expr_0:any;
   /*private*/ _expr_1:any;
   subscription0:any;
-  constructor(p0:any,p1:any,p2:any) {
+  constructor(p0:any,p1:any,p2:any,p3:any,p4:any) {
     this._changed = false;
     this._changes = {};
-    this.context = new import0.CityWeatherSectionComponent(p0,p1,p2);
+    this.context = new import0.CityWeatherSectionComponent(p0,p1,p2,p3,p4);
     this._expr_0 = import1.UNINITIALIZED;
     this._expr_1 = import1.UNINITIALIZED;
   }
@@ -90,7 +93,7 @@ class View_CityWeatherSectionComponent_Host0 extends import2.AppView<any> {
   createInternal(rootSelector:string):import7.ComponentRef<any> {
     this._el_0 = import3.selectOrCreateRenderHostElement(this.renderer,'city-weather-section',import3.EMPTY_INLINE_ARRAY,rootSelector,(null as any));
     this.compView_0 = new View_CityWeatherSectionComponent0(this.viewUtils,this,0,this._el_0);
-    this._CityWeatherSectionComponent_0_3 = new Wrapper_CityWeatherSectionComponent(this.compView_0.ref,this.injectorGet(import8.WeatherApiService,this.parentIndex),this.injectorGet(import9.LoggerService,this.parentIndex));
+    this._CityWeatherSectionComponent_0_3 = new Wrapper_CityWeatherSectionComponent(this.compView_0.ref,this.injectorGet(import8.Store,this.parentIndex),this.injectorGet(import9.WeatherActions,this.parentIndex),this.injectorGet(import10.WeatherApiService,this.parentIndex),this.injectorGet(import11.LoggerService,this.parentIndex));
     this.compView_0.create(this._CityWeatherSectionComponent_0_3.context);
     this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [this._el_0]),(null as any));
     return new import7.ComponentRef_<any>(0,this,this._el_0,this._CityWeatherSectionComponent_0_3.context);
@@ -112,20 +115,20 @@ class View_CityWeatherSectionComponent_Host0 extends import2.AppView<any> {
   }
 }
 export const CityWeatherSectionComponentNgFactory:import7.ComponentFactory<import0.CityWeatherSectionComponent> = new import7.ComponentFactory<import0.CityWeatherSectionComponent>('city-weather-section',View_CityWeatherSectionComponent_Host0,import0.CityWeatherSectionComponent);
-const styles_CityWeatherSectionComponent:any[] = [import10.styles];
+const styles_CityWeatherSectionComponent:any[] = [import12.styles];
 var renderType_CityWeatherSectionComponent:import4.RenderComponentType = import3.createRenderComponentType('',0,import5.ViewEncapsulation.Emulated,styles_CityWeatherSectionComponent,{});
 export class View_CityWeatherSectionComponent0 extends import2.AppView<import0.CityWeatherSectionComponent> {
   _el_0:any;
   _text_1:any;
   _el_2:any;
-  compView_2:import2.AppView<import11.CityFormComponent>;
-  _CityFormComponent_2_3:import12.Wrapper_CityFormComponent;
+  compView_2:import2.AppView<import13.CityFormComponent>;
+  _CityFormComponent_2_3:import14.Wrapper_CityFormComponent;
   _text_3:any;
-  _text_4:any;
-  _el_5:any;
-  compView_5:import2.AppView<import13.CityWeatherTableComponent>;
-  _CityWeatherTableComponent_5_3:import14.Wrapper_CityWeatherTableComponent;
-  _text_6:any;
+  _el_4:any;
+  compView_4:import2.AppView<import15.CityWeatherTableComponent>;
+  _CityWeatherTableComponent_4_3:import16.Wrapper_CityWeatherTableComponent;
+  _text_5:any;
+  _pipe_async_0:import17.AsyncPipe;
   constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any) {
     super(View_CityWeatherSectionComponent0,renderType_CityWeatherSectionComponent,import6.ViewType.COMPONENT,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckOnce);
   }
@@ -134,28 +137,27 @@ export class View_CityWeatherSectionComponent0 extends import2.AppView<import0.C
     this._el_0 = import3.createRenderElement(this.renderer,parentRenderNode,'div',new import3.InlineArray2(2,'class','user-weather-table'),(null as any));
     this._text_1 = this.renderer.createText(this._el_0,'\n    ',(null as any));
     this._el_2 = import3.createRenderElement(this.renderer,this._el_0,'city-form',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this.compView_2 = new import12.View_CityFormComponent0(this.viewUtils,this,2,this._el_2);
-    this._CityFormComponent_2_3 = new import12.Wrapper_CityFormComponent();
+    this.compView_2 = new import14.View_CityFormComponent0(this.viewUtils,this,2,this._el_2);
+    this._CityFormComponent_2_3 = new import14.Wrapper_CityFormComponent();
     this.compView_2.create(this._CityFormComponent_2_3.context);
     this._text_3 = this.renderer.createText(this._el_0,'\n    ',(null as any));
-    this._text_4 = this.renderer.createText(this._el_0,'\n    ',(null as any));
-    this._el_5 = import3.createRenderElement(this.renderer,this._el_0,'city-weather-table',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this.compView_5 = new import14.View_CityWeatherTableComponent0(this.viewUtils,this,5,this._el_5);
-    this._CityWeatherTableComponent_5_3 = new import14.Wrapper_CityWeatherTableComponent();
-    this.compView_5.create(this._CityWeatherTableComponent_5_3.context);
-    this._text_6 = this.renderer.createText(this._el_0,'\n',(null as any));
+    this._el_4 = import3.createRenderElement(this.renderer,this._el_0,'city-weather-table',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this.compView_4 = new import16.View_CityWeatherTableComponent0(this.viewUtils,this,4,this._el_4);
+    this._CityWeatherTableComponent_4_3 = new import16.Wrapper_CityWeatherTableComponent();
+    this.compView_4.create(this._CityWeatherTableComponent_4_3.context);
+    this._text_5 = this.renderer.createText(this._el_0,'\n',(null as any));
     var disposable_0:Function = import3.subscribeToRenderElement(this,this._el_2,new import3.InlineArray2(2,'addNotify',(null as any)),this.eventHandler(this.handleEvent_2));
     this._CityFormComponent_2_3.subscribe(this,this.eventHandler(this.handleEvent_2),true);
-    var disposable_1:Function = import3.subscribeToRenderElement(this,this._el_5,new import3.InlineArray4(4,'deleteNotify',(null as any),'selectNotify',(null as any)),this.eventHandler(this.handleEvent_5));
-    this._CityWeatherTableComponent_5_3.subscribe(this,this.eventHandler(this.handleEvent_5),true,true);
+    var disposable_1:Function = import3.subscribeToRenderElement(this,this._el_4,new import3.InlineArray4(4,'deleteNotify',(null as any),'selectNotify',(null as any)),this.eventHandler(this.handleEvent_4));
+    this._CityWeatherTableComponent_4_3.subscribe(this,this.eventHandler(this.handleEvent_4),true,true);
+    this._pipe_async_0 = new import17.AsyncPipe(this.ref);
     this.init((null as any),((<any>this.renderer).directRenderer? (null as any): [
       this._el_0,
       this._text_1,
       this._el_2,
       this._text_3,
-      this._text_4,
-      this._el_5,
-      this._text_6
+      this._el_4,
+      this._text_5
     ]
     ),[
       disposable_0,
@@ -165,23 +167,26 @@ export class View_CityWeatherSectionComponent0 extends import2.AppView<import0.C
     return (null as any);
   }
   injectorGetInternal(token:any,requestNodeIndex:number,notFoundResult:any):any {
-    if (((token === import11.CityFormComponent) && (2 === requestNodeIndex))) { return this._CityFormComponent_2_3.context; }
-    if (((token === import13.CityWeatherTableComponent) && (5 === requestNodeIndex))) { return this._CityWeatherTableComponent_5_3.context; }
+    if (((token === import13.CityFormComponent) && (2 === requestNodeIndex))) { return this._CityFormComponent_2_3.context; }
+    if (((token === import15.CityWeatherTableComponent) && (4 === requestNodeIndex))) { return this._CityWeatherTableComponent_4_3.context; }
     return notFoundResult;
   }
   detectChangesInternal(throwOnChange:boolean):void {
+    const valUnwrapper:any = new import1.ValueUnwrapper();
     if (this._CityFormComponent_2_3.ngDoCheck(this,this._el_2,throwOnChange)) { this.compView_2.markAsCheckOnce(); }
-    const currVal_5_0_0:any = this.context.weatherList;
-    this._CityWeatherTableComponent_5_3.check_weatherList(currVal_5_0_0,throwOnChange,false);
-    if (this._CityWeatherTableComponent_5_3.ngDoCheck(this,this._el_5,throwOnChange)) { this.compView_5.markAsCheckOnce(); }
+    valUnwrapper.reset();
+    const currVal_4_0_0:any = valUnwrapper.unwrap(this._pipe_async_0.transform(this.context.weatherListObservable));
+    this._CityWeatherTableComponent_4_3.check_weatherList(currVal_4_0_0,throwOnChange,valUnwrapper.hasWrappedValue);
+    if (this._CityWeatherTableComponent_4_3.ngDoCheck(this,this._el_4,throwOnChange)) { this.compView_4.markAsCheckOnce(); }
     this.compView_2.detectChanges(throwOnChange);
-    this.compView_5.detectChanges(throwOnChange);
+    this.compView_4.detectChanges(throwOnChange);
   }
   destroyInternal():void {
     this.compView_2.destroy();
-    this.compView_5.destroy();
+    this.compView_4.destroy();
     this._CityFormComponent_2_3.ngOnDestroy();
-    this._CityWeatherTableComponent_5_3.ngOnDestroy();
+    this._CityWeatherTableComponent_4_3.ngOnDestroy();
+    this._pipe_async_0.ngOnDestroy();
   }
   handleEvent_2(eventName:string,$event:any):boolean {
     this.markPathToRootAsCheckOnce();
@@ -192,7 +197,7 @@ export class View_CityWeatherSectionComponent0 extends import2.AppView<import0.C
     }
     return result;
   }
-  handleEvent_5(eventName:string,$event:any):boolean {
+  handleEvent_4(eventName:string,$event:any):boolean {
     this.markPathToRootAsCheckOnce();
     var result:boolean = true;
     if ((eventName == 'deleteNotify')) {

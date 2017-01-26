@@ -24,15 +24,14 @@ export class AppComponent implements OnInit {
     this.profiler.profile();
   }
   ngOnInit(): void {
-    let self = this;
-    self.isLoading = true;
+    this.isLoading = true;
     this.locationService.getCurrentPosition().subscribe((pos: Position) => {
-       self.coordinate.setLatitude(pos.coords.latitude);
-       self.coordinate.setLongitude(pos.coords.longitude);
-       self.changeDetectorRef.markForCheck();
+       this.coordinate.setLatitude(pos.coords.latitude);
+       this.coordinate.setLongitude(pos.coords.longitude);
+       this.changeDetectorRef.markForCheck();
     }, (posError: PositionError) => {
        this.loggerService.errorLog(posError.message);
-       self.isLoading = false;
+       this.isLoading = false;
     });
   }
   isLoadingChange($event: boolean) {

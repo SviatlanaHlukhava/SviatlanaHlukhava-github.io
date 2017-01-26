@@ -1,6 +1,7 @@
 import { NgModule }  from '@angular/core';
 import { SharedModule } from './shared.module'
 import { FormsModule } from '@angular/forms';
+import { Store, StoreModule } from '@ngrx/store';
 import { CityWeatherTableComponent }   from './../components/cityWeatherTable.component';
 import { CityWeatherSectionComponent }   from './../components/cityWeatherSection.component';
 import { CityWeatherComponent }   from './../components/cityWeather.component';
@@ -13,12 +14,14 @@ import { WeatherIconComponent }   from './../components/weatherIcon.component';
 import { CityFormComponent }   from './../components/cityForm.component';
 import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter'
 import { WeatherApiService } from './../services/WeatherAPI'
+import { WeatherActions } from './../actions/WeatherActions'
+import { WeatherListReducer } from './../reducers/WeatherListReducer'
 
 @NgModule({
-    imports:      [FormsModule, SharedModule],
+    imports:      [FormsModule, SharedModule, StoreModule.provideStore({weatherList: WeatherListReducer})],
     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent,
       KelvinToCelsiusPipe, CityWeatherPipe,  WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent],
     exports: [CityWeatherSectionComponent],
-    providers: [WeatherDTOtoWeatherConverter, WeatherApiService]
+    providers: [WeatherDTOtoWeatherConverter, WeatherApiService, WeatherActions]
 })
 export class WeatherModule {}

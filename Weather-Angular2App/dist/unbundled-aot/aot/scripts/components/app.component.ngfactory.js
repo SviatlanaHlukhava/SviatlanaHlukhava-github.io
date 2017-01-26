@@ -30,7 +30,9 @@ import * as import18 from '../../../scripts/components/map.component';
 import * as import19 from './map.component.ngfactory';
 import * as import20 from '../../../scripts/components/footer.component';
 import * as import21 from './footer.component.ngfactory';
-import * as import22 from '../../../scripts/services/WeatherAPI';
+import * as import22 from '@ngrx/store/src/store';
+import * as import23 from '../../../scripts/actions/WeatherActions';
+import * as import24 from '../../../scripts/services/WeatherAPI';
 export var Wrapper_AppComponent = (function () {
     function Wrapper_AppComponent(p0, p1, p2, p3, p4) {
         this._changed = false;
@@ -117,7 +119,7 @@ export var View_AppComponent0 = (function (_super) {
         this._text_3 = this.renderer.createText(parentRenderNode, '\n    ', null);
         this._el_4 = import3.createRenderElement(this.renderer, parentRenderNode, 'city-weather-section', import3.EMPTY_INLINE_ARRAY, null);
         this.compView_4 = new import17.View_CityWeatherSectionComponent0(this.viewUtils, this, 4, this._el_4);
-        this._CityWeatherSectionComponent_4_3 = new import17.Wrapper_CityWeatherSectionComponent(this.compView_4.ref, this.parentView.injectorGet(import22.WeatherApiService, this.parentIndex), this.parentView.injectorGet(import11.LoggerService, this.parentIndex));
+        this._CityWeatherSectionComponent_4_3 = new import17.Wrapper_CityWeatherSectionComponent(this.compView_4.ref, this.parentView.injectorGet(import22.Store, this.parentIndex), this.parentView.injectorGet(import23.WeatherActions, this.parentIndex), this.parentView.injectorGet(import24.WeatherApiService, this.parentIndex), this.parentView.injectorGet(import11.LoggerService, this.parentIndex));
         this.compView_4.create(this._CityWeatherSectionComponent_4_3.context);
         this._text_5 = this.renderer.createText(parentRenderNode, '\n    ', null);
         this._el_6 = import3.createRenderElement(this.renderer, parentRenderNode, 'map', import3.EMPTY_INLINE_ARRAY, null);

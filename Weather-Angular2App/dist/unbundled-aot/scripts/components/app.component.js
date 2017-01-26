@@ -16,15 +16,14 @@ export var AppComponent = (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var self = this;
-        self.isLoading = true;
+        this.isLoading = true;
         this.locationService.getCurrentPosition().subscribe(function (pos) {
-            self.coordinate.setLatitude(pos.coords.latitude);
-            self.coordinate.setLongitude(pos.coords.longitude);
-            self.changeDetectorRef.markForCheck();
+            _this.coordinate.setLatitude(pos.coords.latitude);
+            _this.coordinate.setLongitude(pos.coords.longitude);
+            _this.changeDetectorRef.markForCheck();
         }, function (posError) {
             _this.loggerService.errorLog(posError.message);
-            self.isLoading = false;
+            _this.isLoading = false;
         });
     };
     AppComponent.prototype.isLoadingChange = function ($event) {

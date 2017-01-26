@@ -11,59 +11,123 @@ import * as import2 from '@angular/forms/src/directives';
 import * as import3 from '@angular/forms/src/form_providers';
 import * as import4 from '@angular/common/src/common_module';
 import * as import5 from '../../../scripts/modules/shared.module';
-import * as import6 from '@angular/forms/src/directives/radio_control_value_accessor';
-import * as import7 from '@angular/common/src/localization';
-import * as import8 from '../../../scripts/services/WeatherDTOtoWeatherConverter';
-import * as import9 from '../../../scripts/services/WeatherAPI';
-import * as import10 from '@angular/core/src/di/injector';
-import * as import11 from '@angular/core/src/i18n/tokens';
+import * as import6 from '@ngrx/store/src/ng2';
+import * as import7 from '@angular/forms/src/directives/radio_control_value_accessor';
+import * as import8 from '@angular/common/src/localization';
+import * as import9 from '@ngrx/store/src/dispatcher';
+import * as import10 from '../../../scripts/services/WeatherDTOtoWeatherConverter';
+import * as import11 from '../../../scripts/services/WeatherAPI';
+import * as import12 from '../../../scripts/actions/WeatherActions';
+import * as import13 from '@angular/core/src/di/injector';
+import * as import14 from '@angular/core/src/i18n/tokens';
+import * as import15 from '../../../scripts/reducers/WeatherListReducer';
+import * as import16 from '@ngrx/store/src/reducer';
+import * as import17 from '@ngrx/store/src/state';
+import * as import18 from '@ngrx/store/src/store';
 class WeatherModuleInjector extends import0.NgModuleInjector<import1.WeatherModule> {
   _InternalFormsSharedModule_0:import2.InternalFormsSharedModule;
   _FormsModule_1:import3.FormsModule;
   _CommonModule_2:import4.CommonModule;
   _SharedModule_3:import5.SharedModule;
-  _WeatherModule_4:import1.WeatherModule;
-  __RadioControlRegistry_5:import6.RadioControlRegistry;
-  __NgLocalization_6:import7.NgLocaleLocalization;
-  __WeatherDTOtoWeatherConverter_7:import8.WeatherDTOtoWeatherConverter;
-  __WeatherApiService_8:import9.WeatherApiService;
-  constructor(parent:import10.Injector) {
+  _StoreModule_4:import6.StoreModule;
+  _WeatherModule_5:import1.WeatherModule;
+  __RadioControlRegistry_6:import7.RadioControlRegistry;
+  __NgLocalization_7:import8.NgLocaleLocalization;
+  __Dispatcher_8:import9.Dispatcher;
+  ___INITIAL_REDUCER_9:any;
+  __INITIAL_REDUCER_10:any;
+  __Reducer_11:any;
+  ___INITIAL_STATE_12:any;
+  __INITIAL_STATE_13:any;
+  __State_14:any;
+  __Store_15:any;
+  __WeatherDTOtoWeatherConverter_16:import10.WeatherDTOtoWeatherConverter;
+  __WeatherApiService_17:import11.WeatherApiService;
+  __WeatherActions_18:import12.WeatherActions;
+  constructor(parent:import13.Injector) {
     super(parent,([] as any[]),([] as any[]));
   }
-  get _RadioControlRegistry_5():import6.RadioControlRegistry {
-    if ((this.__RadioControlRegistry_5 == null)) { (this.__RadioControlRegistry_5 = new import6.RadioControlRegistry()); }
-    return this.__RadioControlRegistry_5;
+  get _RadioControlRegistry_6():import7.RadioControlRegistry {
+    if ((this.__RadioControlRegistry_6 == null)) { (this.__RadioControlRegistry_6 = new import7.RadioControlRegistry()); }
+    return this.__RadioControlRegistry_6;
   }
-  get _NgLocalization_6():import7.NgLocaleLocalization {
-    if ((this.__NgLocalization_6 == null)) { (this.__NgLocalization_6 = new import7.NgLocaleLocalization(this.parent.get(import11.LOCALE_ID))); }
-    return this.__NgLocalization_6;
+  get _NgLocalization_7():import8.NgLocaleLocalization {
+    if ((this.__NgLocalization_7 == null)) { (this.__NgLocalization_7 = new import8.NgLocaleLocalization(this.parent.get(import14.LOCALE_ID))); }
+    return this.__NgLocalization_7;
   }
-  get _WeatherDTOtoWeatherConverter_7():import8.WeatherDTOtoWeatherConverter {
-    if ((this.__WeatherDTOtoWeatherConverter_7 == null)) { (this.__WeatherDTOtoWeatherConverter_7 = new import8.WeatherDTOtoWeatherConverter()); }
-    return this.__WeatherDTOtoWeatherConverter_7;
+  get _Dispatcher_8():import9.Dispatcher {
+    if ((this.__Dispatcher_8 == null)) { (this.__Dispatcher_8 = new import9.Dispatcher()); }
+    return this.__Dispatcher_8;
   }
-  get _WeatherApiService_8():import9.WeatherApiService {
-    if ((this.__WeatherApiService_8 == null)) { (this.__WeatherApiService_8 = new import9.WeatherApiService(this._WeatherDTOtoWeatherConverter_7)); }
-    return this.__WeatherApiService_8;
+  get __INITIAL_REDUCER_9():any {
+    if ((this.___INITIAL_REDUCER_9 == null)) { (this.___INITIAL_REDUCER_9 = {weatherList: import15.WeatherListReducer}); }
+    return this.___INITIAL_REDUCER_9;
+  }
+  get _INITIAL_REDUCER_10():any {
+    if ((this.__INITIAL_REDUCER_10 == null)) { (this.__INITIAL_REDUCER_10 = import6._initialReducerFactory(this.__INITIAL_REDUCER_9)); }
+    return this.__INITIAL_REDUCER_10;
+  }
+  get _Reducer_11():any {
+    if ((this.__Reducer_11 == null)) { (this.__Reducer_11 = import6._reducerFactory(this._Dispatcher_8,this._INITIAL_REDUCER_10)); }
+    return this.__Reducer_11;
+  }
+  get __INITIAL_STATE_12():any {
+    if ((this.___INITIAL_STATE_12 == null)) { (this.___INITIAL_STATE_12 = (undefined as any)); }
+    return this.___INITIAL_STATE_12;
+  }
+  get _INITIAL_STATE_13():any {
+    if ((this.__INITIAL_STATE_13 == null)) { (this.__INITIAL_STATE_13 = import6._initialStateFactory(this.__INITIAL_STATE_12,this._INITIAL_REDUCER_10)); }
+    return this.__INITIAL_STATE_13;
+  }
+  get _State_14():any {
+    if ((this.__State_14 == null)) { (this.__State_14 = import6._stateFactory(this._INITIAL_STATE_13,this._Dispatcher_8,this._Reducer_11)); }
+    return this.__State_14;
+  }
+  get _Store_15():any {
+    if ((this.__Store_15 == null)) { (this.__Store_15 = import6._storeFactory(this._Dispatcher_8,this._Reducer_11,this._State_14)); }
+    return this.__Store_15;
+  }
+  get _WeatherDTOtoWeatherConverter_16():import10.WeatherDTOtoWeatherConverter {
+    if ((this.__WeatherDTOtoWeatherConverter_16 == null)) { (this.__WeatherDTOtoWeatherConverter_16 = new import10.WeatherDTOtoWeatherConverter()); }
+    return this.__WeatherDTOtoWeatherConverter_16;
+  }
+  get _WeatherApiService_17():import11.WeatherApiService {
+    if ((this.__WeatherApiService_17 == null)) { (this.__WeatherApiService_17 = new import11.WeatherApiService(this._WeatherDTOtoWeatherConverter_16)); }
+    return this.__WeatherApiService_17;
+  }
+  get _WeatherActions_18():import12.WeatherActions {
+    if ((this.__WeatherActions_18 == null)) { (this.__WeatherActions_18 = new import12.WeatherActions()); }
+    return this.__WeatherActions_18;
   }
   createInternal():import1.WeatherModule {
     this._InternalFormsSharedModule_0 = new import2.InternalFormsSharedModule();
     this._FormsModule_1 = new import3.FormsModule();
     this._CommonModule_2 = new import4.CommonModule();
     this._SharedModule_3 = new import5.SharedModule();
-    this._WeatherModule_4 = new import1.WeatherModule();
-    return this._WeatherModule_4;
+    this._StoreModule_4 = new import6.StoreModule();
+    this._WeatherModule_5 = new import1.WeatherModule();
+    return this._WeatherModule_5;
   }
   getInternal(token:any,notFoundResult:any):any {
     if ((token === import2.InternalFormsSharedModule)) { return this._InternalFormsSharedModule_0; }
     if ((token === import3.FormsModule)) { return this._FormsModule_1; }
     if ((token === import4.CommonModule)) { return this._CommonModule_2; }
     if ((token === import5.SharedModule)) { return this._SharedModule_3; }
-    if ((token === import1.WeatherModule)) { return this._WeatherModule_4; }
-    if ((token === import6.RadioControlRegistry)) { return this._RadioControlRegistry_5; }
-    if ((token === import7.NgLocalization)) { return this._NgLocalization_6; }
-    if ((token === import8.WeatherDTOtoWeatherConverter)) { return this._WeatherDTOtoWeatherConverter_7; }
-    if ((token === import9.WeatherApiService)) { return this._WeatherApiService_8; }
+    if ((token === import6.StoreModule)) { return this._StoreModule_4; }
+    if ((token === import1.WeatherModule)) { return this._WeatherModule_5; }
+    if ((token === import7.RadioControlRegistry)) { return this._RadioControlRegistry_6; }
+    if ((token === import8.NgLocalization)) { return this._NgLocalization_7; }
+    if ((token === import9.Dispatcher)) { return this._Dispatcher_8; }
+    if ((token === import6._INITIAL_REDUCER)) { return this.__INITIAL_REDUCER_9; }
+    if ((token === import6.INITIAL_REDUCER)) { return this._INITIAL_REDUCER_10; }
+    if ((token === import16.Reducer)) { return this._Reducer_11; }
+    if ((token === import6._INITIAL_STATE)) { return this.__INITIAL_STATE_12; }
+    if ((token === import6.INITIAL_STATE)) { return this._INITIAL_STATE_13; }
+    if ((token === import17.State)) { return this._State_14; }
+    if ((token === import18.Store)) { return this._Store_15; }
+    if ((token === import10.WeatherDTOtoWeatherConverter)) { return this._WeatherDTOtoWeatherConverter_16; }
+    if ((token === import11.WeatherApiService)) { return this._WeatherApiService_17; }
+    if ((token === import12.WeatherActions)) { return this._WeatherActions_18; }
     return notFoundResult;
   }
   destroyInternal():void {

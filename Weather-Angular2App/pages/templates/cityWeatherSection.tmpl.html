@@ -1,5 +1,4 @@
 <div class="user-weather-table">
     <city-form (addNotify)="add($event)"></city-form>
-    <!--city-weather-table [weatherList]="weatherPromise | async" (deleteNotify)="remove($event)" (selectNotify)="select($event)"></city-weather-table-->
-    <city-weather-table [weatherList]="weatherList" (deleteNotify)="remove($event)" (selectNotify)="select($event)"></city-weather-table>
+    <city-weather-table [weatherList]="weatherListObservable | async" (deleteNotify)="remove($event)" (selectNotify)="select($event)"></city-weather-table>
 </div>
