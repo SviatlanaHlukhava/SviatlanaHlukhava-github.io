@@ -9,6 +9,7 @@ import { Observable, Observer, Subscription } from 'rxjs'
 
 import { AppState } from './../reducers/AppState';
 import { WeatherActions } from './../actions/WeatherActions';
+import { LoadingActions } from './../actions/LoadingActions'
 
 @Component({
   selector: 'city-weather-section',
@@ -19,9 +20,7 @@ import { WeatherActions } from './../actions/WeatherActions';
 export class CityWeatherSectionComponent implements OnChanges, OnInit {
   weatherList: Weather[];
   weatherListObservable: Observable<Object>;
-  @Input() latitude: number;
-  @Input() longitude: number;
-  @Output() loadingNotify = new EventEmitter();
+  @Input() coordinate: Coordinate;
   $weatherObservableMap: Map <string, Subscription>;
   weatherListSubscription: Subscription;
   cityWeatherPipe: CityWeatherPipe;
@@ -30,6 +29,7 @@ export class CityWeatherSectionComponent implements OnChanges, OnInit {
 
   constructor(private changeDetectorRef: ChangeDetectorRef,
     private store: Store<AppState>, private weatherActions: WeatherActions,
+    private loadingActions: LoadingActions,
     private weatherApiService: WeatherApiService, private loggerService: LoggerService) {
 
     this.cityWeatherPipe = new CityWeatherPipe(weatherApiService);
@@ -48,28 +48,29 @@ export class CityWeatherSectionComponent implements OnChanges, OnInit {
     });
   }
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.latitude !== undefined && this.longitude !== undefined &&
-    (this.oldLatitude === undefined || this.oldLatitude !== this.latitude) ||
-    (this.oldLongitude === undefined || this.oldLongitude !== this.longitude)) {
+    if (this.coordinate.getLatitude() !== undefined && this.coordinate.getLongitude() !== undefined &&
+    (this.oldLatitude === undefined || this.oldLatitude !== this.coordinate.getLatitude()) ||
+    (this.oldLongitude === undefined || this.oldLongitude !== this.coordinate.getLongitude())) {
       this.weatherList.forEach((weather: Weather) => {
         this.$weatherObservableMap.get(weather.getCity()).unsubscribe();
       })
       this.store.dispatch(this.weatherActions.clearWeatherList());
-      this.loadingNotify.emit(true);
+      this.store.dispatch(this.loadingActions.setLoading(true));
       if (this.weatherListSubscription) {
         this.weatherListSubscription.unsubscribe();
       }
-      this.weatherListSubscription = this.weatherApiService.getWeatherList(this.latitude, this.longitude).subscribe((result: Weather) => {
+      this.weatherListSubscription = this.weatherApiService.getWeatherList(this.coordinate.getLatitude(), this.coordinate.getLongitude())
+        .subscribe((result: Weather) => {
         this.addToWeatherList(result);
       }, (error: string) => {
         this.loggerService.errorLog(error);
-        this.loadingNotify.emit(false);
+        this.store.dispatch(this.loadingActions.setLoading(false));
       }, () => {
         this.detectChanges();
-        this.loadingNotify.emit(false);
+        this.store.dispatch(this.loadingActions.setLoading(false));
       });
-      this.oldLatitude = this.latitude;
-      this.oldLongitude - this.longitude;
+      this.oldLatitude = this.coordinate.getLatitude();
+      this.oldLongitude - this.coordinate.getLongitude();
     }
   }
   add($event: string) {

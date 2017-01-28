@@ -25,24 +25,16 @@ export var Wrapper_HeaderComponent = (function () {
         this._changed = false;
         this.context = new import0.HeaderComponent();
         this._expr_0 = import1.UNINITIALIZED;
-        this._expr_1 = import1.UNINITIALIZED;
     }
     Wrapper_HeaderComponent.prototype.ngOnDetach = function (view, componentView, el) {
     };
     Wrapper_HeaderComponent.prototype.ngOnDestroy = function () {
     };
-    Wrapper_HeaderComponent.prototype.check_latitude = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_HeaderComponent.prototype.check_coordinate = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_0, currValue))) {
             this._changed = true;
-            this.context.latitude = currValue;
+            this.context.coordinate = currValue;
             this._expr_0 = currValue;
-        }
-    };
-    Wrapper_HeaderComponent.prototype.check_longitude = function (currValue, throwOnChange, forceUpdate) {
-        if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_1, currValue))) {
-            this._changed = true;
-            this.context.longitude = currValue;
-            this._expr_1 = currValue;
         }
     };
     Wrapper_HeaderComponent.prototype.ngDoCheck = function (view, el, throwOnChange) {
@@ -153,7 +145,7 @@ export var View_HeaderComponent0 = (function (_super) {
     View_HeaderComponent0.prototype.detectChangesInternal = function (throwOnChange) {
         var valUnwrapper = new import1.ValueUnwrapper();
         valUnwrapper.reset();
-        var currVal_17 = import3.inlineInterpolate(2, '\n        Current position: latitude - ', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_0, this._pipe_number_0.transform)(this.context.latitude, '1.0-2')), ', longitude - ', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_1, this._pipe_number_0.transform)(this.context.longitude, '1.0-2')), '\n        ');
+        var currVal_17 = import3.inlineInterpolate(2, '\n        Current position: latitude - ', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_0, this._pipe_number_0.transform)(this.context.coordinate.getLatitude(), '1.0-2')), ', longitude - ', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_1, this._pipe_number_0.transform)(this.context.coordinate.getLongitude(), '1.0-2')), '\n        ');
         if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_17, currVal_17))) {
             this.renderer.setText(this._text_13, currVal_17);
             this._expr_17 = currVal_17;

@@ -5,14 +5,14 @@ export var MapComponent = (function () {
     MapComponent.prototype.ngOnInit = function () {
         var mapCanvas = document.getElementById("map");
         var mapOptions = {
-            center: new google.maps.LatLng(this.latitude, this.longitude),
+            center: new google.maps.LatLng(this.coordinate.getLatitude(), this.coordinate.getLongitude()),
             zoom: 8
         };
         this.map = new google.maps.Map(mapCanvas, mapOptions);
     };
     MapComponent.prototype.ngOnChanges = function (changes) {
         if (this.map) {
-            this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
+            this.map.setCenter(new google.maps.LatLng(this.coordinate.getLatitude(), this.coordinate.getLongitude()));
         }
     };
     MapComponent.decorators = [
@@ -26,8 +26,7 @@ export var MapComponent = (function () {
     /** @nocollapse */
     MapComponent.ctorParameters = [];
     MapComponent.propDecorators = {
-        'latitude': [{ type: Input },],
-        'longitude': [{ type: Input },],
+        'coordinate': [{ type: Input },],
     };
     return MapComponent;
 }());

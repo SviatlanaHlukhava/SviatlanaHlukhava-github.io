@@ -2,24 +2,10 @@ import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
 import { Weather } from './../model/Weather';
+import { Coordinate } from './../model/Coordinate'
 
 @Injectable()
 export class WeatherActions {
-    static LOAD_WEATHER_LIST = '[Weather] Load Weather List';
-    loadWeatherList(): Action {
-        return {
-            type: WeatherActions.LOAD_WEATHER_LIST
-        };
-    }
-
-    static GET_WEATHER = '[Weather] Get Weather';
-    getWeather(city: string): Action {
-        return {
-            type: WeatherActions.GET_WEATHER,
-            payload: city
-        };
-    }
-
     static ADD_WEATHER = '[Weather] Add Weather';
     addWeather(weather: Weather): Action {
         return {
@@ -41,14 +27,6 @@ export class WeatherActions {
         return {
             type: WeatherActions.SELECT_WEATHER,
             payload: id
-        };
-    }
-
-    static UPDATE_WEATHER = '[Weather] Update Weather';
-    updateWeather(city: string): Action {
-        return {
-            type: WeatherActions.UPDATE_WEATHER,
-            payload: city
         };
     }
 

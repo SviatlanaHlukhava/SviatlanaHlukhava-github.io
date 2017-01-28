@@ -22,26 +22,17 @@ export var Wrapper_MapComponent = (function () {
         this._changes = {};
         this.context = new import0.MapComponent();
         this._expr_0 = import1.UNINITIALIZED;
-        this._expr_1 = import1.UNINITIALIZED;
     }
     Wrapper_MapComponent.prototype.ngOnDetach = function (view, componentView, el) {
     };
     Wrapper_MapComponent.prototype.ngOnDestroy = function () {
     };
-    Wrapper_MapComponent.prototype.check_latitude = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_MapComponent.prototype.check_coordinate = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_0, currValue))) {
             this._changed = true;
-            this.context.latitude = currValue;
-            this._changes['latitude'] = new import1.SimpleChange(this._expr_0, currValue);
+            this.context.coordinate = currValue;
+            this._changes['coordinate'] = new import1.SimpleChange(this._expr_0, currValue);
             this._expr_0 = currValue;
-        }
-    };
-    Wrapper_MapComponent.prototype.check_longitude = function (currValue, throwOnChange, forceUpdate) {
-        if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_1, currValue))) {
-            this._changed = true;
-            this.context.longitude = currValue;
-            this._changes['longitude'] = new import1.SimpleChange(this._expr_1, currValue);
-            this._expr_1 = currValue;
         }
     };
     Wrapper_MapComponent.prototype.ngDoCheck = function (view, el, throwOnChange) {

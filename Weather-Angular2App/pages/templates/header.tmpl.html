@@ -4,7 +4,7 @@
         <div class="back"><a href="./../index.html">Back</a></div>
     </div>
     <div class="position">
-        Current position: latitude - {{latitude | number : '1.0-2'}}, longitude - {{longitude | number : '1.0-2'}}
+        Current position: latitude - {{coordinate.getLatitude() | number : '1.0-2'}}, longitude - {{coordinate.getLongitude() | number : '1.0-2'}}
         <br/>
         Current date: {{currentDate | date: 'dd/MM/yyyy HH:mm:ss'}}
     </div>

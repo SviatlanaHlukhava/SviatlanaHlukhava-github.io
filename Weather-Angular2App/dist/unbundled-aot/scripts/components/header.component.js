@@ -14,8 +14,7 @@ export var HeaderComponent = (function () {
     /** @nocollapse */
     HeaderComponent.ctorParameters = [];
     HeaderComponent.propDecorators = {
-        'latitude': [{ type: Input },],
-        'longitude': [{ type: Input },],
+        'coordinate': [{ type: Input },],
     };
     return HeaderComponent;
 }());

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared.module';
 import { FormsModule } from '@angular/forms';
-import { StoreModule } from '@ngrx/store';
 import { CityWeatherTableComponent } from './../components/cityWeatherTable.component';
 import { CityWeatherSectionComponent } from './../components/cityWeatherSection.component';
 import { CityWeatherComponent } from './../components/cityWeather.component';
@@ -15,13 +14,12 @@ import { CityFormComponent } from './../components/cityForm.component';
 import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter';
 import { WeatherApiService } from './../services/WeatherAPI';
 import { WeatherActions } from './../actions/WeatherActions';
-import { WeatherListReducer } from './../reducers/WeatherListReducer';
 export var WeatherModule = (function () {
     function WeatherModule() {
     }
     WeatherModule.decorators = [
         { type: NgModule, args: [{
-                    imports: [FormsModule, SharedModule, StoreModule.provideStore({ weatherList: WeatherListReducer })],
+                    imports: [FormsModule, SharedModule],
                     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent,
                         KelvinToCelsiusPipe, CityWeatherPipe, WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent],
                     exports: [CityWeatherSectionComponent],

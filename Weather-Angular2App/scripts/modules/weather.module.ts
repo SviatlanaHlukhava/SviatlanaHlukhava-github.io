@@ -15,10 +15,9 @@ import { CityFormComponent }   from './../components/cityForm.component';
 import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter'
 import { WeatherApiService } from './../services/WeatherAPI'
 import { WeatherActions } from './../actions/WeatherActions'
-import { WeatherListReducer } from './../reducers/WeatherListReducer'
 
 @NgModule({
-    imports:      [FormsModule, SharedModule, StoreModule.provideStore({weatherList: WeatherListReducer})],
+    imports:      [FormsModule, SharedModule],
     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent,
       KelvinToCelsiusPipe, CityWeatherPipe,  WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent],
     exports: [CityWeatherSectionComponent],

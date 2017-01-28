@@ -1,5 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
+import { Coordinate }  from './../model/Coordinate'
+
 @Component({
   selector: 'header',
   templateUrl: './../../pages/templates/header.tmpl.html',
@@ -7,8 +9,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  @Input() latitude: number;
-  @Input() longitude: number;
+  @Input() coordinate: Coordinate;
   currentDate: Date;
   constructor() {
     this.currentDate = new Date();

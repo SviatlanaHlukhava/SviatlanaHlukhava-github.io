@@ -19,32 +19,22 @@ export class Wrapper_MapComponent {
   /*private*/ _changed:boolean;
   /*private*/ _changes:{[key: string]:any};
   /*private*/ _expr_0:any;
-  /*private*/ _expr_1:any;
   constructor() {
     this._changed = false;
     this._changes = {};
     this.context = new import0.MapComponent();
     this._expr_0 = import1.UNINITIALIZED;
-    this._expr_1 = import1.UNINITIALIZED;
   }
   ngOnDetach(view:import2.AppView<any>,componentView:import2.AppView<any>,el:any):void {
   }
   ngOnDestroy():void {
   }
-  check_latitude(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
+  check_coordinate(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
     if ((forceUpdate || import3.checkBinding(throwOnChange,this._expr_0,currValue))) {
       this._changed = true;
-      this.context.latitude = currValue;
-      this._changes['latitude'] = new import1.SimpleChange(this._expr_0,currValue);
+      this.context.coordinate = currValue;
+      this._changes['coordinate'] = new import1.SimpleChange(this._expr_0,currValue);
       this._expr_0 = currValue;
-    }
-  }
-  check_longitude(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
-    if ((forceUpdate || import3.checkBinding(throwOnChange,this._expr_1,currValue))) {
-      this._changed = true;
-      this.context.longitude = currValue;
-      this._changes['longitude'] = new import1.SimpleChange(this._expr_1,currValue);
-      this._expr_1 = currValue;
     }
   }
   ngDoCheck(view:import2.AppView<any>,el:any,throwOnChange:boolean):boolean {

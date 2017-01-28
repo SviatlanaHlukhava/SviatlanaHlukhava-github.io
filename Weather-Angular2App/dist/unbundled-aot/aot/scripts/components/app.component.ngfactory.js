@@ -18,25 +18,28 @@ import * as import6 from '@angular/core/src/change_detection/change_detection';
 import * as import7 from '@angular/core/src/linker/component_factory';
 import * as import8 from '@angular/core/src/zone/ng_zone';
 import * as import9 from '../../../scripts/services/Profiler';
-import * as import10 from '../../../scripts/services/Location';
-import * as import11 from '../../../scripts/services/Logger';
-import * as import12 from '../../../scripts/components/loader.component';
-import * as import13 from './loader.component.ngfactory';
-import * as import14 from '../../../scripts/components/header.component';
-import * as import15 from './header.component.ngfactory';
-import * as import16 from '../../../scripts/components/cityWeatherSection.component';
-import * as import17 from './cityWeatherSection.component.ngfactory';
-import * as import18 from '../../../scripts/components/map.component';
-import * as import19 from './map.component.ngfactory';
-import * as import20 from '../../../scripts/components/footer.component';
-import * as import21 from './footer.component.ngfactory';
-import * as import22 from '@ngrx/store/src/store';
-import * as import23 from '../../../scripts/actions/WeatherActions';
-import * as import24 from '../../../scripts/services/WeatherAPI';
+import * as import10 from '@ngrx/store/src/store';
+import * as import11 from '../../../scripts/actions/CoordinateActions';
+import * as import12 from '../../../scripts/actions/LoadingActions';
+import * as import13 from '../../../scripts/services/Location';
+import * as import14 from '../../../scripts/services/Logger';
+import * as import15 from '../../../scripts/components/loader.component';
+import * as import16 from './loader.component.ngfactory';
+import * as import17 from '../../../scripts/components/header.component';
+import * as import18 from './header.component.ngfactory';
+import * as import19 from '../../../scripts/components/cityWeatherSection.component';
+import * as import20 from './cityWeatherSection.component.ngfactory';
+import * as import21 from '../../../scripts/components/map.component';
+import * as import22 from './map.component.ngfactory';
+import * as import23 from '../../../scripts/components/footer.component';
+import * as import24 from './footer.component.ngfactory';
+import * as import25 from '@angular/common/src/pipes/async_pipe';
+import * as import26 from '../../../scripts/actions/WeatherActions';
+import * as import27 from '../../../scripts/services/WeatherAPI';
 export var Wrapper_AppComponent = (function () {
-    function Wrapper_AppComponent(p0, p1, p2, p3, p4) {
+    function Wrapper_AppComponent(p0, p1, p2, p3, p4, p5, p6, p7) {
         this._changed = false;
-        this.context = new import0.AppComponent(p0, p1, p2, p3, p4);
+        this.context = new import0.AppComponent(p0, p1, p2, p3, p4, p5, p6, p7);
     }
     Wrapper_AppComponent.prototype.ngOnDetach = function (view, componentView, el) {
     };
@@ -72,7 +75,7 @@ var View_AppComponent_Host0 = (function (_super) {
     View_AppComponent_Host0.prototype.createInternal = function (rootSelector) {
         this._el_0 = import3.selectOrCreateRenderHostElement(this.renderer, 'app', import3.EMPTY_INLINE_ARRAY, rootSelector, null);
         this.compView_0 = new View_AppComponent0(this.viewUtils, this, 0, this._el_0);
-        this._AppComponent_0_3 = new Wrapper_AppComponent(this.injectorGet(import8.NgZone, this.parentIndex), this.compView_0.ref, this.injectorGet(import9.Profiler, this.parentIndex), this.injectorGet(import10.LocationService, this.parentIndex), this.injectorGet(import11.LoggerService, this.parentIndex));
+        this._AppComponent_0_3 = new Wrapper_AppComponent(this.injectorGet(import8.NgZone, this.parentIndex), this.compView_0.ref, this.injectorGet(import9.Profiler, this.parentIndex), this.injectorGet(import10.Store, this.parentIndex), this.injectorGet(import11.CoordinateActions, this.parentIndex), this.injectorGet(import12.LoadingActions, this.parentIndex), this.injectorGet(import13.LocationService, this.parentIndex), this.injectorGet(import14.LoggerService, this.parentIndex));
         this.compView_0.create(this._AppComponent_0_3.context);
         this.init(this._el_0, (this.renderer.directRenderer ? null : [this._el_0]), null);
         return new import7.ComponentRef_(0, this, this._el_0, this._AppComponent_0_3.context);
@@ -108,31 +111,33 @@ export var View_AppComponent0 = (function (_super) {
     View_AppComponent0.prototype.createInternal = function (rootSelector) {
         var parentRenderNode = this.renderer.createViewRoot(this.parentElement);
         this._el_0 = import3.createRenderElement(this.renderer, parentRenderNode, 'loader', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_0 = new import13.View_LoaderComponent0(this.viewUtils, this, 0, this._el_0);
-        this._LoaderComponent_0_3 = new import13.Wrapper_LoaderComponent();
+        this.compView_0 = new import16.View_LoaderComponent0(this.viewUtils, this, 0, this._el_0);
+        this._LoaderComponent_0_3 = new import16.Wrapper_LoaderComponent();
         this.compView_0.create(this._LoaderComponent_0_3.context);
         this._text_1 = this.renderer.createText(parentRenderNode, '\n    ', null);
         this._el_2 = import3.createRenderElement(this.renderer, parentRenderNode, 'header', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_2 = new import15.View_HeaderComponent0(this.viewUtils, this, 2, this._el_2);
-        this._HeaderComponent_2_3 = new import15.Wrapper_HeaderComponent();
+        this.compView_2 = new import18.View_HeaderComponent0(this.viewUtils, this, 2, this._el_2);
+        this._HeaderComponent_2_3 = new import18.Wrapper_HeaderComponent();
         this.compView_2.create(this._HeaderComponent_2_3.context);
         this._text_3 = this.renderer.createText(parentRenderNode, '\n    ', null);
         this._el_4 = import3.createRenderElement(this.renderer, parentRenderNode, 'city-weather-section', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_4 = new import17.View_CityWeatherSectionComponent0(this.viewUtils, this, 4, this._el_4);
-        this._CityWeatherSectionComponent_4_3 = new import17.Wrapper_CityWeatherSectionComponent(this.compView_4.ref, this.parentView.injectorGet(import22.Store, this.parentIndex), this.parentView.injectorGet(import23.WeatherActions, this.parentIndex), this.parentView.injectorGet(import24.WeatherApiService, this.parentIndex), this.parentView.injectorGet(import11.LoggerService, this.parentIndex));
+        this.compView_4 = new import20.View_CityWeatherSectionComponent0(this.viewUtils, this, 4, this._el_4);
+        this._CityWeatherSectionComponent_4_3 = new import20.Wrapper_CityWeatherSectionComponent(this.compView_4.ref, this.parentView.injectorGet(import10.Store, this.parentIndex), this.parentView.injectorGet(import26.WeatherActions, this.parentIndex), this.parentView.injectorGet(import12.LoadingActions, this.parentIndex), this.parentView.injectorGet(import27.WeatherApiService, this.parentIndex), this.parentView.injectorGet(import14.LoggerService, this.parentIndex));
         this.compView_4.create(this._CityWeatherSectionComponent_4_3.context);
         this._text_5 = this.renderer.createText(parentRenderNode, '\n    ', null);
         this._el_6 = import3.createRenderElement(this.renderer, parentRenderNode, 'map', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_6 = new import19.View_MapComponent0(this.viewUtils, this, 6, this._el_6);
-        this._MapComponent_6_3 = new import19.Wrapper_MapComponent();
+        this.compView_6 = new import22.View_MapComponent0(this.viewUtils, this, 6, this._el_6);
+        this._MapComponent_6_3 = new import22.Wrapper_MapComponent();
         this.compView_6.create(this._MapComponent_6_3.context);
         this._text_7 = this.renderer.createText(parentRenderNode, '\n    ', null);
         this._el_8 = import3.createRenderElement(this.renderer, parentRenderNode, 'footer', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_8 = new import21.View_FooterComponent0(this.viewUtils, this, 8, this._el_8);
-        this._FooterComponent_8_3 = new import21.Wrapper_FooterComponent();
+        this.compView_8 = new import24.View_FooterComponent0(this.viewUtils, this, 8, this._el_8);
+        this._FooterComponent_8_3 = new import24.Wrapper_FooterComponent();
         this.compView_8.create(this._FooterComponent_8_3.context);
-        var disposable_0 = import3.subscribeToRenderElement(this, this._el_4, new import3.InlineArray2(2, 'loadingNotify', null), this.eventHandler(this.handleEvent_4));
-        this._CityWeatherSectionComponent_4_3.subscribe(this, this.eventHandler(this.handleEvent_4), true);
+        this._pipe_async_0 = new import25.AsyncPipe(this.ref);
+        this._pipe_async_1 = new import25.AsyncPipe(this.ref);
+        this._pipe_async_2 = new import25.AsyncPipe(this.ref);
+        this._pipe_async_3 = new import25.AsyncPipe(this.ref);
         this.init(null, (this.renderer.directRenderer ? null : [
             this._el_0,
             this._text_1,
@@ -143,51 +148,50 @@ export var View_AppComponent0 = (function (_super) {
             this._el_6,
             this._text_7,
             this._el_8
-        ]), [disposable_0]);
+        ]), null);
         return null;
     };
     View_AppComponent0.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import12.LoaderComponent) && (0 === requestNodeIndex))) {
+        if (((token === import15.LoaderComponent) && (0 === requestNodeIndex))) {
             return this._LoaderComponent_0_3.context;
         }
-        if (((token === import14.HeaderComponent) && (2 === requestNodeIndex))) {
+        if (((token === import17.HeaderComponent) && (2 === requestNodeIndex))) {
             return this._HeaderComponent_2_3.context;
         }
-        if (((token === import16.CityWeatherSectionComponent) && (4 === requestNodeIndex))) {
+        if (((token === import19.CityWeatherSectionComponent) && (4 === requestNodeIndex))) {
             return this._CityWeatherSectionComponent_4_3.context;
         }
-        if (((token === import18.MapComponent) && (6 === requestNodeIndex))) {
+        if (((token === import21.MapComponent) && (6 === requestNodeIndex))) {
             return this._MapComponent_6_3.context;
         }
-        if (((token === import20.FooterComponent) && (8 === requestNodeIndex))) {
+        if (((token === import23.FooterComponent) && (8 === requestNodeIndex))) {
             return this._FooterComponent_8_3.context;
         }
         return notFoundResult;
     };
     View_AppComponent0.prototype.detectChangesInternal = function (throwOnChange) {
-        var currVal_0_0_0 = this.context.isLoading;
-        this._LoaderComponent_0_3.check_isLoading(currVal_0_0_0, throwOnChange, false);
+        var valUnwrapper = new import6.ValueUnwrapper();
+        valUnwrapper.reset();
+        var currVal_0_0_0 = valUnwrapper.unwrap(this._pipe_async_0.transform(this.context.isLoading));
+        this._LoaderComponent_0_3.check_isLoading(currVal_0_0_0, throwOnChange, valUnwrapper.hasWrappedValue);
         if (this._LoaderComponent_0_3.ngDoCheck(this, this._el_0, throwOnChange)) {
             this.compView_0.markAsCheckOnce();
         }
-        var currVal_2_0_0 = this.context.coordinate.getLatitude();
-        this._HeaderComponent_2_3.check_latitude(currVal_2_0_0, throwOnChange, false);
-        var currVal_2_0_1 = this.context.coordinate.getLongitude();
-        this._HeaderComponent_2_3.check_longitude(currVal_2_0_1, throwOnChange, false);
+        valUnwrapper.reset();
+        var currVal_2_0_0 = valUnwrapper.unwrap(this._pipe_async_1.transform(this.context.coordinate));
+        this._HeaderComponent_2_3.check_coordinate(currVal_2_0_0, throwOnChange, valUnwrapper.hasWrappedValue);
         if (this._HeaderComponent_2_3.ngDoCheck(this, this._el_2, throwOnChange)) {
             this.compView_2.markAsCheckOnce();
         }
-        var currVal_4_0_0 = this.context.coordinate.getLatitude();
-        this._CityWeatherSectionComponent_4_3.check_latitude(currVal_4_0_0, throwOnChange, false);
-        var currVal_4_0_1 = this.context.coordinate.getLongitude();
-        this._CityWeatherSectionComponent_4_3.check_longitude(currVal_4_0_1, throwOnChange, false);
+        valUnwrapper.reset();
+        var currVal_4_0_0 = valUnwrapper.unwrap(this._pipe_async_2.transform(this.context.coordinate));
+        this._CityWeatherSectionComponent_4_3.check_coordinate(currVal_4_0_0, throwOnChange, valUnwrapper.hasWrappedValue);
         if (this._CityWeatherSectionComponent_4_3.ngDoCheck(this, this._el_4, throwOnChange)) {
             this.compView_4.markAsCheckOnce();
         }
-        var currVal_6_0_0 = this.context.coordinate.getLatitude();
-        this._MapComponent_6_3.check_latitude(currVal_6_0_0, throwOnChange, false);
-        var currVal_6_0_1 = this.context.coordinate.getLongitude();
-        this._MapComponent_6_3.check_longitude(currVal_6_0_1, throwOnChange, false);
+        valUnwrapper.reset();
+        var currVal_6_0_0 = valUnwrapper.unwrap(this._pipe_async_3.transform(this.context.coordinate));
+        this._MapComponent_6_3.check_coordinate(currVal_6_0_0, throwOnChange, valUnwrapper.hasWrappedValue);
         if (this._MapComponent_6_3.ngDoCheck(this, this._el_6, throwOnChange)) {
             this.compView_6.markAsCheckOnce();
         }
@@ -206,16 +210,10 @@ export var View_AppComponent0 = (function (_super) {
         this.compView_4.destroy();
         this.compView_6.destroy();
         this.compView_8.destroy();
-        this._CityWeatherSectionComponent_4_3.ngOnDestroy();
-    };
-    View_AppComponent0.prototype.handleEvent_4 = function (eventName, $event) {
-        this.markPathToRootAsCheckOnce();
-        var result = true;
-        if ((eventName == 'loadingNotify')) {
-            var pd_sub_0 = (this.context.isLoadingChange($event) !== false);
-            result = (pd_sub_0 && result);
-        }
-        return result;
+        this._pipe_async_0.ngOnDestroy();
+        this._pipe_async_1.ngOnDestroy();
+        this._pipe_async_2.ngOnDestroy();
+        this._pipe_async_3.ngOnDestroy();
     };
     return View_AppComponent0;
 }(import1.AppView));

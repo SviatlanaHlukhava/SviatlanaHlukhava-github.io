@@ -1,9 +1,10 @@
-import '@ngrx/core/add/operator/select';
-import { compose } from '@ngrx/core/compose';
-import { combineReducers } from '@ngrx/store';
+import { select } from '@ngrx/core';
 
-import * as WeatherReducer from './WeatherListReducer';
+import  * as WeatherReducer from './WeatherListReducer';
+import { Coordinate } from './../model/Coordinate';
 
 export interface AppState {
+    coordinate: Coordinate,
+    loading: boolean,
     weatherList: WeatherReducer.WeatherListState
 };

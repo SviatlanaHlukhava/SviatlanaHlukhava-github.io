@@ -1,18 +1,19 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CityWeatherPipe } from './../pipes/cityWeather.pipe';
 import { WeatherApiService } from './../services/WeatherAPI';
 import { LoggerService } from './../services/Logger';
 import { Observable } from 'rxjs';
 import { WeatherActions } from './../actions/WeatherActions';
+import { LoadingActions } from './../actions/LoadingActions';
 export var CityWeatherSectionComponent = (function () {
-    function CityWeatherSectionComponent(changeDetectorRef, store, weatherActions, weatherApiService, loggerService) {
+    function CityWeatherSectionComponent(changeDetectorRef, store, weatherActions, loadingActions, weatherApiService, loggerService) {
         this.changeDetectorRef = changeDetectorRef;
         this.store = store;
         this.weatherActions = weatherActions;
+        this.loadingActions = loadingActions;
         this.weatherApiService = weatherApiService;
         this.loggerService = loggerService;
-        this.loadingNotify = new EventEmitter();
         this.cityWeatherPipe = new CityWeatherPipe(weatherApiService);
         this.$weatherObservableMap = new Map();
         this.weatherList = [];
@@ -31,28 +32,29 @@ export var CityWeatherSectionComponent = (function () {
     };
     CityWeatherSectionComponent.prototype.ngOnChanges = function (changes) {
         var _this = this;
-        if (this.latitude !== undefined && this.longitude !== undefined &&
-            (this.oldLatitude === undefined || this.oldLatitude !== this.latitude) ||
-            (this.oldLongitude === undefined || this.oldLongitude !== this.longitude)) {
+        if (this.coordinate.getLatitude() !== undefined && this.coordinate.getLongitude() !== undefined &&
+            (this.oldLatitude === undefined || this.oldLatitude !== this.coordinate.getLatitude()) ||
+            (this.oldLongitude === undefined || this.oldLongitude !== this.coordinate.getLongitude())) {
             this.weatherList.forEach(function (weather) {
                 _this.$weatherObservableMap.get(weather.getCity()).unsubscribe();
             });
             this.store.dispatch(this.weatherActions.clearWeatherList());
-            this.loadingNotify.emit(true);
+            this.store.dispatch(this.loadingActions.setLoading(true));
             if (this.weatherListSubscription) {
                 this.weatherListSubscription.unsubscribe();
             }
-            this.weatherListSubscription = this.weatherApiService.getWeatherList(this.latitude, this.longitude).subscribe(function (result) {
+            this.weatherListSubscription = this.weatherApiService.getWeatherList(this.coordinate.getLatitude(), this.coordinate.getLongitude())
+                .subscribe(function (result) {
                 _this.addToWeatherList(result);
             }, function (error) {
                 _this.loggerService.errorLog(error);
-                _this.loadingNotify.emit(false);
+                _this.store.dispatch(_this.loadingActions.setLoading(false));
             }, function () {
                 _this.detectChanges();
-                _this.loadingNotify.emit(false);
+                _this.store.dispatch(_this.loadingActions.setLoading(false));
             });
-            this.oldLatitude = this.latitude;
-            this.oldLongitude - this.longitude;
+            this.oldLatitude = this.coordinate.getLatitude();
+            this.oldLongitude - this.coordinate.getLongitude();
         }
     };
     CityWeatherSectionComponent.prototype.add = function ($event) {
@@ -104,13 +106,12 @@ export var CityWeatherSectionComponent = (function () {
         { type: ChangeDetectorRef, },
         { type: Store, },
         { type: WeatherActions, },
+        { type: LoadingActions, },
         { type: WeatherApiService, },
         { type: LoggerService, },
     ];
     CityWeatherSectionComponent.propDecorators = {
-        'latitude': [{ type: Input },],
-        'longitude': [{ type: Input },],
-        'loadingNotify': [{ type: Output },],
+        'coordinate': [{ type: Input },],
     };
     return CityWeatherSectionComponent;
 }());
