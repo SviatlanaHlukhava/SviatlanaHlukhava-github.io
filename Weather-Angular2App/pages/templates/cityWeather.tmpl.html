@@ -1,12 +1,12 @@
 <td>{{weather.getCity() + (weather.getSelected() ? ' *' : '')}}</td>
-<td>{{weather.getCoordinate().getLatitude() | number : '1.0-3'}}</td>
-<td>{{weather.getCoordinate().getLongitude() | number : '1.0-3'}}</td>
-<td><weather-icon [description]="weather.getDescription()"></weather-icon></td>
-<td>{{weather.getMainParams().getTemperature() | sgKelvinToCelsius : 1 }}</td>
-<td>{{weather.getMainParams().getHumidity()}}</td>
-<td>{{weather.getMainParams().getPressure()}}</td>
-<td><wind-section [wind]="weather.getWind()"></wind-section></td>
-<td>{{weather.getCloud().getAll()}}</td>
+<td *ngIf="!tableParameters || (tableParameters && tableParameters.getShowCoordinate())">{{weather.getCoordinate().getLatitude() | number : '1.0-' + (tableParameters ? tableParameters.getPrecision() : 3)}}</td>
+<td *ngIf="!tableParameters || (tableParameters && tableParameters.getShowCoordinate())">{{weather.getCoordinate().getLongitude() | number : '1.0-' + (tableParameters ? tableParameters.getPrecision() : 3)}}</td>
+<td *ngIf="!tableParameters || (tableParameters && tableParameters.getSelectedOptions() && tableParameters.getSelectedOptions().indexOf('Overall conditions') != -1)"><weather-icon [description]="weather.getDescription()"></weather-icon></td>
+<td *ngIf="!tableParameters || (tableParameters && tableParameters.getSelectedOptions() && tableParameters.getSelectedOptions().indexOf('Temperature') != -1)">{{weather.getMainParams().getTemperature() | sgKelvinToCelsius : 1 }}</td>
+<td *ngIf="!tableParameters || (tableParameters && tableParameters.getSelectedOptions() && tableParameters.getSelectedOptions().indexOf('Humidity') != -1)">{{weather.getMainParams().getHumidity()}}</td>
+<td *ngIf="!tableParameters || (tableParameters && tableParameters.getSelectedOptions() && tableParameters.getSelectedOptions().indexOf('Pressure') != -1)">{{weather.getMainParams().getPressure()}}</td>
+<td *ngIf="!tableParameters || (tableParameters && tableParameters.getSelectedOptions() && tableParameters.getSelectedOptions().indexOf('Wind') != -1)"><wind-section [wind]="weather.getWind()"></wind-section></td>
+<td *ngIf="!tableParameters || (tableParameters && tableParameters.getSelectedOptions() && tableParameters.getSelectedOptions().indexOf('Clouds') != -1)">{{weather.getCloud().getAll()}}</td>
 <td>
     <button class="table-btn" (click)="remove()">Delete</button>
     <button class="table-btn" (click)="select()">{{weather.getSelected() ? 'Unselect' : 'Select'}}</button>

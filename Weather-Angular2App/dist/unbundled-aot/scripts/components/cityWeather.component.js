@@ -22,6 +22,7 @@ export var CityWeatherComponent = (function () {
     CityWeatherComponent.ctorParameters = [];
     CityWeatherComponent.propDecorators = {
         'weather': [{ type: Input },],
+        'tableParameters': [{ type: Input },],
         'index': [{ type: Input },],
         'deleteNotify': [{ type: Output },],
         'selectNotify': [{ type: Output },],

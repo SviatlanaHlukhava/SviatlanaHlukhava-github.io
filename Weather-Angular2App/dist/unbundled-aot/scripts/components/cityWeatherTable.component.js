@@ -8,6 +8,7 @@ export var CityWeatherTableComponent = (function () {
         this.deleteNotify.emit($event);
     };
     CityWeatherTableComponent.prototype.select = function ($event) {
+        console.log(this.tableParameters);
         this.selectNotify.emit($event);
     };
     CityWeatherTableComponent.decorators = [
@@ -22,6 +23,7 @@ export var CityWeatherTableComponent = (function () {
     CityWeatherTableComponent.ctorParameters = [];
     CityWeatherTableComponent.propDecorators = {
         'weatherList': [{ type: Input },],
+        'tableParameters': [{ type: Input },],
         'deleteNotify': [{ type: Output },],
         'selectNotify': [{ type: Output },],
     };

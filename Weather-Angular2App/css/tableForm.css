@@ -1,0 +1,16 @@
+.table-form {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: lightsteelblue;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.form-row {
+    display: table-row;
+    margin-top: 10px;
+}
+.form-cell {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 10px;
+}

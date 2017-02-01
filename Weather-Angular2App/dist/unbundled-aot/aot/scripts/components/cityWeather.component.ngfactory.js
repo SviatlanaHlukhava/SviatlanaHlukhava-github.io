@@ -17,19 +17,24 @@ import * as import5 from '@angular/core/src/metadata/view';
 import * as import6 from '@angular/core/src/linker/view_type';
 import * as import7 from '@angular/core/src/linker/component_factory';
 import * as import8 from '../../css/weatherTable.css.shim';
-import * as import9 from '../../../scripts/components/weatherIcon.component';
-import * as import10 from './weatherIcon.component.ngfactory';
-import * as import11 from '../../../scripts/components/windSection.component';
-import * as import12 from './windSection.component.ngfactory';
-import * as import13 from '@angular/common/src/pipes/number_pipe';
-import * as import14 from '../../../scripts/pipes/kelvinToCelsius.pipe';
-import * as import15 from '@angular/core/src/i18n/tokens';
+import * as import9 from '@angular/core/src/linker/view_container';
+import * as import10 from '../../node_modules/@angular/common/src/directives/ng_if.ngfactory';
+import * as import11 from '@angular/common/src/pipes/number_pipe';
+import * as import12 from '../../../scripts/pipes/kelvinToCelsius.pipe';
+import * as import13 from '@angular/core/src/linker/template_ref';
+import * as import14 from '@angular/core/src/i18n/tokens';
+import * as import15 from '@angular/common/src/directives/ng_if';
+import * as import16 from '../../../scripts/components/weatherIcon.component';
+import * as import17 from './weatherIcon.component.ngfactory';
+import * as import18 from '../../../scripts/components/windSection.component';
+import * as import19 from './windSection.component.ngfactory';
 export var Wrapper_CityWeatherComponent = (function () {
     function Wrapper_CityWeatherComponent() {
         this._changed = false;
         this.context = new import0.CityWeatherComponent();
         this._expr_0 = import1.UNINITIALIZED;
         this._expr_1 = import1.UNINITIALIZED;
+        this._expr_2 = import1.UNINITIALIZED;
     }
     Wrapper_CityWeatherComponent.prototype.ngOnDetach = function (view, componentView, el) {
     };
@@ -44,11 +49,18 @@ export var Wrapper_CityWeatherComponent = (function () {
             this._expr_0 = currValue;
         }
     };
-    Wrapper_CityWeatherComponent.prototype.check_index = function (currValue, throwOnChange, forceUpdate) {
+    Wrapper_CityWeatherComponent.prototype.check_tableParameters = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_1, currValue))) {
             this._changed = true;
-            this.context.index = currValue;
+            this.context.tableParameters = currValue;
             this._expr_1 = currValue;
+        }
+    };
+    Wrapper_CityWeatherComponent.prototype.check_index = function (currValue, throwOnChange, forceUpdate) {
+        if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_2, currValue))) {
+            this._changed = true;
+            this.context.index = currValue;
+            this._expr_2 = currValue;
         }
     };
     Wrapper_CityWeatherComponent.prototype.ngDoCheck = function (view, el, throwOnChange) {
@@ -115,101 +127,94 @@ export var View_CityWeatherComponent0 = (function (_super) {
     __extends(View_CityWeatherComponent0, _super);
     function View_CityWeatherComponent0(viewUtils, parentView, parentIndex, parentElement) {
         _super.call(this, View_CityWeatherComponent0, renderType_CityWeatherComponent, import6.ViewType.COMPONENT, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckOnce);
-        this._expr_39 = import1.UNINITIALIZED;
-        this._expr_40 = import1.UNINITIALIZED;
-        this._expr_43 = import1.UNINITIALIZED;
-        this._expr_45 = import1.UNINITIALIZED;
-        this._expr_48 = import1.UNINITIALIZED;
-        this._expr_49 = import1.UNINITIALIZED;
-        this._expr_50 = import1.UNINITIALIZED;
         this._expr_51 = import1.UNINITIALIZED;
+        this._expr_54 = import1.UNINITIALIZED;
     }
     View_CityWeatherComponent0.prototype.createInternal = function (rootSelector) {
         var parentRenderNode = this.renderer.createViewRoot(this.parentElement);
         this._el_0 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
         this._text_1 = this.renderer.createText(this._el_0, '', null);
         this._text_2 = this.renderer.createText(parentRenderNode, '\n', null);
-        this._el_3 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
-        this._text_4 = this.renderer.createText(this._el_3, '', null);
-        this._text_5 = this.renderer.createText(parentRenderNode, '\n', null);
-        this._el_6 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
-        this._text_7 = this.renderer.createText(this._el_6, '', null);
+        this._anchor_3 = this.renderer.createTemplateAnchor(parentRenderNode, null);
+        this._vc_3 = new import9.ViewContainer(3, null, this, this._anchor_3);
+        this._TemplateRef_3_5 = new import13.TemplateRef_(this, 3, this._anchor_3);
+        this._NgIf_3_6 = new import10.Wrapper_NgIf(this._vc_3.vcRef, this._TemplateRef_3_5);
+        this._text_4 = this.renderer.createText(parentRenderNode, '\n', null);
+        this._anchor_5 = this.renderer.createTemplateAnchor(parentRenderNode, null);
+        this._vc_5 = new import9.ViewContainer(5, null, this, this._anchor_5);
+        this._TemplateRef_5_5 = new import13.TemplateRef_(this, 5, this._anchor_5);
+        this._NgIf_5_6 = new import10.Wrapper_NgIf(this._vc_5.vcRef, this._TemplateRef_5_5);
+        this._text_6 = this.renderer.createText(parentRenderNode, '\n', null);
+        this._anchor_7 = this.renderer.createTemplateAnchor(parentRenderNode, null);
+        this._vc_7 = new import9.ViewContainer(7, null, this, this._anchor_7);
+        this._TemplateRef_7_5 = new import13.TemplateRef_(this, 7, this._anchor_7);
+        this._NgIf_7_6 = new import10.Wrapper_NgIf(this._vc_7.vcRef, this._TemplateRef_7_5);
         this._text_8 = this.renderer.createText(parentRenderNode, '\n', null);
-        this._el_9 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
-        this._el_10 = import3.createRenderElement(this.renderer, this._el_9, 'weather-icon', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_10 = new import10.View_WeatherIconComponent0(this.viewUtils, this, 10, this._el_10);
-        this._WeatherIconComponent_10_3 = new import10.Wrapper_WeatherIconComponent();
-        this.compView_10.create(this._WeatherIconComponent_10_3.context);
-        this._text_11 = this.renderer.createText(parentRenderNode, '\n', null);
-        this._el_12 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
-        this._text_13 = this.renderer.createText(this._el_12, '', null);
+        this._anchor_9 = this.renderer.createTemplateAnchor(parentRenderNode, null);
+        this._vc_9 = new import9.ViewContainer(9, null, this, this._anchor_9);
+        this._TemplateRef_9_5 = new import13.TemplateRef_(this, 9, this._anchor_9);
+        this._NgIf_9_6 = new import10.Wrapper_NgIf(this._vc_9.vcRef, this._TemplateRef_9_5);
+        this._text_10 = this.renderer.createText(parentRenderNode, '\n', null);
+        this._anchor_11 = this.renderer.createTemplateAnchor(parentRenderNode, null);
+        this._vc_11 = new import9.ViewContainer(11, null, this, this._anchor_11);
+        this._TemplateRef_11_5 = new import13.TemplateRef_(this, 11, this._anchor_11);
+        this._NgIf_11_6 = new import10.Wrapper_NgIf(this._vc_11.vcRef, this._TemplateRef_11_5);
+        this._text_12 = this.renderer.createText(parentRenderNode, '\n', null);
+        this._anchor_13 = this.renderer.createTemplateAnchor(parentRenderNode, null);
+        this._vc_13 = new import9.ViewContainer(13, null, this, this._anchor_13);
+        this._TemplateRef_13_5 = new import13.TemplateRef_(this, 13, this._anchor_13);
+        this._NgIf_13_6 = new import10.Wrapper_NgIf(this._vc_13.vcRef, this._TemplateRef_13_5);
         this._text_14 = this.renderer.createText(parentRenderNode, '\n', null);
-        this._el_15 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
-        this._text_16 = this.renderer.createText(this._el_15, '', null);
-        this._text_17 = this.renderer.createText(parentRenderNode, '\n', null);
-        this._el_18 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
-        this._text_19 = this.renderer.createText(this._el_18, '', null);
-        this._text_20 = this.renderer.createText(parentRenderNode, '\n', null);
-        this._el_21 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
-        this._el_22 = import3.createRenderElement(this.renderer, this._el_21, 'wind-section', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_22 = new import12.View_WindSectionComponent0(this.viewUtils, this, 22, this._el_22);
-        this._WindSectionComponent_22_3 = new import12.Wrapper_WindSectionComponent();
-        this.compView_22.create(this._WindSectionComponent_22_3.context);
-        this._text_23 = this.renderer.createText(parentRenderNode, '\n', null);
-        this._el_24 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._anchor_15 = this.renderer.createTemplateAnchor(parentRenderNode, null);
+        this._vc_15 = new import9.ViewContainer(15, null, this, this._anchor_15);
+        this._TemplateRef_15_5 = new import13.TemplateRef_(this, 15, this._anchor_15);
+        this._NgIf_15_6 = new import10.Wrapper_NgIf(this._vc_15.vcRef, this._TemplateRef_15_5);
+        this._text_16 = this.renderer.createText(parentRenderNode, '\n', null);
+        this._anchor_17 = this.renderer.createTemplateAnchor(parentRenderNode, null);
+        this._vc_17 = new import9.ViewContainer(17, null, this, this._anchor_17);
+        this._TemplateRef_17_5 = new import13.TemplateRef_(this, 17, this._anchor_17);
+        this._NgIf_17_6 = new import10.Wrapper_NgIf(this._vc_17.vcRef, this._TemplateRef_17_5);
+        this._text_18 = this.renderer.createText(parentRenderNode, '\n', null);
+        this._el_19 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_20 = this.renderer.createText(this._el_19, '\n    ', null);
+        this._el_21 = import3.createRenderElement(this.renderer, this._el_19, 'button', new import3.InlineArray2(2, 'class', 'table-btn'), null);
+        this._text_22 = this.renderer.createText(this._el_21, 'Delete', null);
+        this._text_23 = this.renderer.createText(this._el_19, '\n    ', null);
+        this._el_24 = import3.createRenderElement(this.renderer, this._el_19, 'button', new import3.InlineArray2(2, 'class', 'table-btn'), null);
         this._text_25 = this.renderer.createText(this._el_24, '', null);
-        this._text_26 = this.renderer.createText(parentRenderNode, '\n', null);
-        this._el_27 = import3.createRenderElement(this.renderer, parentRenderNode, 'td', import3.EMPTY_INLINE_ARRAY, null);
-        this._text_28 = this.renderer.createText(this._el_27, '\n    ', null);
-        this._el_29 = import3.createRenderElement(this.renderer, this._el_27, 'button', new import3.InlineArray2(2, 'class', 'table-btn'), null);
-        this._text_30 = this.renderer.createText(this._el_29, 'Delete', null);
-        this._text_31 = this.renderer.createText(this._el_27, '\n    ', null);
-        this._el_32 = import3.createRenderElement(this.renderer, this._el_27, 'button', new import3.InlineArray2(2, 'class', 'table-btn'), null);
-        this._text_33 = this.renderer.createText(this._el_32, '', null);
-        this._text_34 = this.renderer.createText(this._el_27, '\n', null);
-        this._pipe_number_0 = new import13.DecimalPipe(this.parentView.injectorGet(import15.LOCALE_ID, this.parentIndex));
-        this._pipe_number_0_0 = import3.pureProxy2(this._pipe_number_0.transform.bind(this._pipe_number_0));
-        this._pipe_number_0_1 = import3.pureProxy2(this._pipe_number_0.transform.bind(this._pipe_number_0));
-        this._pipe_sgKelvinToCelsius_1 = new import14.KelvinToCelsiusPipe();
-        this._pipe_sgKelvinToCelsius_1_0 = import3.pureProxy2(this._pipe_sgKelvinToCelsius_1.transform.bind(this._pipe_sgKelvinToCelsius_1));
-        var disposable_0 = import3.subscribeToRenderElement(this, this._el_29, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_29));
-        var disposable_1 = import3.subscribeToRenderElement(this, this._el_32, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_32));
+        this._text_26 = this.renderer.createText(this._el_19, '\n', null);
+        this._pipe_number_0 = new import11.DecimalPipe(this.parentView.injectorGet(import14.LOCALE_ID, this.parentIndex));
+        this._pipe_sgKelvinToCelsius_1 = new import12.KelvinToCelsiusPipe();
+        var disposable_0 = import3.subscribeToRenderElement(this, this._el_21, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_21));
+        var disposable_1 = import3.subscribeToRenderElement(this, this._el_24, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_24));
         this.init(null, (this.renderer.directRenderer ? null : [
             this._el_0,
             this._text_1,
             this._text_2,
-            this._el_3,
+            this._anchor_3,
             this._text_4,
-            this._text_5,
-            this._el_6,
-            this._text_7,
+            this._anchor_5,
+            this._text_6,
+            this._anchor_7,
             this._text_8,
-            this._el_9,
-            this._el_10,
-            this._text_11,
-            this._el_12,
-            this._text_13,
+            this._anchor_9,
+            this._text_10,
+            this._anchor_11,
+            this._text_12,
+            this._anchor_13,
             this._text_14,
-            this._el_15,
+            this._anchor_15,
             this._text_16,
-            this._text_17,
-            this._el_18,
-            this._text_19,
+            this._anchor_17,
+            this._text_18,
+            this._el_19,
             this._text_20,
             this._el_21,
-            this._el_22,
+            this._text_22,
             this._text_23,
             this._el_24,
             this._text_25,
-            this._text_26,
-            this._el_27,
-            this._text_28,
-            this._el_29,
-            this._text_30,
-            this._text_31,
-            this._el_32,
-            this._text_33,
-            this._text_34
+            this._text_26
         ]), [
             disposable_0,
             disposable_1
@@ -217,77 +222,138 @@ export var View_CityWeatherComponent0 = (function (_super) {
         return null;
     };
     View_CityWeatherComponent0.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import9.WeatherIconComponent) && (10 === requestNodeIndex))) {
-            return this._WeatherIconComponent_10_3.context;
+        if (((token === import13.TemplateRef) && (3 === requestNodeIndex))) {
+            return this._TemplateRef_3_5;
         }
-        if (((token === import11.WindSectionComponent) && (22 === requestNodeIndex))) {
-            return this._WindSectionComponent_22_3.context;
+        if (((token === import15.NgIf) && (3 === requestNodeIndex))) {
+            return this._NgIf_3_6.context;
+        }
+        if (((token === import13.TemplateRef) && (5 === requestNodeIndex))) {
+            return this._TemplateRef_5_5;
+        }
+        if (((token === import15.NgIf) && (5 === requestNodeIndex))) {
+            return this._NgIf_5_6.context;
+        }
+        if (((token === import13.TemplateRef) && (7 === requestNodeIndex))) {
+            return this._TemplateRef_7_5;
+        }
+        if (((token === import15.NgIf) && (7 === requestNodeIndex))) {
+            return this._NgIf_7_6.context;
+        }
+        if (((token === import13.TemplateRef) && (9 === requestNodeIndex))) {
+            return this._TemplateRef_9_5;
+        }
+        if (((token === import15.NgIf) && (9 === requestNodeIndex))) {
+            return this._NgIf_9_6.context;
+        }
+        if (((token === import13.TemplateRef) && (11 === requestNodeIndex))) {
+            return this._TemplateRef_11_5;
+        }
+        if (((token === import15.NgIf) && (11 === requestNodeIndex))) {
+            return this._NgIf_11_6.context;
+        }
+        if (((token === import13.TemplateRef) && (13 === requestNodeIndex))) {
+            return this._TemplateRef_13_5;
+        }
+        if (((token === import15.NgIf) && (13 === requestNodeIndex))) {
+            return this._NgIf_13_6.context;
+        }
+        if (((token === import13.TemplateRef) && (15 === requestNodeIndex))) {
+            return this._TemplateRef_15_5;
+        }
+        if (((token === import15.NgIf) && (15 === requestNodeIndex))) {
+            return this._NgIf_15_6.context;
+        }
+        if (((token === import13.TemplateRef) && (17 === requestNodeIndex))) {
+            return this._TemplateRef_17_5;
+        }
+        if (((token === import15.NgIf) && (17 === requestNodeIndex))) {
+            return this._NgIf_17_6.context;
         }
         return notFoundResult;
     };
     View_CityWeatherComponent0.prototype.detectChangesInternal = function (throwOnChange) {
-        var valUnwrapper = new import1.ValueUnwrapper();
-        var currVal_10_0_0 = this.context.weather.getDescription();
-        this._WeatherIconComponent_10_3.check_description(currVal_10_0_0, throwOnChange, false);
-        if (this._WeatherIconComponent_10_3.ngDoCheck(this, this._el_10, throwOnChange)) {
-            this.compView_10.markAsCheckOnce();
-        }
-        var currVal_22_0_0 = this.context.weather.getWind();
-        this._WindSectionComponent_22_3.check_wind(currVal_22_0_0, throwOnChange, false);
-        if (this._WindSectionComponent_22_3.ngDoCheck(this, this._el_22, throwOnChange)) {
-            this.compView_22.markAsCheckOnce();
-        }
-        var currVal_39 = import3.inlineInterpolate(1, '', (this.context.weather.getCity() + (this.context.weather.getSelected() ? ' *' : '')), '');
-        if (import3.checkBinding(throwOnChange, this._expr_39, currVal_39)) {
-            this.renderer.setText(this._text_1, currVal_39);
-            this._expr_39 = currVal_39;
-        }
-        valUnwrapper.reset();
-        var currVal_40 = import3.inlineInterpolate(1, '', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_0, this._pipe_number_0.transform)(this.context.weather.getCoordinate().getLatitude(), '1.0-3')), '');
-        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_40, currVal_40))) {
-            this.renderer.setText(this._text_4, currVal_40);
-            this._expr_40 = currVal_40;
-        }
-        valUnwrapper.reset();
-        var currVal_43 = import3.inlineInterpolate(1, '', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_1, this._pipe_number_0.transform)(this.context.weather.getCoordinate().getLongitude(), '1.0-3')), '');
-        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_43, currVal_43))) {
-            this.renderer.setText(this._text_7, currVal_43);
-            this._expr_43 = currVal_43;
-        }
-        valUnwrapper.reset();
-        var currVal_45 = import3.inlineInterpolate(1, '', valUnwrapper.unwrap(import3.castByValue(this._pipe_sgKelvinToCelsius_1_0, this._pipe_sgKelvinToCelsius_1.transform)(this.context.weather.getMainParams().getTemperature(), 1)), '');
-        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_45, currVal_45))) {
-            this.renderer.setText(this._text_13, currVal_45);
-            this._expr_45 = currVal_45;
-        }
-        var currVal_48 = import3.inlineInterpolate(1, '', this.context.weather.getMainParams().getHumidity(), '');
-        if (import3.checkBinding(throwOnChange, this._expr_48, currVal_48)) {
-            this.renderer.setText(this._text_16, currVal_48);
-            this._expr_48 = currVal_48;
-        }
-        var currVal_49 = import3.inlineInterpolate(1, '', this.context.weather.getMainParams().getPressure(), '');
-        if (import3.checkBinding(throwOnChange, this._expr_49, currVal_49)) {
-            this.renderer.setText(this._text_19, currVal_49);
-            this._expr_49 = currVal_49;
-        }
-        var currVal_50 = import3.inlineInterpolate(1, '', this.context.weather.getCloud().getAll(), '');
-        if (import3.checkBinding(throwOnChange, this._expr_50, currVal_50)) {
-            this.renderer.setText(this._text_25, currVal_50);
-            this._expr_50 = currVal_50;
-        }
-        var currVal_51 = import3.inlineInterpolate(1, '', (this.context.weather.getSelected() ? 'Unselect' : 'Select'), '');
+        var currVal_3_0_0 = (!this.context.tableParameters || (this.context.tableParameters && this.context.tableParameters.getShowCoordinate()));
+        this._NgIf_3_6.check_ngIf(currVal_3_0_0, throwOnChange, false);
+        this._NgIf_3_6.ngDoCheck(this, this._anchor_3, throwOnChange);
+        var currVal_5_0_0 = (!this.context.tableParameters || (this.context.tableParameters && this.context.tableParameters.getShowCoordinate()));
+        this._NgIf_5_6.check_ngIf(currVal_5_0_0, throwOnChange, false);
+        this._NgIf_5_6.ngDoCheck(this, this._anchor_5, throwOnChange);
+        var currVal_7_0_0 = (!this.context.tableParameters || ((this.context.tableParameters && this.context.tableParameters.getSelectedOptions()) && (this.context.tableParameters.getSelectedOptions().indexOf('Overall conditions') != (0 - 1))));
+        this._NgIf_7_6.check_ngIf(currVal_7_0_0, throwOnChange, false);
+        this._NgIf_7_6.ngDoCheck(this, this._anchor_7, throwOnChange);
+        var currVal_9_0_0 = (!this.context.tableParameters || ((this.context.tableParameters && this.context.tableParameters.getSelectedOptions()) && (this.context.tableParameters.getSelectedOptions().indexOf('Temperature') != (0 - 1))));
+        this._NgIf_9_6.check_ngIf(currVal_9_0_0, throwOnChange, false);
+        this._NgIf_9_6.ngDoCheck(this, this._anchor_9, throwOnChange);
+        var currVal_11_0_0 = (!this.context.tableParameters || ((this.context.tableParameters && this.context.tableParameters.getSelectedOptions()) && (this.context.tableParameters.getSelectedOptions().indexOf('Humidity') != (0 - 1))));
+        this._NgIf_11_6.check_ngIf(currVal_11_0_0, throwOnChange, false);
+        this._NgIf_11_6.ngDoCheck(this, this._anchor_11, throwOnChange);
+        var currVal_13_0_0 = (!this.context.tableParameters || ((this.context.tableParameters && this.context.tableParameters.getSelectedOptions()) && (this.context.tableParameters.getSelectedOptions().indexOf('Pressure') != (0 - 1))));
+        this._NgIf_13_6.check_ngIf(currVal_13_0_0, throwOnChange, false);
+        this._NgIf_13_6.ngDoCheck(this, this._anchor_13, throwOnChange);
+        var currVal_15_0_0 = (!this.context.tableParameters || ((this.context.tableParameters && this.context.tableParameters.getSelectedOptions()) && (this.context.tableParameters.getSelectedOptions().indexOf('Wind') != (0 - 1))));
+        this._NgIf_15_6.check_ngIf(currVal_15_0_0, throwOnChange, false);
+        this._NgIf_15_6.ngDoCheck(this, this._anchor_15, throwOnChange);
+        var currVal_17_0_0 = (!this.context.tableParameters || ((this.context.tableParameters && this.context.tableParameters.getSelectedOptions()) && (this.context.tableParameters.getSelectedOptions().indexOf('Clouds') != (0 - 1))));
+        this._NgIf_17_6.check_ngIf(currVal_17_0_0, throwOnChange, false);
+        this._NgIf_17_6.ngDoCheck(this, this._anchor_17, throwOnChange);
+        this._vc_3.detectChangesInNestedViews(throwOnChange);
+        this._vc_5.detectChangesInNestedViews(throwOnChange);
+        this._vc_7.detectChangesInNestedViews(throwOnChange);
+        this._vc_9.detectChangesInNestedViews(throwOnChange);
+        this._vc_11.detectChangesInNestedViews(throwOnChange);
+        this._vc_13.detectChangesInNestedViews(throwOnChange);
+        this._vc_15.detectChangesInNestedViews(throwOnChange);
+        this._vc_17.detectChangesInNestedViews(throwOnChange);
+        var currVal_51 = import3.inlineInterpolate(1, '', (this.context.weather.getCity() + (this.context.weather.getSelected() ? ' *' : '')), '');
         if (import3.checkBinding(throwOnChange, this._expr_51, currVal_51)) {
-            this.renderer.setText(this._text_33, currVal_51);
+            this.renderer.setText(this._text_1, currVal_51);
             this._expr_51 = currVal_51;
         }
-        this.compView_10.detectChanges(throwOnChange);
-        this.compView_22.detectChanges(throwOnChange);
+        var currVal_54 = import3.inlineInterpolate(1, '', (this.context.weather.getSelected() ? 'Unselect' : 'Select'), '');
+        if (import3.checkBinding(throwOnChange, this._expr_54, currVal_54)) {
+            this.renderer.setText(this._text_25, currVal_54);
+            this._expr_54 = currVal_54;
+        }
     };
     View_CityWeatherComponent0.prototype.destroyInternal = function () {
-        this.compView_10.destroy();
-        this.compView_22.destroy();
+        this._vc_3.destroyNestedViews();
+        this._vc_5.destroyNestedViews();
+        this._vc_7.destroyNestedViews();
+        this._vc_9.destroyNestedViews();
+        this._vc_11.destroyNestedViews();
+        this._vc_13.destroyNestedViews();
+        this._vc_15.destroyNestedViews();
+        this._vc_17.destroyNestedViews();
     };
-    View_CityWeatherComponent0.prototype.handleEvent_29 = function (eventName, $event) {
+    View_CityWeatherComponent0.prototype.createEmbeddedViewInternal = function (nodeIndex) {
+        if ((nodeIndex == 3)) {
+            return new View_CityWeatherComponent1(this.viewUtils, this, 3, this._anchor_3, this._vc_3);
+        }
+        if ((nodeIndex == 5)) {
+            return new View_CityWeatherComponent2(this.viewUtils, this, 5, this._anchor_5, this._vc_5);
+        }
+        if ((nodeIndex == 7)) {
+            return new View_CityWeatherComponent3(this.viewUtils, this, 7, this._anchor_7, this._vc_7);
+        }
+        if ((nodeIndex == 9)) {
+            return new View_CityWeatherComponent4(this.viewUtils, this, 9, this._anchor_9, this._vc_9);
+        }
+        if ((nodeIndex == 11)) {
+            return new View_CityWeatherComponent5(this.viewUtils, this, 11, this._anchor_11, this._vc_11);
+        }
+        if ((nodeIndex == 13)) {
+            return new View_CityWeatherComponent6(this.viewUtils, this, 13, this._anchor_13, this._vc_13);
+        }
+        if ((nodeIndex == 15)) {
+            return new View_CityWeatherComponent7(this.viewUtils, this, 15, this._anchor_15, this._vc_15);
+        }
+        if ((nodeIndex == 17)) {
+            return new View_CityWeatherComponent8(this.viewUtils, this, 17, this._anchor_17, this._vc_17);
+        }
+        return null;
+    };
+    View_CityWeatherComponent0.prototype.handleEvent_21 = function (eventName, $event) {
         this.markPathToRootAsCheckOnce();
         var result = true;
         if ((eventName == 'click')) {
@@ -296,7 +362,7 @@ export var View_CityWeatherComponent0 = (function (_super) {
         }
         return result;
     };
-    View_CityWeatherComponent0.prototype.handleEvent_32 = function (eventName, $event) {
+    View_CityWeatherComponent0.prototype.handleEvent_24 = function (eventName, $event) {
         this.markPathToRootAsCheckOnce();
         var result = true;
         if ((eventName == 'click')) {
@@ -306,5 +372,254 @@ export var View_CityWeatherComponent0 = (function (_super) {
         return result;
     };
     return View_CityWeatherComponent0;
+}(import2.AppView));
+var View_CityWeatherComponent1 = (function (_super) {
+    __extends(View_CityWeatherComponent1, _super);
+    function View_CityWeatherComponent1(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
+        _super.call(this, View_CityWeatherComponent1, renderType_CityWeatherComponent, import6.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
+        this._expr_2 = import1.UNINITIALIZED;
+    }
+    View_CityWeatherComponent1.prototype.createInternal = function (rootSelector) {
+        this._el_0 = import3.createRenderElement(this.renderer, null, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_1 = this.renderer.createText(this._el_0, '', null);
+        this._pipe_number_0_0 = import3.pureProxy2(this.parentView._pipe_number_0.transform.bind(this.parentView._pipe_number_0));
+        this.init(this._el_0, (this.renderer.directRenderer ? null : [
+            this._el_0,
+            this._text_1
+        ]), null);
+        return null;
+    };
+    View_CityWeatherComponent1.prototype.detectChangesInternal = function (throwOnChange) {
+        var valUnwrapper = new import1.ValueUnwrapper();
+        valUnwrapper.reset();
+        var currVal_2 = import3.inlineInterpolate(1, '', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_0, this.parentView._pipe_number_0.transform)(this.parentView.context.weather.getCoordinate().getLatitude(), ('1.0-' + (this.parentView.context.tableParameters ? this.parentView.context.tableParameters.getPrecision() : 3)))), '');
+        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_2, currVal_2))) {
+            this.renderer.setText(this._text_1, currVal_2);
+            this._expr_2 = currVal_2;
+        }
+    };
+    View_CityWeatherComponent1.prototype.visitRootNodesInternal = function (cb, ctx) {
+        cb(this._el_0, ctx);
+    };
+    return View_CityWeatherComponent1;
+}(import2.AppView));
+var View_CityWeatherComponent2 = (function (_super) {
+    __extends(View_CityWeatherComponent2, _super);
+    function View_CityWeatherComponent2(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
+        _super.call(this, View_CityWeatherComponent2, renderType_CityWeatherComponent, import6.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
+        this._expr_2 = import1.UNINITIALIZED;
+    }
+    View_CityWeatherComponent2.prototype.createInternal = function (rootSelector) {
+        this._el_0 = import3.createRenderElement(this.renderer, null, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_1 = this.renderer.createText(this._el_0, '', null);
+        this._pipe_number_0_1 = import3.pureProxy2(this.parentView._pipe_number_0.transform.bind(this.parentView._pipe_number_0));
+        this.init(this._el_0, (this.renderer.directRenderer ? null : [
+            this._el_0,
+            this._text_1
+        ]), null);
+        return null;
+    };
+    View_CityWeatherComponent2.prototype.detectChangesInternal = function (throwOnChange) {
+        var valUnwrapper = new import1.ValueUnwrapper();
+        valUnwrapper.reset();
+        var currVal_2 = import3.inlineInterpolate(1, '', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_1, this.parentView._pipe_number_0.transform)(this.parentView.context.weather.getCoordinate().getLongitude(), ('1.0-' + (this.parentView.context.tableParameters ? this.parentView.context.tableParameters.getPrecision() : 3)))), '');
+        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_2, currVal_2))) {
+            this.renderer.setText(this._text_1, currVal_2);
+            this._expr_2 = currVal_2;
+        }
+    };
+    View_CityWeatherComponent2.prototype.visitRootNodesInternal = function (cb, ctx) {
+        cb(this._el_0, ctx);
+    };
+    return View_CityWeatherComponent2;
+}(import2.AppView));
+var View_CityWeatherComponent3 = (function (_super) {
+    __extends(View_CityWeatherComponent3, _super);
+    function View_CityWeatherComponent3(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
+        _super.call(this, View_CityWeatherComponent3, renderType_CityWeatherComponent, import6.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
+    }
+    View_CityWeatherComponent3.prototype.createInternal = function (rootSelector) {
+        this._el_0 = import3.createRenderElement(this.renderer, null, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._el_1 = import3.createRenderElement(this.renderer, this._el_0, 'weather-icon', import3.EMPTY_INLINE_ARRAY, null);
+        this.compView_1 = new import17.View_WeatherIconComponent0(this.viewUtils, this, 1, this._el_1);
+        this._WeatherIconComponent_1_3 = new import17.Wrapper_WeatherIconComponent();
+        this.compView_1.create(this._WeatherIconComponent_1_3.context);
+        this.init(this._el_0, (this.renderer.directRenderer ? null : [
+            this._el_0,
+            this._el_1
+        ]), null);
+        return null;
+    };
+    View_CityWeatherComponent3.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
+        if (((token === import16.WeatherIconComponent) && (1 === requestNodeIndex))) {
+            return this._WeatherIconComponent_1_3.context;
+        }
+        return notFoundResult;
+    };
+    View_CityWeatherComponent3.prototype.detectChangesInternal = function (throwOnChange) {
+        var currVal_1_0_0 = this.parentView.context.weather.getDescription();
+        this._WeatherIconComponent_1_3.check_description(currVal_1_0_0, throwOnChange, false);
+        if (this._WeatherIconComponent_1_3.ngDoCheck(this, this._el_1, throwOnChange)) {
+            this.compView_1.markAsCheckOnce();
+        }
+        this.compView_1.detectChanges(throwOnChange);
+    };
+    View_CityWeatherComponent3.prototype.destroyInternal = function () {
+        this.compView_1.destroy();
+    };
+    View_CityWeatherComponent3.prototype.visitRootNodesInternal = function (cb, ctx) {
+        cb(this._el_0, ctx);
+    };
+    return View_CityWeatherComponent3;
+}(import2.AppView));
+var View_CityWeatherComponent4 = (function (_super) {
+    __extends(View_CityWeatherComponent4, _super);
+    function View_CityWeatherComponent4(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
+        _super.call(this, View_CityWeatherComponent4, renderType_CityWeatherComponent, import6.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
+        this._expr_2 = import1.UNINITIALIZED;
+    }
+    View_CityWeatherComponent4.prototype.createInternal = function (rootSelector) {
+        this._el_0 = import3.createRenderElement(this.renderer, null, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_1 = this.renderer.createText(this._el_0, '', null);
+        this._pipe_sgKelvinToCelsius_1_0 = import3.pureProxy2(this.parentView._pipe_sgKelvinToCelsius_1.transform.bind(this.parentView._pipe_sgKelvinToCelsius_1));
+        this.init(this._el_0, (this.renderer.directRenderer ? null : [
+            this._el_0,
+            this._text_1
+        ]), null);
+        return null;
+    };
+    View_CityWeatherComponent4.prototype.detectChangesInternal = function (throwOnChange) {
+        var valUnwrapper = new import1.ValueUnwrapper();
+        valUnwrapper.reset();
+        var currVal_2 = import3.inlineInterpolate(1, '', valUnwrapper.unwrap(import3.castByValue(this._pipe_sgKelvinToCelsius_1_0, this.parentView._pipe_sgKelvinToCelsius_1.transform)(this.parentView.context.weather.getMainParams().getTemperature(), 1)), '');
+        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_2, currVal_2))) {
+            this.renderer.setText(this._text_1, currVal_2);
+            this._expr_2 = currVal_2;
+        }
+    };
+    View_CityWeatherComponent4.prototype.visitRootNodesInternal = function (cb, ctx) {
+        cb(this._el_0, ctx);
+    };
+    return View_CityWeatherComponent4;
+}(import2.AppView));
+var View_CityWeatherComponent5 = (function (_super) {
+    __extends(View_CityWeatherComponent5, _super);
+    function View_CityWeatherComponent5(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
+        _super.call(this, View_CityWeatherComponent5, renderType_CityWeatherComponent, import6.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
+        this._expr_2 = import1.UNINITIALIZED;
+    }
+    View_CityWeatherComponent5.prototype.createInternal = function (rootSelector) {
+        this._el_0 = import3.createRenderElement(this.renderer, null, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_1 = this.renderer.createText(this._el_0, '', null);
+        this.init(this._el_0, (this.renderer.directRenderer ? null : [
+            this._el_0,
+            this._text_1
+        ]), null);
+        return null;
+    };
+    View_CityWeatherComponent5.prototype.detectChangesInternal = function (throwOnChange) {
+        var currVal_2 = import3.inlineInterpolate(1, '', this.parentView.context.weather.getMainParams().getHumidity(), '');
+        if (import3.checkBinding(throwOnChange, this._expr_2, currVal_2)) {
+            this.renderer.setText(this._text_1, currVal_2);
+            this._expr_2 = currVal_2;
+        }
+    };
+    View_CityWeatherComponent5.prototype.visitRootNodesInternal = function (cb, ctx) {
+        cb(this._el_0, ctx);
+    };
+    return View_CityWeatherComponent5;
+}(import2.AppView));
+var View_CityWeatherComponent6 = (function (_super) {
+    __extends(View_CityWeatherComponent6, _super);
+    function View_CityWeatherComponent6(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
+        _super.call(this, View_CityWeatherComponent6, renderType_CityWeatherComponent, import6.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
+        this._expr_2 = import1.UNINITIALIZED;
+    }
+    View_CityWeatherComponent6.prototype.createInternal = function (rootSelector) {
+        this._el_0 = import3.createRenderElement(this.renderer, null, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_1 = this.renderer.createText(this._el_0, '', null);
+        this.init(this._el_0, (this.renderer.directRenderer ? null : [
+            this._el_0,
+            this._text_1
+        ]), null);
+        return null;
+    };
+    View_CityWeatherComponent6.prototype.detectChangesInternal = function (throwOnChange) {
+        var currVal_2 = import3.inlineInterpolate(1, '', this.parentView.context.weather.getMainParams().getPressure(), '');
+        if (import3.checkBinding(throwOnChange, this._expr_2, currVal_2)) {
+            this.renderer.setText(this._text_1, currVal_2);
+            this._expr_2 = currVal_2;
+        }
+    };
+    View_CityWeatherComponent6.prototype.visitRootNodesInternal = function (cb, ctx) {
+        cb(this._el_0, ctx);
+    };
+    return View_CityWeatherComponent6;
+}(import2.AppView));
+var View_CityWeatherComponent7 = (function (_super) {
+    __extends(View_CityWeatherComponent7, _super);
+    function View_CityWeatherComponent7(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
+        _super.call(this, View_CityWeatherComponent7, renderType_CityWeatherComponent, import6.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
+    }
+    View_CityWeatherComponent7.prototype.createInternal = function (rootSelector) {
+        this._el_0 = import3.createRenderElement(this.renderer, null, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._el_1 = import3.createRenderElement(this.renderer, this._el_0, 'wind-section', import3.EMPTY_INLINE_ARRAY, null);
+        this.compView_1 = new import19.View_WindSectionComponent0(this.viewUtils, this, 1, this._el_1);
+        this._WindSectionComponent_1_3 = new import19.Wrapper_WindSectionComponent();
+        this.compView_1.create(this._WindSectionComponent_1_3.context);
+        this.init(this._el_0, (this.renderer.directRenderer ? null : [
+            this._el_0,
+            this._el_1
+        ]), null);
+        return null;
+    };
+    View_CityWeatherComponent7.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
+        if (((token === import18.WindSectionComponent) && (1 === requestNodeIndex))) {
+            return this._WindSectionComponent_1_3.context;
+        }
+        return notFoundResult;
+    };
+    View_CityWeatherComponent7.prototype.detectChangesInternal = function (throwOnChange) {
+        var currVal_1_0_0 = this.parentView.context.weather.getWind();
+        this._WindSectionComponent_1_3.check_wind(currVal_1_0_0, throwOnChange, false);
+        if (this._WindSectionComponent_1_3.ngDoCheck(this, this._el_1, throwOnChange)) {
+            this.compView_1.markAsCheckOnce();
+        }
+        this.compView_1.detectChanges(throwOnChange);
+    };
+    View_CityWeatherComponent7.prototype.destroyInternal = function () {
+        this.compView_1.destroy();
+    };
+    View_CityWeatherComponent7.prototype.visitRootNodesInternal = function (cb, ctx) {
+        cb(this._el_0, ctx);
+    };
+    return View_CityWeatherComponent7;
+}(import2.AppView));
+var View_CityWeatherComponent8 = (function (_super) {
+    __extends(View_CityWeatherComponent8, _super);
+    function View_CityWeatherComponent8(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
+        _super.call(this, View_CityWeatherComponent8, renderType_CityWeatherComponent, import6.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
+        this._expr_2 = import1.UNINITIALIZED;
+    }
+    View_CityWeatherComponent8.prototype.createInternal = function (rootSelector) {
+        this._el_0 = import3.createRenderElement(this.renderer, null, 'td', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_1 = this.renderer.createText(this._el_0, '', null);
+        this.init(this._el_0, (this.renderer.directRenderer ? null : [
+            this._el_0,
+            this._text_1
+        ]), null);
+        return null;
+    };
+    View_CityWeatherComponent8.prototype.detectChangesInternal = function (throwOnChange) {
+        var currVal_2 = import3.inlineInterpolate(1, '', this.parentView.context.weather.getCloud().getAll(), '');
+        if (import3.checkBinding(throwOnChange, this._expr_2, currVal_2)) {
+            this.renderer.setText(this._text_1, currVal_2);
+            this._expr_2 = currVal_2;
+        }
+    };
+    View_CityWeatherComponent8.prototype.visitRootNodesInternal = function (cb, ctx) {
+        cb(this._el_0, ctx);
+    };
+    return View_CityWeatherComponent8;
 }(import2.AppView));
 //# sourceMappingURL=cityWeather.component.ngfactory.js.map

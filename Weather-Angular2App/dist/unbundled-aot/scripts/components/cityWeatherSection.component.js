@@ -74,6 +74,9 @@ export var CityWeatherSectionComponent = (function () {
         this.store.dispatch(this.weatherActions.selectWeather($event));
         this.detectChanges();
     };
+    CityWeatherSectionComponent.prototype.submitParameters = function ($event) {
+        this.tableParameters = $event;
+    };
     CityWeatherSectionComponent.prototype.detectChanges = function () {
         this.changeDetectorRef.reattach();
         this.changeDetectorRef.detectChanges();

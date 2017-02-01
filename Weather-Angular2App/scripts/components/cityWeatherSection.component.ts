@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, E
 import { Store } from '@ngrx/store';
 import { Coordinate }  from './../model/Coordinate'
 import { Weather }  from './../model/Weather'
+import { TableParameters } from './../model/TableParameters'
 import { CityWeatherPipe } from './../pipes/cityWeather.pipe'
 import { WeatherApiService } from './../services/WeatherAPI'
 import { LoggerService } from './../services/Logger'
@@ -26,6 +27,7 @@ export class CityWeatherSectionComponent implements OnChanges, OnInit {
   cityWeatherPipe: CityWeatherPipe;
   oldLatitude: number;
   oldLongitude: number;
+  tableParameters: TableParameters;
 
   constructor(private changeDetectorRef: ChangeDetectorRef,
     private store: Store<AppState>, private weatherActions: WeatherActions,
@@ -88,6 +90,9 @@ export class CityWeatherSectionComponent implements OnChanges, OnInit {
   select($event: number) {
       this.store.dispatch(this.weatherActions.selectWeather($event));
       this.detectChanges();
+  }
+  submitParameters($event: TableParameters) {
+      this.tableParameters = $event;
   }
   private detectChanges() {
       this.changeDetectorRef.reattach();

@@ -24,9 +24,12 @@ import * as import12 from '../../../scripts/services/Logger';
 import * as import13 from '../../css/weatherTable.css.shim';
 import * as import14 from '../../../scripts/components/cityForm.component';
 import * as import15 from './cityForm.component.ngfactory';
-import * as import16 from '../../../scripts/components/cityWeatherTable.component';
-import * as import17 from './cityWeatherTable.component.ngfactory';
-import * as import18 from '@angular/common/src/pipes/async_pipe';
+import * as import16 from '../../../scripts/components/tableForm.component';
+import * as import17 from './tableForm.component.ngfactory';
+import * as import18 from '../../../scripts/components/cityWeatherTable.component';
+import * as import19 from './cityWeatherTable.component.ngfactory';
+import * as import20 from '@angular/common/src/pipes/async_pipe';
+import * as import21 from '@angular/forms/src/form_builder';
 export var Wrapper_CityWeatherSectionComponent = (function () {
     function Wrapper_CityWeatherSectionComponent(p0, p1, p2, p3, p4, p5) {
         this._changed = false;
@@ -122,26 +125,36 @@ export var View_CityWeatherSectionComponent0 = (function (_super) {
         this._CityFormComponent_2_3 = new import15.Wrapper_CityFormComponent();
         this.compView_2.create(this._CityFormComponent_2_3.context);
         this._text_3 = this.renderer.createText(this._el_0, '\n    ', null);
-        this._el_4 = import3.createRenderElement(this.renderer, this._el_0, 'city-weather-table', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_4 = new import17.View_CityWeatherTableComponent0(this.viewUtils, this, 4, this._el_4);
-        this._CityWeatherTableComponent_4_3 = new import17.Wrapper_CityWeatherTableComponent();
-        this.compView_4.create(this._CityWeatherTableComponent_4_3.context);
-        this._text_5 = this.renderer.createText(this._el_0, '\n', null);
+        this._el_4 = import3.createRenderElement(this.renderer, this._el_0, 'table-form', import3.EMPTY_INLINE_ARRAY, null);
+        this.compView_4 = new import17.View_TableFormComponent0(this.viewUtils, this, 4, this._el_4);
+        this._TableFormComponent_4_3 = new import17.Wrapper_TableFormComponent(this.parentView.injectorGet(import21.FormBuilder, this.parentIndex));
+        this.compView_4.create(this._TableFormComponent_4_3.context);
+        this._text_5 = this.renderer.createText(this._el_0, '\n    ', null);
+        this._el_6 = import3.createRenderElement(this.renderer, this._el_0, 'city-weather-table', import3.EMPTY_INLINE_ARRAY, null);
+        this.compView_6 = new import19.View_CityWeatherTableComponent0(this.viewUtils, this, 6, this._el_6);
+        this._CityWeatherTableComponent_6_3 = new import19.Wrapper_CityWeatherTableComponent();
+        this.compView_6.create(this._CityWeatherTableComponent_6_3.context);
+        this._text_7 = this.renderer.createText(this._el_0, '\n', null);
         var disposable_0 = import3.subscribeToRenderElement(this, this._el_2, new import3.InlineArray2(2, 'addNotify', null), this.eventHandler(this.handleEvent_2));
         this._CityFormComponent_2_3.subscribe(this, this.eventHandler(this.handleEvent_2), true);
-        var disposable_1 = import3.subscribeToRenderElement(this, this._el_4, new import3.InlineArray4(4, 'deleteNotify', null, 'selectNotify', null), this.eventHandler(this.handleEvent_4));
-        this._CityWeatherTableComponent_4_3.subscribe(this, this.eventHandler(this.handleEvent_4), true, true);
-        this._pipe_async_0 = new import18.AsyncPipe(this.ref);
+        var disposable_1 = import3.subscribeToRenderElement(this, this._el_4, new import3.InlineArray2(2, 'submitParametersNotify', null), this.eventHandler(this.handleEvent_4));
+        this._TableFormComponent_4_3.subscribe(this, this.eventHandler(this.handleEvent_4), true);
+        var disposable_2 = import3.subscribeToRenderElement(this, this._el_6, new import3.InlineArray4(4, 'deleteNotify', null, 'selectNotify', null), this.eventHandler(this.handleEvent_6));
+        this._CityWeatherTableComponent_6_3.subscribe(this, this.eventHandler(this.handleEvent_6), true, true);
+        this._pipe_async_0 = new import20.AsyncPipe(this.ref);
         this.init(null, (this.renderer.directRenderer ? null : [
             this._el_0,
             this._text_1,
             this._el_2,
             this._text_3,
             this._el_4,
-            this._text_5
+            this._text_5,
+            this._el_6,
+            this._text_7
         ]), [
             disposable_0,
-            disposable_1
+            disposable_1,
+            disposable_2
         ]);
         return null;
     };
@@ -149,8 +162,11 @@ export var View_CityWeatherSectionComponent0 = (function (_super) {
         if (((token === import14.CityFormComponent) && (2 === requestNodeIndex))) {
             return this._CityFormComponent_2_3.context;
         }
-        if (((token === import16.CityWeatherTableComponent) && (4 === requestNodeIndex))) {
-            return this._CityWeatherTableComponent_4_3.context;
+        if (((token === import16.TableFormComponent) && (4 === requestNodeIndex))) {
+            return this._TableFormComponent_4_3.context;
+        }
+        if (((token === import18.CityWeatherTableComponent) && (6 === requestNodeIndex))) {
+            return this._CityWeatherTableComponent_6_3.context;
         }
         return notFoundResult;
     };
@@ -159,20 +175,28 @@ export var View_CityWeatherSectionComponent0 = (function (_super) {
         if (this._CityFormComponent_2_3.ngDoCheck(this, this._el_2, throwOnChange)) {
             this.compView_2.markAsCheckOnce();
         }
-        valUnwrapper.reset();
-        var currVal_4_0_0 = valUnwrapper.unwrap(this._pipe_async_0.transform(this.context.weatherListObservable));
-        this._CityWeatherTableComponent_4_3.check_weatherList(currVal_4_0_0, throwOnChange, valUnwrapper.hasWrappedValue);
-        if (this._CityWeatherTableComponent_4_3.ngDoCheck(this, this._el_4, throwOnChange)) {
+        if (this._TableFormComponent_4_3.ngDoCheck(this, this._el_4, throwOnChange)) {
             this.compView_4.markAsCheckOnce();
+        }
+        valUnwrapper.reset();
+        var currVal_6_0_0 = valUnwrapper.unwrap(this._pipe_async_0.transform(this.context.weatherListObservable));
+        this._CityWeatherTableComponent_6_3.check_weatherList(currVal_6_0_0, throwOnChange, valUnwrapper.hasWrappedValue);
+        var currVal_6_0_1 = this.context.tableParameters;
+        this._CityWeatherTableComponent_6_3.check_tableParameters(currVal_6_0_1, throwOnChange, false);
+        if (this._CityWeatherTableComponent_6_3.ngDoCheck(this, this._el_6, throwOnChange)) {
+            this.compView_6.markAsCheckOnce();
         }
         this.compView_2.detectChanges(throwOnChange);
         this.compView_4.detectChanges(throwOnChange);
+        this.compView_6.detectChanges(throwOnChange);
     };
     View_CityWeatherSectionComponent0.prototype.destroyInternal = function () {
         this.compView_2.destroy();
         this.compView_4.destroy();
+        this.compView_6.destroy();
         this._CityFormComponent_2_3.ngOnDestroy();
-        this._CityWeatherTableComponent_4_3.ngOnDestroy();
+        this._TableFormComponent_4_3.ngOnDestroy();
+        this._CityWeatherTableComponent_6_3.ngOnDestroy();
         this._pipe_async_0.ngOnDestroy();
     };
     View_CityWeatherSectionComponent0.prototype.handleEvent_2 = function (eventName, $event) {
@@ -185,6 +209,15 @@ export var View_CityWeatherSectionComponent0 = (function (_super) {
         return result;
     };
     View_CityWeatherSectionComponent0.prototype.handleEvent_4 = function (eventName, $event) {
+        this.markPathToRootAsCheckOnce();
+        var result = true;
+        if ((eventName == 'submitParametersNotify')) {
+            var pd_sub_0 = (this.context.submitParameters($event) !== false);
+            result = (pd_sub_0 && result);
+        }
+        return result;
+    };
+    View_CityWeatherSectionComponent0.prototype.handleEvent_6 = function (eventName, $event) {
         this.markPathToRootAsCheckOnce();
         var result = true;
         if ((eventName == 'deleteNotify')) {

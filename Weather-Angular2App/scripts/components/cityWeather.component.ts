@@ -1,5 +1,6 @@
 import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { Weather }  from './../model/Weather'
+import { TableParameters } from './../model/TableParameters'
 import { CityWeatherPipe } from './../pipes/cityWeather.pipe'
 import { WindIconDirective }   from './../directives/windIcon.directive';
 
@@ -11,6 +12,7 @@ import { WindIconDirective }   from './../directives/windIcon.directive';
 })
 export class CityWeatherComponent {
   @Input() weather: Weather;
+  @Input() tableParameters: TableParameters;
   @Input() index: number;
   @Output() deleteNotify = new EventEmitter();
   @Output() selectNotify = new EventEmitter();

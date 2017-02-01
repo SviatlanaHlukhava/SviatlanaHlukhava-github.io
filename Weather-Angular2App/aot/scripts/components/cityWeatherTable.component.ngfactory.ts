@@ -31,12 +31,14 @@ export class Wrapper_CityWeatherTableComponent {
   context:import0.CityWeatherTableComponent;
   /*private*/ _changed:boolean;
   /*private*/ _expr_0:any;
+  /*private*/ _expr_1:any;
   subscription0:any;
   subscription1:any;
   constructor() {
     this._changed = false;
     this.context = new import0.CityWeatherTableComponent();
     this._expr_0 = import1.UNINITIALIZED;
+    this._expr_1 = import1.UNINITIALIZED;
   }
   ngOnDetach(view:import2.AppView<any>,componentView:import2.AppView<any>,el:any):void {
   }
@@ -49,6 +51,13 @@ export class Wrapper_CityWeatherTableComponent {
       this._changed = true;
       this.context.weatherList = currValue;
       this._expr_0 = currValue;
+    }
+  }
+  check_tableParameters(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
+    if ((forceUpdate || import3.checkBinding(throwOnChange,this._expr_1,currValue))) {
+      this._changed = true;
+      this.context.tableParameters = currValue;
+      this._expr_1 = currValue;
     }
   }
   ngDoCheck(view:import2.AppView<any>,el:any,throwOnChange:boolean):boolean {
@@ -149,43 +158,59 @@ class View_CityWeatherTableComponent1 extends import2.AppView<any> {
   _el_6:any;
   _text_7:any;
   _text_8:any;
-  _el_9:any;
+  _anchor_9:any;
+  /*private*/ _vc_9:import9.ViewContainer;
+  _TemplateRef_9_5:any;
+  _NgIf_9_6:import10.Wrapper_NgIf;
   _text_10:any;
-  _text_11:any;
-  _el_12:any;
-  _text_13:any;
+  _anchor_11:any;
+  /*private*/ _vc_11:import9.ViewContainer;
+  _TemplateRef_11_5:any;
+  _NgIf_11_6:import10.Wrapper_NgIf;
+  _text_12:any;
+  _anchor_13:any;
+  /*private*/ _vc_13:import9.ViewContainer;
+  _TemplateRef_13_5:any;
+  _NgIf_13_6:import10.Wrapper_NgIf;
   _text_14:any;
-  _el_15:any;
+  _anchor_15:any;
+  /*private*/ _vc_15:import9.ViewContainer;
+  _TemplateRef_15_5:any;
+  _NgIf_15_6:import10.Wrapper_NgIf;
   _text_16:any;
-  _text_17:any;
-  _el_18:any;
-  _text_19:any;
+  _anchor_17:any;
+  /*private*/ _vc_17:import9.ViewContainer;
+  _TemplateRef_17_5:any;
+  _NgIf_17_6:import10.Wrapper_NgIf;
+  _text_18:any;
+  _anchor_19:any;
+  /*private*/ _vc_19:import9.ViewContainer;
+  _TemplateRef_19_5:any;
+  _NgIf_19_6:import10.Wrapper_NgIf;
   _text_20:any;
-  _el_21:any;
+  _anchor_21:any;
+  /*private*/ _vc_21:import9.ViewContainer;
+  _TemplateRef_21_5:any;
+  _NgIf_21_6:import10.Wrapper_NgIf;
   _text_22:any;
-  _text_23:any;
-  _el_24:any;
-  _text_25:any;
+  _anchor_23:any;
+  /*private*/ _vc_23:import9.ViewContainer;
+  _TemplateRef_23_5:any;
+  _NgIf_23_6:import10.Wrapper_NgIf;
+  _text_24:any;
+  _el_25:any;
   _text_26:any;
-  _el_27:any;
+  _text_27:any;
   _text_28:any;
   _text_29:any;
   _el_30:any;
   _text_31:any;
-  _text_32:any;
-  _el_33:any;
+  _anchor_32:any;
+  /*private*/ _vc_32:import9.ViewContainer;
+  _TemplateRef_32_5:any;
+  _NgFor_32_6:import13.Wrapper_NgFor;
+  _text_33:any;
   _text_34:any;
-  _text_35:any;
-  _text_36:any;
-  _text_37:any;
-  _el_38:any;
-  _text_39:any;
-  _anchor_40:any;
-  /*private*/ _vc_40:import9.ViewContainer;
-  _TemplateRef_40_5:any;
-  _NgFor_40_6:import13.Wrapper_NgFor;
-  _text_41:any;
-  _text_42:any;
   constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
     super(View_CityWeatherTableComponent1,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
   }
@@ -199,43 +224,59 @@ class View_CityWeatherTableComponent1 extends import2.AppView<any> {
     this._el_6 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
     this._text_7 = this.renderer.createText(this._el_6,'City',(null as any));
     this._text_8 = this.renderer.createText(this._el_4,'\n            ',(null as any));
-    this._el_9 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_10 = this.renderer.createText(this._el_9,'Latitude',(null as any));
-    this._text_11 = this.renderer.createText(this._el_4,'\n            ',(null as any));
-    this._el_12 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_13 = this.renderer.createText(this._el_12,'Longitude',(null as any));
+    this._anchor_9 = this.renderer.createTemplateAnchor(this._el_4,(null as any));
+    this._vc_9 = new import9.ViewContainer(9,4,this,this._anchor_9);
+    this._TemplateRef_9_5 = new import11.TemplateRef_(this,9,this._anchor_9);
+    this._NgIf_9_6 = new import10.Wrapper_NgIf(this._vc_9.vcRef,this._TemplateRef_9_5);
+    this._text_10 = this.renderer.createText(this._el_4,'\n            ',(null as any));
+    this._anchor_11 = this.renderer.createTemplateAnchor(this._el_4,(null as any));
+    this._vc_11 = new import9.ViewContainer(11,4,this,this._anchor_11);
+    this._TemplateRef_11_5 = new import11.TemplateRef_(this,11,this._anchor_11);
+    this._NgIf_11_6 = new import10.Wrapper_NgIf(this._vc_11.vcRef,this._TemplateRef_11_5);
+    this._text_12 = this.renderer.createText(this._el_4,'\n            ',(null as any));
+    this._anchor_13 = this.renderer.createTemplateAnchor(this._el_4,(null as any));
+    this._vc_13 = new import9.ViewContainer(13,4,this,this._anchor_13);
+    this._TemplateRef_13_5 = new import11.TemplateRef_(this,13,this._anchor_13);
+    this._NgIf_13_6 = new import10.Wrapper_NgIf(this._vc_13.vcRef,this._TemplateRef_13_5);
     this._text_14 = this.renderer.createText(this._el_4,'\n            ',(null as any));
-    this._el_15 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_16 = this.renderer.createText(this._el_15,'Overall conditions',(null as any));
-    this._text_17 = this.renderer.createText(this._el_4,'\n            ',(null as any));
-    this._el_18 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_19 = this.renderer.createText(this._el_18,'Temperature, ℃',(null as any));
+    this._anchor_15 = this.renderer.createTemplateAnchor(this._el_4,(null as any));
+    this._vc_15 = new import9.ViewContainer(15,4,this,this._anchor_15);
+    this._TemplateRef_15_5 = new import11.TemplateRef_(this,15,this._anchor_15);
+    this._NgIf_15_6 = new import10.Wrapper_NgIf(this._vc_15.vcRef,this._TemplateRef_15_5);
+    this._text_16 = this.renderer.createText(this._el_4,'\n            ',(null as any));
+    this._anchor_17 = this.renderer.createTemplateAnchor(this._el_4,(null as any));
+    this._vc_17 = new import9.ViewContainer(17,4,this,this._anchor_17);
+    this._TemplateRef_17_5 = new import11.TemplateRef_(this,17,this._anchor_17);
+    this._NgIf_17_6 = new import10.Wrapper_NgIf(this._vc_17.vcRef,this._TemplateRef_17_5);
+    this._text_18 = this.renderer.createText(this._el_4,'\n            ',(null as any));
+    this._anchor_19 = this.renderer.createTemplateAnchor(this._el_4,(null as any));
+    this._vc_19 = new import9.ViewContainer(19,4,this,this._anchor_19);
+    this._TemplateRef_19_5 = new import11.TemplateRef_(this,19,this._anchor_19);
+    this._NgIf_19_6 = new import10.Wrapper_NgIf(this._vc_19.vcRef,this._TemplateRef_19_5);
     this._text_20 = this.renderer.createText(this._el_4,'\n            ',(null as any));
-    this._el_21 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_22 = this.renderer.createText(this._el_21,'Humidity',(null as any));
-    this._text_23 = this.renderer.createText(this._el_4,'\n            ',(null as any));
-    this._el_24 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_25 = this.renderer.createText(this._el_24,'Pressure',(null as any));
-    this._text_26 = this.renderer.createText(this._el_4,'\n            ',(null as any));
-    this._el_27 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_28 = this.renderer.createText(this._el_27,'Wind',(null as any));
-    this._text_29 = this.renderer.createText(this._el_4,'\n            ',(null as any));
-    this._el_30 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_31 = this.renderer.createText(this._el_30,'Clouds',(null as any));
-    this._text_32 = this.renderer.createText(this._el_4,'\n            ',(null as any));
-    this._el_33 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_34 = this.renderer.createText(this._el_33,'Actions',(null as any));
-    this._text_35 = this.renderer.createText(this._el_4,'\n        ',(null as any));
-    this._text_36 = this.renderer.createText(this._el_2,'\n    ',(null as any));
-    this._text_37 = this.renderer.createText(this._el_0,'\n    ',(null as any));
-    this._el_38 = import3.createRenderElement(this.renderer,this._el_0,'tbody',new import3.InlineArray2(2,'class','weather-table-body'),(null as any));
-    this._text_39 = this.renderer.createText(this._el_38,'   \n        ',(null as any));
-    this._anchor_40 = this.renderer.createTemplateAnchor(this._el_38,(null as any));
-    this._vc_40 = new import9.ViewContainer(40,38,this,this._anchor_40);
-    this._TemplateRef_40_5 = new import11.TemplateRef_(this,40,this._anchor_40);
-    this._NgFor_40_6 = new import13.Wrapper_NgFor(this._vc_40.vcRef,this._TemplateRef_40_5,this.parentView.injectorGet(import14.IterableDiffers,this.parentIndex),this.parentView.ref);
-    this._text_41 = this.renderer.createText(this._el_38,'             \n    ',(null as any));
-    this._text_42 = this.renderer.createText(this._el_0,'           \n',(null as any));
+    this._anchor_21 = this.renderer.createTemplateAnchor(this._el_4,(null as any));
+    this._vc_21 = new import9.ViewContainer(21,4,this,this._anchor_21);
+    this._TemplateRef_21_5 = new import11.TemplateRef_(this,21,this._anchor_21);
+    this._NgIf_21_6 = new import10.Wrapper_NgIf(this._vc_21.vcRef,this._TemplateRef_21_5);
+    this._text_22 = this.renderer.createText(this._el_4,'\n            ',(null as any));
+    this._anchor_23 = this.renderer.createTemplateAnchor(this._el_4,(null as any));
+    this._vc_23 = new import9.ViewContainer(23,4,this,this._anchor_23);
+    this._TemplateRef_23_5 = new import11.TemplateRef_(this,23,this._anchor_23);
+    this._NgIf_23_6 = new import10.Wrapper_NgIf(this._vc_23.vcRef,this._TemplateRef_23_5);
+    this._text_24 = this.renderer.createText(this._el_4,'\n            ',(null as any));
+    this._el_25 = import3.createRenderElement(this.renderer,this._el_4,'td',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_26 = this.renderer.createText(this._el_25,'Actions',(null as any));
+    this._text_27 = this.renderer.createText(this._el_4,'\n        ',(null as any));
+    this._text_28 = this.renderer.createText(this._el_2,'\n    ',(null as any));
+    this._text_29 = this.renderer.createText(this._el_0,'\n    ',(null as any));
+    this._el_30 = import3.createRenderElement(this.renderer,this._el_0,'tbody',new import3.InlineArray2(2,'class','weather-table-body'),(null as any));
+    this._text_31 = this.renderer.createText(this._el_30,'   \n        ',(null as any));
+    this._anchor_32 = this.renderer.createTemplateAnchor(this._el_30,(null as any));
+    this._vc_32 = new import9.ViewContainer(32,30,this,this._anchor_32);
+    this._TemplateRef_32_5 = new import11.TemplateRef_(this,32,this._anchor_32);
+    this._NgFor_32_6 = new import13.Wrapper_NgFor(this._vc_32.vcRef,this._TemplateRef_32_5,this.parentView.injectorGet(import14.IterableDiffers,this.parentIndex),this.parentView.ref);
+    this._text_33 = this.renderer.createText(this._el_30,'             \n    ',(null as any));
+    this._text_34 = this.renderer.createText(this._el_0,'           \n',(null as any));
     this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [
       this._el_0,
       this._text_1,
@@ -246,74 +287,290 @@ class View_CityWeatherTableComponent1 extends import2.AppView<any> {
       this._el_6,
       this._text_7,
       this._text_8,
-      this._el_9,
+      this._anchor_9,
       this._text_10,
-      this._text_11,
-      this._el_12,
-      this._text_13,
+      this._anchor_11,
+      this._text_12,
+      this._anchor_13,
       this._text_14,
-      this._el_15,
+      this._anchor_15,
       this._text_16,
-      this._text_17,
-      this._el_18,
-      this._text_19,
+      this._anchor_17,
+      this._text_18,
+      this._anchor_19,
       this._text_20,
-      this._el_21,
+      this._anchor_21,
       this._text_22,
-      this._text_23,
-      this._el_24,
-      this._text_25,
+      this._anchor_23,
+      this._text_24,
+      this._el_25,
       this._text_26,
-      this._el_27,
+      this._text_27,
       this._text_28,
       this._text_29,
       this._el_30,
       this._text_31,
-      this._text_32,
-      this._el_33,
-      this._text_34,
-      this._text_35,
-      this._text_36,
-      this._text_37,
-      this._el_38,
-      this._text_39,
-      this._anchor_40,
-      this._text_41,
-      this._text_42
+      this._anchor_32,
+      this._text_33,
+      this._text_34
     ]
     ),(null as any));
     return (null as any);
   }
   injectorGetInternal(token:any,requestNodeIndex:number,notFoundResult:any):any {
-    if (((token === import11.TemplateRef) && (40 === requestNodeIndex))) { return this._TemplateRef_40_5; }
-    if (((token === import15.NgFor) && (40 === requestNodeIndex))) { return this._NgFor_40_6.context; }
+    if (((token === import11.TemplateRef) && (9 === requestNodeIndex))) { return this._TemplateRef_9_5; }
+    if (((token === import12.NgIf) && (9 === requestNodeIndex))) { return this._NgIf_9_6.context; }
+    if (((token === import11.TemplateRef) && (11 === requestNodeIndex))) { return this._TemplateRef_11_5; }
+    if (((token === import12.NgIf) && (11 === requestNodeIndex))) { return this._NgIf_11_6.context; }
+    if (((token === import11.TemplateRef) && (13 === requestNodeIndex))) { return this._TemplateRef_13_5; }
+    if (((token === import12.NgIf) && (13 === requestNodeIndex))) { return this._NgIf_13_6.context; }
+    if (((token === import11.TemplateRef) && (15 === requestNodeIndex))) { return this._TemplateRef_15_5; }
+    if (((token === import12.NgIf) && (15 === requestNodeIndex))) { return this._NgIf_15_6.context; }
+    if (((token === import11.TemplateRef) && (17 === requestNodeIndex))) { return this._TemplateRef_17_5; }
+    if (((token === import12.NgIf) && (17 === requestNodeIndex))) { return this._NgIf_17_6.context; }
+    if (((token === import11.TemplateRef) && (19 === requestNodeIndex))) { return this._TemplateRef_19_5; }
+    if (((token === import12.NgIf) && (19 === requestNodeIndex))) { return this._NgIf_19_6.context; }
+    if (((token === import11.TemplateRef) && (21 === requestNodeIndex))) { return this._TemplateRef_21_5; }
+    if (((token === import12.NgIf) && (21 === requestNodeIndex))) { return this._NgIf_21_6.context; }
+    if (((token === import11.TemplateRef) && (23 === requestNodeIndex))) { return this._TemplateRef_23_5; }
+    if (((token === import12.NgIf) && (23 === requestNodeIndex))) { return this._NgIf_23_6.context; }
+    if (((token === import11.TemplateRef) && (32 === requestNodeIndex))) { return this._TemplateRef_32_5; }
+    if (((token === import15.NgFor) && (32 === requestNodeIndex))) { return this._NgFor_32_6.context; }
     return notFoundResult;
   }
   detectChangesInternal(throwOnChange:boolean):void {
-    const currVal_40_0_0:any = this.parentView.context.weatherList;
-    this._NgFor_40_6.check_ngForOf(currVal_40_0_0,throwOnChange,false);
-    this._NgFor_40_6.ngDoCheck(this,this._anchor_40,throwOnChange);
-    this._vc_40.detectChangesInNestedViews(throwOnChange);
+    const currVal_9_0_0:boolean = (!this.parentView.context.tableParameters || (this.parentView.context.tableParameters && this.parentView.context.tableParameters.getShowCoordinate()));
+    this._NgIf_9_6.check_ngIf(currVal_9_0_0,throwOnChange,false);
+    this._NgIf_9_6.ngDoCheck(this,this._anchor_9,throwOnChange);
+    const currVal_11_0_0:boolean = (!this.parentView.context.tableParameters || (this.parentView.context.tableParameters && this.parentView.context.tableParameters.getShowCoordinate()));
+    this._NgIf_11_6.check_ngIf(currVal_11_0_0,throwOnChange,false);
+    this._NgIf_11_6.ngDoCheck(this,this._anchor_11,throwOnChange);
+    const currVal_13_0_0:boolean = (!this.parentView.context.tableParameters || ((this.parentView.context.tableParameters && this.parentView.context.tableParameters.getSelectedOptions()) && (this.parentView.context.tableParameters.getSelectedOptions().indexOf('Overall conditions') != (0 - 1))));
+    this._NgIf_13_6.check_ngIf(currVal_13_0_0,throwOnChange,false);
+    this._NgIf_13_6.ngDoCheck(this,this._anchor_13,throwOnChange);
+    const currVal_15_0_0:boolean = (!this.parentView.context.tableParameters || ((this.parentView.context.tableParameters && this.parentView.context.tableParameters.getSelectedOptions()) && (this.parentView.context.tableParameters.getSelectedOptions().indexOf('Temperature') != (0 - 1))));
+    this._NgIf_15_6.check_ngIf(currVal_15_0_0,throwOnChange,false);
+    this._NgIf_15_6.ngDoCheck(this,this._anchor_15,throwOnChange);
+    const currVal_17_0_0:boolean = (!this.parentView.context.tableParameters || ((this.parentView.context.tableParameters && this.parentView.context.tableParameters.getSelectedOptions()) && (this.parentView.context.tableParameters.getSelectedOptions().indexOf('Humidity') != (0 - 1))));
+    this._NgIf_17_6.check_ngIf(currVal_17_0_0,throwOnChange,false);
+    this._NgIf_17_6.ngDoCheck(this,this._anchor_17,throwOnChange);
+    const currVal_19_0_0:boolean = (!this.parentView.context.tableParameters || ((this.parentView.context.tableParameters && this.parentView.context.tableParameters.getSelectedOptions()) && (this.parentView.context.tableParameters.getSelectedOptions().indexOf('Pressure') != (0 - 1))));
+    this._NgIf_19_6.check_ngIf(currVal_19_0_0,throwOnChange,false);
+    this._NgIf_19_6.ngDoCheck(this,this._anchor_19,throwOnChange);
+    const currVal_21_0_0:boolean = (!this.parentView.context.tableParameters || ((this.parentView.context.tableParameters && this.parentView.context.tableParameters.getSelectedOptions()) && (this.parentView.context.tableParameters.getSelectedOptions().indexOf('Wind') != (0 - 1))));
+    this._NgIf_21_6.check_ngIf(currVal_21_0_0,throwOnChange,false);
+    this._NgIf_21_6.ngDoCheck(this,this._anchor_21,throwOnChange);
+    const currVal_23_0_0:boolean = (!this.parentView.context.tableParameters || ((this.parentView.context.tableParameters && this.parentView.context.tableParameters.getSelectedOptions()) && (this.parentView.context.tableParameters.getSelectedOptions().indexOf('Clouds') != (0 - 1))));
+    this._NgIf_23_6.check_ngIf(currVal_23_0_0,throwOnChange,false);
+    this._NgIf_23_6.ngDoCheck(this,this._anchor_23,throwOnChange);
+    const currVal_32_0_0:any = this.parentView.context.weatherList;
+    this._NgFor_32_6.check_ngForOf(currVal_32_0_0,throwOnChange,false);
+    this._NgFor_32_6.ngDoCheck(this,this._anchor_32,throwOnChange);
+    this._vc_9.detectChangesInNestedViews(throwOnChange);
+    this._vc_11.detectChangesInNestedViews(throwOnChange);
+    this._vc_13.detectChangesInNestedViews(throwOnChange);
+    this._vc_15.detectChangesInNestedViews(throwOnChange);
+    this._vc_17.detectChangesInNestedViews(throwOnChange);
+    this._vc_19.detectChangesInNestedViews(throwOnChange);
+    this._vc_21.detectChangesInNestedViews(throwOnChange);
+    this._vc_23.detectChangesInNestedViews(throwOnChange);
+    this._vc_32.detectChangesInNestedViews(throwOnChange);
   }
   destroyInternal():void {
-    this._vc_40.destroyNestedViews();
+    this._vc_9.destroyNestedViews();
+    this._vc_11.destroyNestedViews();
+    this._vc_13.destroyNestedViews();
+    this._vc_15.destroyNestedViews();
+    this._vc_17.destroyNestedViews();
+    this._vc_19.destroyNestedViews();
+    this._vc_21.destroyNestedViews();
+    this._vc_23.destroyNestedViews();
+    this._vc_32.destroyNestedViews();
   }
   visitRootNodesInternal(cb:any,ctx:any):void {
     cb(this._el_0,ctx);
   }
   createEmbeddedViewInternal(nodeIndex:number):import2.AppView<any> {
-    if ((nodeIndex == 40)) { return new View_CityWeatherTableComponent2(this.viewUtils,this,40,this._anchor_40,this._vc_40); }
+    if ((nodeIndex == 9)) { return new View_CityWeatherTableComponent2(this.viewUtils,this,9,this._anchor_9,this._vc_9); }
+    if ((nodeIndex == 11)) { return new View_CityWeatherTableComponent3(this.viewUtils,this,11,this._anchor_11,this._vc_11); }
+    if ((nodeIndex == 13)) { return new View_CityWeatherTableComponent4(this.viewUtils,this,13,this._anchor_13,this._vc_13); }
+    if ((nodeIndex == 15)) { return new View_CityWeatherTableComponent5(this.viewUtils,this,15,this._anchor_15,this._vc_15); }
+    if ((nodeIndex == 17)) { return new View_CityWeatherTableComponent6(this.viewUtils,this,17,this._anchor_17,this._vc_17); }
+    if ((nodeIndex == 19)) { return new View_CityWeatherTableComponent7(this.viewUtils,this,19,this._anchor_19,this._vc_19); }
+    if ((nodeIndex == 21)) { return new View_CityWeatherTableComponent8(this.viewUtils,this,21,this._anchor_21,this._vc_21); }
+    if ((nodeIndex == 23)) { return new View_CityWeatherTableComponent9(this.viewUtils,this,23,this._anchor_23,this._vc_23); }
+    if ((nodeIndex == 32)) { return new View_CityWeatherTableComponent10(this.viewUtils,this,32,this._anchor_32,this._vc_32); }
     return (null as any);
   }
 }
 class View_CityWeatherTableComponent2 extends import2.AppView<any> {
+  _el_0:any;
+  _text_1:any;
+  constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
+    super(View_CityWeatherTableComponent2,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
+  }
+  createInternal(rootSelector:string):import7.ComponentRef<any> {
+    this._el_0 = import3.createRenderElement(this.renderer,(null as any),'td',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_1 = this.renderer.createText(this._el_0,'Latitude',(null as any));
+    this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [
+      this._el_0,
+      this._text_1
+    ]
+    ),(null as any));
+    return (null as any);
+  }
+  visitRootNodesInternal(cb:any,ctx:any):void {
+    cb(this._el_0,ctx);
+  }
+}
+class View_CityWeatherTableComponent3 extends import2.AppView<any> {
+  _el_0:any;
+  _text_1:any;
+  constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
+    super(View_CityWeatherTableComponent3,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
+  }
+  createInternal(rootSelector:string):import7.ComponentRef<any> {
+    this._el_0 = import3.createRenderElement(this.renderer,(null as any),'td',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_1 = this.renderer.createText(this._el_0,'Longitude',(null as any));
+    this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [
+      this._el_0,
+      this._text_1
+    ]
+    ),(null as any));
+    return (null as any);
+  }
+  visitRootNodesInternal(cb:any,ctx:any):void {
+    cb(this._el_0,ctx);
+  }
+}
+class View_CityWeatherTableComponent4 extends import2.AppView<any> {
+  _el_0:any;
+  _text_1:any;
+  constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
+    super(View_CityWeatherTableComponent4,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
+  }
+  createInternal(rootSelector:string):import7.ComponentRef<any> {
+    this._el_0 = import3.createRenderElement(this.renderer,(null as any),'td',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_1 = this.renderer.createText(this._el_0,'Overall conditions',(null as any));
+    this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [
+      this._el_0,
+      this._text_1
+    ]
+    ),(null as any));
+    return (null as any);
+  }
+  visitRootNodesInternal(cb:any,ctx:any):void {
+    cb(this._el_0,ctx);
+  }
+}
+class View_CityWeatherTableComponent5 extends import2.AppView<any> {
+  _el_0:any;
+  _text_1:any;
+  constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
+    super(View_CityWeatherTableComponent5,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
+  }
+  createInternal(rootSelector:string):import7.ComponentRef<any> {
+    this._el_0 = import3.createRenderElement(this.renderer,(null as any),'td',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_1 = this.renderer.createText(this._el_0,'Temperature, ℃',(null as any));
+    this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [
+      this._el_0,
+      this._text_1
+    ]
+    ),(null as any));
+    return (null as any);
+  }
+  visitRootNodesInternal(cb:any,ctx:any):void {
+    cb(this._el_0,ctx);
+  }
+}
+class View_CityWeatherTableComponent6 extends import2.AppView<any> {
+  _el_0:any;
+  _text_1:any;
+  constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
+    super(View_CityWeatherTableComponent6,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
+  }
+  createInternal(rootSelector:string):import7.ComponentRef<any> {
+    this._el_0 = import3.createRenderElement(this.renderer,(null as any),'td',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_1 = this.renderer.createText(this._el_0,'Humidity',(null as any));
+    this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [
+      this._el_0,
+      this._text_1
+    ]
+    ),(null as any));
+    return (null as any);
+  }
+  visitRootNodesInternal(cb:any,ctx:any):void {
+    cb(this._el_0,ctx);
+  }
+}
+class View_CityWeatherTableComponent7 extends import2.AppView<any> {
+  _el_0:any;
+  _text_1:any;
+  constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
+    super(View_CityWeatherTableComponent7,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
+  }
+  createInternal(rootSelector:string):import7.ComponentRef<any> {
+    this._el_0 = import3.createRenderElement(this.renderer,(null as any),'td',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_1 = this.renderer.createText(this._el_0,'Pressure',(null as any));
+    this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [
+      this._el_0,
+      this._text_1
+    ]
+    ),(null as any));
+    return (null as any);
+  }
+  visitRootNodesInternal(cb:any,ctx:any):void {
+    cb(this._el_0,ctx);
+  }
+}
+class View_CityWeatherTableComponent8 extends import2.AppView<any> {
+  _el_0:any;
+  _text_1:any;
+  constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
+    super(View_CityWeatherTableComponent8,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
+  }
+  createInternal(rootSelector:string):import7.ComponentRef<any> {
+    this._el_0 = import3.createRenderElement(this.renderer,(null as any),'td',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_1 = this.renderer.createText(this._el_0,'Wind',(null as any));
+    this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [
+      this._el_0,
+      this._text_1
+    ]
+    ),(null as any));
+    return (null as any);
+  }
+  visitRootNodesInternal(cb:any,ctx:any):void {
+    cb(this._el_0,ctx);
+  }
+}
+class View_CityWeatherTableComponent9 extends import2.AppView<any> {
+  _el_0:any;
+  _text_1:any;
+  constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
+    super(View_CityWeatherTableComponent9,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
+  }
+  createInternal(rootSelector:string):import7.ComponentRef<any> {
+    this._el_0 = import3.createRenderElement(this.renderer,(null as any),'td',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_1 = this.renderer.createText(this._el_0,'Clouds',(null as any));
+    this.init(this._el_0,((<any>this.renderer).directRenderer? (null as any): [
+      this._el_0,
+      this._text_1
+    ]
+    ),(null as any));
+    return (null as any);
+  }
+  visitRootNodesInternal(cb:any,ctx:any):void {
+    cb(this._el_0,ctx);
+  }
+}
+class View_CityWeatherTableComponent10 extends import2.AppView<any> {
   _el_0:any;
   compView_0:import2.AppView<import16.CityWeatherComponent>;
   _CityWeatherComponent_0_3:import17.Wrapper_CityWeatherComponent;
   _WeatherColorDirective_0_4:import18.Wrapper_WeatherColorDirective;
   _text_1:any;
   constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any,declaredViewContainer:import9.ViewContainer) {
-    super(View_CityWeatherTableComponent2,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
+    super(View_CityWeatherTableComponent10,renderType_CityWeatherTableComponent,import6.ViewType.EMBEDDED,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckAlways,declaredViewContainer);
   }
   createInternal(rootSelector:string):import7.ComponentRef<any> {
     this._el_0 = import3.createRenderElement(this.renderer,(null as any),'tr',new import3.InlineArray4(4,'city-weather','','weather-color',''),(null as any));
@@ -339,8 +596,10 @@ class View_CityWeatherTableComponent2 extends import2.AppView<any> {
   detectChangesInternal(throwOnChange:boolean):void {
     const currVal_0_0_0:any = this.context.$implicit;
     this._CityWeatherComponent_0_3.check_weather(currVal_0_0_0,throwOnChange,false);
-    const currVal_0_0_1:any = this.context.index;
-    this._CityWeatherComponent_0_3.check_index(currVal_0_0_1,throwOnChange,false);
+    const currVal_0_0_1:any = this.parentView.parentView.context.tableParameters;
+    this._CityWeatherComponent_0_3.check_tableParameters(currVal_0_0_1,throwOnChange,false);
+    const currVal_0_0_2:any = this.context.index;
+    this._CityWeatherComponent_0_3.check_index(currVal_0_0_2,throwOnChange,false);
     if (this._CityWeatherComponent_0_3.ngDoCheck(this,this._el_0,throwOnChange)) { this.compView_0.markAsCheckOnce(); }
     const currVal_0_1_0:any = this.context.$implicit;
     this._WeatherColorDirective_0_4.check_weather(currVal_0_1_0,throwOnChange,false);

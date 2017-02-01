@@ -17,7 +17,7 @@ export var AppComponent = (function () {
         this.loggerService = loggerService;
         this.coordinate = this.store.select("coordinate");
         this.profiler.setZone(zone);
-        this.profiler.profile();
+        // this.profiler.profile();
     }
     AppComponent.prototype.ngOnInit = function () {
         this.isLoading = this.store.select("loading");

@@ -1,6 +1,7 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
+import { ReactiveFormsModule } from "@angular/forms";
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AppComponent }   from './../components/app.component';
@@ -21,7 +22,7 @@ import  { LoadingReducer } from './../reducers/LoadingReducer';
 
 
 @NgModule({
-    imports:      [BrowserModule, FormsModule, FooterModule, HeaderModule, LoaderModule, MapModule, WeatherModule,
+    imports:      [BrowserModule, FormsModule, ReactiveFormsModule, FooterModule, HeaderModule, LoaderModule, MapModule, WeatherModule,
     StoreModule.provideStore({
           coordinate: CoordinateReducer,
           loading: LoadingReducer,

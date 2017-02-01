@@ -13,14 +13,14 @@ td {
     padding: 10px;
 }
 @media screen and (min-width: 900px) {
-    table, .city-form {
+    table, .city-form, .table-form {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
     }
 }
 @media screen and (max-width: 899px) {
-    table, .city-form {
+    table, .city-form, .table-form {
         width: 100%;
     }
 }
@@ -30,6 +30,9 @@ td {
 }
 .city-form {
     margin-bottom: 10px;
+    background-color: lightsteelblue;
+    padding: 20px;
+    box-sizing: border-box;
 }
 .table-btn {
     margin: 10px;
