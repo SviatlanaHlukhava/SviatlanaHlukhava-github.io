@@ -21,33 +21,28 @@ import * as import9 from '../../css/tableForm.css.shim';
 import * as import10 from '../../css/weatherTable.css.shim';
 import * as import11 from '../../node_modules/@angular/forms/src/directives/reactive_directives/form_group_directive.ngfactory';
 import * as import12 from '../../node_modules/@angular/forms/src/directives/ng_control_status.ngfactory';
-import * as import13 from '../../node_modules/@angular/forms/src/directives/select_multiple_control_value_accessor.ngfactory';
-import * as import14 from '../../node_modules/@angular/forms/src/directives/reactive_directives/form_control_name.ngfactory';
-import * as import15 from '@angular/core/src/linker/view_container';
-import * as import16 from '../../node_modules/@angular/common/src/directives/ng_for.ngfactory';
-import * as import17 from '../../node_modules/@angular/forms/src/directives/checkbox_value_accessor.ngfactory';
-import * as import18 from '../../node_modules/@angular/forms/src/directives/default_value_accessor.ngfactory';
-import * as import19 from '../../node_modules/@angular/forms/src/directives/number_value_accessor.ngfactory';
+import * as import13 from '../../../scripts/components/multiselect.component';
+import * as import14 from './multiselect.component.ngfactory';
+import * as import15 from '../../node_modules/@angular/forms/src/directives/reactive_directives/form_control_name.ngfactory';
+import * as import16 from '../../node_modules/@angular/forms/src/directives/checkbox_value_accessor.ngfactory';
+import * as import17 from '../../node_modules/@angular/forms/src/directives/default_value_accessor.ngfactory';
+import * as import18 from '../../node_modules/@angular/forms/src/directives/number_value_accessor.ngfactory';
+import * as import19 from '@angular/core/src/linker/view_container';
 import * as import20 from '../../node_modules/@angular/common/src/directives/ng_if.ngfactory';
 import * as import21 from '@angular/core/src/linker/element_ref';
 import * as import22 from '@angular/core/src/linker/template_ref';
-import * as import23 from '@angular/core/src/change_detection/differs/iterable_differs';
-import * as import24 from '@angular/common/src/directives/ng_for';
-import * as import25 from '@angular/forms/src/directives/select_multiple_control_value_accessor';
-import * as import26 from '@angular/forms/src/directives/control_value_accessor';
-import * as import27 from '@angular/forms/src/directives/reactive_directives/form_control_name';
-import * as import28 from '@angular/forms/src/directives/ng_control';
-import * as import29 from '@angular/forms/src/directives/ng_control_status';
-import * as import30 from '@angular/forms/src/directives/checkbox_value_accessor';
-import * as import31 from '@angular/forms/src/directives/default_value_accessor';
-import * as import32 from '@angular/forms/src/directives/number_value_accessor';
-import * as import33 from '@angular/common/src/directives/ng_if';
-import * as import34 from '@angular/forms/src/directives/reactive_directives/form_group_directive';
-import * as import35 from '@angular/forms/src/directives/control_container';
-import * as import36 from '../../node_modules/@angular/forms/src/directives/select_control_value_accessor.ngfactory';
-import * as import37 from '@angular/forms/src/directives/select_control_value_accessor';
-import * as import38 from '../../../scripts/components/validationError.component';
-import * as import39 from './validationError.component.ngfactory';
+import * as import23 from '@angular/forms/src/directives/control_value_accessor';
+import * as import24 from '@angular/forms/src/directives/reactive_directives/form_control_name';
+import * as import25 from '@angular/forms/src/directives/ng_control';
+import * as import26 from '@angular/forms/src/directives/ng_control_status';
+import * as import27 from '@angular/forms/src/directives/checkbox_value_accessor';
+import * as import28 from '@angular/forms/src/directives/default_value_accessor';
+import * as import29 from '@angular/forms/src/directives/number_value_accessor';
+import * as import30 from '@angular/common/src/directives/ng_if';
+import * as import31 from '@angular/forms/src/directives/reactive_directives/form_group_directive';
+import * as import32 from '@angular/forms/src/directives/control_container';
+import * as import33 from '../../../scripts/components/validationError.component';
+import * as import34 from './validationError.component.ngfactory';
 export var Wrapper_TableFormComponent = (function () {
     function Wrapper_TableFormComponent(p0) {
         this._changed = false;
@@ -122,7 +117,7 @@ export var View_TableFormComponent0 = (function (_super) {
     __extends(View_TableFormComponent0, _super);
     function View_TableFormComponent0(viewUtils, parentView, parentIndex, parentElement) {
         _super.call(this, View_TableFormComponent0, renderType_TableFormComponent, import5.ViewType.COMPONENT, viewUtils, parentView, parentIndex, parentElement, import6.ChangeDetectorStatus.CheckOnce);
-        this._expr_58 = import6.UNINITIALIZED;
+        this._expr_54 = import6.UNINITIALIZED;
     }
     View_TableFormComponent0.prototype.createInternal = function (rootSelector) {
         var parentRenderNode = this.renderer.createViewRoot(this.parentElement);
@@ -136,62 +131,58 @@ export var View_TableFormComponent0 = (function (_super) {
         this._el_4 = import3.createRenderElement(this.renderer, this._el_2, 'label', new import3.InlineArray2(2, 'class', 'form-cell'), null);
         this._text_5 = this.renderer.createText(this._el_4, 'Weather parameters', null);
         this._text_6 = this.renderer.createText(this._el_2, '\n        ', null);
-        this._el_7 = import3.createRenderElement(this.renderer, this._el_2, 'select', new import3.InlineArray8(6, 'class', 'form-cell', 'formControlName', 'selectedOptions', 'multiple', ''), null);
-        this._SelectMultipleControlValueAccessor_7_3 = new import13.Wrapper_SelectMultipleControlValueAccessor(this.renderer, new import21.ElementRef(this._el_7));
-        this._NG_VALUE_ACCESSOR_7_4 = [this._SelectMultipleControlValueAccessor_7_3.context];
-        this._FormControlName_7_5 = new import14.Wrapper_FormControlName(this._ControlContainer_0_4, null, null, this._NG_VALUE_ACCESSOR_7_4);
+        this._el_7 = import3.createRenderElement(this.renderer, this._el_2, 'multiselect', new import3.InlineArray4(4, 'class', 'form-cell', 'formControlName', 'selectedOptions'), null);
+        this.compView_7 = new import14.View_MultiselectControlComponent0(this.viewUtils, this, 7, this._el_7);
+        this._MultiselectControlComponent_7_3 = new import14.Wrapper_MultiselectControlComponent();
+        this._NG_VALUE_ACCESSOR_7_4 = [this._MultiselectControlComponent_7_3.context];
+        this._FormControlName_7_5 = new import15.Wrapper_FormControlName(this._ControlContainer_0_4, null, null, this._NG_VALUE_ACCESSOR_7_4);
         this._NgControl_7_6 = this._FormControlName_7_5.context;
         this._NgControlStatus_7_7 = new import12.Wrapper_NgControlStatus(this._NgControl_7_6);
-        this._text_8 = this.renderer.createText(this._el_7, '\n            ', null);
-        this._anchor_9 = this.renderer.createTemplateAnchor(this._el_7, null);
-        this._vc_9 = new import15.ViewContainer(9, 7, this, this._anchor_9);
-        this._TemplateRef_9_5 = new import22.TemplateRef_(this, 9, this._anchor_9);
-        this._NgFor_9_6 = new import16.Wrapper_NgFor(this._vc_9.vcRef, this._TemplateRef_9_5, this.parentView.injectorGet(import23.IterableDiffers, this.parentIndex), this.ref);
-        this._text_10 = this.renderer.createText(this._el_7, '\n        ', null);
-        this._text_11 = this.renderer.createText(this._el_2, '\n    ', null);
-        this._el_12 = import3.createRenderElement(this.renderer, this._el_0, 'br', import3.EMPTY_INLINE_ARRAY, null);
-        this._text_13 = this.renderer.createText(this._el_0, '\n    ', null);
-        this._el_14 = import3.createRenderElement(this.renderer, this._el_0, 'div', new import3.InlineArray2(2, 'class', 'form-row'), null);
-        this._text_15 = this.renderer.createText(this._el_14, '\n        ', null);
-        this._el_16 = import3.createRenderElement(this.renderer, this._el_14, 'input', new import3.InlineArray8(8, 'class', 'form-row', 'formControlName', 'showCoordinate', 'name', 'showCoordinate', 'type', 'checkbox'), null);
-        this._CheckboxControlValueAccessor_16_3 = new import17.Wrapper_CheckboxControlValueAccessor(this.renderer, new import21.ElementRef(this._el_16));
-        this._NG_VALUE_ACCESSOR_16_4 = [this._CheckboxControlValueAccessor_16_3.context];
-        this._FormControlName_16_5 = new import14.Wrapper_FormControlName(this._ControlContainer_0_4, null, null, this._NG_VALUE_ACCESSOR_16_4);
-        this._NgControl_16_6 = this._FormControlName_16_5.context;
-        this._NgControlStatus_16_7 = new import12.Wrapper_NgControlStatus(this._NgControl_16_6);
-        this._text_17 = this.renderer.createText(this._el_14, 'Show Coordinate\n    ', null);
-        this._el_18 = import3.createRenderElement(this.renderer, this._el_0, 'br', import3.EMPTY_INLINE_ARRAY, null);
-        this._text_19 = this.renderer.createText(this._el_0, '\n    ', null);
-        this._el_20 = import3.createRenderElement(this.renderer, this._el_0, 'div', new import3.InlineArray2(2, 'class', 'form-row'), null);
-        this._text_21 = this.renderer.createText(this._el_20, '\n        ', null);
-        this._el_22 = import3.createRenderElement(this.renderer, this._el_20, 'label', new import3.InlineArray2(2, 'class', 'form-cell'), null);
-        this._text_23 = this.renderer.createText(this._el_22, 'Coordinate Precision', null);
-        this._text_24 = this.renderer.createText(this._el_20, '\n        ', null);
-        this._el_25 = import3.createRenderElement(this.renderer, this._el_20, 'input', new import3.InlineArray8(8, 'class', 'form-cell', 'formControlName', 'precision', 'name', 'precision', 'type', 'number'), null);
-        this._DefaultValueAccessor_25_3 = new import18.Wrapper_DefaultValueAccessor(this.renderer, new import21.ElementRef(this._el_25));
-        this._NumberValueAccessor_25_4 = new import19.Wrapper_NumberValueAccessor(this.renderer, new import21.ElementRef(this._el_25));
-        this._NG_VALUE_ACCESSOR_25_5 = [
-            this._DefaultValueAccessor_25_3.context,
-            this._NumberValueAccessor_25_4.context
+        this._text_8 = this.renderer.createText(null, '\n        ', null);
+        this.compView_7.create(this._MultiselectControlComponent_7_3.context);
+        this._text_9 = this.renderer.createText(this._el_2, '\n    ', null);
+        this._el_10 = import3.createRenderElement(this.renderer, this._el_0, 'br', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_11 = this.renderer.createText(this._el_0, '\n    ', null);
+        this._el_12 = import3.createRenderElement(this.renderer, this._el_0, 'div', new import3.InlineArray2(2, 'class', 'form-row'), null);
+        this._text_13 = this.renderer.createText(this._el_12, '\n        ', null);
+        this._el_14 = import3.createRenderElement(this.renderer, this._el_12, 'input', new import3.InlineArray8(8, 'class', 'form-row', 'formControlName', 'showCoordinate', 'name', 'showCoordinate', 'type', 'checkbox'), null);
+        this._CheckboxControlValueAccessor_14_3 = new import16.Wrapper_CheckboxControlValueAccessor(this.renderer, new import21.ElementRef(this._el_14));
+        this._NG_VALUE_ACCESSOR_14_4 = [this._CheckboxControlValueAccessor_14_3.context];
+        this._FormControlName_14_5 = new import15.Wrapper_FormControlName(this._ControlContainer_0_4, null, null, this._NG_VALUE_ACCESSOR_14_4);
+        this._NgControl_14_6 = this._FormControlName_14_5.context;
+        this._NgControlStatus_14_7 = new import12.Wrapper_NgControlStatus(this._NgControl_14_6);
+        this._text_15 = this.renderer.createText(this._el_12, 'Show Coordinate\n    ', null);
+        this._el_16 = import3.createRenderElement(this.renderer, this._el_0, 'br', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_17 = this.renderer.createText(this._el_0, '\n    ', null);
+        this._el_18 = import3.createRenderElement(this.renderer, this._el_0, 'div', new import3.InlineArray2(2, 'class', 'form-row'), null);
+        this._text_19 = this.renderer.createText(this._el_18, '\n        ', null);
+        this._el_20 = import3.createRenderElement(this.renderer, this._el_18, 'label', new import3.InlineArray2(2, 'class', 'form-cell'), null);
+        this._text_21 = this.renderer.createText(this._el_20, 'Coordinate Precision', null);
+        this._text_22 = this.renderer.createText(this._el_18, '\n        ', null);
+        this._el_23 = import3.createRenderElement(this.renderer, this._el_18, 'input', new import3.InlineArray8(8, 'class', 'form-cell', 'formControlName', 'precision', 'name', 'precision', 'type', 'number'), null);
+        this._DefaultValueAccessor_23_3 = new import17.Wrapper_DefaultValueAccessor(this.renderer, new import21.ElementRef(this._el_23));
+        this._NumberValueAccessor_23_4 = new import18.Wrapper_NumberValueAccessor(this.renderer, new import21.ElementRef(this._el_23));
+        this._NG_VALUE_ACCESSOR_23_5 = [
+            this._DefaultValueAccessor_23_3.context,
+            this._NumberValueAccessor_23_4.context
         ];
-        this._FormControlName_25_6 = new import14.Wrapper_FormControlName(this._ControlContainer_0_4, null, null, this._NG_VALUE_ACCESSOR_25_5);
-        this._NgControl_25_7 = this._FormControlName_25_6.context;
-        this._NgControlStatus_25_8 = new import12.Wrapper_NgControlStatus(this._NgControl_25_7);
-        this._text_26 = this.renderer.createText(this._el_20, '\n    ', null);
+        this._FormControlName_23_6 = new import15.Wrapper_FormControlName(this._ControlContainer_0_4, null, null, this._NG_VALUE_ACCESSOR_23_5);
+        this._NgControl_23_7 = this._FormControlName_23_6.context;
+        this._NgControlStatus_23_8 = new import12.Wrapper_NgControlStatus(this._NgControl_23_7);
+        this._text_24 = this.renderer.createText(this._el_18, '\n    ', null);
+        this._text_25 = this.renderer.createText(this._el_0, '\n    ', null);
+        this._anchor_26 = this.renderer.createTemplateAnchor(this._el_0, null);
+        this._vc_26 = new import19.ViewContainer(26, 0, this, this._anchor_26);
+        this._TemplateRef_26_5 = new import22.TemplateRef_(this, 26, this._anchor_26);
+        this._NgIf_26_6 = new import20.Wrapper_NgIf(this._vc_26.vcRef, this._TemplateRef_26_5);
         this._text_27 = this.renderer.createText(this._el_0, '\n    ', null);
-        this._anchor_28 = this.renderer.createTemplateAnchor(this._el_0, null);
-        this._vc_28 = new import15.ViewContainer(28, 0, this, this._anchor_28);
-        this._TemplateRef_28_5 = new import22.TemplateRef_(this, 28, this._anchor_28);
-        this._NgIf_28_6 = new import20.Wrapper_NgIf(this._vc_28.vcRef, this._TemplateRef_28_5);
-        this._text_29 = this.renderer.createText(this._el_0, '\n    ', null);
-        this._el_30 = import3.createRenderElement(this.renderer, this._el_0, 'button', new import3.InlineArray2(2, 'class', 'form-row'), null);
-        this._text_31 = this.renderer.createText(this._el_30, 'Submit', null);
-        this._text_32 = this.renderer.createText(this._el_0, '\n', null);
+        this._el_28 = import3.createRenderElement(this.renderer, this._el_0, 'button', new import3.InlineArray2(2, 'class', 'form-row'), null);
+        this._text_29 = this.renderer.createText(this._el_28, 'Submit', null);
+        this._text_30 = this.renderer.createText(this._el_0, '\n', null);
         var disposable_0 = import3.subscribeToRenderElement(this, this._el_0, new import3.InlineArray4(4, 'submit', null, 'reset', null), this.eventHandler(this.handleEvent_0));
-        var disposable_1 = import3.subscribeToRenderElement(this, this._el_7, new import3.InlineArray4(4, 'change', null, 'blur', null), this.eventHandler(this.handleEvent_7));
-        var disposable_2 = import3.subscribeToRenderElement(this, this._el_16, new import3.InlineArray4(4, 'change', null, 'blur', null), this.eventHandler(this.handleEvent_16));
-        var disposable_3 = import3.subscribeToRenderElement(this, this._el_25, new import3.InlineArray8(6, 'input', null, 'blur', null, 'change', null), this.eventHandler(this.handleEvent_25));
-        var disposable_4 = import3.subscribeToRenderElement(this, this._el_30, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_30));
+        var disposable_1 = import3.subscribeToRenderElement(this, this._el_14, new import3.InlineArray4(4, 'change', null, 'blur', null), this.eventHandler(this.handleEvent_14));
+        var disposable_2 = import3.subscribeToRenderElement(this, this._el_23, new import3.InlineArray8(6, 'input', null, 'blur', null, 'change', null), this.eventHandler(this.handleEvent_23));
+        var disposable_3 = import3.subscribeToRenderElement(this, this._el_28, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_28));
         this.init(null, (this.renderer.directRenderer ? null : [
             this._el_0,
             this._text_1,
@@ -202,8 +193,8 @@ export var View_TableFormComponent0 = (function (_super) {
             this._text_6,
             this._el_7,
             this._text_8,
-            this._anchor_9,
-            this._text_10,
+            this._text_9,
+            this._el_10,
             this._text_11,
             this._el_12,
             this._text_13,
@@ -215,94 +206,85 @@ export var View_TableFormComponent0 = (function (_super) {
             this._text_19,
             this._el_20,
             this._text_21,
-            this._el_22,
-            this._text_23,
+            this._text_22,
+            this._el_23,
             this._text_24,
-            this._el_25,
-            this._text_26,
+            this._text_25,
+            this._anchor_26,
             this._text_27,
-            this._anchor_28,
+            this._el_28,
             this._text_29,
-            this._el_30,
-            this._text_31,
-            this._text_32
+            this._text_30
         ]), [
             disposable_0,
             disposable_1,
             disposable_2,
-            disposable_3,
-            disposable_4
+            disposable_3
         ]);
         return null;
     };
     View_TableFormComponent0.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import22.TemplateRef) && (9 === requestNodeIndex))) {
-            return this._TemplateRef_9_5;
+        if (((token === import13.MultiselectControlComponent) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 8)))) {
+            return this._MultiselectControlComponent_7_3.context;
         }
-        if (((token === import24.NgFor) && (9 === requestNodeIndex))) {
-            return this._NgFor_9_6.context;
-        }
-        if (((token === import25.SelectMultipleControlValueAccessor) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 10)))) {
-            return this._SelectMultipleControlValueAccessor_7_3.context;
-        }
-        if (((token === import26.NG_VALUE_ACCESSOR) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 10)))) {
+        if (((token === import23.NG_VALUE_ACCESSOR) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 8)))) {
             return this._NG_VALUE_ACCESSOR_7_4;
         }
-        if (((token === import27.FormControlName) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 10)))) {
+        if (((token === import24.FormControlName) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 8)))) {
             return this._FormControlName_7_5.context;
         }
-        if (((token === import28.NgControl) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 10)))) {
+        if (((token === import25.NgControl) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 8)))) {
             return this._NgControl_7_6;
         }
-        if (((token === import29.NgControlStatus) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 10)))) {
+        if (((token === import26.NgControlStatus) && ((7 <= requestNodeIndex) && (requestNodeIndex <= 8)))) {
             return this._NgControlStatus_7_7.context;
         }
-        if (((token === import30.CheckboxControlValueAccessor) && (16 === requestNodeIndex))) {
-            return this._CheckboxControlValueAccessor_16_3.context;
+        if (((token === import27.CheckboxControlValueAccessor) && (14 === requestNodeIndex))) {
+            return this._CheckboxControlValueAccessor_14_3.context;
         }
-        if (((token === import26.NG_VALUE_ACCESSOR) && (16 === requestNodeIndex))) {
-            return this._NG_VALUE_ACCESSOR_16_4;
+        if (((token === import23.NG_VALUE_ACCESSOR) && (14 === requestNodeIndex))) {
+            return this._NG_VALUE_ACCESSOR_14_4;
         }
-        if (((token === import27.FormControlName) && (16 === requestNodeIndex))) {
-            return this._FormControlName_16_5.context;
+        if (((token === import24.FormControlName) && (14 === requestNodeIndex))) {
+            return this._FormControlName_14_5.context;
         }
-        if (((token === import28.NgControl) && (16 === requestNodeIndex))) {
-            return this._NgControl_16_6;
+        if (((token === import25.NgControl) && (14 === requestNodeIndex))) {
+            return this._NgControl_14_6;
         }
-        if (((token === import29.NgControlStatus) && (16 === requestNodeIndex))) {
-            return this._NgControlStatus_16_7.context;
+        if (((token === import26.NgControlStatus) && (14 === requestNodeIndex))) {
+            return this._NgControlStatus_14_7.context;
         }
-        if (((token === import31.DefaultValueAccessor) && (25 === requestNodeIndex))) {
-            return this._DefaultValueAccessor_25_3.context;
+        if (((token === import28.DefaultValueAccessor) && (23 === requestNodeIndex))) {
+            return this._DefaultValueAccessor_23_3.context;
         }
-        if (((token === import32.NumberValueAccessor) && (25 === requestNodeIndex))) {
-            return this._NumberValueAccessor_25_4.context;
+        if (((token === import29.NumberValueAccessor) && (23 === requestNodeIndex))) {
+            return this._NumberValueAccessor_23_4.context;
         }
-        if (((token === import26.NG_VALUE_ACCESSOR) && (25 === requestNodeIndex))) {
-            return this._NG_VALUE_ACCESSOR_25_5;
+        if (((token === import23.NG_VALUE_ACCESSOR) && (23 === requestNodeIndex))) {
+            return this._NG_VALUE_ACCESSOR_23_5;
         }
-        if (((token === import27.FormControlName) && (25 === requestNodeIndex))) {
-            return this._FormControlName_25_6.context;
+        if (((token === import24.FormControlName) && (23 === requestNodeIndex))) {
+            return this._FormControlName_23_6.context;
         }
-        if (((token === import28.NgControl) && (25 === requestNodeIndex))) {
-            return this._NgControl_25_7;
+        if (((token === import25.NgControl) && (23 === requestNodeIndex))) {
+            return this._NgControl_23_7;
         }
-        if (((token === import29.NgControlStatus) && (25 === requestNodeIndex))) {
-            return this._NgControlStatus_25_8.context;
+        if (((token === import26.NgControlStatus) && (23 === requestNodeIndex))) {
+            return this._NgControlStatus_23_8.context;
         }
-        if (((token === import22.TemplateRef) && (28 === requestNodeIndex))) {
-            return this._TemplateRef_28_5;
+        if (((token === import22.TemplateRef) && (26 === requestNodeIndex))) {
+            return this._TemplateRef_26_5;
         }
-        if (((token === import33.NgIf) && (28 === requestNodeIndex))) {
-            return this._NgIf_28_6.context;
+        if (((token === import30.NgIf) && (26 === requestNodeIndex))) {
+            return this._NgIf_26_6.context;
         }
-        if (((token === import34.FormGroupDirective) && ((0 <= requestNodeIndex) && (requestNodeIndex <= 32)))) {
+        if (((token === import31.FormGroupDirective) && ((0 <= requestNodeIndex) && (requestNodeIndex <= 30)))) {
             return this._FormGroupDirective_0_3.context;
         }
-        if (((token === import35.ControlContainer) && ((0 <= requestNodeIndex) && (requestNodeIndex <= 32)))) {
+        if (((token === import32.ControlContainer) && ((0 <= requestNodeIndex) && (requestNodeIndex <= 30)))) {
             return this._ControlContainer_0_4;
         }
-        if (((token === import29.NgControlStatusGroup) && ((0 <= requestNodeIndex) && (requestNodeIndex <= 32)))) {
+        if (((token === import26.NgControlStatusGroup) && ((0 <= requestNodeIndex) && (requestNodeIndex <= 30)))) {
             return this._NgControlStatusGroup_0_5.context;
         }
         return notFoundResult;
@@ -312,54 +294,52 @@ export var View_TableFormComponent0 = (function (_super) {
         this._FormGroupDirective_0_3.check_form(currVal_0_0_0, throwOnChange, false);
         this._FormGroupDirective_0_3.ngDoCheck(this, this._el_0, throwOnChange);
         this._NgControlStatusGroup_0_5.ngDoCheck(this, this._el_0, throwOnChange);
-        this._SelectMultipleControlValueAccessor_7_3.ngDoCheck(this, this._el_7, throwOnChange);
+        var currVal_7_0_0 = this.context.options;
+        this._MultiselectControlComponent_7_3.check_selectedOptions(currVal_7_0_0, throwOnChange, false);
+        if (this._MultiselectControlComponent_7_3.ngDoCheck(this, this._el_7, throwOnChange)) {
+            this.compView_7.markAsCheckOnce();
+        }
         var currVal_7_1_0 = 'selectedOptions';
         this._FormControlName_7_5.check_name(currVal_7_1_0, throwOnChange, false);
         this._FormControlName_7_5.ngDoCheck(this, this._el_7, throwOnChange);
         this._NgControlStatus_7_7.ngDoCheck(this, this._el_7, throwOnChange);
-        var currVal_9_0_0 = this.context.options;
-        this._NgFor_9_6.check_ngForOf(currVal_9_0_0, throwOnChange, false);
-        this._NgFor_9_6.ngDoCheck(this, this._anchor_9, throwOnChange);
-        this._CheckboxControlValueAccessor_16_3.ngDoCheck(this, this._el_16, throwOnChange);
-        var currVal_16_1_0 = 'showCoordinate';
-        this._FormControlName_16_5.check_name(currVal_16_1_0, throwOnChange, false);
-        this._FormControlName_16_5.ngDoCheck(this, this._el_16, throwOnChange);
-        this._NgControlStatus_16_7.ngDoCheck(this, this._el_16, throwOnChange);
-        this._DefaultValueAccessor_25_3.ngDoCheck(this, this._el_25, throwOnChange);
-        this._NumberValueAccessor_25_4.ngDoCheck(this, this._el_25, throwOnChange);
-        var currVal_25_2_0 = 'precision';
-        this._FormControlName_25_6.check_name(currVal_25_2_0, throwOnChange, false);
-        this._FormControlName_25_6.ngDoCheck(this, this._el_25, throwOnChange);
-        this._NgControlStatus_25_8.ngDoCheck(this, this._el_25, throwOnChange);
-        var currVal_28_0_0 = (this.context.form.controls['precision'] && !this.context.form.controls['precision'].valid);
-        this._NgIf_28_6.check_ngIf(currVal_28_0_0, throwOnChange, false);
-        this._NgIf_28_6.ngDoCheck(this, this._anchor_28, throwOnChange);
-        this._vc_9.detectChangesInNestedViews(throwOnChange);
-        this._vc_28.detectChangesInNestedViews(throwOnChange);
+        this._CheckboxControlValueAccessor_14_3.ngDoCheck(this, this._el_14, throwOnChange);
+        var currVal_14_1_0 = 'showCoordinate';
+        this._FormControlName_14_5.check_name(currVal_14_1_0, throwOnChange, false);
+        this._FormControlName_14_5.ngDoCheck(this, this._el_14, throwOnChange);
+        this._NgControlStatus_14_7.ngDoCheck(this, this._el_14, throwOnChange);
+        this._DefaultValueAccessor_23_3.ngDoCheck(this, this._el_23, throwOnChange);
+        this._NumberValueAccessor_23_4.ngDoCheck(this, this._el_23, throwOnChange);
+        var currVal_23_2_0 = 'precision';
+        this._FormControlName_23_6.check_name(currVal_23_2_0, throwOnChange, false);
+        this._FormControlName_23_6.ngDoCheck(this, this._el_23, throwOnChange);
+        this._NgControlStatus_23_8.ngDoCheck(this, this._el_23, throwOnChange);
+        var currVal_26_0_0 = (this.context.form.controls['precision'] && !this.context.form.controls['precision'].valid);
+        this._NgIf_26_6.check_ngIf(currVal_26_0_0, throwOnChange, false);
+        this._NgIf_26_6.ngDoCheck(this, this._anchor_26, throwOnChange);
+        this._vc_26.detectChangesInNestedViews(throwOnChange);
         this._NgControlStatusGroup_0_5.checkHost(this, this, this._el_0, throwOnChange);
-        this._NgControlStatus_7_7.checkHost(this, this, this._el_7, throwOnChange);
-        this._NgControlStatus_16_7.checkHost(this, this, this._el_16, throwOnChange);
-        this._NgControlStatus_25_8.checkHost(this, this, this._el_25, throwOnChange);
-        var currVal_58 = !this.context.form.valid;
-        if (import3.checkBinding(throwOnChange, this._expr_58, currVal_58)) {
-            this.renderer.setElementProperty(this._el_30, 'disabled', currVal_58);
-            this._expr_58 = currVal_58;
+        this._NgControlStatus_7_7.checkHost(this, this.compView_7, this._el_7, throwOnChange);
+        this._NgControlStatus_14_7.checkHost(this, this, this._el_14, throwOnChange);
+        this._NgControlStatus_23_8.checkHost(this, this, this._el_23, throwOnChange);
+        var currVal_54 = !this.context.form.valid;
+        if (import3.checkBinding(throwOnChange, this._expr_54, currVal_54)) {
+            this.renderer.setElementProperty(this._el_28, 'disabled', currVal_54);
+            this._expr_54 = currVal_54;
         }
+        this.compView_7.detectChanges(throwOnChange);
     };
     View_TableFormComponent0.prototype.destroyInternal = function () {
-        this._vc_9.destroyNestedViews();
-        this._vc_28.destroyNestedViews();
+        this._vc_26.destroyNestedViews();
+        this.compView_7.destroy();
         this._FormControlName_7_5.ngOnDestroy();
-        this._FormControlName_16_5.ngOnDestroy();
-        this._FormControlName_25_6.ngOnDestroy();
+        this._FormControlName_14_5.ngOnDestroy();
+        this._FormControlName_23_6.ngOnDestroy();
         this._FormGroupDirective_0_3.ngOnDestroy();
     };
     View_TableFormComponent0.prototype.createEmbeddedViewInternal = function (nodeIndex) {
-        if ((nodeIndex == 9)) {
-            return new View_TableFormComponent1(this.viewUtils, this, 9, this._anchor_9, this._vc_9);
-        }
-        if ((nodeIndex == 28)) {
-            return new View_TableFormComponent2(this.viewUtils, this, 28, this._anchor_28, this._vc_28);
+        if ((nodeIndex == 26)) {
+            return new View_TableFormComponent1(this.viewUtils, this, 26, this._anchor_26, this._vc_26);
         }
         return null;
     };
@@ -369,26 +349,20 @@ export var View_TableFormComponent0 = (function (_super) {
         result = (this._FormGroupDirective_0_3.handleEvent(eventName, $event) && result);
         return result;
     };
-    View_TableFormComponent0.prototype.handleEvent_7 = function (eventName, $event) {
+    View_TableFormComponent0.prototype.handleEvent_14 = function (eventName, $event) {
         this.markPathToRootAsCheckOnce();
         var result = true;
-        result = (this._SelectMultipleControlValueAccessor_7_3.handleEvent(eventName, $event) && result);
+        result = (this._CheckboxControlValueAccessor_14_3.handleEvent(eventName, $event) && result);
         return result;
     };
-    View_TableFormComponent0.prototype.handleEvent_16 = function (eventName, $event) {
+    View_TableFormComponent0.prototype.handleEvent_23 = function (eventName, $event) {
         this.markPathToRootAsCheckOnce();
         var result = true;
-        result = (this._CheckboxControlValueAccessor_16_3.handleEvent(eventName, $event) && result);
+        result = (this._DefaultValueAccessor_23_3.handleEvent(eventName, $event) && result);
+        result = (this._NumberValueAccessor_23_4.handleEvent(eventName, $event) && result);
         return result;
     };
-    View_TableFormComponent0.prototype.handleEvent_25 = function (eventName, $event) {
-        this.markPathToRootAsCheckOnce();
-        var result = true;
-        result = (this._DefaultValueAccessor_25_3.handleEvent(eventName, $event) && result);
-        result = (this._NumberValueAccessor_25_4.handleEvent(eventName, $event) && result);
-        return result;
-    };
-    View_TableFormComponent0.prototype.handleEvent_30 = function (eventName, $event) {
+    View_TableFormComponent0.prototype.handleEvent_28 = function (eventName, $event) {
         this.markPathToRootAsCheckOnce();
         var result = true;
         if ((eventName == 'click')) {
@@ -403,65 +377,17 @@ var View_TableFormComponent1 = (function (_super) {
     __extends(View_TableFormComponent1, _super);
     function View_TableFormComponent1(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
         _super.call(this, View_TableFormComponent1, renderType_TableFormComponent, import5.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import6.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
-        this._expr_4 = import6.UNINITIALIZED;
     }
     View_TableFormComponent1.prototype.createInternal = function (rootSelector) {
-        this._el_0 = import3.createRenderElement(this.renderer, null, 'option', import3.EMPTY_INLINE_ARRAY, null);
-        this._NgSelectOption_0_3 = new import36.Wrapper_NgSelectOption(new import21.ElementRef(this._el_0), this.renderer, null);
-        this._NgSelectMultipleOption_0_4 = new import13.Wrapper_NgSelectMultipleOption(new import21.ElementRef(this._el_0), this.renderer, this.parentView._SelectMultipleControlValueAccessor_7_3.context);
-        this._text_1 = this.renderer.createText(this._el_0, '', null);
-        this.init(this._el_0, (this.renderer.directRenderer ? null : [
-            this._el_0,
-            this._text_1
-        ]), null);
-        return null;
-    };
-    View_TableFormComponent1.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import37.NgSelectOption) && ((0 <= requestNodeIndex) && (requestNodeIndex <= 1)))) {
-            return this._NgSelectOption_0_3.context;
-        }
-        if (((token === import25.NgSelectMultipleOption) && ((0 <= requestNodeIndex) && (requestNodeIndex <= 1)))) {
-            return this._NgSelectMultipleOption_0_4.context;
-        }
-        return notFoundResult;
-    };
-    View_TableFormComponent1.prototype.detectChangesInternal = function (throwOnChange) {
-        var currVal_0_0_0 = this.context.$implicit;
-        this._NgSelectOption_0_3.check_value(currVal_0_0_0, throwOnChange, false);
-        this._NgSelectOption_0_3.ngDoCheck(this, this._el_0, throwOnChange);
-        var currVal_0_1_0 = this.context.$implicit;
-        this._NgSelectMultipleOption_0_4.check_value(currVal_0_1_0, throwOnChange, false);
-        this._NgSelectMultipleOption_0_4.ngDoCheck(this, this._el_0, throwOnChange);
-        var currVal_4 = import3.inlineInterpolate(1, '', this.context.$implicit, '');
-        if (import3.checkBinding(throwOnChange, this._expr_4, currVal_4)) {
-            this.renderer.setText(this._text_1, currVal_4);
-            this._expr_4 = currVal_4;
-        }
-    };
-    View_TableFormComponent1.prototype.destroyInternal = function () {
-        this._NgSelectOption_0_3.ngOnDestroy();
-        this._NgSelectMultipleOption_0_4.ngOnDestroy();
-    };
-    View_TableFormComponent1.prototype.visitRootNodesInternal = function (cb, ctx) {
-        cb(this._el_0, ctx);
-    };
-    return View_TableFormComponent1;
-}(import1.AppView));
-var View_TableFormComponent2 = (function (_super) {
-    __extends(View_TableFormComponent2, _super);
-    function View_TableFormComponent2(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
-        _super.call(this, View_TableFormComponent2, renderType_TableFormComponent, import5.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import6.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
-    }
-    View_TableFormComponent2.prototype.createInternal = function (rootSelector) {
         this._el_0 = import3.createRenderElement(this.renderer, null, 'div', import3.EMPTY_INLINE_ARRAY, null);
         this._text_1 = this.renderer.createText(this._el_0, '\n        ', null);
         this._anchor_2 = this.renderer.createTemplateAnchor(this._el_0, null);
-        this._vc_2 = new import15.ViewContainer(2, 0, this, this._anchor_2);
+        this._vc_2 = new import19.ViewContainer(2, 0, this, this._anchor_2);
         this._TemplateRef_2_5 = new import22.TemplateRef_(this, 2, this._anchor_2);
         this._NgIf_2_6 = new import20.Wrapper_NgIf(this._vc_2.vcRef, this._TemplateRef_2_5);
         this._text_3 = this.renderer.createText(this._el_0, '\n        ', null);
         this._anchor_4 = this.renderer.createTemplateAnchor(this._el_0, null);
-        this._vc_4 = new import15.ViewContainer(4, 0, this, this._anchor_4);
+        this._vc_4 = new import19.ViewContainer(4, 0, this, this._anchor_4);
         this._TemplateRef_4_5 = new import22.TemplateRef_(this, 4, this._anchor_4);
         this._NgIf_4_6 = new import20.Wrapper_NgIf(this._vc_4.vcRef, this._TemplateRef_4_5);
         this._text_5 = this.renderer.createText(this._el_0, '\n    ', null);
@@ -475,22 +401,22 @@ var View_TableFormComponent2 = (function (_super) {
         ]), null);
         return null;
     };
-    View_TableFormComponent2.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
+    View_TableFormComponent1.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
         if (((token === import22.TemplateRef) && (2 === requestNodeIndex))) {
             return this._TemplateRef_2_5;
         }
-        if (((token === import33.NgIf) && (2 === requestNodeIndex))) {
+        if (((token === import30.NgIf) && (2 === requestNodeIndex))) {
             return this._NgIf_2_6.context;
         }
         if (((token === import22.TemplateRef) && (4 === requestNodeIndex))) {
             return this._TemplateRef_4_5;
         }
-        if (((token === import33.NgIf) && (4 === requestNodeIndex))) {
+        if (((token === import30.NgIf) && (4 === requestNodeIndex))) {
             return this._NgIf_4_6.context;
         }
         return notFoundResult;
     };
-    View_TableFormComponent2.prototype.detectChangesInternal = function (throwOnChange) {
+    View_TableFormComponent1.prototype.detectChangesInternal = function (throwOnChange) {
         var currVal_2_0_0 = this.parentView.context.form.controls['precision'].hasError('required');
         this._NgIf_2_6.check_ngIf(currVal_2_0_0, throwOnChange, false);
         this._NgIf_2_6.ngDoCheck(this, this._anchor_2, throwOnChange);
@@ -500,21 +426,56 @@ var View_TableFormComponent2 = (function (_super) {
         this._vc_2.detectChangesInNestedViews(throwOnChange);
         this._vc_4.detectChangesInNestedViews(throwOnChange);
     };
-    View_TableFormComponent2.prototype.destroyInternal = function () {
+    View_TableFormComponent1.prototype.destroyInternal = function () {
         this._vc_2.destroyNestedViews();
         this._vc_4.destroyNestedViews();
     };
-    View_TableFormComponent2.prototype.visitRootNodesInternal = function (cb, ctx) {
+    View_TableFormComponent1.prototype.visitRootNodesInternal = function (cb, ctx) {
         cb(this._el_0, ctx);
     };
-    View_TableFormComponent2.prototype.createEmbeddedViewInternal = function (nodeIndex) {
+    View_TableFormComponent1.prototype.createEmbeddedViewInternal = function (nodeIndex) {
         if ((nodeIndex == 2)) {
-            return new View_TableFormComponent3(this.viewUtils, this, 2, this._anchor_2, this._vc_2);
+            return new View_TableFormComponent2(this.viewUtils, this, 2, this._anchor_2, this._vc_2);
         }
         if ((nodeIndex == 4)) {
-            return new View_TableFormComponent4(this.viewUtils, this, 4, this._anchor_4, this._vc_4);
+            return new View_TableFormComponent3(this.viewUtils, this, 4, this._anchor_4, this._vc_4);
         }
         return null;
+    };
+    return View_TableFormComponent1;
+}(import1.AppView));
+var View_TableFormComponent2 = (function (_super) {
+    __extends(View_TableFormComponent2, _super);
+    function View_TableFormComponent2(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
+        _super.call(this, View_TableFormComponent2, renderType_TableFormComponent, import5.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import6.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
+    }
+    View_TableFormComponent2.prototype.createInternal = function (rootSelector) {
+        this._el_0 = import3.createRenderElement(this.renderer, null, 'validation-error', import3.EMPTY_INLINE_ARRAY, null);
+        this.compView_0 = new import34.View_ValidationErrorComponent0(this.viewUtils, this, 0, this._el_0);
+        this._ValidationErrorComponent_0_3 = new import34.Wrapper_ValidationErrorComponent();
+        this.compView_0.create(this._ValidationErrorComponent_0_3.context);
+        this.init(this._el_0, (this.renderer.directRenderer ? null : [this._el_0]), null);
+        return null;
+    };
+    View_TableFormComponent2.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
+        if (((token === import33.ValidationErrorComponent) && (0 === requestNodeIndex))) {
+            return this._ValidationErrorComponent_0_3.context;
+        }
+        return notFoundResult;
+    };
+    View_TableFormComponent2.prototype.detectChangesInternal = function (throwOnChange) {
+        var currVal_0_0_0 = 'Precision is required';
+        this._ValidationErrorComponent_0_3.check_message(currVal_0_0_0, throwOnChange, false);
+        if (this._ValidationErrorComponent_0_3.ngDoCheck(this, this._el_0, throwOnChange)) {
+            this.compView_0.markAsCheckOnce();
+        }
+        this.compView_0.detectChanges(throwOnChange);
+    };
+    View_TableFormComponent2.prototype.destroyInternal = function () {
+        this.compView_0.destroy();
+    };
+    View_TableFormComponent2.prototype.visitRootNodesInternal = function (cb, ctx) {
+        cb(this._el_0, ctx);
     };
     return View_TableFormComponent2;
 }(import1.AppView));
@@ -525,20 +486,20 @@ var View_TableFormComponent3 = (function (_super) {
     }
     View_TableFormComponent3.prototype.createInternal = function (rootSelector) {
         this._el_0 = import3.createRenderElement(this.renderer, null, 'validation-error', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_0 = new import39.View_ValidationErrorComponent0(this.viewUtils, this, 0, this._el_0);
-        this._ValidationErrorComponent_0_3 = new import39.Wrapper_ValidationErrorComponent();
+        this.compView_0 = new import34.View_ValidationErrorComponent0(this.viewUtils, this, 0, this._el_0);
+        this._ValidationErrorComponent_0_3 = new import34.Wrapper_ValidationErrorComponent();
         this.compView_0.create(this._ValidationErrorComponent_0_3.context);
         this.init(this._el_0, (this.renderer.directRenderer ? null : [this._el_0]), null);
         return null;
     };
     View_TableFormComponent3.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import38.ValidationErrorComponent) && (0 === requestNodeIndex))) {
+        if (((token === import33.ValidationErrorComponent) && (0 === requestNodeIndex))) {
             return this._ValidationErrorComponent_0_3.context;
         }
         return notFoundResult;
     };
     View_TableFormComponent3.prototype.detectChangesInternal = function (throwOnChange) {
-        var currVal_0_0_0 = 'Precision is required';
+        var currVal_0_0_0 = 'Precision should be integer value from 0 till 4';
         this._ValidationErrorComponent_0_3.check_message(currVal_0_0_0, throwOnChange, false);
         if (this._ValidationErrorComponent_0_3.ngDoCheck(this, this._el_0, throwOnChange)) {
             this.compView_0.markAsCheckOnce();
@@ -552,40 +513,5 @@ var View_TableFormComponent3 = (function (_super) {
         cb(this._el_0, ctx);
     };
     return View_TableFormComponent3;
-}(import1.AppView));
-var View_TableFormComponent4 = (function (_super) {
-    __extends(View_TableFormComponent4, _super);
-    function View_TableFormComponent4(viewUtils, parentView, parentIndex, parentElement, declaredViewContainer) {
-        _super.call(this, View_TableFormComponent4, renderType_TableFormComponent, import5.ViewType.EMBEDDED, viewUtils, parentView, parentIndex, parentElement, import6.ChangeDetectorStatus.CheckAlways, declaredViewContainer);
-    }
-    View_TableFormComponent4.prototype.createInternal = function (rootSelector) {
-        this._el_0 = import3.createRenderElement(this.renderer, null, 'validation-error', import3.EMPTY_INLINE_ARRAY, null);
-        this.compView_0 = new import39.View_ValidationErrorComponent0(this.viewUtils, this, 0, this._el_0);
-        this._ValidationErrorComponent_0_3 = new import39.Wrapper_ValidationErrorComponent();
-        this.compView_0.create(this._ValidationErrorComponent_0_3.context);
-        this.init(this._el_0, (this.renderer.directRenderer ? null : [this._el_0]), null);
-        return null;
-    };
-    View_TableFormComponent4.prototype.injectorGetInternal = function (token, requestNodeIndex, notFoundResult) {
-        if (((token === import38.ValidationErrorComponent) && (0 === requestNodeIndex))) {
-            return this._ValidationErrorComponent_0_3.context;
-        }
-        return notFoundResult;
-    };
-    View_TableFormComponent4.prototype.detectChangesInternal = function (throwOnChange) {
-        var currVal_0_0_0 = 'Precision should be integer value from 0 till 4';
-        this._ValidationErrorComponent_0_3.check_message(currVal_0_0_0, throwOnChange, false);
-        if (this._ValidationErrorComponent_0_3.ngDoCheck(this, this._el_0, throwOnChange)) {
-            this.compView_0.markAsCheckOnce();
-        }
-        this.compView_0.detectChanges(throwOnChange);
-    };
-    View_TableFormComponent4.prototype.destroyInternal = function () {
-        this.compView_0.destroy();
-    };
-    View_TableFormComponent4.prototype.visitRootNodesInternal = function (cb, ctx) {
-        cb(this._el_0, ctx);
-    };
-    return View_TableFormComponent4;
 }(import1.AppView));
 //# sourceMappingURL=tableForm.component.ngfactory.js.map

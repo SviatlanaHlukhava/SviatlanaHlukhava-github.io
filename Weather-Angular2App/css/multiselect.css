@@ -1,0 +1,17 @@
+.row {
+    display: table-row;
+}
+.cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.arrow-buttons {
+    width: 16px;
+    padding: 0;
+}
+
+.multiselect {
+    height: 70px;
+    min-width: 127px;
+}

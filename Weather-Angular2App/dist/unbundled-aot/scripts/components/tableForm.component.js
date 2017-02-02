@@ -18,7 +18,6 @@ export var TableFormComponent = (function () {
             "showCoordinate": true,
             "precision": [3, [Validators.required, PrecisionValidator.validate]]
         });
-        this.form.controls['selectedOptions'].setValue(this.options);
     }
     TableFormComponent.prototype.onSubmit = function () {
         if (this.form.valid) {

@@ -1,9 +1,8 @@
 <form class="table-form" [formGroup]="form">
     <div class="form-row">
         <label class="form-cell">Weather parameters</label>
-        <select class="form-cell" multiple formControlName="selectedOptions">
-            <option *ngFor="let item of options" [value]="item">{{item}}</option>
-        </select>
+        <multiselect class="form-cell" formControlName="selectedOptions" [selectedOptions]="options" [unselectedOptions]="">
+        </multiselect>
     </div><br>
     <div class="form-row">
         <input class="form-row" type="checkbox" name="showCoordinate" formControlName="showCoordinate">Show Coordinate

@@ -1,0 +1,12 @@
+<div class="row">
+    <select class="cell multiselect" multiple [(ngModel)]="checkedUnselected">
+        <option *ngFor="let item of unselectedOptions" [value]="item">{{item}}</option>
+    </select>
+    <div class="cell arrow-buttons">
+        <button (click)="moveToSelected()" [disabled]="!unselectedOptions || !unselectedOptions.length || !checkedUnselected || !checkedUnselected.length">&#8594;</button>
+        <button (click)="moveToUnselected()" [disabled]="!selectedOptions || !selectedOptions.length || !checkedSelected || !checkedSelected.length">&#8592;</button>
+    </div>
+    <select class="cell multiselect" multiple [(ngModel)]="checkedSelected">
+        <option *ngFor="let item of selectedOptions" [value]="item">{{item}}</option>
+    </select>
+</div>

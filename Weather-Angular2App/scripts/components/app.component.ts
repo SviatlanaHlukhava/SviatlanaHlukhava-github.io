@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     private locationService: LocationService, private loggerService: LoggerService) {
     this.coordinate = this.store.select("coordinate");
     this.profiler.setZone(zone);
-    // this.profiler.profile();
+    this.profiler.profile();
   }
   ngOnInit(): void {
     this.isLoading = this.store.select("loading");

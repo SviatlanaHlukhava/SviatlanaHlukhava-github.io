@@ -28,10 +28,9 @@ export class TableFormComponent {
           "showCoordinate": true,
           "precision": [3, [Validators.required, PrecisionValidator.validate]]
       });
-      this.form.controls['selectedOptions'].setValue(this.options);
   }
   onSubmit () {
-      if(this.form.valid) {
+      if (this.form.valid) {
         this.submitParametersNotify.emit(new TableParameters(this.form.value.selectedOptions, this.form.value.showCoordinate, this.form.value.precision));
       }
   }

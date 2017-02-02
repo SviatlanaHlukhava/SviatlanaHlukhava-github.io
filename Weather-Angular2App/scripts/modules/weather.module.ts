@@ -15,6 +15,7 @@ import { WeatherIconComponent }   from './../components/weatherIcon.component';
 import { CityFormComponent }   from './../components/cityForm.component';
 import { TableFormComponent } from './../components/tableForm.component'
 import { ValidationErrorComponent } from './../components/validationError.component'
+import { MultiselectControlComponent } from './../components/multiselect.component'
 import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter'
 import { WeatherApiService } from './../services/WeatherAPI'
 import { WeatherActions } from './../actions/WeatherActions'
@@ -22,7 +23,7 @@ import { WeatherActions } from './../actions/WeatherActions'
 @NgModule({
     imports:      [FormsModule, ReactiveFormsModule, SharedModule],
     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent, TableFormComponent, ValidationErrorComponent,
-      KelvinToCelsiusPipe, CityWeatherPipe,  WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent],
+      KelvinToCelsiusPipe, CityWeatherPipe,  WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent, MultiselectControlComponent],
     exports: [CityWeatherSectionComponent],
     providers: [WeatherDTOtoWeatherConverter, WeatherApiService, WeatherActions]
 })
