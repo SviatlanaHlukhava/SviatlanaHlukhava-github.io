@@ -12,5 +12,9 @@
         <label class="form-cell">Coordinate Precision</label>
         <input class="form-cell" type="number" name="precision" formControlName="precision"/>
     </div>
+    <div *ngIf="form.controls['precision'] && !form.controls['precision'].valid">
+        <validation-error *ngIf="form.controls['precision'].hasError('required')" [message]="'Precision is required'"></validation-error>
+        <validation-error *ngIf="form.controls['precision'].hasError('validatePrecision') && !form.controls['precision'].hasError('required')" [message]="'Precision should be integer value from 0 till 4'"></validation-error>
+    </div>
     <button class="form-row" [disabled]="!form.valid" (click)="onSubmit()">Submit</button>
 </form>

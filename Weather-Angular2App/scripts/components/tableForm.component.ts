@@ -31,7 +31,9 @@ export class TableFormComponent {
       this.form.controls['selectedOptions'].setValue(this.options);
   }
   onSubmit () {
-      this.submitParametersNotify.emit(new TableParameters(this.form.value.selectedOptions, this.form.value.showCoordinate, this.form.value.precision));
+      if(this.form.valid) {
+        this.submitParametersNotify.emit(new TableParameters(this.form.value.selectedOptions, this.form.value.showCoordinate, this.form.value.precision));
+      }
   }
 
 }

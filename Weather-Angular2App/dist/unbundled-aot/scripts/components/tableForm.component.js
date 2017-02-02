@@ -21,7 +21,9 @@ export var TableFormComponent = (function () {
         this.form.controls['selectedOptions'].setValue(this.options);
     }
     TableFormComponent.prototype.onSubmit = function () {
-        this.submitParametersNotify.emit(new TableParameters(this.form.value.selectedOptions, this.form.value.showCoordinate, this.form.value.precision));
+        if (this.form.valid) {
+            this.submitParametersNotify.emit(new TableParameters(this.form.value.selectedOptions, this.form.value.showCoordinate, this.form.value.precision));
+        }
     };
     TableFormComponent.decorators = [
         { type: Component, args: [{
