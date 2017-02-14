@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared.module';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from "@angular/forms";
 import { CityWeatherTableComponent } from './../components/cityWeatherTable.component';
 import { CityWeatherSectionComponent } from './../components/cityWeatherSection.component';
@@ -23,7 +24,7 @@ export var WeatherModule = (function () {
     }
     WeatherModule.decorators = [
         { type: NgModule, args: [{
-                    imports: [FormsModule, ReactiveFormsModule, SharedModule],
+                    imports: [FormsModule, HttpModule, ReactiveFormsModule, SharedModule],
                     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent, TableFormComponent, ValidationErrorComponent,
                         KelvinToCelsiusPipe, CityWeatherPipe, WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent, MultiselectControlComponent],
                     exports: [CityWeatherSectionComponent],

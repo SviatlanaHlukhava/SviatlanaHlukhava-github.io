@@ -1,6 +1,7 @@
 import { NgModule }  from '@angular/core';
 import { SharedModule } from './shared.module'
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http'
 import { ReactiveFormsModule } from "@angular/forms";
 import { Store, StoreModule } from '@ngrx/store';
 import { CityWeatherTableComponent }   from './../components/cityWeatherTable.component';
@@ -21,7 +22,7 @@ import { WeatherApiService } from './../services/WeatherAPI'
 import { WeatherActions } from './../actions/WeatherActions'
 
 @NgModule({
-    imports:      [FormsModule, ReactiveFormsModule, SharedModule],
+    imports:      [FormsModule, HttpModule, ReactiveFormsModule, SharedModule],
     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent, TableFormComponent, ValidationErrorComponent,
       KelvinToCelsiusPipe, CityWeatherPipe,  WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent, MultiselectControlComponent],
     exports: [CityWeatherSectionComponent],
