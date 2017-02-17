@@ -40,6 +40,7 @@ export var Wrapper_CityWeatherSectionComponent = (function () {
     Wrapper_CityWeatherSectionComponent.prototype.ngOnDetach = function (view, componentView, el) {
     };
     Wrapper_CityWeatherSectionComponent.prototype.ngOnDestroy = function () {
+        this.context.ngOnDestroy();
     };
     Wrapper_CityWeatherSectionComponent.prototype.check_coordinate = function (currValue, throwOnChange, forceUpdate) {
         if ((forceUpdate || import3.checkBinding(throwOnChange, this._expr_0, currValue))) {
@@ -102,6 +103,7 @@ var View_CityWeatherSectionComponent_Host0 = (function (_super) {
     };
     View_CityWeatherSectionComponent_Host0.prototype.destroyInternal = function () {
         this.compView_0.destroy();
+        this._CityWeatherSectionComponent_0_3.ngOnDestroy();
     };
     View_CityWeatherSectionComponent_Host0.prototype.visitRootNodesInternal = function (cb, ctx) {
         cb(this._el_0, ctx);

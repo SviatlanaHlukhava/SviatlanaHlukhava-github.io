@@ -42,6 +42,7 @@ export class Wrapper_CityWeatherSectionComponent {
   ngOnDetach(view:import2.AppView<any>,componentView:import2.AppView<any>,el:any):void {
   }
   ngOnDestroy():void {
+    this.context.ngOnDestroy();
   }
   check_coordinate(currValue:any,throwOnChange:boolean,forceUpdate:boolean):void {
     if ((forceUpdate || import3.checkBinding(throwOnChange,this._expr_0,currValue))) {
@@ -99,6 +100,7 @@ class View_CityWeatherSectionComponent_Host0 extends import2.AppView<any> {
   }
   destroyInternal():void {
     this.compView_0.destroy();
+    this._CityWeatherSectionComponent_0_3.ngOnDestroy();
   }
   visitRootNodesInternal(cb:any,ctx:any):void {
     cb(this._el_0,ctx);

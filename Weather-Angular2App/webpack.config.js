@@ -13,7 +13,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.ts$/, loaders: ['awesome-typescript-loader', 'angular2-template-loader?keepUrl=true'] },
+      { test: /\.ts$/, loaders: ['awesome-typescript-loader', 'angular2-template-loader?keepUrl=true', 'angular-router-loader'] },
       { test: /\.css$/, loaders: ['to-string-loader', 'css-loader?url=false'] },
       { test: /\.html$/, loader: "raw-loader" },
       { test: /\.png$/, loader: "file-loader" }

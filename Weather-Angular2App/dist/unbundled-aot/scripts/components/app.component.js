@@ -26,7 +26,7 @@ export var AppComponent = (function () {
     AppComponent.decorators = [
         { type: Component, args: [{
                     selector: 'app',
-                    template: "<loader [isLoading]=\"isLoading | async\"></loader>\n    <header [coordinate]=\"coordinate | async\"></header>\n    <city-weather-section [coordinate]=\"coordinate | async\"></city-weather-section>\n    <map [coordinate]=\"coordinate | async\"></map>\n    <footer></footer>",
+                    template: "<loader [isLoading]=\"isLoading | async\"></loader>\n    <header [coordinate]=\"coordinate | async\"></header>\n    <router-outlet>\n    </router-outlet>\n    <footer></footer>",
                     changeDetection: ChangeDetectionStrategy.OnPush
                 },] },
     ];

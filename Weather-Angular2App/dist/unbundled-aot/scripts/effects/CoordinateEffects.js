@@ -29,7 +29,7 @@ export var CoordinateEffects = (function () {
             .map(function (pos) { return _this.cooordinateActions.setCoordinate(new Coordinate(pos.coords.latitude, pos.coords.longitude)); })
             .catch(function (error) {
             _this.loggerService.errorLog(error.message);
-            return Observable.of(_this.loadingActions.setLoading(false));
+            return Observable.of(error.message);
         });
     }
     CoordinateEffects.decorators = [

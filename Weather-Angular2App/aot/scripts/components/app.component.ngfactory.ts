@@ -24,15 +24,14 @@ import * as import15 from '../../../scripts/components/loader.component';
 import * as import16 from './loader.component.ngfactory';
 import * as import17 from '../../../scripts/components/header.component';
 import * as import18 from './header.component.ngfactory';
-import * as import19 from '../../../scripts/components/cityWeatherSection.component';
-import * as import20 from './cityWeatherSection.component.ngfactory';
-import * as import21 from '../../../scripts/components/map.component';
-import * as import22 from './map.component.ngfactory';
-import * as import23 from '../../../scripts/components/footer.component';
-import * as import24 from './footer.component.ngfactory';
-import * as import25 from '@angular/common/src/pipes/async_pipe';
-import * as import26 from '../../../scripts/actions/WeatherActions';
-import * as import27 from '../../../scripts/services/WeatherAPI';
+import * as import19 from '@angular/core/src/linker/view_container';
+import * as import20 from '../../node_modules/@angular/router/src/directives/router_outlet.ngfactory';
+import * as import21 from '../../../scripts/components/footer.component';
+import * as import22 from './footer.component.ngfactory';
+import * as import23 from '@angular/common/src/pipes/async_pipe';
+import * as import24 from '@angular/router/src/router_outlet_map';
+import * as import25 from '@angular/core/src/linker/component_factory_resolver';
+import * as import26 from '@angular/router/src/directives/router_outlet';
 export class Wrapper_AppComponent {
   /*private*/ _eventHandler:Function;
   context:import0.AppComponent;
@@ -105,20 +104,15 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
   _HeaderComponent_2_3:import18.Wrapper_HeaderComponent;
   _text_3:any;
   _el_4:any;
-  compView_4:import1.AppView<import19.CityWeatherSectionComponent>;
-  _CityWeatherSectionComponent_4_3:import20.Wrapper_CityWeatherSectionComponent;
+  /*private*/ _vc_4:import19.ViewContainer;
+  _RouterOutlet_4_5:import20.Wrapper_RouterOutlet;
   _text_5:any;
-  _el_6:any;
-  compView_6:import1.AppView<import21.MapComponent>;
-  _MapComponent_6_3:import22.Wrapper_MapComponent;
-  _text_7:any;
-  _el_8:any;
-  compView_8:import1.AppView<import23.FooterComponent>;
-  _FooterComponent_8_3:import24.Wrapper_FooterComponent;
-  _pipe_async_0:import25.AsyncPipe;
-  _pipe_async_1:import25.AsyncPipe;
-  _pipe_async_2:import25.AsyncPipe;
-  _pipe_async_3:import25.AsyncPipe;
+  _text_6:any;
+  _el_7:any;
+  compView_7:import1.AppView<import21.FooterComponent>;
+  _FooterComponent_7_3:import22.Wrapper_FooterComponent;
+  _pipe_async_0:import23.AsyncPipe;
+  _pipe_async_1:import23.AsyncPipe;
   constructor(viewUtils:import3.ViewUtils,parentView:import1.AppView<any>,parentIndex:number,parentElement:any) {
     super(View_AppComponent0,renderType_AppComponent,import5.ViewType.COMPONENT,viewUtils,parentView,parentIndex,parentElement,import6.ChangeDetectorStatus.CheckOnce);
   }
@@ -134,24 +128,17 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
     this._HeaderComponent_2_3 = new import18.Wrapper_HeaderComponent();
     this.compView_2.create(this._HeaderComponent_2_3.context);
     this._text_3 = this.renderer.createText(parentRenderNode,'\n    ',(null as any));
-    this._el_4 = import3.createRenderElement(this.renderer,parentRenderNode,'city-weather-section',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this.compView_4 = new import20.View_CityWeatherSectionComponent0(this.viewUtils,this,4,this._el_4);
-    this._CityWeatherSectionComponent_4_3 = new import20.Wrapper_CityWeatherSectionComponent(this.compView_4.ref,this.parentView.injectorGet(import10.Store,this.parentIndex),this.parentView.injectorGet(import26.WeatherActions,this.parentIndex),this.parentView.injectorGet(import12.LoadingActions,this.parentIndex),this.parentView.injectorGet(import27.WeatherApiService,this.parentIndex),this.parentView.injectorGet(import14.LoggerService,this.parentIndex));
-    this.compView_4.create(this._CityWeatherSectionComponent_4_3.context);
-    this._text_5 = this.renderer.createText(parentRenderNode,'\n    ',(null as any));
-    this._el_6 = import3.createRenderElement(this.renderer,parentRenderNode,'map',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this.compView_6 = new import22.View_MapComponent0(this.viewUtils,this,6,this._el_6);
-    this._MapComponent_6_3 = new import22.Wrapper_MapComponent();
-    this.compView_6.create(this._MapComponent_6_3.context);
-    this._text_7 = this.renderer.createText(parentRenderNode,'\n    ',(null as any));
-    this._el_8 = import3.createRenderElement(this.renderer,parentRenderNode,'footer',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this.compView_8 = new import24.View_FooterComponent0(this.viewUtils,this,8,this._el_8);
-    this._FooterComponent_8_3 = new import24.Wrapper_FooterComponent();
-    this.compView_8.create(this._FooterComponent_8_3.context);
-    this._pipe_async_0 = new import25.AsyncPipe(this.ref);
-    this._pipe_async_1 = new import25.AsyncPipe(this.ref);
-    this._pipe_async_2 = new import25.AsyncPipe(this.ref);
-    this._pipe_async_3 = new import25.AsyncPipe(this.ref);
+    this._el_4 = import3.createRenderElement(this.renderer,parentRenderNode,'router-outlet',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._vc_4 = new import19.ViewContainer(4,(null as any),this,this._el_4);
+    this._RouterOutlet_4_5 = new import20.Wrapper_RouterOutlet(this.parentView.injectorGet(import24.RouterOutletMap,this.parentIndex),this._vc_4.vcRef,this.parentView.injectorGet(import25.ComponentFactoryResolver,this.parentIndex),(null as any));
+    this._text_5 = this.renderer.createText(this._el_4,'\n    ',(null as any));
+    this._text_6 = this.renderer.createText(parentRenderNode,'\n    ',(null as any));
+    this._el_7 = import3.createRenderElement(this.renderer,parentRenderNode,'footer',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this.compView_7 = new import22.View_FooterComponent0(this.viewUtils,this,7,this._el_7);
+    this._FooterComponent_7_3 = new import22.Wrapper_FooterComponent();
+    this.compView_7.create(this._FooterComponent_7_3.context);
+    this._pipe_async_0 = new import23.AsyncPipe(this.ref);
+    this._pipe_async_1 = new import23.AsyncPipe(this.ref);
     this.init((null as any),((<any>this.renderer).directRenderer? (null as any): [
       this._el_0,
       this._text_1,
@@ -159,9 +146,8 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
       this._text_3,
       this._el_4,
       this._text_5,
-      this._el_6,
-      this._text_7,
-      this._el_8
+      this._text_6,
+      this._el_7
     ]
     ),(null as any));
     return (null as any);
@@ -169,9 +155,8 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
   injectorGetInternal(token:any,requestNodeIndex:number,notFoundResult:any):any {
     if (((token === import15.LoaderComponent) && (0 === requestNodeIndex))) { return this._LoaderComponent_0_3.context; }
     if (((token === import17.HeaderComponent) && (2 === requestNodeIndex))) { return this._HeaderComponent_2_3.context; }
-    if (((token === import19.CityWeatherSectionComponent) && (4 === requestNodeIndex))) { return this._CityWeatherSectionComponent_4_3.context; }
-    if (((token === import21.MapComponent) && (6 === requestNodeIndex))) { return this._MapComponent_6_3.context; }
-    if (((token === import23.FooterComponent) && (8 === requestNodeIndex))) { return this._FooterComponent_8_3.context; }
+    if (((token === import26.RouterOutlet) && ((4 <= requestNodeIndex) && (requestNodeIndex <= 5)))) { return this._RouterOutlet_4_5.context; }
+    if (((token === import21.FooterComponent) && (7 === requestNodeIndex))) { return this._FooterComponent_7_3.context; }
     return notFoundResult;
   }
   detectChangesInternal(throwOnChange:boolean):void {
@@ -184,30 +169,20 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
     const currVal_2_0_0:any = valUnwrapper.unwrap(this._pipe_async_1.transform(this.context.coordinate));
     this._HeaderComponent_2_3.check_coordinate(currVal_2_0_0,throwOnChange,valUnwrapper.hasWrappedValue);
     if (this._HeaderComponent_2_3.ngDoCheck(this,this._el_2,throwOnChange)) { this.compView_2.markAsCheckOnce(); }
-    valUnwrapper.reset();
-    const currVal_4_0_0:any = valUnwrapper.unwrap(this._pipe_async_2.transform(this.context.coordinate));
-    this._CityWeatherSectionComponent_4_3.check_coordinate(currVal_4_0_0,throwOnChange,valUnwrapper.hasWrappedValue);
-    if (this._CityWeatherSectionComponent_4_3.ngDoCheck(this,this._el_4,throwOnChange)) { this.compView_4.markAsCheckOnce(); }
-    valUnwrapper.reset();
-    const currVal_6_0_0:any = valUnwrapper.unwrap(this._pipe_async_3.transform(this.context.coordinate));
-    this._MapComponent_6_3.check_coordinate(currVal_6_0_0,throwOnChange,valUnwrapper.hasWrappedValue);
-    if (this._MapComponent_6_3.ngDoCheck(this,this._el_6,throwOnChange)) { this.compView_6.markAsCheckOnce(); }
-    if (this._FooterComponent_8_3.ngDoCheck(this,this._el_8,throwOnChange)) { this.compView_8.markAsCheckOnce(); }
+    this._RouterOutlet_4_5.ngDoCheck(this,this._el_4,throwOnChange);
+    if (this._FooterComponent_7_3.ngDoCheck(this,this._el_7,throwOnChange)) { this.compView_7.markAsCheckOnce(); }
+    this._vc_4.detectChangesInNestedViews(throwOnChange);
     this.compView_0.detectChanges(throwOnChange);
     this.compView_2.detectChanges(throwOnChange);
-    this.compView_4.detectChanges(throwOnChange);
-    this.compView_6.detectChanges(throwOnChange);
-    this.compView_8.detectChanges(throwOnChange);
+    this.compView_7.detectChanges(throwOnChange);
   }
   destroyInternal():void {
+    this._vc_4.destroyNestedViews();
     this.compView_0.destroy();
     this.compView_2.destroy();
-    this.compView_4.destroy();
-    this.compView_6.destroy();
-    this.compView_8.destroy();
+    this.compView_7.destroy();
+    this._RouterOutlet_4_5.ngOnDestroy();
     this._pipe_async_0.ngOnDestroy();
     this._pipe_async_1.ngOnDestroy();
-    this._pipe_async_2.ngOnDestroy();
-    this._pipe_async_3.ngOnDestroy();
   }
 }

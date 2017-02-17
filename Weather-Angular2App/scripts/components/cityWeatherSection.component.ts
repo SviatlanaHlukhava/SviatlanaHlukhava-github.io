@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, EventEmitter, OnChanges, OnInit, SimpleChanges  } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Input, Output, EventEmitter, OnChanges, OnInit, OnDestroy, SimpleChanges  } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Coordinate }  from './../model/Coordinate'
 import { Weather }  from './../model/Weather'
@@ -18,7 +18,7 @@ import { LoadingActions } from './../actions/LoadingActions'
   styleUrls: ['./../../css/weatherTable.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CityWeatherSectionComponent implements OnChanges, OnInit {
+export class CityWeatherSectionComponent implements OnChanges, OnInit, OnDestroy {
   weatherList: Weather[];
   weatherListObservable: Observable<Object>;
   @Input() coordinate: Coordinate;
@@ -74,6 +74,11 @@ export class CityWeatherSectionComponent implements OnChanges, OnInit {
       this.oldLatitude = this.coordinate.getLatitude();
       this.oldLongitude - this.coordinate.getLongitude();
     }
+  }
+  ngOnDestroy(): void {
+    this.weatherList.forEach((weather: Weather) => {
+        this.$weatherObservableMap.get(weather.getCity()).unsubscribe();
+    })
   }
   add($event: string) {
     this.cityWeatherPipe.transform($event).subscribe((result: Weather) => {

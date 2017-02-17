@@ -1,5 +1,5 @@
 import { LoadingActions } from './../actions/LoadingActions';
-var initialState = true;
+var initialState = false;
 export function LoadingReducer(state, action) {
     if (state === void 0) { state = initialState; }
     switch (action.type) {

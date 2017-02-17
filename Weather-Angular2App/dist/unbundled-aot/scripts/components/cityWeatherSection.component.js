@@ -57,6 +57,12 @@ export var CityWeatherSectionComponent = (function () {
             this.oldLongitude - this.coordinate.getLongitude();
         }
     };
+    CityWeatherSectionComponent.prototype.ngOnDestroy = function () {
+        var _this = this;
+        this.weatherList.forEach(function (weather) {
+            _this.$weatherObservableMap.get(weather.getCity()).unsubscribe();
+        });
+    };
     CityWeatherSectionComponent.prototype.add = function ($event) {
         var _this = this;
         this.cityWeatherPipe.transform($event).subscribe(function (result) {

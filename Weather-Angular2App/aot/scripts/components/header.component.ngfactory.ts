@@ -14,9 +14,14 @@ import * as import5 from '@angular/core/src/metadata/view';
 import * as import6 from '@angular/core/src/linker/view_type';
 import * as import7 from '@angular/core/src/linker/component_factory';
 import * as import8 from '../../css/header.css.shim';
-import * as import9 from '@angular/common/src/pipes/number_pipe';
-import * as import10 from '@angular/common/src/pipes/date_pipe';
-import * as import11 from '@angular/core/src/i18n/tokens';
+import * as import9 from '../../node_modules/@angular/router/src/directives/router_link.ngfactory';
+import * as import10 from '@angular/common/src/pipes/number_pipe';
+import * as import11 from '@angular/common/src/pipes/date_pipe';
+import * as import12 from '@angular/router/src/router';
+import * as import13 from '@angular/router/src/router_state';
+import * as import14 from '@angular/common/src/location/location_strategy';
+import * as import15 from '@angular/core/src/i18n/tokens';
+import * as import16 from '@angular/router/src/directives/router_link';
 export class Wrapper_HeaderComponent {
   /*private*/ _eventHandler:Function;
   context:import0.HeaderComponent;
@@ -93,29 +98,37 @@ export class View_HeaderComponent0 extends import2.AppView<import0.HeaderCompone
   _el_2:any;
   _text_3:any;
   _el_4:any;
-  _text_5:any;
+  _el_5:any;
+  _RouterLinkWithHref_5_3:import9.Wrapper_RouterLinkWithHref;
   _text_6:any;
-  _el_7:any;
+  _text_7:any;
   _el_8:any;
   _text_9:any;
-  _text_10:any;
+  _el_10:any;
+  _RouterLinkWithHref_10_3:import9.Wrapper_RouterLinkWithHref;
   _text_11:any;
-  _el_12:any;
-  _text_13:any;
-  _el_14:any;
+  _text_12:any;
+  _el_13:any;
+  _text_14:any;
   _text_15:any;
   _text_16:any;
-  /*private*/ _expr_17:any;
-  _pipe_number_0:import9.DecimalPipe;
+  _text_17:any;
+  _el_18:any;
+  _text_19:any;
+  _el_20:any;
+  _text_21:any;
+  _text_22:any;
+  /*private*/ _expr_25:any;
+  _pipe_number_0:import10.DecimalPipe;
   _pipe_number_0_0:any;
   _pipe_number_0_1:any;
-  /*private*/ _expr_21:any;
-  _pipe_date_1:import10.DatePipe;
+  /*private*/ _expr_29:any;
+  _pipe_date_1:import11.DatePipe;
   _pipe_date_1_0:any;
   constructor(viewUtils:import3.ViewUtils,parentView:import2.AppView<any>,parentIndex:number,parentElement:any) {
     super(View_HeaderComponent0,renderType_HeaderComponent,import6.ViewType.COMPONENT,viewUtils,parentView,parentIndex,parentElement,import1.ChangeDetectorStatus.CheckOnce);
-    this._expr_17 = import1.UNINITIALIZED;
-    this._expr_21 = import1.UNINITIALIZED;
+    this._expr_25 = import1.UNINITIALIZED;
+    this._expr_29 = import1.UNINITIALIZED;
   }
   createInternal(rootSelector:string):import7.ComponentRef<any> {
     const parentRenderNode:any = this.renderer.createViewRoot(this.parentElement);
@@ -124,22 +137,32 @@ export class View_HeaderComponent0 extends import2.AppView<import0.HeaderCompone
     this._el_2 = import3.createRenderElement(this.renderer,this._el_0,'div',new import3.InlineArray2(2,'class','links'),(null as any));
     this._text_3 = this.renderer.createText(this._el_2,'\n        ',(null as any));
     this._el_4 = import3.createRenderElement(this.renderer,this._el_2,'div',new import3.InlineArray2(2,'class','logo'),(null as any));
-    this._text_5 = this.renderer.createText(this._el_4,'Weather',(null as any));
-    this._text_6 = this.renderer.createText(this._el_2,'\n        ',(null as any));
-    this._el_7 = import3.createRenderElement(this.renderer,this._el_2,'div',new import3.InlineArray2(2,'class','back'),(null as any));
-    this._el_8 = import3.createRenderElement(this.renderer,this._el_7,'a',new import3.InlineArray2(2,'href','./../index.html'),(null as any));
-    this._text_9 = this.renderer.createText(this._el_8,'Back',(null as any));
-    this._text_10 = this.renderer.createText(this._el_2,'\n    ',(null as any));
-    this._text_11 = this.renderer.createText(this._el_0,'\n    ',(null as any));
-    this._el_12 = import3.createRenderElement(this.renderer,this._el_0,'div',new import3.InlineArray2(2,'class','position'),(null as any));
-    this._text_13 = this.renderer.createText(this._el_12,'',(null as any));
-    this._el_14 = import3.createRenderElement(this.renderer,this._el_12,'br',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this._text_15 = this.renderer.createText(this._el_12,'',(null as any));
-    this._text_16 = this.renderer.createText(this._el_0,'\n',(null as any));
-    this._pipe_number_0 = new import9.DecimalPipe(this.parentView.injectorGet(import11.LOCALE_ID,this.parentIndex));
+    this._el_5 = import3.createRenderElement(this.renderer,this._el_4,'a',new import3.InlineArray2(2,'routerLink','/weather-list'),(null as any));
+    this._RouterLinkWithHref_5_3 = new import9.Wrapper_RouterLinkWithHref(this.parentView.injectorGet(import12.Router,this.parentIndex),this.parentView.injectorGet(import13.ActivatedRoute,this.parentIndex),this.parentView.injectorGet(import14.LocationStrategy,this.parentIndex));
+    this._text_6 = this.renderer.createText(this._el_5,'Weather',(null as any));
+    this._text_7 = this.renderer.createText(this._el_2,'\n        ',(null as any));
+    this._el_8 = import3.createRenderElement(this.renderer,this._el_2,'div',new import3.InlineArray2(2,'class','back'),(null as any));
+    this._text_9 = this.renderer.createText(this._el_8,'\n            ',(null as any));
+    this._el_10 = import3.createRenderElement(this.renderer,this._el_8,'a',new import3.InlineArray2(2,'routerLink','/map'),(null as any));
+    this._RouterLinkWithHref_10_3 = new import9.Wrapper_RouterLinkWithHref(this.parentView.injectorGet(import12.Router,this.parentIndex),this.parentView.injectorGet(import13.ActivatedRoute,this.parentIndex),this.parentView.injectorGet(import14.LocationStrategy,this.parentIndex));
+    this._text_11 = this.renderer.createText(this._el_10,'Map',(null as any));
+    this._text_12 = this.renderer.createText(this._el_8,'\n            ',(null as any));
+    this._el_13 = import3.createRenderElement(this.renderer,this._el_8,'a',new import3.InlineArray2(2,'href','./../index.html'),(null as any));
+    this._text_14 = this.renderer.createText(this._el_13,'To index page',(null as any));
+    this._text_15 = this.renderer.createText(this._el_8,'\n        ',(null as any));
+    this._text_16 = this.renderer.createText(this._el_2,'\n    ',(null as any));
+    this._text_17 = this.renderer.createText(this._el_0,'\n    ',(null as any));
+    this._el_18 = import3.createRenderElement(this.renderer,this._el_0,'div',new import3.InlineArray2(2,'class','position'),(null as any));
+    this._text_19 = this.renderer.createText(this._el_18,'',(null as any));
+    this._el_20 = import3.createRenderElement(this.renderer,this._el_18,'br',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this._text_21 = this.renderer.createText(this._el_18,'',(null as any));
+    this._text_22 = this.renderer.createText(this._el_0,'\n',(null as any));
+    var disposable_0:Function = import3.subscribeToRenderElement(this,this._el_5,new import3.InlineArray2(2,'click',(null as any)),this.eventHandler(this.handleEvent_5));
+    var disposable_1:Function = import3.subscribeToRenderElement(this,this._el_10,new import3.InlineArray2(2,'click',(null as any)),this.eventHandler(this.handleEvent_10));
+    this._pipe_number_0 = new import10.DecimalPipe(this.parentView.injectorGet(import15.LOCALE_ID,this.parentIndex));
     this._pipe_number_0_0 = import3.pureProxy2(this._pipe_number_0.transform.bind(this._pipe_number_0));
     this._pipe_number_0_1 = import3.pureProxy2(this._pipe_number_0.transform.bind(this._pipe_number_0));
-    this._pipe_date_1 = new import10.DatePipe(this.parentView.injectorGet(import11.LOCALE_ID,this.parentIndex));
+    this._pipe_date_1 = new import11.DatePipe(this.parentView.injectorGet(import15.LOCALE_ID,this.parentIndex));
     this._pipe_date_1_0 = import3.pureProxy2(this._pipe_date_1.transform.bind(this._pipe_date_1));
     this.init((null as any),((<any>this.renderer).directRenderer? (null as any): [
       this._el_0,
@@ -147,35 +170,74 @@ export class View_HeaderComponent0 extends import2.AppView<import0.HeaderCompone
       this._el_2,
       this._text_3,
       this._el_4,
-      this._text_5,
+      this._el_5,
       this._text_6,
-      this._el_7,
+      this._text_7,
       this._el_8,
       this._text_9,
-      this._text_10,
+      this._el_10,
       this._text_11,
-      this._el_12,
-      this._text_13,
-      this._el_14,
+      this._text_12,
+      this._el_13,
+      this._text_14,
       this._text_15,
-      this._text_16
+      this._text_16,
+      this._text_17,
+      this._el_18,
+      this._text_19,
+      this._el_20,
+      this._text_21,
+      this._text_22
     ]
-    ),(null as any));
+    ),[
+      disposable_0,
+      disposable_1
+    ]
+    );
     return (null as any);
+  }
+  injectorGetInternal(token:any,requestNodeIndex:number,notFoundResult:any):any {
+    if (((token === import16.RouterLinkWithHref) && ((5 <= requestNodeIndex) && (requestNodeIndex <= 6)))) { return this._RouterLinkWithHref_5_3.context; }
+    if (((token === import16.RouterLinkWithHref) && ((10 <= requestNodeIndex) && (requestNodeIndex <= 11)))) { return this._RouterLinkWithHref_10_3.context; }
+    return notFoundResult;
   }
   detectChangesInternal(throwOnChange:boolean):void {
     const valUnwrapper:any = new import1.ValueUnwrapper();
+    const currVal_5_0_0:any = '/weather-list';
+    this._RouterLinkWithHref_5_3.check_routerLink(currVal_5_0_0,throwOnChange,false);
+    this._RouterLinkWithHref_5_3.ngDoCheck(this,this._el_5,throwOnChange);
+    const currVal_10_0_0:any = '/map';
+    this._RouterLinkWithHref_10_3.check_routerLink(currVal_10_0_0,throwOnChange,false);
+    this._RouterLinkWithHref_10_3.ngDoCheck(this,this._el_10,throwOnChange);
+    this._RouterLinkWithHref_5_3.checkHost(this,this,this._el_5,throwOnChange);
+    this._RouterLinkWithHref_10_3.checkHost(this,this,this._el_10,throwOnChange);
     valUnwrapper.reset();
-    const currVal_17:any = import3.inlineInterpolate(2,'\n        Current position: latitude - ',valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_0,this._pipe_number_0.transform)(this.context.coordinate.getLatitude(),'1.0-2')),', longitude - ',valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_1,this._pipe_number_0.transform)(this.context.coordinate.getLongitude(),'1.0-2')),'\n        ');
-    if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange,this._expr_17,currVal_17))) {
-      this.renderer.setText(this._text_13,currVal_17);
-      this._expr_17 = currVal_17;
+    const currVal_25:any = import3.inlineInterpolate(2,'\n        Current position: latitude - ',valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_0,this._pipe_number_0.transform)(this.context.coordinate.getLatitude(),'1.0-2')),', longitude - ',valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_1,this._pipe_number_0.transform)(this.context.coordinate.getLongitude(),'1.0-2')),'\n        ');
+    if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange,this._expr_25,currVal_25))) {
+      this.renderer.setText(this._text_19,currVal_25);
+      this._expr_25 = currVal_25;
     }
     valUnwrapper.reset();
-    const currVal_21:any = import3.inlineInterpolate(1,'\n        Current date: ',valUnwrapper.unwrap(import3.castByValue(this._pipe_date_1_0,this._pipe_date_1.transform)(this.context.currentDate,'dd/MM/yyyy HH:mm:ss')),'\n    ');
-    if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange,this._expr_21,currVal_21))) {
-      this.renderer.setText(this._text_15,currVal_21);
-      this._expr_21 = currVal_21;
+    const currVal_29:any = import3.inlineInterpolate(1,'\n        Current date: ',valUnwrapper.unwrap(import3.castByValue(this._pipe_date_1_0,this._pipe_date_1.transform)(this.context.currentDate,'dd/MM/yyyy HH:mm:ss')),'\n    ');
+    if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange,this._expr_29,currVal_29))) {
+      this.renderer.setText(this._text_21,currVal_29);
+      this._expr_29 = currVal_29;
     }
+  }
+  destroyInternal():void {
+    this._RouterLinkWithHref_5_3.ngOnDestroy();
+    this._RouterLinkWithHref_10_3.ngOnDestroy();
+  }
+  handleEvent_5(eventName:string,$event:any):boolean {
+    this.markPathToRootAsCheckOnce();
+    var result:boolean = true;
+    result = (this._RouterLinkWithHref_5_3.handleEvent(eventName,$event) && result);
+    return result;
+  }
+  handleEvent_10(eventName:string,$event:any):boolean {
+    this.markPathToRootAsCheckOnce();
+    var result:boolean = true;
+    result = (this._RouterLinkWithHref_10_3.handleEvent(eventName,$event) && result);
+    return result;
   }
 }

@@ -20,12 +20,14 @@ import { MultiselectControlComponent } from './../components/multiselect.compone
 import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter'
 import { WeatherApiService } from './../services/WeatherAPI'
 import { WeatherActions } from './../actions/WeatherActions'
+import { CityWeatherSectionRouterComponent }   from './../components/cityWeatherSectionRouter.component';
 
 @NgModule({
     imports:      [FormsModule, HttpModule, ReactiveFormsModule, SharedModule],
     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent, TableFormComponent, ValidationErrorComponent,
+      CityWeatherSectionRouterComponent,
       KelvinToCelsiusPipe, CityWeatherPipe,  WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent, MultiselectControlComponent],
-    exports: [CityWeatherSectionComponent],
+    exports: [CityWeatherSectionRouterComponent],
     providers: [WeatherDTOtoWeatherConverter, WeatherApiService, WeatherActions]
 })
 export class WeatherModule {}

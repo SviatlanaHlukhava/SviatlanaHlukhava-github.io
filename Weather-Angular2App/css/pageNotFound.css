@@ -1,0 +1,7 @@
+.not-found {
+    min-height: 70vh;
+    font-weight: bold;
+    font-size: 30px;
+    color: red;
+    padding-left: 15px
+}

@@ -14,68 +14,88 @@ import * as import5 from '@angular/forms/src/directives';
 import * as import6 from '@angular/forms/src/form_providers';
 import * as import7 from '../../../scripts/modules/footer.module';
 import * as import8 from '../../../scripts/modules/shared.module';
-import * as import9 from '../../../scripts/modules/header.module';
-import * as import10 from '../../../scripts/modules/loader.module';
-import * as import11 from '../../../scripts/modules/map.module';
-import * as import12 from '@angular/http/src/http_module';
-import * as import13 from '../../../scripts/modules/weather.module';
-import * as import14 from '@ngrx/store/src/ng2';
-import * as import15 from '@ngrx/effects/src/effects.module';
-import * as import16 from '@angular/common/src/localization';
-import * as import17 from '@angular/core/src/application_init';
-import * as import18 from '@angular/core/src/testability/testability';
-import * as import19 from '@angular/core/src/application_ref';
-import * as import20 from '@angular/core/src/linker/compiler';
-import * as import21 from '@angular/platform-browser/src/dom/events/hammer_gestures';
-import * as import22 from '@angular/platform-browser/src/dom/events/event_manager';
-import * as import23 from '@angular/platform-browser/src/dom/shared_styles_host';
-import * as import24 from '@angular/platform-browser/src/dom/dom_renderer';
-import * as import25 from '@angular/platform-browser/src/security/dom_sanitization_service';
-import * as import26 from '@angular/core/src/linker/view_utils';
-import * as import27 from '@angular/platform-browser/src/browser/title';
-import * as import28 from '@angular/forms/src/directives/radio_control_value_accessor';
-import * as import29 from '@angular/forms/src/form_builder';
-import * as import30 from '@angular/http/src/backends/browser_xhr';
-import * as import31 from '@angular/http/src/base_response_options';
-import * as import32 from '@angular/http/src/backends/xhr_backend';
-import * as import33 from '@angular/http/src/base_request_options';
-import * as import34 from '../../../scripts/services/WeatherDTOtoWeatherConverter';
-import * as import35 from '../../../scripts/services/WeatherAPI';
-import * as import36 from '../../../scripts/actions/WeatherActions';
-import * as import37 from '@ngrx/store/src/dispatcher';
-import * as import38 from '@ngrx/effects/src/actions';
-import * as import39 from '../../../scripts/actions/CoordinateActions';
-import * as import40 from '../../../scripts/actions/LoadingActions';
-import * as import41 from '../../../scripts/services/Location';
-import * as import42 from '../../../scripts/services/Logger';
-import * as import43 from '../../../scripts/effects/CoordinateEffects';
-import * as import44 from '@ngrx/effects/src/effects-subscription';
-import * as import45 from '../../../scripts/services/Profiler';
-import * as import46 from '@angular/core/src/di/injector';
-import * as import47 from '../components/app.component.ngfactory';
-import * as import48 from '@angular/core/src/application_tokens';
-import * as import49 from '@angular/platform-browser/src/dom/events/dom_events';
-import * as import50 from '@angular/platform-browser/src/dom/events/key_events';
-import * as import51 from '@angular/core/src/zone/ng_zone';
-import * as import52 from '@angular/platform-browser/src/dom/debug/ng_probe';
-import * as import53 from '@ngrx/effects/src/bootstrap-listener';
-import * as import54 from '@angular/core/src/console';
-import * as import55 from '../../../scripts/reducers/CoordinateReducer';
-import * as import56 from '../../../scripts/reducers/LoadingReducer';
-import * as import57 from '../../../scripts/reducers/WeatherListReducer';
-import * as import58 from '@angular/core/src/i18n/tokens';
-import * as import59 from '@angular/core/src/error_handler';
-import * as import60 from '@angular/platform-browser/src/dom/dom_tokens';
-import * as import61 from '@angular/platform-browser/src/dom/animation_driver';
-import * as import62 from '@angular/core/src/render/api';
-import * as import63 from '@angular/core/src/security';
-import * as import64 from '@angular/core/src/change_detection/differs/iterable_differs';
-import * as import65 from '@angular/core/src/change_detection/differs/keyvalue_differs';
-import * as import66 from '@angular/http/src/interfaces';
-import * as import67 from '@angular/http/src/http';
-import * as import68 from '@ngrx/store/src/reducer';
-import * as import69 from '@ngrx/store/src/state';
-import * as import70 from '@ngrx/store/src/store';
+import * as import9 from '@angular/router/src/router_module';
+import * as import10 from '../../../scripts/modules/header.module';
+import * as import11 from '../../../scripts/modules/loader.module';
+import * as import12 from '../../../scripts/modules/map.module';
+import * as import13 from '@angular/http/src/http_module';
+import * as import14 from '../../../scripts/modules/weather.module';
+import * as import15 from '../../../scripts/modules/routing.module';
+import * as import16 from '@ngrx/store/src/ng2';
+import * as import17 from '@ngrx/effects/src/effects.module';
+import * as import18 from '@angular/common/src/localization';
+import * as import19 from '@angular/core/src/application_init';
+import * as import20 from '@angular/core/src/testability/testability';
+import * as import21 from '@angular/core/src/application_ref';
+import * as import22 from '@angular/core/src/linker/compiler';
+import * as import23 from '@angular/platform-browser/src/dom/events/hammer_gestures';
+import * as import24 from '@angular/platform-browser/src/dom/events/event_manager';
+import * as import25 from '@angular/platform-browser/src/dom/shared_styles_host';
+import * as import26 from '@angular/platform-browser/src/dom/dom_renderer';
+import * as import27 from '@angular/platform-browser/src/security/dom_sanitization_service';
+import * as import28 from '@angular/core/src/linker/view_utils';
+import * as import29 from '@angular/platform-browser/src/browser/title';
+import * as import30 from '@angular/forms/src/directives/radio_control_value_accessor';
+import * as import31 from '@angular/forms/src/form_builder';
+import * as import32 from '@angular/http/src/backends/browser_xhr';
+import * as import33 from '@angular/http/src/base_response_options';
+import * as import34 from '@angular/http/src/backends/xhr_backend';
+import * as import35 from '@angular/http/src/base_request_options';
+import * as import36 from '../../../scripts/services/WeatherDTOtoWeatherConverter';
+import * as import37 from '../../../scripts/services/WeatherAPI';
+import * as import38 from '../../../scripts/actions/WeatherActions';
+import * as import39 from '@angular/common/src/location/location';
+import * as import40 from '@angular/router/src/url_tree';
+import * as import41 from '@angular/router/src/router_outlet_map';
+import * as import42 from '@angular/core/src/linker/system_js_ng_module_factory_loader';
+import * as import43 from '@angular/router/src/router_preloader';
+import * as import44 from '@ngrx/store/src/dispatcher';
+import * as import45 from '@ngrx/effects/src/actions';
+import * as import46 from '../../../scripts/actions/CoordinateActions';
+import * as import47 from '../../../scripts/actions/LoadingActions';
+import * as import48 from '../../../scripts/services/Location';
+import * as import49 from '../../../scripts/services/Logger';
+import * as import50 from '../../../scripts/effects/CoordinateEffects';
+import * as import51 from '@ngrx/effects/src/effects-subscription';
+import * as import52 from '../../../scripts/services/Profiler';
+import * as import53 from '@angular/core/src/di/injector';
+import * as import54 from '../components/mapRouter.component.ngfactory';
+import * as import55 from '../components/cityWeatherSectionRouter.component.ngfactory';
+import * as import56 from '../components/pageNotFound.component.ngfactory';
+import * as import57 from '../components/app.component.ngfactory';
+import * as import58 from '@angular/core/src/application_tokens';
+import * as import59 from '@angular/platform-browser/src/dom/events/dom_events';
+import * as import60 from '@angular/platform-browser/src/dom/events/key_events';
+import * as import61 from '@angular/core/src/zone/ng_zone';
+import * as import62 from '@angular/platform-browser/src/dom/debug/ng_probe';
+import * as import63 from '../../../scripts/components/mapRouter.component';
+import * as import64 from '../../../scripts/components/cityWeatherSectionRouter.component';
+import * as import65 from '../../../scripts/components/pageNotFound.component';
+import * as import66 from '@angular/common/src/location/platform_location';
+import * as import67 from '@angular/common/src/location/location_strategy';
+import * as import68 from '@angular/router/src/url_handling_strategy';
+import * as import69 from '../../../scripts/reducers/CoordinateReducer';
+import * as import70 from '../../../scripts/reducers/LoadingReducer';
+import * as import71 from '../../../scripts/reducers/WeatherListReducer';
+import * as import72 from '@ngrx/effects/src/bootstrap-listener';
+import * as import73 from '@angular/router/src/router';
+import * as import74 from '@angular/core/src/console';
+import * as import75 from '@angular/core/src/i18n/tokens';
+import * as import76 from '@angular/core/src/error_handler';
+import * as import77 from '@angular/platform-browser/src/dom/dom_tokens';
+import * as import78 from '@angular/platform-browser/src/dom/animation_driver';
+import * as import79 from '@angular/core/src/render/api';
+import * as import80 from '@angular/core/src/security';
+import * as import81 from '@angular/core/src/change_detection/differs/iterable_differs';
+import * as import82 from '@angular/core/src/change_detection/differs/keyvalue_differs';
+import * as import83 from '@angular/router/src/router_config_loader';
+import * as import84 from '@angular/http/src/interfaces';
+import * as import85 from '@angular/http/src/http';
+import * as import86 from '@angular/core/src/linker/ng_module_factory_loader';
+import * as import87 from '@angular/router/src/router_state';
+import * as import88 from '@ngrx/store/src/reducer';
+import * as import89 from '@ngrx/store/src/state';
+import * as import90 from '@ngrx/store/src/store';
 class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
   _CommonModule_0:import2.CommonModule;
   _ApplicationModule_1:import3.ApplicationModule;
@@ -85,214 +105,373 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
   _ReactiveFormsModule_5:import6.ReactiveFormsModule;
   _FooterModule_6:import7.FooterModule;
   _SharedModule_7:import8.SharedModule;
-  _HeaderModule_8:import9.HeaderModule;
-  _LoaderModule_9:import10.LoaderModule;
-  _MapModule_10:import11.MapModule;
-  _HttpModule_11:import12.HttpModule;
-  _WeatherModule_12:import13.WeatherModule;
-  _StoreModule_13:import14.StoreModule;
-  _EffectsModule_14:import15.EffectsModule;
-  _AppModule_15:import1.AppModule;
-  __LOCALE_ID_16:any;
-  __NgLocalization_17:import16.NgLocaleLocalization;
-  _ErrorHandler_18:any;
-  _ApplicationInitStatus_19:import17.ApplicationInitStatus;
-  _Testability_20:import18.Testability;
-  _ApplicationRef__21:import19.ApplicationRef_;
-  __ApplicationRef_22:any;
-  __Compiler_23:import20.Compiler;
-  __APP_ID_24:any;
-  __DOCUMENT_25:any;
-  __HAMMER_GESTURE_CONFIG_26:import21.HammerGestureConfig;
-  __EVENT_MANAGER_PLUGINS_27:any[];
-  __EventManager_28:import22.EventManager;
-  __DomSharedStylesHost_29:import23.DomSharedStylesHost;
-  __AnimationDriver_30:any;
-  __DomRootRenderer_31:import24.DomRootRenderer_;
-  __RootRenderer_32:any;
-  __DomSanitizer_33:import25.DomSanitizerImpl;
-  __Sanitizer_34:any;
-  __ViewUtils_35:import26.ViewUtils;
-  __IterableDiffers_36:any;
-  __KeyValueDiffers_37:any;
-  __SharedStylesHost_38:any;
-  __Title_39:import27.Title;
-  __RadioControlRegistry_40:import28.RadioControlRegistry;
-  __FormBuilder_41:import29.FormBuilder;
-  __BrowserXhr_42:import30.BrowserXhr;
-  __ResponseOptions_43:import31.BaseResponseOptions;
-  __XSRFStrategy_44:any;
-  __XHRBackend_45:import32.XHRBackend;
-  __RequestOptions_46:import33.BaseRequestOptions;
-  __Http_47:any;
-  __WeatherDTOtoWeatherConverter_48:import34.WeatherDTOtoWeatherConverter;
-  __WeatherApiService_49:import35.WeatherApiService;
-  __WeatherActions_50:import36.WeatherActions;
-  __Dispatcher_51:import37.Dispatcher;
-  __Actions_52:import38.Actions;
-  __INITIAL_REDUCER_53:any;
-  _INITIAL_REDUCER_54:any;
-  _Reducer_55:any;
-  __INITIAL_STATE_56:any;
-  _INITIAL_STATE_57:any;
-  _State_58:any;
-  _Store_59:any;
-  _CoordinateActions_60:import39.CoordinateActions;
-  _LoadingActions_61:import40.LoadingActions;
-  _LocationService_62:import41.LocationService;
-  _LoggerService_63:import42.LoggerService;
-  _CoordinateEffects_64:import43.CoordinateEffects;
-  _effects_65:any[];
-  _EffectsSubscription_66:import44.EffectsSubscription;
-  __APP_BOOTSTRAP_LISTENER_67:any[];
-  __Profiler_68:import45.Profiler;
-  constructor(parent:import46.Injector) {
-    super(parent,[import47.AppComponentNgFactory],[import47.AppComponentNgFactory]);
+  _ROUTER_FORROOT_GUARD_8:any;
+  _RouterModule_9:import9.RouterModule;
+  _HeaderModule_10:import10.HeaderModule;
+  _LoaderModule_11:import11.LoaderModule;
+  _MapModule_12:import12.MapModule;
+  _HttpModule_13:import13.HttpModule;
+  _WeatherModule_14:import14.WeatherModule;
+  _RoutingModule_15:import15.RoutingModule;
+  _StoreModule_16:import16.StoreModule;
+  _EffectsModule_17:import17.EffectsModule;
+  _AppModule_18:import1.AppModule;
+  __LOCALE_ID_19:any;
+  __NgLocalization_20:import18.NgLocaleLocalization;
+  _ErrorHandler_21:any;
+  _ApplicationInitStatus_22:import19.ApplicationInitStatus;
+  _Testability_23:import20.Testability;
+  _ApplicationRef__24:import21.ApplicationRef_;
+  __ApplicationRef_25:any;
+  __Compiler_26:import22.Compiler;
+  __APP_ID_27:any;
+  __DOCUMENT_28:any;
+  __HAMMER_GESTURE_CONFIG_29:import23.HammerGestureConfig;
+  __EVENT_MANAGER_PLUGINS_30:any[];
+  __EventManager_31:import24.EventManager;
+  __DomSharedStylesHost_32:import25.DomSharedStylesHost;
+  __AnimationDriver_33:any;
+  __DomRootRenderer_34:import26.DomRootRenderer_;
+  __RootRenderer_35:any;
+  __DomSanitizer_36:import27.DomSanitizerImpl;
+  __Sanitizer_37:any;
+  __ViewUtils_38:import28.ViewUtils;
+  __IterableDiffers_39:any;
+  __KeyValueDiffers_40:any;
+  __SharedStylesHost_41:any;
+  __Title_42:import29.Title;
+  __RadioControlRegistry_43:import30.RadioControlRegistry;
+  __FormBuilder_44:import31.FormBuilder;
+  __ROUTES_45:any[];
+  __BrowserXhr_46:import32.BrowserXhr;
+  __ResponseOptions_47:import33.BaseResponseOptions;
+  __XSRFStrategy_48:any;
+  __XHRBackend_49:import34.XHRBackend;
+  __RequestOptions_50:import35.BaseRequestOptions;
+  __Http_51:any;
+  __WeatherDTOtoWeatherConverter_52:import36.WeatherDTOtoWeatherConverter;
+  __WeatherApiService_53:import37.WeatherApiService;
+  __WeatherActions_54:import38.WeatherActions;
+  __ROUTER_CONFIGURATION_55:any;
+  __LocationStrategy_56:any;
+  __Location_57:import39.Location;
+  __UrlSerializer_58:import40.DefaultUrlSerializer;
+  __RouterOutletMap_59:import41.RouterOutletMap;
+  __NgModuleFactoryLoader_60:import42.SystemJsNgModuleLoader;
+  __Router_61:any;
+  __ActivatedRoute_62:any;
+  _NoPreloading_63:import43.NoPreloading;
+  _PreloadingStrategy_64:any;
+  _RouterPreloader_65:import43.RouterPreloader;
+  __PreloadAllModules_66:import43.PreloadAllModules;
+  __ROUTER_INITIALIZER_67:any;
+  __Dispatcher_68:import44.Dispatcher;
+  ___INITIAL_REDUCER_69:any;
+  __INITIAL_REDUCER_70:any;
+  __Reducer_71:any;
+  ___INITIAL_STATE_72:any;
+  __INITIAL_STATE_73:any;
+  __State_74:any;
+  __Store_75:any;
+  __Actions_76:import45.Actions;
+  __CoordinateActions_77:import46.CoordinateActions;
+  __LoadingActions_78:import47.LoadingActions;
+  __LocationService_79:import48.LocationService;
+  __LoggerService_80:import49.LoggerService;
+  __CoordinateEffects_81:import50.CoordinateEffects;
+  __effects_82:any[];
+  _EffectsSubscription_83:import51.EffectsSubscription;
+  __APP_BOOTSTRAP_LISTENER_84:any[];
+  __Profiler_85:import52.Profiler;
+  constructor(parent:import53.Injector) {
+    super(parent,[
+      import54.MapRouterComponentNgFactory,
+      import55.CityWeatherSectionRouterComponentNgFactory,
+      import56.PageNotFoundComponentNgFactory,
+      import57.AppComponentNgFactory
+    ]
+    ,[import57.AppComponentNgFactory]);
   }
-  get _LOCALE_ID_16():any {
-    if ((this.__LOCALE_ID_16 == null)) { (this.__LOCALE_ID_16 = 'en-US'); }
-    return this.__LOCALE_ID_16;
+  get _LOCALE_ID_19():any {
+    if ((this.__LOCALE_ID_19 == null)) { (this.__LOCALE_ID_19 = 'en-US'); }
+    return this.__LOCALE_ID_19;
   }
-  get _NgLocalization_17():import16.NgLocaleLocalization {
-    if ((this.__NgLocalization_17 == null)) { (this.__NgLocalization_17 = new import16.NgLocaleLocalization(this._LOCALE_ID_16)); }
-    return this.__NgLocalization_17;
+  get _NgLocalization_20():import18.NgLocaleLocalization {
+    if ((this.__NgLocalization_20 == null)) { (this.__NgLocalization_20 = new import18.NgLocaleLocalization(this._LOCALE_ID_19)); }
+    return this.__NgLocalization_20;
   }
-  get _ApplicationRef_22():any {
-    if ((this.__ApplicationRef_22 == null)) { (this.__ApplicationRef_22 = this._ApplicationRef__21); }
-    return this.__ApplicationRef_22;
+  get _ApplicationRef_25():any {
+    if ((this.__ApplicationRef_25 == null)) { (this.__ApplicationRef_25 = this._ApplicationRef__24); }
+    return this.__ApplicationRef_25;
   }
-  get _Compiler_23():import20.Compiler {
-    if ((this.__Compiler_23 == null)) { (this.__Compiler_23 = new import20.Compiler()); }
-    return this.__Compiler_23;
+  get _Compiler_26():import22.Compiler {
+    if ((this.__Compiler_26 == null)) { (this.__Compiler_26 = new import22.Compiler()); }
+    return this.__Compiler_26;
   }
-  get _APP_ID_24():any {
-    if ((this.__APP_ID_24 == null)) { (this.__APP_ID_24 = import48._appIdRandomProviderFactory()); }
-    return this.__APP_ID_24;
+  get _APP_ID_27():any {
+    if ((this.__APP_ID_27 == null)) { (this.__APP_ID_27 = import58._appIdRandomProviderFactory()); }
+    return this.__APP_ID_27;
   }
-  get _DOCUMENT_25():any {
-    if ((this.__DOCUMENT_25 == null)) { (this.__DOCUMENT_25 = import4._document()); }
-    return this.__DOCUMENT_25;
+  get _DOCUMENT_28():any {
+    if ((this.__DOCUMENT_28 == null)) { (this.__DOCUMENT_28 = import4._document()); }
+    return this.__DOCUMENT_28;
   }
-  get _HAMMER_GESTURE_CONFIG_26():import21.HammerGestureConfig {
-    if ((this.__HAMMER_GESTURE_CONFIG_26 == null)) { (this.__HAMMER_GESTURE_CONFIG_26 = new import21.HammerGestureConfig()); }
-    return this.__HAMMER_GESTURE_CONFIG_26;
+  get _HAMMER_GESTURE_CONFIG_29():import23.HammerGestureConfig {
+    if ((this.__HAMMER_GESTURE_CONFIG_29 == null)) { (this.__HAMMER_GESTURE_CONFIG_29 = new import23.HammerGestureConfig()); }
+    return this.__HAMMER_GESTURE_CONFIG_29;
   }
-  get _EVENT_MANAGER_PLUGINS_27():any[] {
-    if ((this.__EVENT_MANAGER_PLUGINS_27 == null)) { (this.__EVENT_MANAGER_PLUGINS_27 = [
-      new import49.DomEventsPlugin(),
-      new import50.KeyEventsPlugin(),
-      new import21.HammerGesturesPlugin(this._HAMMER_GESTURE_CONFIG_26)
+  get _EVENT_MANAGER_PLUGINS_30():any[] {
+    if ((this.__EVENT_MANAGER_PLUGINS_30 == null)) { (this.__EVENT_MANAGER_PLUGINS_30 = [
+      new import59.DomEventsPlugin(),
+      new import60.KeyEventsPlugin(),
+      new import23.HammerGesturesPlugin(this._HAMMER_GESTURE_CONFIG_29)
     ]
     ); }
-    return this.__EVENT_MANAGER_PLUGINS_27;
+    return this.__EVENT_MANAGER_PLUGINS_30;
   }
-  get _EventManager_28():import22.EventManager {
-    if ((this.__EventManager_28 == null)) { (this.__EventManager_28 = new import22.EventManager(this._EVENT_MANAGER_PLUGINS_27,this.parent.get(import51.NgZone))); }
-    return this.__EventManager_28;
+  get _EventManager_31():import24.EventManager {
+    if ((this.__EventManager_31 == null)) { (this.__EventManager_31 = new import24.EventManager(this._EVENT_MANAGER_PLUGINS_30,this.parent.get(import61.NgZone))); }
+    return this.__EventManager_31;
   }
-  get _DomSharedStylesHost_29():import23.DomSharedStylesHost {
-    if ((this.__DomSharedStylesHost_29 == null)) { (this.__DomSharedStylesHost_29 = new import23.DomSharedStylesHost(this._DOCUMENT_25)); }
-    return this.__DomSharedStylesHost_29;
+  get _DomSharedStylesHost_32():import25.DomSharedStylesHost {
+    if ((this.__DomSharedStylesHost_32 == null)) { (this.__DomSharedStylesHost_32 = new import25.DomSharedStylesHost(this._DOCUMENT_28)); }
+    return this.__DomSharedStylesHost_32;
   }
-  get _AnimationDriver_30():any {
-    if ((this.__AnimationDriver_30 == null)) { (this.__AnimationDriver_30 = import4._resolveDefaultAnimationDriver()); }
-    return this.__AnimationDriver_30;
+  get _AnimationDriver_33():any {
+    if ((this.__AnimationDriver_33 == null)) { (this.__AnimationDriver_33 = import4._resolveDefaultAnimationDriver()); }
+    return this.__AnimationDriver_33;
   }
-  get _DomRootRenderer_31():import24.DomRootRenderer_ {
-    if ((this.__DomRootRenderer_31 == null)) { (this.__DomRootRenderer_31 = new import24.DomRootRenderer_(this._DOCUMENT_25,this._EventManager_28,this._DomSharedStylesHost_29,this._AnimationDriver_30,this._APP_ID_24)); }
-    return this.__DomRootRenderer_31;
+  get _DomRootRenderer_34():import26.DomRootRenderer_ {
+    if ((this.__DomRootRenderer_34 == null)) { (this.__DomRootRenderer_34 = new import26.DomRootRenderer_(this._DOCUMENT_28,this._EventManager_31,this._DomSharedStylesHost_32,this._AnimationDriver_33,this._APP_ID_27)); }
+    return this.__DomRootRenderer_34;
   }
-  get _RootRenderer_32():any {
-    if ((this.__RootRenderer_32 == null)) { (this.__RootRenderer_32 = import52._createConditionalRootRenderer(this._DomRootRenderer_31,this.parent.get(import52.NgProbeToken,(null as any)))); }
-    return this.__RootRenderer_32;
+  get _RootRenderer_35():any {
+    if ((this.__RootRenderer_35 == null)) { (this.__RootRenderer_35 = import62._createConditionalRootRenderer(this._DomRootRenderer_34,this.parent.get(import62.NgProbeToken,(null as any)))); }
+    return this.__RootRenderer_35;
   }
-  get _DomSanitizer_33():import25.DomSanitizerImpl {
-    if ((this.__DomSanitizer_33 == null)) { (this.__DomSanitizer_33 = new import25.DomSanitizerImpl()); }
-    return this.__DomSanitizer_33;
+  get _DomSanitizer_36():import27.DomSanitizerImpl {
+    if ((this.__DomSanitizer_36 == null)) { (this.__DomSanitizer_36 = new import27.DomSanitizerImpl()); }
+    return this.__DomSanitizer_36;
   }
-  get _Sanitizer_34():any {
-    if ((this.__Sanitizer_34 == null)) { (this.__Sanitizer_34 = this._DomSanitizer_33); }
-    return this.__Sanitizer_34;
+  get _Sanitizer_37():any {
+    if ((this.__Sanitizer_37 == null)) { (this.__Sanitizer_37 = this._DomSanitizer_36); }
+    return this.__Sanitizer_37;
   }
-  get _ViewUtils_35():import26.ViewUtils {
-    if ((this.__ViewUtils_35 == null)) { (this.__ViewUtils_35 = new import26.ViewUtils(this._RootRenderer_32,this._Sanitizer_34)); }
-    return this.__ViewUtils_35;
+  get _ViewUtils_38():import28.ViewUtils {
+    if ((this.__ViewUtils_38 == null)) { (this.__ViewUtils_38 = new import28.ViewUtils(this._RootRenderer_35,this._Sanitizer_37)); }
+    return this.__ViewUtils_38;
   }
-  get _IterableDiffers_36():any {
-    if ((this.__IterableDiffers_36 == null)) { (this.__IterableDiffers_36 = import3._iterableDiffersFactory()); }
-    return this.__IterableDiffers_36;
+  get _IterableDiffers_39():any {
+    if ((this.__IterableDiffers_39 == null)) { (this.__IterableDiffers_39 = import3._iterableDiffersFactory()); }
+    return this.__IterableDiffers_39;
   }
-  get _KeyValueDiffers_37():any {
-    if ((this.__KeyValueDiffers_37 == null)) { (this.__KeyValueDiffers_37 = import3._keyValueDiffersFactory()); }
-    return this.__KeyValueDiffers_37;
+  get _KeyValueDiffers_40():any {
+    if ((this.__KeyValueDiffers_40 == null)) { (this.__KeyValueDiffers_40 = import3._keyValueDiffersFactory()); }
+    return this.__KeyValueDiffers_40;
   }
-  get _SharedStylesHost_38():any {
-    if ((this.__SharedStylesHost_38 == null)) { (this.__SharedStylesHost_38 = this._DomSharedStylesHost_29); }
-    return this.__SharedStylesHost_38;
+  get _SharedStylesHost_41():any {
+    if ((this.__SharedStylesHost_41 == null)) { (this.__SharedStylesHost_41 = this._DomSharedStylesHost_32); }
+    return this.__SharedStylesHost_41;
   }
-  get _Title_39():import27.Title {
-    if ((this.__Title_39 == null)) { (this.__Title_39 = new import27.Title()); }
-    return this.__Title_39;
+  get _Title_42():import29.Title {
+    if ((this.__Title_42 == null)) { (this.__Title_42 = new import29.Title()); }
+    return this.__Title_42;
   }
-  get _RadioControlRegistry_40():import28.RadioControlRegistry {
-    if ((this.__RadioControlRegistry_40 == null)) { (this.__RadioControlRegistry_40 = new import28.RadioControlRegistry()); }
-    return this.__RadioControlRegistry_40;
+  get _RadioControlRegistry_43():import30.RadioControlRegistry {
+    if ((this.__RadioControlRegistry_43 == null)) { (this.__RadioControlRegistry_43 = new import30.RadioControlRegistry()); }
+    return this.__RadioControlRegistry_43;
   }
-  get _FormBuilder_41():import29.FormBuilder {
-    if ((this.__FormBuilder_41 == null)) { (this.__FormBuilder_41 = new import29.FormBuilder()); }
-    return this.__FormBuilder_41;
+  get _FormBuilder_44():import31.FormBuilder {
+    if ((this.__FormBuilder_44 == null)) { (this.__FormBuilder_44 = new import31.FormBuilder()); }
+    return this.__FormBuilder_44;
   }
-  get _BrowserXhr_42():import30.BrowserXhr {
-    if ((this.__BrowserXhr_42 == null)) { (this.__BrowserXhr_42 = new import30.BrowserXhr()); }
-    return this.__BrowserXhr_42;
+  get _ROUTES_45():any[] {
+    if ((this.__ROUTES_45 == null)) { (this.__ROUTES_45 = [
+        [{
+          path: 'map',
+          component: import63.MapRouterComponent
+        }
+      ],
+      [
+        {
+          path: 'weather-list',
+          component: import64.CityWeatherSectionRouterComponent
+        }
+        ,
+        {
+          path: 'map',
+          loadChildren: './map.module#MapModule'
+        }
+        ,
+        {
+          path: '',
+          redirectTo: '/weather-list',
+          pathMatch: 'full'
+        }
+        ,
+        {
+          path: '**',
+          component: import65.PageNotFoundComponent
+        }
+
+      ]
+
+    ]
+    ); }
+    return this.__ROUTES_45;
   }
-  get _ResponseOptions_43():import31.BaseResponseOptions {
-    if ((this.__ResponseOptions_43 == null)) { (this.__ResponseOptions_43 = new import31.BaseResponseOptions()); }
-    return this.__ResponseOptions_43;
+  get _BrowserXhr_46():import32.BrowserXhr {
+    if ((this.__BrowserXhr_46 == null)) { (this.__BrowserXhr_46 = new import32.BrowserXhr()); }
+    return this.__BrowserXhr_46;
   }
-  get _XSRFStrategy_44():any {
-    if ((this.__XSRFStrategy_44 == null)) { (this.__XSRFStrategy_44 = import12._createDefaultCookieXSRFStrategy()); }
-    return this.__XSRFStrategy_44;
+  get _ResponseOptions_47():import33.BaseResponseOptions {
+    if ((this.__ResponseOptions_47 == null)) { (this.__ResponseOptions_47 = new import33.BaseResponseOptions()); }
+    return this.__ResponseOptions_47;
   }
-  get _XHRBackend_45():import32.XHRBackend {
-    if ((this.__XHRBackend_45 == null)) { (this.__XHRBackend_45 = new import32.XHRBackend(this._BrowserXhr_42,this._ResponseOptions_43,this._XSRFStrategy_44)); }
-    return this.__XHRBackend_45;
+  get _XSRFStrategy_48():any {
+    if ((this.__XSRFStrategy_48 == null)) { (this.__XSRFStrategy_48 = import13._createDefaultCookieXSRFStrategy()); }
+    return this.__XSRFStrategy_48;
   }
-  get _RequestOptions_46():import33.BaseRequestOptions {
-    if ((this.__RequestOptions_46 == null)) { (this.__RequestOptions_46 = new import33.BaseRequestOptions()); }
-    return this.__RequestOptions_46;
+  get _XHRBackend_49():import34.XHRBackend {
+    if ((this.__XHRBackend_49 == null)) { (this.__XHRBackend_49 = new import34.XHRBackend(this._BrowserXhr_46,this._ResponseOptions_47,this._XSRFStrategy_48)); }
+    return this.__XHRBackend_49;
   }
-  get _Http_47():any {
-    if ((this.__Http_47 == null)) { (this.__Http_47 = import12.httpFactory(this._XHRBackend_45,this._RequestOptions_46)); }
-    return this.__Http_47;
+  get _RequestOptions_50():import35.BaseRequestOptions {
+    if ((this.__RequestOptions_50 == null)) { (this.__RequestOptions_50 = new import35.BaseRequestOptions()); }
+    return this.__RequestOptions_50;
   }
-  get _WeatherDTOtoWeatherConverter_48():import34.WeatherDTOtoWeatherConverter {
-    if ((this.__WeatherDTOtoWeatherConverter_48 == null)) { (this.__WeatherDTOtoWeatherConverter_48 = new import34.WeatherDTOtoWeatherConverter()); }
-    return this.__WeatherDTOtoWeatherConverter_48;
+  get _Http_51():any {
+    if ((this.__Http_51 == null)) { (this.__Http_51 = import13.httpFactory(this._XHRBackend_49,this._RequestOptions_50)); }
+    return this.__Http_51;
   }
-  get _WeatherApiService_49():import35.WeatherApiService {
-    if ((this.__WeatherApiService_49 == null)) { (this.__WeatherApiService_49 = new import35.WeatherApiService(this._WeatherDTOtoWeatherConverter_48,this._Http_47)); }
-    return this.__WeatherApiService_49;
+  get _WeatherDTOtoWeatherConverter_52():import36.WeatherDTOtoWeatherConverter {
+    if ((this.__WeatherDTOtoWeatherConverter_52 == null)) { (this.__WeatherDTOtoWeatherConverter_52 = new import36.WeatherDTOtoWeatherConverter()); }
+    return this.__WeatherDTOtoWeatherConverter_52;
   }
-  get _WeatherActions_50():import36.WeatherActions {
-    if ((this.__WeatherActions_50 == null)) { (this.__WeatherActions_50 = new import36.WeatherActions()); }
-    return this.__WeatherActions_50;
+  get _WeatherApiService_53():import37.WeatherApiService {
+    if ((this.__WeatherApiService_53 == null)) { (this.__WeatherApiService_53 = new import37.WeatherApiService(this._WeatherDTOtoWeatherConverter_52,this._Http_51)); }
+    return this.__WeatherApiService_53;
   }
-  get _Dispatcher_51():import37.Dispatcher {
-    if ((this.__Dispatcher_51 == null)) { (this.__Dispatcher_51 = new import37.Dispatcher()); }
-    return this.__Dispatcher_51;
+  get _WeatherActions_54():import38.WeatherActions {
+    if ((this.__WeatherActions_54 == null)) { (this.__WeatherActions_54 = new import38.WeatherActions()); }
+    return this.__WeatherActions_54;
   }
-  get _Actions_52():import38.Actions {
-    if ((this.__Actions_52 == null)) { (this.__Actions_52 = new import38.Actions(this._Dispatcher_51)); }
-    return this.__Actions_52;
+  get _ROUTER_CONFIGURATION_55():any {
+    if ((this.__ROUTER_CONFIGURATION_55 == null)) { (this.__ROUTER_CONFIGURATION_55 = {useHash: true}); }
+    return this.__ROUTER_CONFIGURATION_55;
   }
-  get _APP_BOOTSTRAP_LISTENER_67():any[] {
-    if ((this.__APP_BOOTSTRAP_LISTENER_67 == null)) { (this.__APP_BOOTSTRAP_LISTENER_67 = [import53.runAfterBootstrapEffects(this,this._EffectsSubscription_66)]); }
-    return this.__APP_BOOTSTRAP_LISTENER_67;
+  get _LocationStrategy_56():any {
+    if ((this.__LocationStrategy_56 == null)) { (this.__LocationStrategy_56 = import9.provideLocationStrategy(this.parent.get(import66.PlatformLocation),this.parent.get(import67.APP_BASE_HREF,(null as any)),this._ROUTER_CONFIGURATION_55)); }
+    return this.__LocationStrategy_56;
   }
-  get _Profiler_68():import45.Profiler {
-    if ((this.__Profiler_68 == null)) { (this.__Profiler_68 = new import45.Profiler(this._LoggerService_63)); }
-    return this.__Profiler_68;
+  get _Location_57():import39.Location {
+    if ((this.__Location_57 == null)) { (this.__Location_57 = new import39.Location(this._LocationStrategy_56)); }
+    return this.__Location_57;
+  }
+  get _UrlSerializer_58():import40.DefaultUrlSerializer {
+    if ((this.__UrlSerializer_58 == null)) { (this.__UrlSerializer_58 = new import40.DefaultUrlSerializer()); }
+    return this.__UrlSerializer_58;
+  }
+  get _RouterOutletMap_59():import41.RouterOutletMap {
+    if ((this.__RouterOutletMap_59 == null)) { (this.__RouterOutletMap_59 = new import41.RouterOutletMap()); }
+    return this.__RouterOutletMap_59;
+  }
+  get _NgModuleFactoryLoader_60():import42.SystemJsNgModuleLoader {
+    if ((this.__NgModuleFactoryLoader_60 == null)) { (this.__NgModuleFactoryLoader_60 = new import42.SystemJsNgModuleLoader(this._Compiler_26,this.parent.get(import42.SystemJsNgModuleLoaderConfig,(null as any)))); }
+    return this.__NgModuleFactoryLoader_60;
+  }
+  get _Router_61():any {
+    if ((this.__Router_61 == null)) { (this.__Router_61 = import9.setupRouter(this._ApplicationRef_25,this._UrlSerializer_58,this._RouterOutletMap_59,this._Location_57,this,this._NgModuleFactoryLoader_60,this._Compiler_26,this._ROUTES_45,this._ROUTER_CONFIGURATION_55,this.parent.get(import68.UrlHandlingStrategy,(null as any)))); }
+    return this.__Router_61;
+  }
+  get _ActivatedRoute_62():any {
+    if ((this.__ActivatedRoute_62 == null)) { (this.__ActivatedRoute_62 = import9.rootRoute(this._Router_61)); }
+    return this.__ActivatedRoute_62;
+  }
+  get _PreloadAllModules_66():import43.PreloadAllModules {
+    if ((this.__PreloadAllModules_66 == null)) { (this.__PreloadAllModules_66 = new import43.PreloadAllModules()); }
+    return this.__PreloadAllModules_66;
+  }
+  get _ROUTER_INITIALIZER_67():any {
+    if ((this.__ROUTER_INITIALIZER_67 == null)) { (this.__ROUTER_INITIALIZER_67 = import9.initialRouterNavigation(this._Router_61,this._ApplicationRef_25,this._RouterPreloader_65,this._ROUTER_CONFIGURATION_55)); }
+    return this.__ROUTER_INITIALIZER_67;
+  }
+  get _Dispatcher_68():import44.Dispatcher {
+    if ((this.__Dispatcher_68 == null)) { (this.__Dispatcher_68 = new import44.Dispatcher()); }
+    return this.__Dispatcher_68;
+  }
+  get __INITIAL_REDUCER_69():any {
+    if ((this.___INITIAL_REDUCER_69 == null)) { (this.___INITIAL_REDUCER_69 = {
+      coordinate: import69.CoordinateReducer,
+      loading: import70.LoadingReducer,
+      weatherList: import71.WeatherListReducer
+    }
+    ); }
+    return this.___INITIAL_REDUCER_69;
+  }
+  get _INITIAL_REDUCER_70():any {
+    if ((this.__INITIAL_REDUCER_70 == null)) { (this.__INITIAL_REDUCER_70 = import16._initialReducerFactory(this.__INITIAL_REDUCER_69)); }
+    return this.__INITIAL_REDUCER_70;
+  }
+  get _Reducer_71():any {
+    if ((this.__Reducer_71 == null)) { (this.__Reducer_71 = import16._reducerFactory(this._Dispatcher_68,this._INITIAL_REDUCER_70)); }
+    return this.__Reducer_71;
+  }
+  get __INITIAL_STATE_72():any {
+    if ((this.___INITIAL_STATE_72 == null)) { (this.___INITIAL_STATE_72 = (undefined as any)); }
+    return this.___INITIAL_STATE_72;
+  }
+  get _INITIAL_STATE_73():any {
+    if ((this.__INITIAL_STATE_73 == null)) { (this.__INITIAL_STATE_73 = import16._initialStateFactory(this.__INITIAL_STATE_72,this._INITIAL_REDUCER_70)); }
+    return this.__INITIAL_STATE_73;
+  }
+  get _State_74():any {
+    if ((this.__State_74 == null)) { (this.__State_74 = import16._stateFactory(this._INITIAL_STATE_73,this._Dispatcher_68,this._Reducer_71)); }
+    return this.__State_74;
+  }
+  get _Store_75():any {
+    if ((this.__Store_75 == null)) { (this.__Store_75 = import16._storeFactory(this._Dispatcher_68,this._Reducer_71,this._State_74)); }
+    return this.__Store_75;
+  }
+  get _Actions_76():import45.Actions {
+    if ((this.__Actions_76 == null)) { (this.__Actions_76 = new import45.Actions(this._Dispatcher_68)); }
+    return this.__Actions_76;
+  }
+  get _CoordinateActions_77():import46.CoordinateActions {
+    if ((this.__CoordinateActions_77 == null)) { (this.__CoordinateActions_77 = new import46.CoordinateActions()); }
+    return this.__CoordinateActions_77;
+  }
+  get _LoadingActions_78():import47.LoadingActions {
+    if ((this.__LoadingActions_78 == null)) { (this.__LoadingActions_78 = new import47.LoadingActions()); }
+    return this.__LoadingActions_78;
+  }
+  get _LocationService_79():import48.LocationService {
+    if ((this.__LocationService_79 == null)) { (this.__LocationService_79 = new import48.LocationService()); }
+    return this.__LocationService_79;
+  }
+  get _LoggerService_80():import49.LoggerService {
+    if ((this.__LoggerService_80 == null)) { (this.__LoggerService_80 = new import49.LoggerService()); }
+    return this.__LoggerService_80;
+  }
+  get _CoordinateEffects_81():import50.CoordinateEffects {
+    if ((this.__CoordinateEffects_81 == null)) { (this.__CoordinateEffects_81 = new import50.CoordinateEffects(this._Actions_76,this._CoordinateActions_77,this._LoadingActions_78,this._LocationService_79,this._LoggerService_80)); }
+    return this.__CoordinateEffects_81;
+  }
+  get _effects_82():any[] {
+    if ((this.__effects_82 == null)) { (this.__effects_82 = [this._CoordinateEffects_81]); }
+    return this.__effects_82;
+  }
+  get _APP_BOOTSTRAP_LISTENER_84():any[] {
+    if ((this.__APP_BOOTSTRAP_LISTENER_84 == null)) { (this.__APP_BOOTSTRAP_LISTENER_84 = [
+      this._ROUTER_INITIALIZER_67,
+      import72.runAfterBootstrapEffects(this,this._EffectsSubscription_83)
+    ]
+    ); }
+    return this.__APP_BOOTSTRAP_LISTENER_84;
+  }
+  get _Profiler_85():import52.Profiler {
+    if ((this.__Profiler_85 == null)) { (this.__Profiler_85 = new import52.Profiler(this._LoggerService_80)); }
+    return this.__Profiler_85;
   }
   createInternal():import1.AppModule {
     this._CommonModule_0 = new import2.CommonModule();
@@ -303,38 +482,26 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     this._ReactiveFormsModule_5 = new import6.ReactiveFormsModule();
     this._FooterModule_6 = new import7.FooterModule();
     this._SharedModule_7 = new import8.SharedModule();
-    this._HeaderModule_8 = new import9.HeaderModule();
-    this._LoaderModule_9 = new import10.LoaderModule();
-    this._MapModule_10 = new import11.MapModule();
-    this._HttpModule_11 = new import12.HttpModule();
-    this._WeatherModule_12 = new import13.WeatherModule();
-    this._StoreModule_13 = new import14.StoreModule();
-    this._EffectsModule_14 = new import15.EffectsModule();
-    this._AppModule_15 = new import1.AppModule();
-    this._ErrorHandler_18 = import4.errorHandler();
-    this._ApplicationInitStatus_19 = new import17.ApplicationInitStatus(this.parent.get(import17.APP_INITIALIZER,(null as any)));
-    this._Testability_20 = new import18.Testability(this.parent.get(import51.NgZone));
-    this._ApplicationRef__21 = new import19.ApplicationRef_(this.parent.get(import51.NgZone),this.parent.get(import54.Console),this,this._ErrorHandler_18,this,this._ApplicationInitStatus_19,this.parent.get(import18.TestabilityRegistry,(null as any)),this._Testability_20);
-    this.__INITIAL_REDUCER_53 = {
-      coordinate: import55.CoordinateReducer,
-      loading: import56.LoadingReducer,
-      weatherList: import57.WeatherListReducer
-    }
-    ;
-    this._INITIAL_REDUCER_54 = import14._initialReducerFactory(this.__INITIAL_REDUCER_53);
-    this._Reducer_55 = import14._reducerFactory(this._Dispatcher_51,this._INITIAL_REDUCER_54);
-    this.__INITIAL_STATE_56 = (undefined as any);
-    this._INITIAL_STATE_57 = import14._initialStateFactory(this.__INITIAL_STATE_56,this._INITIAL_REDUCER_54);
-    this._State_58 = import14._stateFactory(this._INITIAL_STATE_57,this._Dispatcher_51,this._Reducer_55);
-    this._Store_59 = import14._storeFactory(this._Dispatcher_51,this._Reducer_55,this._State_58);
-    this._CoordinateActions_60 = new import39.CoordinateActions();
-    this._LoadingActions_61 = new import40.LoadingActions();
-    this._LocationService_62 = new import41.LocationService();
-    this._LoggerService_63 = new import42.LoggerService();
-    this._CoordinateEffects_64 = new import43.CoordinateEffects(this._Actions_52,this._CoordinateActions_60,this._LoadingActions_61,this._LocationService_62,this._LoggerService_63);
-    this._effects_65 = [this._CoordinateEffects_64];
-    this._EffectsSubscription_66 = new import44.EffectsSubscription(this._Store_59,this.parent.get(import44.EffectsSubscription,(null as any)),this._effects_65);
-    return this._AppModule_15;
+    this._ROUTER_FORROOT_GUARD_8 = import9.provideForRootGuard(this.parent.get(import73.Router,(null as any)));
+    this._RouterModule_9 = new import9.RouterModule(this._ROUTER_FORROOT_GUARD_8);
+    this._HeaderModule_10 = new import10.HeaderModule();
+    this._LoaderModule_11 = new import11.LoaderModule();
+    this._MapModule_12 = new import12.MapModule();
+    this._HttpModule_13 = new import13.HttpModule();
+    this._WeatherModule_14 = new import14.WeatherModule();
+    this._RoutingModule_15 = new import15.RoutingModule();
+    this._StoreModule_16 = new import16.StoreModule();
+    this._EffectsModule_17 = new import17.EffectsModule();
+    this._AppModule_18 = new import1.AppModule();
+    this._ErrorHandler_21 = import4.errorHandler();
+    this._ApplicationInitStatus_22 = new import19.ApplicationInitStatus(this.parent.get(import19.APP_INITIALIZER,(null as any)));
+    this._Testability_23 = new import20.Testability(this.parent.get(import61.NgZone));
+    this._ApplicationRef__24 = new import21.ApplicationRef_(this.parent.get(import61.NgZone),this.parent.get(import74.Console),this,this._ErrorHandler_21,this,this._ApplicationInitStatus_22,this.parent.get(import20.TestabilityRegistry,(null as any)),this._Testability_23);
+    this._NoPreloading_63 = new import43.NoPreloading();
+    this._PreloadingStrategy_64 = this._NoPreloading_63;
+    this._RouterPreloader_65 = new import43.RouterPreloader(this._Router_61,this._NgModuleFactoryLoader_60,this._Compiler_26,this,this._PreloadingStrategy_64);
+    this._EffectsSubscription_83 = new import51.EffectsSubscription(this._Store_75,this.parent.get(import51.EffectsSubscription,(null as any)),this._effects_82);
+    return this._AppModule_18;
   }
   getInternal(token:any,notFoundResult:any):any {
     if ((token === import2.CommonModule)) { return this._CommonModule_0; }
@@ -345,72 +512,90 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     if ((token === import6.ReactiveFormsModule)) { return this._ReactiveFormsModule_5; }
     if ((token === import7.FooterModule)) { return this._FooterModule_6; }
     if ((token === import8.SharedModule)) { return this._SharedModule_7; }
-    if ((token === import9.HeaderModule)) { return this._HeaderModule_8; }
-    if ((token === import10.LoaderModule)) { return this._LoaderModule_9; }
-    if ((token === import11.MapModule)) { return this._MapModule_10; }
-    if ((token === import12.HttpModule)) { return this._HttpModule_11; }
-    if ((token === import13.WeatherModule)) { return this._WeatherModule_12; }
-    if ((token === import14.StoreModule)) { return this._StoreModule_13; }
-    if ((token === import15.EffectsModule)) { return this._EffectsModule_14; }
-    if ((token === import1.AppModule)) { return this._AppModule_15; }
-    if ((token === import58.LOCALE_ID)) { return this._LOCALE_ID_16; }
-    if ((token === import16.NgLocalization)) { return this._NgLocalization_17; }
-    if ((token === import59.ErrorHandler)) { return this._ErrorHandler_18; }
-    if ((token === import17.ApplicationInitStatus)) { return this._ApplicationInitStatus_19; }
-    if ((token === import18.Testability)) { return this._Testability_20; }
-    if ((token === import19.ApplicationRef_)) { return this._ApplicationRef__21; }
-    if ((token === import19.ApplicationRef)) { return this._ApplicationRef_22; }
-    if ((token === import20.Compiler)) { return this._Compiler_23; }
-    if ((token === import48.APP_ID)) { return this._APP_ID_24; }
-    if ((token === import60.DOCUMENT)) { return this._DOCUMENT_25; }
-    if ((token === import21.HAMMER_GESTURE_CONFIG)) { return this._HAMMER_GESTURE_CONFIG_26; }
-    if ((token === import22.EVENT_MANAGER_PLUGINS)) { return this._EVENT_MANAGER_PLUGINS_27; }
-    if ((token === import22.EventManager)) { return this._EventManager_28; }
-    if ((token === import23.DomSharedStylesHost)) { return this._DomSharedStylesHost_29; }
-    if ((token === import61.AnimationDriver)) { return this._AnimationDriver_30; }
-    if ((token === import24.DomRootRenderer)) { return this._DomRootRenderer_31; }
-    if ((token === import62.RootRenderer)) { return this._RootRenderer_32; }
-    if ((token === import25.DomSanitizer)) { return this._DomSanitizer_33; }
-    if ((token === import63.Sanitizer)) { return this._Sanitizer_34; }
-    if ((token === import26.ViewUtils)) { return this._ViewUtils_35; }
-    if ((token === import64.IterableDiffers)) { return this._IterableDiffers_36; }
-    if ((token === import65.KeyValueDiffers)) { return this._KeyValueDiffers_37; }
-    if ((token === import23.SharedStylesHost)) { return this._SharedStylesHost_38; }
-    if ((token === import27.Title)) { return this._Title_39; }
-    if ((token === import28.RadioControlRegistry)) { return this._RadioControlRegistry_40; }
-    if ((token === import29.FormBuilder)) { return this._FormBuilder_41; }
-    if ((token === import30.BrowserXhr)) { return this._BrowserXhr_42; }
-    if ((token === import31.ResponseOptions)) { return this._ResponseOptions_43; }
-    if ((token === import66.XSRFStrategy)) { return this._XSRFStrategy_44; }
-    if ((token === import32.XHRBackend)) { return this._XHRBackend_45; }
-    if ((token === import33.RequestOptions)) { return this._RequestOptions_46; }
-    if ((token === import67.Http)) { return this._Http_47; }
-    if ((token === import34.WeatherDTOtoWeatherConverter)) { return this._WeatherDTOtoWeatherConverter_48; }
-    if ((token === import35.WeatherApiService)) { return this._WeatherApiService_49; }
-    if ((token === import36.WeatherActions)) { return this._WeatherActions_50; }
-    if ((token === import37.Dispatcher)) { return this._Dispatcher_51; }
-    if ((token === import38.Actions)) { return this._Actions_52; }
-    if ((token === import14._INITIAL_REDUCER)) { return this.__INITIAL_REDUCER_53; }
-    if ((token === import14.INITIAL_REDUCER)) { return this._INITIAL_REDUCER_54; }
-    if ((token === import68.Reducer)) { return this._Reducer_55; }
-    if ((token === import14._INITIAL_STATE)) { return this.__INITIAL_STATE_56; }
-    if ((token === import14.INITIAL_STATE)) { return this._INITIAL_STATE_57; }
-    if ((token === import69.State)) { return this._State_58; }
-    if ((token === import70.Store)) { return this._Store_59; }
-    if ((token === import39.CoordinateActions)) { return this._CoordinateActions_60; }
-    if ((token === import40.LoadingActions)) { return this._LoadingActions_61; }
-    if ((token === import41.LocationService)) { return this._LocationService_62; }
-    if ((token === import42.LoggerService)) { return this._LoggerService_63; }
-    if ((token === import43.CoordinateEffects)) { return this._CoordinateEffects_64; }
-    if ((token === import44.effects)) { return this._effects_65; }
-    if ((token === import44.EffectsSubscription)) { return this._EffectsSubscription_66; }
-    if ((token === import48.APP_BOOTSTRAP_LISTENER)) { return this._APP_BOOTSTRAP_LISTENER_67; }
-    if ((token === import45.Profiler)) { return this._Profiler_68; }
+    if ((token === import9.ROUTER_FORROOT_GUARD)) { return this._ROUTER_FORROOT_GUARD_8; }
+    if ((token === import9.RouterModule)) { return this._RouterModule_9; }
+    if ((token === import10.HeaderModule)) { return this._HeaderModule_10; }
+    if ((token === import11.LoaderModule)) { return this._LoaderModule_11; }
+    if ((token === import12.MapModule)) { return this._MapModule_12; }
+    if ((token === import13.HttpModule)) { return this._HttpModule_13; }
+    if ((token === import14.WeatherModule)) { return this._WeatherModule_14; }
+    if ((token === import15.RoutingModule)) { return this._RoutingModule_15; }
+    if ((token === import16.StoreModule)) { return this._StoreModule_16; }
+    if ((token === import17.EffectsModule)) { return this._EffectsModule_17; }
+    if ((token === import1.AppModule)) { return this._AppModule_18; }
+    if ((token === import75.LOCALE_ID)) { return this._LOCALE_ID_19; }
+    if ((token === import18.NgLocalization)) { return this._NgLocalization_20; }
+    if ((token === import76.ErrorHandler)) { return this._ErrorHandler_21; }
+    if ((token === import19.ApplicationInitStatus)) { return this._ApplicationInitStatus_22; }
+    if ((token === import20.Testability)) { return this._Testability_23; }
+    if ((token === import21.ApplicationRef_)) { return this._ApplicationRef__24; }
+    if ((token === import21.ApplicationRef)) { return this._ApplicationRef_25; }
+    if ((token === import22.Compiler)) { return this._Compiler_26; }
+    if ((token === import58.APP_ID)) { return this._APP_ID_27; }
+    if ((token === import77.DOCUMENT)) { return this._DOCUMENT_28; }
+    if ((token === import23.HAMMER_GESTURE_CONFIG)) { return this._HAMMER_GESTURE_CONFIG_29; }
+    if ((token === import24.EVENT_MANAGER_PLUGINS)) { return this._EVENT_MANAGER_PLUGINS_30; }
+    if ((token === import24.EventManager)) { return this._EventManager_31; }
+    if ((token === import25.DomSharedStylesHost)) { return this._DomSharedStylesHost_32; }
+    if ((token === import78.AnimationDriver)) { return this._AnimationDriver_33; }
+    if ((token === import26.DomRootRenderer)) { return this._DomRootRenderer_34; }
+    if ((token === import79.RootRenderer)) { return this._RootRenderer_35; }
+    if ((token === import27.DomSanitizer)) { return this._DomSanitizer_36; }
+    if ((token === import80.Sanitizer)) { return this._Sanitizer_37; }
+    if ((token === import28.ViewUtils)) { return this._ViewUtils_38; }
+    if ((token === import81.IterableDiffers)) { return this._IterableDiffers_39; }
+    if ((token === import82.KeyValueDiffers)) { return this._KeyValueDiffers_40; }
+    if ((token === import25.SharedStylesHost)) { return this._SharedStylesHost_41; }
+    if ((token === import29.Title)) { return this._Title_42; }
+    if ((token === import30.RadioControlRegistry)) { return this._RadioControlRegistry_43; }
+    if ((token === import31.FormBuilder)) { return this._FormBuilder_44; }
+    if ((token === import83.ROUTES)) { return this._ROUTES_45; }
+    if ((token === import32.BrowserXhr)) { return this._BrowserXhr_46; }
+    if ((token === import33.ResponseOptions)) { return this._ResponseOptions_47; }
+    if ((token === import84.XSRFStrategy)) { return this._XSRFStrategy_48; }
+    if ((token === import34.XHRBackend)) { return this._XHRBackend_49; }
+    if ((token === import35.RequestOptions)) { return this._RequestOptions_50; }
+    if ((token === import85.Http)) { return this._Http_51; }
+    if ((token === import36.WeatherDTOtoWeatherConverter)) { return this._WeatherDTOtoWeatherConverter_52; }
+    if ((token === import37.WeatherApiService)) { return this._WeatherApiService_53; }
+    if ((token === import38.WeatherActions)) { return this._WeatherActions_54; }
+    if ((token === import9.ROUTER_CONFIGURATION)) { return this._ROUTER_CONFIGURATION_55; }
+    if ((token === import67.LocationStrategy)) { return this._LocationStrategy_56; }
+    if ((token === import39.Location)) { return this._Location_57; }
+    if ((token === import40.UrlSerializer)) { return this._UrlSerializer_58; }
+    if ((token === import41.RouterOutletMap)) { return this._RouterOutletMap_59; }
+    if ((token === import86.NgModuleFactoryLoader)) { return this._NgModuleFactoryLoader_60; }
+    if ((token === import73.Router)) { return this._Router_61; }
+    if ((token === import87.ActivatedRoute)) { return this._ActivatedRoute_62; }
+    if ((token === import43.NoPreloading)) { return this._NoPreloading_63; }
+    if ((token === import43.PreloadingStrategy)) { return this._PreloadingStrategy_64; }
+    if ((token === import43.RouterPreloader)) { return this._RouterPreloader_65; }
+    if ((token === import43.PreloadAllModules)) { return this._PreloadAllModules_66; }
+    if ((token === import9.ROUTER_INITIALIZER)) { return this._ROUTER_INITIALIZER_67; }
+    if ((token === import44.Dispatcher)) { return this._Dispatcher_68; }
+    if ((token === import16._INITIAL_REDUCER)) { return this.__INITIAL_REDUCER_69; }
+    if ((token === import16.INITIAL_REDUCER)) { return this._INITIAL_REDUCER_70; }
+    if ((token === import88.Reducer)) { return this._Reducer_71; }
+    if ((token === import16._INITIAL_STATE)) { return this.__INITIAL_STATE_72; }
+    if ((token === import16.INITIAL_STATE)) { return this._INITIAL_STATE_73; }
+    if ((token === import89.State)) { return this._State_74; }
+    if ((token === import90.Store)) { return this._Store_75; }
+    if ((token === import45.Actions)) { return this._Actions_76; }
+    if ((token === import46.CoordinateActions)) { return this._CoordinateActions_77; }
+    if ((token === import47.LoadingActions)) { return this._LoadingActions_78; }
+    if ((token === import48.LocationService)) { return this._LocationService_79; }
+    if ((token === import49.LoggerService)) { return this._LoggerService_80; }
+    if ((token === import50.CoordinateEffects)) { return this._CoordinateEffects_81; }
+    if ((token === import51.effects)) { return this._effects_82; }
+    if ((token === import51.EffectsSubscription)) { return this._EffectsSubscription_83; }
+    if ((token === import58.APP_BOOTSTRAP_LISTENER)) { return this._APP_BOOTSTRAP_LISTENER_84; }
+    if ((token === import52.Profiler)) { return this._Profiler_85; }
     return notFoundResult;
   }
   destroyInternal():void {
-    this._ApplicationRef__21.ngOnDestroy();
-    this._EffectsSubscription_66.ngOnDestroy();
+    this._ApplicationRef__24.ngOnDestroy();
+    this._RouterPreloader_65.ngOnDestroy();
+    this._EffectsSubscription_83.ngOnDestroy();
   }
 }
 export const AppModuleNgFactory:import0.NgModuleFactory<import1.AppModule> = new import0.NgModuleFactory(AppModuleInjector,import1.AppModule);

@@ -25,6 +25,6 @@ export class CoordinateEffects {
         .map((pos: Position) =>  this.cooordinateActions.setCoordinate(new Coordinate (pos.coords.latitude, pos.coords.longitude)))
         .catch((error: PositionError) => {
             this.loggerService.errorLog(error.message);
-            return Observable.of(this.loadingActions.setLoading(false))
+            return Observable.of(error.message)
         })
 }

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { LoadingActions } from './../actions/LoadingActions';
 
-const initialState: boolean = true;
+const initialState: boolean = false;
 
 export function LoadingReducer(state = initialState, action: Action): boolean {
     switch (action.type) {

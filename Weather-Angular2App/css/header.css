@@ -19,8 +19,14 @@
     text-align: center;
     margin: 10px;
 }
+.logo a {
+    text-decoration: none;
+}
 .back {
     float: right;
     margin: 10px;
     line-height: 44px;
+}
+.back a {
+    margin-left: 15px;
 }

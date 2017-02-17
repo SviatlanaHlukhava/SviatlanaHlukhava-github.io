@@ -10,6 +10,7 @@ import { WeatherModule }   from './weather.module';
 import { FooterModule }   from './footer.module';
 import { HeaderModule }   from './header.module';
 import { LoaderModule }   from './loader.module';
+import { RoutingModule } from './routing.module';
 import { Profiler } from './../services/Profiler'
 import { LocationService } from './../services/Location'
 import { LoggerService } from './../services/Logger'
@@ -20,9 +21,8 @@ import  * as WeatherReducer from './../reducers/WeatherListReducer';
 import  { CoordinateReducer } from './../reducers/CoordinateReducer';
 import  { LoadingReducer } from './../reducers/LoadingReducer';
 
-
 @NgModule({
-    imports:      [BrowserModule, FormsModule, ReactiveFormsModule, FooterModule, HeaderModule, LoaderModule, MapModule, WeatherModule,
+    imports:      [BrowserModule, FormsModule, ReactiveFormsModule, FooterModule, HeaderModule, LoaderModule, MapModule, WeatherModule, RoutingModule,
     StoreModule.provideStore({
           coordinate: CoordinateReducer,
           loading: LoadingReducer,

@@ -1,7 +1,10 @@
 <div class="header">
     <div class="links">
-        <div class="logo">Weather</div>
-        <div class="back"><a href="./../index.html">Back</a></div>
+        <div class="logo"><a routerLink="/weather-list">Weather</a></div>
+        <div class="back">
+            <a routerLink="/map">Map</a>
+            <a href="./../index.html">To index page</a>
+        </div>
     </div>
     <div class="position">
         Current position: latitude - {{coordinate.getLatitude() | number : '1.0-2'}}, longitude - {{coordinate.getLongitude() | number : '1.0-2'}}

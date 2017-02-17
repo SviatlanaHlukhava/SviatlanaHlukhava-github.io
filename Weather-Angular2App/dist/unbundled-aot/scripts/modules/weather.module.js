@@ -19,6 +19,7 @@ import { MultiselectControlComponent } from './../components/multiselect.compone
 import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherConverter';
 import { WeatherApiService } from './../services/WeatherAPI';
 import { WeatherActions } from './../actions/WeatherActions';
+import { CityWeatherSectionRouterComponent } from './../components/cityWeatherSectionRouter.component';
 export var WeatherModule = (function () {
     function WeatherModule() {
     }
@@ -26,8 +27,9 @@ export var WeatherModule = (function () {
         { type: NgModule, args: [{
                     imports: [FormsModule, HttpModule, ReactiveFormsModule, SharedModule],
                     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent, TableFormComponent, ValidationErrorComponent,
+                        CityWeatherSectionRouterComponent,
                         KelvinToCelsiusPipe, CityWeatherPipe, WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent, MultiselectControlComponent],
-                    exports: [CityWeatherSectionComponent],
+                    exports: [CityWeatherSectionRouterComponent],
                     providers: [WeatherDTOtoWeatherConverter, WeatherApiService, WeatherActions]
                 },] },
     ];
