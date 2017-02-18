@@ -15,8 +15,8 @@ import { LoadingActions } from './../actions/LoadingActions'
   selector: 'app',
   template: `<loader [isLoading]="isLoading | async"></loader>
     <header [coordinate]="coordinate | async"></header>
-    <router-outlet>
-    </router-outlet>
+    <router-outlet></router-outlet>
+    <router-outlet name="myCityWeather"></router-outlet>
     <footer></footer>`,
     changeDetection: ChangeDetectionStrategy.OnPush
 })

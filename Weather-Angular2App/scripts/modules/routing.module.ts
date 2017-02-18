@@ -4,9 +4,11 @@ import { CityWeatherSectionRouterComponent }   from './../components/cityWeather
 import { PageNotFoundComponent } from './../components/pageNotFound.component';
 import { WeatherDetailsComponent } from './../components/weatherDetails.component'
 import { WeatherDetailsResolver } from './../services/WeatherDetailsResolver'
+import { MyCityWeatherDetailsRouterComponent } from './../components/myCityWeatherDetailsRouter.component'
 
 const appRoutes: Routes = [
   { path: 'weather-list', component: CityWeatherSectionRouterComponent },
+  { path: 'myCityDetails', component: MyCityWeatherDetailsRouterComponent, outlet: 'myCityWeather' },
   { path: 'weatherDetails', children: [
     {
        path: ':id',

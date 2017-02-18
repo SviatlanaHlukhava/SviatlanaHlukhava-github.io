@@ -99,8 +99,35 @@ export var View_HeaderComponent0 = (function (_super) {
     __extends(View_HeaderComponent0, _super);
     function View_HeaderComponent0(viewUtils, parentView, parentIndex, parentElement) {
         _super.call(this, View_HeaderComponent0, renderType_HeaderComponent, import6.ViewType.COMPONENT, viewUtils, parentView, parentIndex, parentElement, import1.ChangeDetectorStatus.CheckOnce);
-        this._expr_25 = import1.UNINITIALIZED;
-        this._expr_29 = import1.UNINITIALIZED;
+        this._arr_33 = import3.pureProxy1(function (p0) {
+            return [p0];
+        });
+        this._map_34 = import3.pureProxy1(function (p0) {
+            return { myCityWeather: p0 };
+        });
+        this._map_35 = import3.pureProxy1(function (p0) {
+            return { outlets: p0 };
+        });
+        this._arr_36 = import3.pureProxy2(function (p0, p1) {
+            return [
+                p0,
+                p1
+            ];
+        });
+        this._map_37 = import3.pureProxy1(function (p0) {
+            return { myCityWeather: p0 };
+        });
+        this._map_38 = import3.pureProxy1(function (p0) {
+            return { outlets: p0 };
+        });
+        this._arr_39 = import3.pureProxy2(function (p0, p1) {
+            return [
+                p0,
+                p1
+            ];
+        });
+        this._expr_40 = import1.UNINITIALIZED;
+        this._expr_44 = import1.UNINITIALIZED;
     }
     View_HeaderComponent0.prototype.createInternal = function (rootSelector) {
         var parentRenderNode = this.renderer.createViewRoot(this.parentElement);
@@ -115,22 +142,32 @@ export var View_HeaderComponent0 = (function (_super) {
         this._text_7 = this.renderer.createText(this._el_2, '\n        ', null);
         this._el_8 = import3.createRenderElement(this.renderer, this._el_2, 'div', new import3.InlineArray2(2, 'class', 'back'), null);
         this._text_9 = this.renderer.createText(this._el_8, '\n            ', null);
-        this._el_10 = import3.createRenderElement(this.renderer, this._el_8, 'a', new import3.InlineArray2(2, 'routerLink', '/map'), null);
+        this._el_10 = import3.createRenderElement(this.renderer, this._el_8, 'a', import3.EMPTY_INLINE_ARRAY, null);
         this._RouterLinkWithHref_10_3 = new import9.Wrapper_RouterLinkWithHref(this.parentView.injectorGet(import12.Router, this.parentIndex), this.parentView.injectorGet(import13.ActivatedRoute, this.parentIndex), this.parentView.injectorGet(import14.LocationStrategy, this.parentIndex));
-        this._text_11 = this.renderer.createText(this._el_10, 'Map', null);
+        this._text_11 = this.renderer.createText(this._el_10, 'Show my city weather', null);
         this._text_12 = this.renderer.createText(this._el_8, '\n            ', null);
-        this._el_13 = import3.createRenderElement(this.renderer, this._el_8, 'a', new import3.InlineArray2(2, 'href', './../index.html'), null);
-        this._text_14 = this.renderer.createText(this._el_13, 'To index page', null);
-        this._text_15 = this.renderer.createText(this._el_8, '\n        ', null);
-        this._text_16 = this.renderer.createText(this._el_2, '\n    ', null);
-        this._text_17 = this.renderer.createText(this._el_0, '\n    ', null);
-        this._el_18 = import3.createRenderElement(this.renderer, this._el_0, 'div', new import3.InlineArray2(2, 'class', 'position'), null);
-        this._text_19 = this.renderer.createText(this._el_18, '', null);
-        this._el_20 = import3.createRenderElement(this.renderer, this._el_18, 'br', import3.EMPTY_INLINE_ARRAY, null);
-        this._text_21 = this.renderer.createText(this._el_18, '', null);
-        this._text_22 = this.renderer.createText(this._el_0, '\n', null);
+        this._el_13 = import3.createRenderElement(this.renderer, this._el_8, 'a', import3.EMPTY_INLINE_ARRAY, null);
+        this._RouterLinkWithHref_13_3 = new import9.Wrapper_RouterLinkWithHref(this.parentView.injectorGet(import12.Router, this.parentIndex), this.parentView.injectorGet(import13.ActivatedRoute, this.parentIndex), this.parentView.injectorGet(import14.LocationStrategy, this.parentIndex));
+        this._text_14 = this.renderer.createText(this._el_13, 'Hide my city weather', null);
+        this._text_15 = this.renderer.createText(this._el_8, '\n            ', null);
+        this._el_16 = import3.createRenderElement(this.renderer, this._el_8, 'a', new import3.InlineArray2(2, 'routerLink', '/map'), null);
+        this._RouterLinkWithHref_16_3 = new import9.Wrapper_RouterLinkWithHref(this.parentView.injectorGet(import12.Router, this.parentIndex), this.parentView.injectorGet(import13.ActivatedRoute, this.parentIndex), this.parentView.injectorGet(import14.LocationStrategy, this.parentIndex));
+        this._text_17 = this.renderer.createText(this._el_16, 'Map', null);
+        this._text_18 = this.renderer.createText(this._el_8, '\n            ', null);
+        this._el_19 = import3.createRenderElement(this.renderer, this._el_8, 'a', new import3.InlineArray2(2, 'href', './../index.html'), null);
+        this._text_20 = this.renderer.createText(this._el_19, 'To index page', null);
+        this._text_21 = this.renderer.createText(this._el_8, '\n        ', null);
+        this._text_22 = this.renderer.createText(this._el_2, '\n    ', null);
+        this._text_23 = this.renderer.createText(this._el_0, '\n    ', null);
+        this._el_24 = import3.createRenderElement(this.renderer, this._el_0, 'div', new import3.InlineArray2(2, 'class', 'position'), null);
+        this._text_25 = this.renderer.createText(this._el_24, '', null);
+        this._el_26 = import3.createRenderElement(this.renderer, this._el_24, 'br', import3.EMPTY_INLINE_ARRAY, null);
+        this._text_27 = this.renderer.createText(this._el_24, '', null);
+        this._text_28 = this.renderer.createText(this._el_0, '\n', null);
         var disposable_0 = import3.subscribeToRenderElement(this, this._el_5, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_5));
         var disposable_1 = import3.subscribeToRenderElement(this, this._el_10, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_10));
+        var disposable_2 = import3.subscribeToRenderElement(this, this._el_13, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_13));
+        var disposable_3 = import3.subscribeToRenderElement(this, this._el_16, new import3.InlineArray2(2, 'click', null), this.eventHandler(this.handleEvent_16));
         this._pipe_number_0 = new import10.DecimalPipe(this.parentView.injectorGet(import15.LOCALE_ID, this.parentIndex));
         this._pipe_number_0_0 = import3.pureProxy2(this._pipe_number_0.transform.bind(this._pipe_number_0));
         this._pipe_number_0_1 = import3.pureProxy2(this._pipe_number_0.transform.bind(this._pipe_number_0));
@@ -153,16 +190,24 @@ export var View_HeaderComponent0 = (function (_super) {
             this._el_13,
             this._text_14,
             this._text_15,
-            this._text_16,
+            this._el_16,
             this._text_17,
-            this._el_18,
-            this._text_19,
-            this._el_20,
+            this._text_18,
+            this._el_19,
+            this._text_20,
             this._text_21,
-            this._text_22
+            this._text_22,
+            this._text_23,
+            this._el_24,
+            this._text_25,
+            this._el_26,
+            this._text_27,
+            this._text_28
         ]), [
             disposable_0,
-            disposable_1
+            disposable_1,
+            disposable_2,
+            disposable_3
         ]);
         return null;
     };
@@ -173,6 +218,12 @@ export var View_HeaderComponent0 = (function (_super) {
         if (((token === import16.RouterLinkWithHref) && ((10 <= requestNodeIndex) && (requestNodeIndex <= 11)))) {
             return this._RouterLinkWithHref_10_3.context;
         }
+        if (((token === import16.RouterLinkWithHref) && ((13 <= requestNodeIndex) && (requestNodeIndex <= 14)))) {
+            return this._RouterLinkWithHref_13_3.context;
+        }
+        if (((token === import16.RouterLinkWithHref) && ((16 <= requestNodeIndex) && (requestNodeIndex <= 17)))) {
+            return this._RouterLinkWithHref_16_3.context;
+        }
         return notFoundResult;
     };
     View_HeaderComponent0.prototype.detectChangesInternal = function (throwOnChange) {
@@ -180,27 +231,37 @@ export var View_HeaderComponent0 = (function (_super) {
         var currVal_5_0_0 = '/weather-list';
         this._RouterLinkWithHref_5_3.check_routerLink(currVal_5_0_0, throwOnChange, false);
         this._RouterLinkWithHref_5_3.ngDoCheck(this, this._el_5, throwOnChange);
-        var currVal_10_0_0 = '/map';
+        var currVal_10_0_0 = this._arr_36('/', this._map_35(this._map_34(this._arr_33('myCityDetails'))));
         this._RouterLinkWithHref_10_3.check_routerLink(currVal_10_0_0, throwOnChange, false);
         this._RouterLinkWithHref_10_3.ngDoCheck(this, this._el_10, throwOnChange);
+        var currVal_13_0_0 = this._arr_39('/', this._map_38(this._map_37(null)));
+        this._RouterLinkWithHref_13_3.check_routerLink(currVal_13_0_0, throwOnChange, false);
+        this._RouterLinkWithHref_13_3.ngDoCheck(this, this._el_13, throwOnChange);
+        var currVal_16_0_0 = '/map';
+        this._RouterLinkWithHref_16_3.check_routerLink(currVal_16_0_0, throwOnChange, false);
+        this._RouterLinkWithHref_16_3.ngDoCheck(this, this._el_16, throwOnChange);
         this._RouterLinkWithHref_5_3.checkHost(this, this, this._el_5, throwOnChange);
         this._RouterLinkWithHref_10_3.checkHost(this, this, this._el_10, throwOnChange);
+        this._RouterLinkWithHref_13_3.checkHost(this, this, this._el_13, throwOnChange);
+        this._RouterLinkWithHref_16_3.checkHost(this, this, this._el_16, throwOnChange);
         valUnwrapper.reset();
-        var currVal_25 = import3.inlineInterpolate(2, '\n        Current position: latitude - ', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_0, this._pipe_number_0.transform)(this.context.coordinate.getLatitude(), '1.0-2')), ', longitude - ', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_1, this._pipe_number_0.transform)(this.context.coordinate.getLongitude(), '1.0-2')), '\n        ');
-        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_25, currVal_25))) {
-            this.renderer.setText(this._text_19, currVal_25);
-            this._expr_25 = currVal_25;
+        var currVal_40 = import3.inlineInterpolate(2, '\n        Current position: latitude - ', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_0, this._pipe_number_0.transform)(this.context.coordinate.getLatitude(), '1.0-2')), ', longitude - ', valUnwrapper.unwrap(import3.castByValue(this._pipe_number_0_1, this._pipe_number_0.transform)(this.context.coordinate.getLongitude(), '1.0-2')), '\n        ');
+        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_40, currVal_40))) {
+            this.renderer.setText(this._text_25, currVal_40);
+            this._expr_40 = currVal_40;
         }
         valUnwrapper.reset();
-        var currVal_29 = import3.inlineInterpolate(1, '\n        Current date: ', valUnwrapper.unwrap(import3.castByValue(this._pipe_date_1_0, this._pipe_date_1.transform)(this.context.currentDate, 'dd/MM/yyyy HH:mm:ss')), '\n    ');
-        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_29, currVal_29))) {
-            this.renderer.setText(this._text_21, currVal_29);
-            this._expr_29 = currVal_29;
+        var currVal_44 = import3.inlineInterpolate(1, '\n        Current date: ', valUnwrapper.unwrap(import3.castByValue(this._pipe_date_1_0, this._pipe_date_1.transform)(this.context.currentDate, 'dd/MM/yyyy HH:mm:ss')), '\n    ');
+        if ((valUnwrapper.hasWrappedValue || import3.checkBinding(throwOnChange, this._expr_44, currVal_44))) {
+            this.renderer.setText(this._text_27, currVal_44);
+            this._expr_44 = currVal_44;
         }
     };
     View_HeaderComponent0.prototype.destroyInternal = function () {
         this._RouterLinkWithHref_5_3.ngOnDestroy();
         this._RouterLinkWithHref_10_3.ngOnDestroy();
+        this._RouterLinkWithHref_13_3.ngOnDestroy();
+        this._RouterLinkWithHref_16_3.ngOnDestroy();
     };
     View_HeaderComponent0.prototype.handleEvent_5 = function (eventName, $event) {
         this.markPathToRootAsCheckOnce();
@@ -212,6 +273,18 @@ export var View_HeaderComponent0 = (function (_super) {
         this.markPathToRootAsCheckOnce();
         var result = true;
         result = (this._RouterLinkWithHref_10_3.handleEvent(eventName, $event) && result);
+        return result;
+    };
+    View_HeaderComponent0.prototype.handleEvent_13 = function (eventName, $event) {
+        this.markPathToRootAsCheckOnce();
+        var result = true;
+        result = (this._RouterLinkWithHref_13_3.handleEvent(eventName, $event) && result);
+        return result;
+    };
+    View_HeaderComponent0.prototype.handleEvent_16 = function (eventName, $event) {
+        this.markPathToRootAsCheckOnce();
+        var result = true;
+        result = (this._RouterLinkWithHref_16_3.handleEvent(eventName, $event) && result);
         return result;
     };
     return View_HeaderComponent0;

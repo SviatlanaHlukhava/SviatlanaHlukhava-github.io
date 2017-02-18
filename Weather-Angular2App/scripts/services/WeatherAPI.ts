@@ -4,7 +4,7 @@ import { Http, Response, RequestOptionsArgs, URLSearchParams, RequestMethod } fr
 import { WeatherDTO } from './../dto/WeatherDTO'
 import { WeatherDTOtoWeatherConverter } from './WeatherDTOtoWeatherConverter'
 import { Weather }  from './../model/Weather'
-
+import { Coordinate }  from './../model/Coordinate'
 
 @Injectable()
 export class WeatherApiService {
@@ -56,6 +56,21 @@ export class WeatherApiService {
             return this.weatherDTOtoWeatherConverter.convert(data);
         }).catch((error: Response, caught: Observable<{}>) => {
             return Observable.throw("Weather Details is not loaded");
+        });
+    }
+
+    public getWeatherCityInfoByLocation(coord: Coordinate): Observable<Weather> {
+        const urlParams = new URLSearchParams();
+        urlParams.append('lat', coord.getLatitude().toString());
+        urlParams.append('lon', coord.getLongitude().toString());
+        urlParams.append('appid', this.appId);
+        return this.http.request('http://api.openweathermap.org/data/2.5/weather', {
+            method: RequestMethod.Get,
+            search: urlParams
+        }).map((response: Response) => {
+            return response.json();
+        }).map((data: WeatherDTO) => {
+            return this.weatherDTOtoWeatherConverter.convert(data);
         });
     }
 

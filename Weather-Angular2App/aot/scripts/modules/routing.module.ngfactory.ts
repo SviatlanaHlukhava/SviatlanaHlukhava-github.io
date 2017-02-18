@@ -15,22 +15,24 @@ import * as import6 from '@angular/core/src/linker/system_js_ng_module_factory_l
 import * as import7 from '@angular/router/src/router_preloader';
 import * as import8 from '@angular/core/src/di/injector';
 import * as import9 from '../components/cityWeatherSectionRouter.component.ngfactory';
-import * as import10 from '../components/weatherDetails.component.ngfactory';
-import * as import11 from '../components/pageNotFound.component.ngfactory';
-import * as import12 from '@angular/common/src/location/platform_location';
-import * as import13 from '@angular/common/src/location/location_strategy';
-import * as import14 from '@angular/core/src/linker/compiler';
-import * as import15 from '../../../scripts/components/cityWeatherSectionRouter.component';
-import * as import16 from '../../../scripts/components/weatherDetails.component';
-import * as import17 from '../../../scripts/services/WeatherDetailsResolver';
-import * as import18 from '../../../scripts/components/pageNotFound.component';
-import * as import19 from '@angular/core/src/application_ref';
-import * as import20 from '@angular/router/src/url_handling_strategy';
-import * as import21 from '@angular/router/src/router';
-import * as import22 from '@angular/core/src/linker/ng_module_factory_loader';
-import * as import23 from '@angular/router/src/router_config_loader';
-import * as import24 from '@angular/router/src/router_state';
-import * as import25 from '@angular/core/src/application_tokens';
+import * as import10 from '../components/myCityWeatherDetailsRouter.component.ngfactory';
+import * as import11 from '../components/weatherDetails.component.ngfactory';
+import * as import12 from '../components/pageNotFound.component.ngfactory';
+import * as import13 from '@angular/common/src/location/platform_location';
+import * as import14 from '@angular/common/src/location/location_strategy';
+import * as import15 from '@angular/core/src/linker/compiler';
+import * as import16 from '../../../scripts/components/cityWeatherSectionRouter.component';
+import * as import17 from '../../../scripts/components/myCityWeatherDetailsRouter.component';
+import * as import18 from '../../../scripts/components/weatherDetails.component';
+import * as import19 from '../../../scripts/services/WeatherDetailsResolver';
+import * as import20 from '../../../scripts/components/pageNotFound.component';
+import * as import21 from '@angular/core/src/application_ref';
+import * as import22 from '@angular/router/src/url_handling_strategy';
+import * as import23 from '@angular/router/src/router';
+import * as import24 from '@angular/core/src/linker/ng_module_factory_loader';
+import * as import25 from '@angular/router/src/router_config_loader';
+import * as import26 from '@angular/router/src/router_state';
+import * as import27 from '@angular/core/src/application_tokens';
 class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModule> {
   _ROUTER_FORROOT_GUARD_0:any;
   _RouterModule_1:import2.RouterModule;
@@ -53,8 +55,9 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
   constructor(parent:import8.Injector) {
     super(parent,[
       import9.CityWeatherSectionRouterComponentNgFactory,
-      import10.WeatherDetailsComponentNgFactory,
-      import11.PageNotFoundComponentNgFactory
+      import10.MyCityWeatherDetailsRouterComponentNgFactory,
+      import11.WeatherDetailsComponentNgFactory,
+      import12.PageNotFoundComponentNgFactory
     ]
     ,([] as any[]));
   }
@@ -63,7 +66,7 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
     return this.__ROUTER_CONFIGURATION_3;
   }
   get _LocationStrategy_4():any {
-    if ((this.__LocationStrategy_4 == null)) { (this.__LocationStrategy_4 = import2.provideLocationStrategy(this.parent.get(import12.PlatformLocation),this.parent.get(import13.APP_BASE_HREF,(null as any)),this._ROUTER_CONFIGURATION_3)); }
+    if ((this.__LocationStrategy_4 == null)) { (this.__LocationStrategy_4 = import2.provideLocationStrategy(this.parent.get(import13.PlatformLocation),this.parent.get(import14.APP_BASE_HREF,(null as any)),this._ROUTER_CONFIGURATION_3)); }
     return this.__LocationStrategy_4;
   }
   get _Location_5():import3.Location {
@@ -79,22 +82,28 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
     return this.__RouterOutletMap_7;
   }
   get _NgModuleFactoryLoader_8():import6.SystemJsNgModuleLoader {
-    if ((this.__NgModuleFactoryLoader_8 == null)) { (this.__NgModuleFactoryLoader_8 = new import6.SystemJsNgModuleLoader(this.parent.get(import14.Compiler),this.parent.get(import6.SystemJsNgModuleLoaderConfig,(null as any)))); }
+    if ((this.__NgModuleFactoryLoader_8 == null)) { (this.__NgModuleFactoryLoader_8 = new import6.SystemJsNgModuleLoader(this.parent.get(import15.Compiler),this.parent.get(import6.SystemJsNgModuleLoaderConfig,(null as any)))); }
     return this.__NgModuleFactoryLoader_8;
   }
   get _ROUTES_9():any[] {
       if ((this.__ROUTES_9 == null)) { (this.__ROUTES_9 = [[
         {
           path: 'weather-list',
-          component: import15.CityWeatherSectionRouterComponent
+          component: import16.CityWeatherSectionRouterComponent
+        }
+        ,
+        {
+          path: 'myCityDetails',
+          component: import17.MyCityWeatherDetailsRouterComponent,
+          outlet: 'myCityWeather'
         }
         ,
         {
           path: 'weatherDetails',
             children: [{
               path: ':id',
-              component: import16.WeatherDetailsComponent,
-              resolve: {weather: import17.WeatherDetailsResolver}
+              component: import18.WeatherDetailsComponent,
+              resolve: {weather: import19.WeatherDetailsResolver}
             }
           ]
         }
@@ -112,7 +121,7 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
         ,
         {
           path: '**',
-          component: import18.PageNotFoundComponent
+          component: import20.PageNotFoundComponent
         }
 
       ]
@@ -120,7 +129,7 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
     return this.__ROUTES_9;
   }
   get _Router_10():any {
-    if ((this.__Router_10 == null)) { (this.__Router_10 = import2.setupRouter(this.parent.get(import19.ApplicationRef),this._UrlSerializer_6,this._RouterOutletMap_7,this._Location_5,this,this._NgModuleFactoryLoader_8,this.parent.get(import14.Compiler),this._ROUTES_9,this._ROUTER_CONFIGURATION_3,this.parent.get(import20.UrlHandlingStrategy,(null as any)))); }
+    if ((this.__Router_10 == null)) { (this.__Router_10 = import2.setupRouter(this.parent.get(import21.ApplicationRef),this._UrlSerializer_6,this._RouterOutletMap_7,this._Location_5,this,this._NgModuleFactoryLoader_8,this.parent.get(import15.Compiler),this._ROUTES_9,this._ROUTER_CONFIGURATION_3,this.parent.get(import22.UrlHandlingStrategy,(null as any)))); }
     return this.__Router_10;
   }
   get _ActivatedRoute_11():any {
@@ -132,7 +141,7 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
     return this.__PreloadAllModules_15;
   }
   get _ROUTER_INITIALIZER_16():any {
-    if ((this.__ROUTER_INITIALIZER_16 == null)) { (this.__ROUTER_INITIALIZER_16 = import2.initialRouterNavigation(this._Router_10,this.parent.get(import19.ApplicationRef),this._RouterPreloader_14,this._ROUTER_CONFIGURATION_3)); }
+    if ((this.__ROUTER_INITIALIZER_16 == null)) { (this.__ROUTER_INITIALIZER_16 = import2.initialRouterNavigation(this._Router_10,this.parent.get(import21.ApplicationRef),this._RouterPreloader_14,this._ROUTER_CONFIGURATION_3)); }
     return this.__ROUTER_INITIALIZER_16;
   }
   get _APP_BOOTSTRAP_LISTENER_17():any[] {
@@ -140,12 +149,12 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
     return this.__APP_BOOTSTRAP_LISTENER_17;
   }
   createInternal():import1.RoutingModule {
-    this._ROUTER_FORROOT_GUARD_0 = import2.provideForRootGuard(this.parent.get(import21.Router,(null as any)));
+    this._ROUTER_FORROOT_GUARD_0 = import2.provideForRootGuard(this.parent.get(import23.Router,(null as any)));
     this._RouterModule_1 = new import2.RouterModule(this._ROUTER_FORROOT_GUARD_0);
     this._RoutingModule_2 = new import1.RoutingModule();
     this._NoPreloading_12 = new import7.NoPreloading();
     this._PreloadingStrategy_13 = this._NoPreloading_12;
-    this._RouterPreloader_14 = new import7.RouterPreloader(this._Router_10,this._NgModuleFactoryLoader_8,this.parent.get(import14.Compiler),this,this._PreloadingStrategy_13);
+    this._RouterPreloader_14 = new import7.RouterPreloader(this._Router_10,this._NgModuleFactoryLoader_8,this.parent.get(import15.Compiler),this,this._PreloadingStrategy_13);
     return this._RoutingModule_2;
   }
   getInternal(token:any,notFoundResult:any):any {
@@ -153,20 +162,20 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
     if ((token === import2.RouterModule)) { return this._RouterModule_1; }
     if ((token === import1.RoutingModule)) { return this._RoutingModule_2; }
     if ((token === import2.ROUTER_CONFIGURATION)) { return this._ROUTER_CONFIGURATION_3; }
-    if ((token === import13.LocationStrategy)) { return this._LocationStrategy_4; }
+    if ((token === import14.LocationStrategy)) { return this._LocationStrategy_4; }
     if ((token === import3.Location)) { return this._Location_5; }
     if ((token === import4.UrlSerializer)) { return this._UrlSerializer_6; }
     if ((token === import5.RouterOutletMap)) { return this._RouterOutletMap_7; }
-    if ((token === import22.NgModuleFactoryLoader)) { return this._NgModuleFactoryLoader_8; }
-    if ((token === import23.ROUTES)) { return this._ROUTES_9; }
-    if ((token === import21.Router)) { return this._Router_10; }
-    if ((token === import24.ActivatedRoute)) { return this._ActivatedRoute_11; }
+    if ((token === import24.NgModuleFactoryLoader)) { return this._NgModuleFactoryLoader_8; }
+    if ((token === import25.ROUTES)) { return this._ROUTES_9; }
+    if ((token === import23.Router)) { return this._Router_10; }
+    if ((token === import26.ActivatedRoute)) { return this._ActivatedRoute_11; }
     if ((token === import7.NoPreloading)) { return this._NoPreloading_12; }
     if ((token === import7.PreloadingStrategy)) { return this._PreloadingStrategy_13; }
     if ((token === import7.RouterPreloader)) { return this._RouterPreloader_14; }
     if ((token === import7.PreloadAllModules)) { return this._PreloadAllModules_15; }
     if ((token === import2.ROUTER_INITIALIZER)) { return this._ROUTER_INITIALIZER_16; }
-    if ((token === import25.APP_BOOTSTRAP_LISTENER)) { return this._APP_BOOTSTRAP_LISTENER_17; }
+    if ((token === import27.APP_BOOTSTRAP_LISTENER)) { return this._APP_BOOTSTRAP_LISTENER_17; }
     return notFoundResult;
   }
   destroyInternal():void {

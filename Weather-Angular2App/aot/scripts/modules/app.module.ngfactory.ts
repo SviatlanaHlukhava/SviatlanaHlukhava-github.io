@@ -62,43 +62,45 @@ import * as import53 from '../../../scripts/services/Profiler';
 import * as import54 from '@angular/core/src/di/injector';
 import * as import55 from '../components/mapRouter.component.ngfactory';
 import * as import56 from '../components/cityWeatherSectionRouter.component.ngfactory';
-import * as import57 from '../components/weatherDetails.component.ngfactory';
-import * as import58 from '../components/pageNotFound.component.ngfactory';
-import * as import59 from '../components/app.component.ngfactory';
-import * as import60 from '@angular/core/src/application_tokens';
-import * as import61 from '@angular/platform-browser/src/dom/events/dom_events';
-import * as import62 from '@angular/platform-browser/src/dom/events/key_events';
-import * as import63 from '@angular/core/src/zone/ng_zone';
-import * as import64 from '@angular/platform-browser/src/dom/debug/ng_probe';
-import * as import65 from '../../../scripts/components/mapRouter.component';
-import * as import66 from '../../../scripts/components/cityWeatherSectionRouter.component';
-import * as import67 from '../../../scripts/components/weatherDetails.component';
-import * as import68 from '../../../scripts/components/pageNotFound.component';
-import * as import69 from '@angular/common/src/location/platform_location';
-import * as import70 from '@angular/common/src/location/location_strategy';
-import * as import71 from '@angular/router/src/url_handling_strategy';
-import * as import72 from '../../../scripts/reducers/CoordinateReducer';
-import * as import73 from '../../../scripts/reducers/LoadingReducer';
-import * as import74 from '../../../scripts/reducers/WeatherListReducer';
-import * as import75 from '@ngrx/effects/src/bootstrap-listener';
-import * as import76 from '@angular/router/src/router';
-import * as import77 from '@angular/core/src/console';
-import * as import78 from '@angular/core/src/i18n/tokens';
-import * as import79 from '@angular/core/src/error_handler';
-import * as import80 from '@angular/platform-browser/src/dom/dom_tokens';
-import * as import81 from '@angular/platform-browser/src/dom/animation_driver';
-import * as import82 from '@angular/core/src/render/api';
-import * as import83 from '@angular/core/src/security';
-import * as import84 from '@angular/core/src/change_detection/differs/iterable_differs';
-import * as import85 from '@angular/core/src/change_detection/differs/keyvalue_differs';
-import * as import86 from '@angular/router/src/router_config_loader';
-import * as import87 from '@angular/http/src/interfaces';
-import * as import88 from '@angular/http/src/http';
-import * as import89 from '@angular/core/src/linker/ng_module_factory_loader';
-import * as import90 from '@angular/router/src/router_state';
-import * as import91 from '@ngrx/store/src/reducer';
-import * as import92 from '@ngrx/store/src/state';
-import * as import93 from '@ngrx/store/src/store';
+import * as import57 from '../components/myCityWeatherDetailsRouter.component.ngfactory';
+import * as import58 from '../components/weatherDetails.component.ngfactory';
+import * as import59 from '../components/pageNotFound.component.ngfactory';
+import * as import60 from '../components/app.component.ngfactory';
+import * as import61 from '@angular/core/src/application_tokens';
+import * as import62 from '@angular/platform-browser/src/dom/events/dom_events';
+import * as import63 from '@angular/platform-browser/src/dom/events/key_events';
+import * as import64 from '@angular/core/src/zone/ng_zone';
+import * as import65 from '@angular/platform-browser/src/dom/debug/ng_probe';
+import * as import66 from '../../../scripts/components/mapRouter.component';
+import * as import67 from '../../../scripts/components/cityWeatherSectionRouter.component';
+import * as import68 from '../../../scripts/components/myCityWeatherDetailsRouter.component';
+import * as import69 from '../../../scripts/components/weatherDetails.component';
+import * as import70 from '../../../scripts/components/pageNotFound.component';
+import * as import71 from '@angular/common/src/location/platform_location';
+import * as import72 from '@angular/common/src/location/location_strategy';
+import * as import73 from '@angular/router/src/url_handling_strategy';
+import * as import74 from '../../../scripts/reducers/CoordinateReducer';
+import * as import75 from '../../../scripts/reducers/LoadingReducer';
+import * as import76 from '../../../scripts/reducers/WeatherListReducer';
+import * as import77 from '@ngrx/effects/src/bootstrap-listener';
+import * as import78 from '@angular/router/src/router';
+import * as import79 from '@angular/core/src/console';
+import * as import80 from '@angular/core/src/i18n/tokens';
+import * as import81 from '@angular/core/src/error_handler';
+import * as import82 from '@angular/platform-browser/src/dom/dom_tokens';
+import * as import83 from '@angular/platform-browser/src/dom/animation_driver';
+import * as import84 from '@angular/core/src/render/api';
+import * as import85 from '@angular/core/src/security';
+import * as import86 from '@angular/core/src/change_detection/differs/iterable_differs';
+import * as import87 from '@angular/core/src/change_detection/differs/keyvalue_differs';
+import * as import88 from '@angular/router/src/router_config_loader';
+import * as import89 from '@angular/http/src/interfaces';
+import * as import90 from '@angular/http/src/http';
+import * as import91 from '@angular/core/src/linker/ng_module_factory_loader';
+import * as import92 from '@angular/router/src/router_state';
+import * as import93 from '@ngrx/store/src/reducer';
+import * as import94 from '@ngrx/store/src/state';
+import * as import95 from '@ngrx/store/src/store';
 class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
   _CommonModule_0:import2.CommonModule;
   _ApplicationModule_1:import3.ApplicationModule;
@@ -191,11 +193,12 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     super(parent,[
       import55.MapRouterComponentNgFactory,
       import56.CityWeatherSectionRouterComponentNgFactory,
-      import57.WeatherDetailsComponentNgFactory,
-      import58.PageNotFoundComponentNgFactory,
-      import59.AppComponentNgFactory
+      import57.MyCityWeatherDetailsRouterComponentNgFactory,
+      import58.WeatherDetailsComponentNgFactory,
+      import59.PageNotFoundComponentNgFactory,
+      import60.AppComponentNgFactory
     ]
-    ,[import59.AppComponentNgFactory]);
+    ,[import60.AppComponentNgFactory]);
   }
   get _LOCALE_ID_19():any {
     if ((this.__LOCALE_ID_19 == null)) { (this.__LOCALE_ID_19 = 'en-US'); }
@@ -214,7 +217,7 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     return this.__Compiler_26;
   }
   get _APP_ID_27():any {
-    if ((this.__APP_ID_27 == null)) { (this.__APP_ID_27 = import60._appIdRandomProviderFactory()); }
+    if ((this.__APP_ID_27 == null)) { (this.__APP_ID_27 = import61._appIdRandomProviderFactory()); }
     return this.__APP_ID_27;
   }
   get _DOCUMENT_28():any {
@@ -227,15 +230,15 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
   }
   get _EVENT_MANAGER_PLUGINS_30():any[] {
     if ((this.__EVENT_MANAGER_PLUGINS_30 == null)) { (this.__EVENT_MANAGER_PLUGINS_30 = [
-      new import61.DomEventsPlugin(),
-      new import62.KeyEventsPlugin(),
+      new import62.DomEventsPlugin(),
+      new import63.KeyEventsPlugin(),
       new import23.HammerGesturesPlugin(this._HAMMER_GESTURE_CONFIG_29)
     ]
     ); }
     return this.__EVENT_MANAGER_PLUGINS_30;
   }
   get _EventManager_31():import24.EventManager {
-    if ((this.__EventManager_31 == null)) { (this.__EventManager_31 = new import24.EventManager(this._EVENT_MANAGER_PLUGINS_30,this.parent.get(import63.NgZone))); }
+    if ((this.__EventManager_31 == null)) { (this.__EventManager_31 = new import24.EventManager(this._EVENT_MANAGER_PLUGINS_30,this.parent.get(import64.NgZone))); }
     return this.__EventManager_31;
   }
   get _DomSharedStylesHost_32():import25.DomSharedStylesHost {
@@ -251,7 +254,7 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     return this.__DomRootRenderer_34;
   }
   get _RootRenderer_35():any {
-    if ((this.__RootRenderer_35 == null)) { (this.__RootRenderer_35 = import64._createConditionalRootRenderer(this._DomRootRenderer_34,this.parent.get(import64.NgProbeToken,(null as any)))); }
+    if ((this.__RootRenderer_35 == null)) { (this.__RootRenderer_35 = import65._createConditionalRootRenderer(this._DomRootRenderer_34,this.parent.get(import65.NgProbeToken,(null as any)))); }
     return this.__RootRenderer_35;
   }
   get _DomSanitizer_36():import27.DomSanitizerImpl {
@@ -294,20 +297,26 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     if ((this.__ROUTES_45 == null)) { (this.__ROUTES_45 = [
         [{
           path: 'map',
-          component: import65.MapRouterComponent
+          component: import66.MapRouterComponent
         }
       ],
       [
         {
           path: 'weather-list',
-          component: import66.CityWeatherSectionRouterComponent
+          component: import67.CityWeatherSectionRouterComponent
+        }
+        ,
+        {
+          path: 'myCityDetails',
+          component: import68.MyCityWeatherDetailsRouterComponent,
+          outlet: 'myCityWeather'
         }
         ,
         {
           path: 'weatherDetails',
             children: [{
               path: ':id',
-              component: import67.WeatherDetailsComponent,
+              component: import69.WeatherDetailsComponent,
               resolve: {weather: import43.WeatherDetailsResolver}
             }
           ]
@@ -326,7 +335,7 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
         ,
         {
           path: '**',
-          component: import68.PageNotFoundComponent
+          component: import70.PageNotFoundComponent
         }
 
       ]
@@ -384,7 +393,7 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     return this.__ROUTER_CONFIGURATION_57;
   }
   get _LocationStrategy_58():any {
-    if ((this.__LocationStrategy_58 == null)) { (this.__LocationStrategy_58 = import9.provideLocationStrategy(this.parent.get(import69.PlatformLocation),this.parent.get(import70.APP_BASE_HREF,(null as any)),this._ROUTER_CONFIGURATION_57)); }
+    if ((this.__LocationStrategy_58 == null)) { (this.__LocationStrategy_58 = import9.provideLocationStrategy(this.parent.get(import71.PlatformLocation),this.parent.get(import72.APP_BASE_HREF,(null as any)),this._ROUTER_CONFIGURATION_57)); }
     return this.__LocationStrategy_58;
   }
   get _Location_59():import41.Location {
@@ -396,7 +405,7 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     return this.__NgModuleFactoryLoader_60;
   }
   get _Router_61():any {
-    if ((this.__Router_61 == null)) { (this.__Router_61 = import9.setupRouter(this._ApplicationRef_25,this._UrlSerializer_55,this._RouterOutletMap_56,this._Location_59,this,this._NgModuleFactoryLoader_60,this._Compiler_26,this._ROUTES_45,this._ROUTER_CONFIGURATION_57,this.parent.get(import71.UrlHandlingStrategy,(null as any)))); }
+    if ((this.__Router_61 == null)) { (this.__Router_61 = import9.setupRouter(this._ApplicationRef_25,this._UrlSerializer_55,this._RouterOutletMap_56,this._Location_59,this,this._NgModuleFactoryLoader_60,this._Compiler_26,this._ROUTES_45,this._ROUTER_CONFIGURATION_57,this.parent.get(import73.UrlHandlingStrategy,(null as any)))); }
     return this.__Router_61;
   }
   get _WeatherDetailsResolver_62():import43.WeatherDetailsResolver {
@@ -421,9 +430,9 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
   }
   get __INITIAL_REDUCER_70():any {
     if ((this.___INITIAL_REDUCER_70 == null)) { (this.___INITIAL_REDUCER_70 = {
-      coordinate: import72.CoordinateReducer,
-      loading: import73.LoadingReducer,
-      weatherList: import74.WeatherListReducer
+      coordinate: import74.CoordinateReducer,
+      loading: import75.LoadingReducer,
+      weatherList: import76.WeatherListReducer
     }
     ); }
     return this.___INITIAL_REDUCER_70;
@@ -483,7 +492,7 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
   get _APP_BOOTSTRAP_LISTENER_85():any[] {
     if ((this.__APP_BOOTSTRAP_LISTENER_85 == null)) { (this.__APP_BOOTSTRAP_LISTENER_85 = [
       this._ROUTER_INITIALIZER_68,
-      import75.runAfterBootstrapEffects(this,this._EffectsSubscription_84)
+      import77.runAfterBootstrapEffects(this,this._EffectsSubscription_84)
     ]
     ); }
     return this.__APP_BOOTSTRAP_LISTENER_85;
@@ -501,7 +510,7 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     this._ReactiveFormsModule_5 = new import6.ReactiveFormsModule();
     this._FooterModule_6 = new import7.FooterModule();
     this._SharedModule_7 = new import8.SharedModule();
-    this._ROUTER_FORROOT_GUARD_8 = import9.provideForRootGuard(this.parent.get(import76.Router,(null as any)));
+    this._ROUTER_FORROOT_GUARD_8 = import9.provideForRootGuard(this.parent.get(import78.Router,(null as any)));
     this._RouterModule_9 = new import9.RouterModule(this._ROUTER_FORROOT_GUARD_8);
     this._HeaderModule_10 = new import10.HeaderModule();
     this._LoaderModule_11 = new import11.LoaderModule();
@@ -514,8 +523,8 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     this._AppModule_18 = new import1.AppModule();
     this._ErrorHandler_21 = import4.errorHandler();
     this._ApplicationInitStatus_22 = new import19.ApplicationInitStatus(this.parent.get(import19.APP_INITIALIZER,(null as any)));
-    this._Testability_23 = new import20.Testability(this.parent.get(import63.NgZone));
-    this._ApplicationRef__24 = new import21.ApplicationRef_(this.parent.get(import63.NgZone),this.parent.get(import77.Console),this,this._ErrorHandler_21,this,this._ApplicationInitStatus_22,this.parent.get(import20.TestabilityRegistry,(null as any)),this._Testability_23);
+    this._Testability_23 = new import20.Testability(this.parent.get(import64.NgZone));
+    this._ApplicationRef__24 = new import21.ApplicationRef_(this.parent.get(import64.NgZone),this.parent.get(import79.Console),this,this._ErrorHandler_21,this,this._ApplicationInitStatus_22,this.parent.get(import20.TestabilityRegistry,(null as any)),this._Testability_23);
     this._NoPreloading_64 = new import44.NoPreloading();
     this._PreloadingStrategy_65 = this._NoPreloading_64;
     this._RouterPreloader_66 = new import44.RouterPreloader(this._Router_61,this._NgModuleFactoryLoader_60,this._Compiler_26,this,this._PreloadingStrategy_65);
@@ -542,51 +551,51 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     if ((token === import16.StoreModule)) { return this._StoreModule_16; }
     if ((token === import17.EffectsModule)) { return this._EffectsModule_17; }
     if ((token === import1.AppModule)) { return this._AppModule_18; }
-    if ((token === import78.LOCALE_ID)) { return this._LOCALE_ID_19; }
+    if ((token === import80.LOCALE_ID)) { return this._LOCALE_ID_19; }
     if ((token === import18.NgLocalization)) { return this._NgLocalization_20; }
-    if ((token === import79.ErrorHandler)) { return this._ErrorHandler_21; }
+    if ((token === import81.ErrorHandler)) { return this._ErrorHandler_21; }
     if ((token === import19.ApplicationInitStatus)) { return this._ApplicationInitStatus_22; }
     if ((token === import20.Testability)) { return this._Testability_23; }
     if ((token === import21.ApplicationRef_)) { return this._ApplicationRef__24; }
     if ((token === import21.ApplicationRef)) { return this._ApplicationRef_25; }
     if ((token === import22.Compiler)) { return this._Compiler_26; }
-    if ((token === import60.APP_ID)) { return this._APP_ID_27; }
-    if ((token === import80.DOCUMENT)) { return this._DOCUMENT_28; }
+    if ((token === import61.APP_ID)) { return this._APP_ID_27; }
+    if ((token === import82.DOCUMENT)) { return this._DOCUMENT_28; }
     if ((token === import23.HAMMER_GESTURE_CONFIG)) { return this._HAMMER_GESTURE_CONFIG_29; }
     if ((token === import24.EVENT_MANAGER_PLUGINS)) { return this._EVENT_MANAGER_PLUGINS_30; }
     if ((token === import24.EventManager)) { return this._EventManager_31; }
     if ((token === import25.DomSharedStylesHost)) { return this._DomSharedStylesHost_32; }
-    if ((token === import81.AnimationDriver)) { return this._AnimationDriver_33; }
+    if ((token === import83.AnimationDriver)) { return this._AnimationDriver_33; }
     if ((token === import26.DomRootRenderer)) { return this._DomRootRenderer_34; }
-    if ((token === import82.RootRenderer)) { return this._RootRenderer_35; }
+    if ((token === import84.RootRenderer)) { return this._RootRenderer_35; }
     if ((token === import27.DomSanitizer)) { return this._DomSanitizer_36; }
-    if ((token === import83.Sanitizer)) { return this._Sanitizer_37; }
+    if ((token === import85.Sanitizer)) { return this._Sanitizer_37; }
     if ((token === import28.ViewUtils)) { return this._ViewUtils_38; }
-    if ((token === import84.IterableDiffers)) { return this._IterableDiffers_39; }
-    if ((token === import85.KeyValueDiffers)) { return this._KeyValueDiffers_40; }
+    if ((token === import86.IterableDiffers)) { return this._IterableDiffers_39; }
+    if ((token === import87.KeyValueDiffers)) { return this._KeyValueDiffers_40; }
     if ((token === import25.SharedStylesHost)) { return this._SharedStylesHost_41; }
     if ((token === import29.Title)) { return this._Title_42; }
     if ((token === import30.RadioControlRegistry)) { return this._RadioControlRegistry_43; }
     if ((token === import31.FormBuilder)) { return this._FormBuilder_44; }
-    if ((token === import86.ROUTES)) { return this._ROUTES_45; }
+    if ((token === import88.ROUTES)) { return this._ROUTES_45; }
     if ((token === import32.BrowserXhr)) { return this._BrowserXhr_46; }
     if ((token === import33.ResponseOptions)) { return this._ResponseOptions_47; }
-    if ((token === import87.XSRFStrategy)) { return this._XSRFStrategy_48; }
+    if ((token === import89.XSRFStrategy)) { return this._XSRFStrategy_48; }
     if ((token === import34.XHRBackend)) { return this._XHRBackend_49; }
     if ((token === import35.RequestOptions)) { return this._RequestOptions_50; }
-    if ((token === import88.Http)) { return this._Http_51; }
+    if ((token === import90.Http)) { return this._Http_51; }
     if ((token === import36.WeatherDTOtoWeatherConverter)) { return this._WeatherDTOtoWeatherConverter_52; }
     if ((token === import37.WeatherApiService)) { return this._WeatherApiService_53; }
     if ((token === import38.WeatherActions)) { return this._WeatherActions_54; }
     if ((token === import39.UrlSerializer)) { return this._UrlSerializer_55; }
     if ((token === import40.RouterOutletMap)) { return this._RouterOutletMap_56; }
     if ((token === import9.ROUTER_CONFIGURATION)) { return this._ROUTER_CONFIGURATION_57; }
-    if ((token === import70.LocationStrategy)) { return this._LocationStrategy_58; }
+    if ((token === import72.LocationStrategy)) { return this._LocationStrategy_58; }
     if ((token === import41.Location)) { return this._Location_59; }
-    if ((token === import89.NgModuleFactoryLoader)) { return this._NgModuleFactoryLoader_60; }
-    if ((token === import76.Router)) { return this._Router_61; }
+    if ((token === import91.NgModuleFactoryLoader)) { return this._NgModuleFactoryLoader_60; }
+    if ((token === import78.Router)) { return this._Router_61; }
     if ((token === import43.WeatherDetailsResolver)) { return this._WeatherDetailsResolver_62; }
-    if ((token === import90.ActivatedRoute)) { return this._ActivatedRoute_63; }
+    if ((token === import92.ActivatedRoute)) { return this._ActivatedRoute_63; }
     if ((token === import44.NoPreloading)) { return this._NoPreloading_64; }
     if ((token === import44.PreloadingStrategy)) { return this._PreloadingStrategy_65; }
     if ((token === import44.RouterPreloader)) { return this._RouterPreloader_66; }
@@ -595,11 +604,11 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     if ((token === import45.Dispatcher)) { return this._Dispatcher_69; }
     if ((token === import16._INITIAL_REDUCER)) { return this.__INITIAL_REDUCER_70; }
     if ((token === import16.INITIAL_REDUCER)) { return this._INITIAL_REDUCER_71; }
-    if ((token === import91.Reducer)) { return this._Reducer_72; }
+    if ((token === import93.Reducer)) { return this._Reducer_72; }
     if ((token === import16._INITIAL_STATE)) { return this.__INITIAL_STATE_73; }
     if ((token === import16.INITIAL_STATE)) { return this._INITIAL_STATE_74; }
-    if ((token === import92.State)) { return this._State_75; }
-    if ((token === import93.Store)) { return this._Store_76; }
+    if ((token === import94.State)) { return this._State_75; }
+    if ((token === import95.Store)) { return this._Store_76; }
     if ((token === import46.Actions)) { return this._Actions_77; }
     if ((token === import47.CoordinateActions)) { return this._CoordinateActions_78; }
     if ((token === import48.LoadingActions)) { return this._LoadingActions_79; }
@@ -608,7 +617,7 @@ class AppModuleInjector extends import0.NgModuleInjector<import1.AppModule> {
     if ((token === import51.CoordinateEffects)) { return this._CoordinateEffects_82; }
     if ((token === import52.effects)) { return this._effects_83; }
     if ((token === import52.EffectsSubscription)) { return this._EffectsSubscription_84; }
-    if ((token === import60.APP_BOOTSTRAP_LISTENER)) { return this._APP_BOOTSTRAP_LISTENER_85; }
+    if ((token === import61.APP_BOOTSTRAP_LISTENER)) { return this._APP_BOOTSTRAP_LISTENER_85; }
     if ((token === import53.Profiler)) { return this._Profiler_86; }
     return notFoundResult;
   }

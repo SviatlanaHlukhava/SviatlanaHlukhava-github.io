@@ -107,10 +107,13 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
   /*private*/ _vc_4:import19.ViewContainer;
   _RouterOutlet_4_5:import20.Wrapper_RouterOutlet;
   _text_5:any;
-  _text_6:any;
-  _el_7:any;
-  compView_7:import1.AppView<import21.FooterComponent>;
-  _FooterComponent_7_3:import22.Wrapper_FooterComponent;
+  _el_6:any;
+  /*private*/ _vc_6:import19.ViewContainer;
+  _RouterOutlet_6_5:import20.Wrapper_RouterOutlet;
+  _text_7:any;
+  _el_8:any;
+  compView_8:import1.AppView<import21.FooterComponent>;
+  _FooterComponent_8_3:import22.Wrapper_FooterComponent;
   _pipe_async_0:import23.AsyncPipe;
   _pipe_async_1:import23.AsyncPipe;
   constructor(viewUtils:import3.ViewUtils,parentView:import1.AppView<any>,parentIndex:number,parentElement:any) {
@@ -131,12 +134,15 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
     this._el_4 = import3.createRenderElement(this.renderer,parentRenderNode,'router-outlet',import3.EMPTY_INLINE_ARRAY,(null as any));
     this._vc_4 = new import19.ViewContainer(4,(null as any),this,this._el_4);
     this._RouterOutlet_4_5 = new import20.Wrapper_RouterOutlet(this.parentView.injectorGet(import24.RouterOutletMap,this.parentIndex),this._vc_4.vcRef,this.parentView.injectorGet(import25.ComponentFactoryResolver,this.parentIndex),(null as any));
-    this._text_5 = this.renderer.createText(this._el_4,'\n    ',(null as any));
-    this._text_6 = this.renderer.createText(parentRenderNode,'\n    ',(null as any));
-    this._el_7 = import3.createRenderElement(this.renderer,parentRenderNode,'footer',import3.EMPTY_INLINE_ARRAY,(null as any));
-    this.compView_7 = new import22.View_FooterComponent0(this.viewUtils,this,7,this._el_7);
-    this._FooterComponent_7_3 = new import22.Wrapper_FooterComponent();
-    this.compView_7.create(this._FooterComponent_7_3.context);
+    this._text_5 = this.renderer.createText(parentRenderNode,'\n    ',(null as any));
+    this._el_6 = import3.createRenderElement(this.renderer,parentRenderNode,'router-outlet',new import3.InlineArray2(2,'name','myCityWeather'),(null as any));
+    this._vc_6 = new import19.ViewContainer(6,(null as any),this,this._el_6);
+    this._RouterOutlet_6_5 = new import20.Wrapper_RouterOutlet(this.parentView.injectorGet(import24.RouterOutletMap,this.parentIndex),this._vc_6.vcRef,this.parentView.injectorGet(import25.ComponentFactoryResolver,this.parentIndex),'myCityWeather');
+    this._text_7 = this.renderer.createText(parentRenderNode,'\n    ',(null as any));
+    this._el_8 = import3.createRenderElement(this.renderer,parentRenderNode,'footer',import3.EMPTY_INLINE_ARRAY,(null as any));
+    this.compView_8 = new import22.View_FooterComponent0(this.viewUtils,this,8,this._el_8);
+    this._FooterComponent_8_3 = new import22.Wrapper_FooterComponent();
+    this.compView_8.create(this._FooterComponent_8_3.context);
     this._pipe_async_0 = new import23.AsyncPipe(this.ref);
     this._pipe_async_1 = new import23.AsyncPipe(this.ref);
     this.init((null as any),((<any>this.renderer).directRenderer? (null as any): [
@@ -146,8 +152,9 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
       this._text_3,
       this._el_4,
       this._text_5,
-      this._text_6,
-      this._el_7
+      this._el_6,
+      this._text_7,
+      this._el_8
     ]
     ),(null as any));
     return (null as any);
@@ -155,8 +162,9 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
   injectorGetInternal(token:any,requestNodeIndex:number,notFoundResult:any):any {
     if (((token === import15.LoaderComponent) && (0 === requestNodeIndex))) { return this._LoaderComponent_0_3.context; }
     if (((token === import17.HeaderComponent) && (2 === requestNodeIndex))) { return this._HeaderComponent_2_3.context; }
-    if (((token === import26.RouterOutlet) && ((4 <= requestNodeIndex) && (requestNodeIndex <= 5)))) { return this._RouterOutlet_4_5.context; }
-    if (((token === import21.FooterComponent) && (7 === requestNodeIndex))) { return this._FooterComponent_7_3.context; }
+    if (((token === import26.RouterOutlet) && (4 === requestNodeIndex))) { return this._RouterOutlet_4_5.context; }
+    if (((token === import26.RouterOutlet) && (6 === requestNodeIndex))) { return this._RouterOutlet_6_5.context; }
+    if (((token === import21.FooterComponent) && (8 === requestNodeIndex))) { return this._FooterComponent_8_3.context; }
     return notFoundResult;
   }
   detectChangesInternal(throwOnChange:boolean):void {
@@ -170,18 +178,22 @@ export class View_AppComponent0 extends import1.AppView<import0.AppComponent> {
     this._HeaderComponent_2_3.check_coordinate(currVal_2_0_0,throwOnChange,valUnwrapper.hasWrappedValue);
     if (this._HeaderComponent_2_3.ngDoCheck(this,this._el_2,throwOnChange)) { this.compView_2.markAsCheckOnce(); }
     this._RouterOutlet_4_5.ngDoCheck(this,this._el_4,throwOnChange);
-    if (this._FooterComponent_7_3.ngDoCheck(this,this._el_7,throwOnChange)) { this.compView_7.markAsCheckOnce(); }
+    this._RouterOutlet_6_5.ngDoCheck(this,this._el_6,throwOnChange);
+    if (this._FooterComponent_8_3.ngDoCheck(this,this._el_8,throwOnChange)) { this.compView_8.markAsCheckOnce(); }
     this._vc_4.detectChangesInNestedViews(throwOnChange);
+    this._vc_6.detectChangesInNestedViews(throwOnChange);
     this.compView_0.detectChanges(throwOnChange);
     this.compView_2.detectChanges(throwOnChange);
-    this.compView_7.detectChanges(throwOnChange);
+    this.compView_8.detectChanges(throwOnChange);
   }
   destroyInternal():void {
     this._vc_4.destroyNestedViews();
+    this._vc_6.destroyNestedViews();
     this.compView_0.destroy();
     this.compView_2.destroy();
-    this.compView_7.destroy();
+    this.compView_8.destroy();
     this._RouterOutlet_4_5.ngOnDestroy();
+    this._RouterOutlet_6_5.ngOnDestroy();
     this._pipe_async_0.ngOnDestroy();
     this._pipe_async_1.ngOnDestroy();
   }

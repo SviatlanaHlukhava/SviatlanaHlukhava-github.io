@@ -4,8 +4,10 @@ import { CityWeatherSectionRouterComponent } from './../components/cityWeatherSe
 import { PageNotFoundComponent } from './../components/pageNotFound.component';
 import { WeatherDetailsComponent } from './../components/weatherDetails.component';
 import { WeatherDetailsResolver } from './../services/WeatherDetailsResolver';
+import { MyCityWeatherDetailsRouterComponent } from './../components/myCityWeatherDetailsRouter.component';
 var appRoutes = [
     { path: 'weather-list', component: CityWeatherSectionRouterComponent },
+    { path: 'myCityDetails', component: MyCityWeatherDetailsRouterComponent, outlet: 'myCityWeather' },
     { path: 'weatherDetails', children: [
             {
                 path: ':id',

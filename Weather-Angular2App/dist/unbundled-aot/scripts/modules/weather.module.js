@@ -23,6 +23,8 @@ import { WeatherActions } from './../actions/WeatherActions';
 import { CityWeatherSectionRouterComponent } from './../components/cityWeatherSectionRouter.component';
 import { WeatherDetailsComponent } from './../components/weatherDetails.component';
 import { WeatherDetailsResolver } from './../services/WeatherDetailsResolver';
+import { MyCityWeatherDetailsComponent } from './../components/myCityWeatherDetails.component';
+import { MyCityWeatherDetailsRouterComponent } from './../components/myCityWeatherDetailsRouter.component';
 export var WeatherModule = (function () {
     function WeatherModule() {
     }
@@ -30,9 +32,9 @@ export var WeatherModule = (function () {
         { type: NgModule, args: [{
                     imports: [FormsModule, HttpModule, ReactiveFormsModule, SharedModule, RouterModule],
                     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent, TableFormComponent, ValidationErrorComponent,
-                        CityWeatherSectionRouterComponent, WeatherDetailsComponent,
+                        CityWeatherSectionRouterComponent, WeatherDetailsComponent, MyCityWeatherDetailsComponent, MyCityWeatherDetailsRouterComponent,
                         KelvinToCelsiusPipe, CityWeatherPipe, WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent, MultiselectControlComponent],
-                    exports: [CityWeatherSectionRouterComponent, WeatherDetailsComponent],
+                    exports: [CityWeatherSectionRouterComponent, WeatherDetailsComponent, MyCityWeatherDetailsRouterComponent],
                     providers: [WeatherDTOtoWeatherConverter, WeatherApiService, WeatherActions, WeatherDetailsResolver]
                 },] },
     ];

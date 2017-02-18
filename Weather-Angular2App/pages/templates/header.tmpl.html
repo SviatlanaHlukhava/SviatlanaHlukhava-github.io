@@ -2,6 +2,8 @@
     <div class="links">
         <div class="logo"><a routerLink="/weather-list">Weather</a></div>
         <div class="back">
+            <a [routerLink]="['/', { outlets: {'myCityWeather':['myCityDetails'] }}]">Show my city weather</a>
+            <a [routerLink]="['/', { outlets: {'myCityWeather':null }}]">Hide my city weather</a>
             <a routerLink="/map">Map</a>
             <a href="./../index.html">To index page</a>
         </div>
