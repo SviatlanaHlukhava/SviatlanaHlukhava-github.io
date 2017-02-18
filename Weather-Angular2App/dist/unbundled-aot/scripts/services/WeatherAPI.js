@@ -42,6 +42,17 @@ export var WeatherApiService = (function () {
             return _this.weatherDTOtoWeatherConverter.convert(data);
         });
     };
+    WeatherApiService.prototype.getWeatherCityInfoById = function (id) {
+        var _this = this;
+        var url = 'http://api.openweathermap.org/data/2.5/weather?id=' + id + '&appid=' + this.appId;
+        return this.http.get(url).map(function (response) {
+            return response.json();
+        }).map(function (data) {
+            return _this.weatherDTOtoWeatherConverter.convert(data);
+        }).catch(function (error, caught) {
+            return Observable.throw("Weather Details is not loaded");
+        });
+    };
     WeatherApiService.prototype.pollWeatherCityInfo = function (city) {
         var _this = this;
         return Observable.interval(500).switchMap(function () {

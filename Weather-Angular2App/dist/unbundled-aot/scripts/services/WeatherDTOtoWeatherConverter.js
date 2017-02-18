@@ -12,7 +12,7 @@ export var WeatherDTOtoWeatherConverter = (function () {
         var mainParams = new MainWeather(data.main.temp, data.main.humidity, data.main.pressure);
         var wind = new Wind(data.wind.deg, data.wind.speed);
         var clouds = new Cloud(data.clouds.all);
-        var weather = new Weather(data.name, data.weather[0].description, coordinate, mainParams, wind, clouds);
+        var weather = new Weather(data.id, data.name, data.weather[0].description, coordinate, mainParams, wind, clouds);
         return weather;
     };
     WeatherDTOtoWeatherConverter.decorators = [

@@ -16,7 +16,7 @@ export function WeatherListReducer(state, action) {
             if (state[action.payload].getSelected()) {
                 state.forEach(function (value, i) {
                     if (value.getSelected() && i !== action.payload) {
-                        var weather = new Weather(value.getCity(), value.getDescription(), value.getCoordinate(), value.getMainParams(), value.getWind(), value.getCloud());
+                        var weather = new Weather(value.getId(), value.getCity(), value.getDescription(), value.getCoordinate(), value.getMainParams(), value.getWind(), value.getCloud());
                         weather.setSelected(false);
                         state.splice(i, 1, weather);
                     }
@@ -27,7 +27,7 @@ export function WeatherListReducer(state, action) {
         case WeatherActions.UPDATE_WEATHER_SUCCESS: {
             var index = state.findIndex(function (weather) { return weather.getCity() === action.payload.getCity(); });
             if (index !== -1) {
-                var newWeather = new Weather(action.payload.getCity(), action.payload.getDescription(), action.payload.getCoordinate(), action.payload.getMainParams(), action.payload.getWind(), action.payload.getCloud());
+                var newWeather = new Weather(action.payload.getId(), action.payload.getCity(), action.payload.getDescription(), action.payload.getCoordinate(), action.payload.getMainParams(), action.payload.getWind(), action.payload.getCloud());
                 action.payload.setSelected(state[index].getSelected());
                 state.splice(index, 1, action.payload);
             }

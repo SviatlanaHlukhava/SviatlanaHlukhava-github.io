@@ -13,7 +13,7 @@ export class WeatherDTOtoWeatherConverter {
         let mainParams = new MainWeather(data.main.temp, data.main.humidity, data.main.pressure);
         let wind = new Wind(data.wind.deg, data.wind.speed);
         let clouds = new Cloud(data.clouds.all);
-        let weather = new Weather(data.name, data.weather[0].description, coordinate, mainParams, wind, clouds);
+        let weather = new Weather(data.id, data.name, data.weather[0].description, coordinate, mainParams, wind, clouds);
         return weather;
     }
 }

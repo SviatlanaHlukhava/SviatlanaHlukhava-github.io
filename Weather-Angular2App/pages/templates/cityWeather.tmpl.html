@@ -1,4 +1,4 @@
-<td>{{weather.getCity() + (weather.getSelected() ? ' *' : '')}}</td>
+<td><a [routerLink]="['/weatherDetails', weather.getId()]">{{weather.getCity() + (weather.getSelected() ? ' *' : '')}}</a></td>
 <td *ngIf="!tableParameters || (tableParameters && tableParameters.getShowCoordinate())">{{weather.getCoordinate().getLatitude() | number : '1.0-' + (tableParameters ? tableParameters.getPrecision() : 3)}}</td>
 <td *ngIf="!tableParameters || (tableParameters && tableParameters.getShowCoordinate())">{{weather.getCoordinate().getLongitude() | number : '1.0-' + (tableParameters ? tableParameters.getPrecision() : 3)}}</td>
 <td *ngIf="!tableParameters || (tableParameters && tableParameters.getSelectedOptions() && tableParameters.getSelectedOptions().indexOf('Overall conditions') != -1)"><weather-icon [description]="weather.getDescription()"></weather-icon></td>

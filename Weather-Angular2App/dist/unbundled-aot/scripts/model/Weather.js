@@ -1,5 +1,6 @@
 export var Weather = (function () {
-    function Weather(city, description, coordinate, mainParams, wind, cloud) {
+    function Weather(id, city, description, coordinate, mainParams, wind, cloud) {
+        this.id = id;
         this.city = city;
         this.description = description;
         this.coordinate = coordinate;
@@ -8,6 +9,12 @@ export var Weather = (function () {
         this.cloud = cloud;
         this.selected = false;
     }
+    Weather.prototype.getId = function () {
+        return this.id;
+    };
+    Weather.prototype.setId = function (id) {
+        this.id = id;
+    };
     Weather.prototype.getCity = function () {
         return this.city;
     };

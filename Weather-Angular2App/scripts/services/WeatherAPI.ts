@@ -48,6 +48,17 @@ export class WeatherApiService {
         });
     }
 
+    public getWeatherCityInfoById(id: number): Observable<Weather> {
+        const url = 'http://api.openweathermap.org/data/2.5/weather?id=' + id + '&appid=' + this.appId;
+        return this.http.get(url).map((response: Response) => {
+            return response.json();
+        }).map((data: WeatherDTO) => {
+            return this.weatherDTOtoWeatherConverter.convert(data);
+        }).catch((error: Response, caught: Observable<{}>) => {
+            return Observable.throw("Weather Details is not loaded");
+        });
+    }
+
     public pollWeatherCityInfo(city: string): Observable<Weather> {
         return Observable.interval(500).switchMap(() => {
             return this.getWeatherCityInfo(city, true);

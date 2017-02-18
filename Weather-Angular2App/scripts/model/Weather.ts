@@ -3,6 +3,7 @@ import { MainWeather } from './MainWeather'
 import { Wind } from './Wind'
 import { Cloud }  from './Cloud'
 export class Weather {
+    private id: number;
     private city: string;
     private description: string;
     private selected: boolean;
@@ -11,7 +12,8 @@ export class Weather {
     private wind: Wind;
     private cloud: Cloud;
 
-    constructor(city: string, description: string, coordinate: Coordinate, mainParams: MainWeather, wind: Wind, cloud: Cloud) {
+    constructor(id: number, city: string, description: string, coordinate: Coordinate, mainParams: MainWeather, wind: Wind, cloud: Cloud) {
+        this.id = id;
         this.city = city;
         this.description = description;
         this.coordinate = coordinate;
@@ -19,6 +21,12 @@ export class Weather {
         this.wind = wind;
         this.cloud = cloud;
         this.selected = false;
+    }
+    getId(): number {
+        return this.id;
+    }
+    setId(id: number): void {
+        this.id = id;
     }
     getCity(): string {
         return this.city;

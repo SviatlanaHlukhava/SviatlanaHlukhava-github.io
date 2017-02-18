@@ -1,0 +1,27 @@
+<div class="details" *ngIf="weather">
+    <div class="header title">City: {{weather.getCity()}}</div>
+    <div class="header">Coordinate</div>
+    <div class="row">
+        <div class="col-md-4 col-xs-6">Latitude: {{weather.getCoordinate().getLatitude()}}</div>
+        <div class="col-md-4 col-xs-6">Longitude: {{weather.getCoordinate().getLongitude()}}</div>
+    </div>
+    <div class="header">Overall Conditions</div>
+    <div class="row">
+        <div class="col-md-4 col-xs-6">Description: {{weather.getDescription()}}</div>
+        <div class="col-md-4 col-xs-6 conditions"><weather-icon [description]="weather.getDescription()"></weather-icon></div>
+    </div>
+    <div class="header">Main Parameters</div>
+    <div class="row">
+        <div class="col-md-4 col-xs-6">Temperature: {{weather.getMainParams().getTemperature() | sgKelvinToCelsius}}</div>
+        <div class="col-md-4 col-xs-6">Humidity: {{weather.getMainParams().getHumidity()}}</div>
+        <div class="col-md-4 col-xs-6">Pressure: {{weather.getMainParams().getPressure()}}</div>
+    </div>
+    <div class="header">Wind</div>
+        <div class="row">
+        <div class="col-md-4 col-xs-6">Speed: <wind-section class="wind-details" [wind]="weather.getWind()"></wind-section></div>
+    </div>
+    <div class="header">Clouds</div>
+        <div class="row">
+        <div class="col-md-4 col-xs-6">All: {{weather.getCloud().getAll()}}</div>
+    </div>
+</div>

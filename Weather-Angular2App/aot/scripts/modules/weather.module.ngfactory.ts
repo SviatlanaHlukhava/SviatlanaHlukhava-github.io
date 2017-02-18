@@ -12,20 +12,23 @@ import * as import3 from '@angular/forms/src/form_providers';
 import * as import4 from '@angular/http/src/http_module';
 import * as import5 from '@angular/common/src/common_module';
 import * as import6 from '../../../scripts/modules/shared.module';
-import * as import7 from '@angular/forms/src/directives/radio_control_value_accessor';
-import * as import8 from '@angular/http/src/backends/browser_xhr';
-import * as import9 from '@angular/http/src/base_response_options';
-import * as import10 from '@angular/http/src/backends/xhr_backend';
-import * as import11 from '@angular/http/src/base_request_options';
-import * as import12 from '@angular/forms/src/form_builder';
-import * as import13 from '@angular/common/src/localization';
-import * as import14 from '../../../scripts/services/WeatherDTOtoWeatherConverter';
-import * as import15 from '../../../scripts/services/WeatherAPI';
-import * as import16 from '../../../scripts/actions/WeatherActions';
-import * as import17 from '@angular/core/src/di/injector';
-import * as import18 from '@angular/core/src/i18n/tokens';
-import * as import19 from '@angular/http/src/interfaces';
-import * as import20 from '@angular/http/src/http';
+import * as import7 from '@angular/router/src/router_module';
+import * as import8 from '@angular/forms/src/directives/radio_control_value_accessor';
+import * as import9 from '@angular/http/src/backends/browser_xhr';
+import * as import10 from '@angular/http/src/base_response_options';
+import * as import11 from '@angular/http/src/backends/xhr_backend';
+import * as import12 from '@angular/http/src/base_request_options';
+import * as import13 from '@angular/forms/src/form_builder';
+import * as import14 from '@angular/common/src/localization';
+import * as import15 from '../../../scripts/services/WeatherDTOtoWeatherConverter';
+import * as import16 from '../../../scripts/services/WeatherAPI';
+import * as import17 from '../../../scripts/actions/WeatherActions';
+import * as import18 from '../../../scripts/services/WeatherDetailsResolver';
+import * as import19 from '@angular/core/src/di/injector';
+import * as import20 from '@angular/core/src/i18n/tokens';
+import * as import21 from '@angular/router/src/router';
+import * as import22 from '@angular/http/src/interfaces';
+import * as import23 from '@angular/http/src/http';
 class WeatherModuleInjector extends import0.NgModuleInjector<import1.WeatherModule> {
   _InternalFormsSharedModule_0:import2.InternalFormsSharedModule;
   _FormsModule_1:import3.FormsModule;
@@ -33,69 +36,75 @@ class WeatherModuleInjector extends import0.NgModuleInjector<import1.WeatherModu
   _ReactiveFormsModule_3:import3.ReactiveFormsModule;
   _CommonModule_4:import5.CommonModule;
   _SharedModule_5:import6.SharedModule;
-  _WeatherModule_6:import1.WeatherModule;
-  __RadioControlRegistry_7:import7.RadioControlRegistry;
-  __BrowserXhr_8:import8.BrowserXhr;
-  __ResponseOptions_9:import9.BaseResponseOptions;
-  __XSRFStrategy_10:any;
-  __XHRBackend_11:import10.XHRBackend;
-  __RequestOptions_12:import11.BaseRequestOptions;
-  __Http_13:any;
-  __FormBuilder_14:import12.FormBuilder;
-  __NgLocalization_15:import13.NgLocaleLocalization;
-  __WeatherDTOtoWeatherConverter_16:import14.WeatherDTOtoWeatherConverter;
-  __WeatherApiService_17:import15.WeatherApiService;
-  __WeatherActions_18:import16.WeatherActions;
-  constructor(parent:import17.Injector) {
+  _RouterModule_6:import7.RouterModule;
+  _WeatherModule_7:import1.WeatherModule;
+  __RadioControlRegistry_8:import8.RadioControlRegistry;
+  __BrowserXhr_9:import9.BrowserXhr;
+  __ResponseOptions_10:import10.BaseResponseOptions;
+  __XSRFStrategy_11:any;
+  __XHRBackend_12:import11.XHRBackend;
+  __RequestOptions_13:import12.BaseRequestOptions;
+  __Http_14:any;
+  __FormBuilder_15:import13.FormBuilder;
+  __NgLocalization_16:import14.NgLocaleLocalization;
+  __WeatherDTOtoWeatherConverter_17:import15.WeatherDTOtoWeatherConverter;
+  __WeatherApiService_18:import16.WeatherApiService;
+  __WeatherActions_19:import17.WeatherActions;
+  __WeatherDetailsResolver_20:import18.WeatherDetailsResolver;
+  constructor(parent:import19.Injector) {
     super(parent,([] as any[]),([] as any[]));
   }
-  get _RadioControlRegistry_7():import7.RadioControlRegistry {
-    if ((this.__RadioControlRegistry_7 == null)) { (this.__RadioControlRegistry_7 = new import7.RadioControlRegistry()); }
-    return this.__RadioControlRegistry_7;
+  get _RadioControlRegistry_8():import8.RadioControlRegistry {
+    if ((this.__RadioControlRegistry_8 == null)) { (this.__RadioControlRegistry_8 = new import8.RadioControlRegistry()); }
+    return this.__RadioControlRegistry_8;
   }
-  get _BrowserXhr_8():import8.BrowserXhr {
-    if ((this.__BrowserXhr_8 == null)) { (this.__BrowserXhr_8 = new import8.BrowserXhr()); }
-    return this.__BrowserXhr_8;
+  get _BrowserXhr_9():import9.BrowserXhr {
+    if ((this.__BrowserXhr_9 == null)) { (this.__BrowserXhr_9 = new import9.BrowserXhr()); }
+    return this.__BrowserXhr_9;
   }
-  get _ResponseOptions_9():import9.BaseResponseOptions {
-    if ((this.__ResponseOptions_9 == null)) { (this.__ResponseOptions_9 = new import9.BaseResponseOptions()); }
-    return this.__ResponseOptions_9;
+  get _ResponseOptions_10():import10.BaseResponseOptions {
+    if ((this.__ResponseOptions_10 == null)) { (this.__ResponseOptions_10 = new import10.BaseResponseOptions()); }
+    return this.__ResponseOptions_10;
   }
-  get _XSRFStrategy_10():any {
-    if ((this.__XSRFStrategy_10 == null)) { (this.__XSRFStrategy_10 = import4._createDefaultCookieXSRFStrategy()); }
-    return this.__XSRFStrategy_10;
+  get _XSRFStrategy_11():any {
+    if ((this.__XSRFStrategy_11 == null)) { (this.__XSRFStrategy_11 = import4._createDefaultCookieXSRFStrategy()); }
+    return this.__XSRFStrategy_11;
   }
-  get _XHRBackend_11():import10.XHRBackend {
-    if ((this.__XHRBackend_11 == null)) { (this.__XHRBackend_11 = new import10.XHRBackend(this._BrowserXhr_8,this._ResponseOptions_9,this._XSRFStrategy_10)); }
-    return this.__XHRBackend_11;
+  get _XHRBackend_12():import11.XHRBackend {
+    if ((this.__XHRBackend_12 == null)) { (this.__XHRBackend_12 = new import11.XHRBackend(this._BrowserXhr_9,this._ResponseOptions_10,this._XSRFStrategy_11)); }
+    return this.__XHRBackend_12;
   }
-  get _RequestOptions_12():import11.BaseRequestOptions {
-    if ((this.__RequestOptions_12 == null)) { (this.__RequestOptions_12 = new import11.BaseRequestOptions()); }
-    return this.__RequestOptions_12;
+  get _RequestOptions_13():import12.BaseRequestOptions {
+    if ((this.__RequestOptions_13 == null)) { (this.__RequestOptions_13 = new import12.BaseRequestOptions()); }
+    return this.__RequestOptions_13;
   }
-  get _Http_13():any {
-    if ((this.__Http_13 == null)) { (this.__Http_13 = import4.httpFactory(this._XHRBackend_11,this._RequestOptions_12)); }
-    return this.__Http_13;
+  get _Http_14():any {
+    if ((this.__Http_14 == null)) { (this.__Http_14 = import4.httpFactory(this._XHRBackend_12,this._RequestOptions_13)); }
+    return this.__Http_14;
   }
-  get _FormBuilder_14():import12.FormBuilder {
-    if ((this.__FormBuilder_14 == null)) { (this.__FormBuilder_14 = new import12.FormBuilder()); }
-    return this.__FormBuilder_14;
+  get _FormBuilder_15():import13.FormBuilder {
+    if ((this.__FormBuilder_15 == null)) { (this.__FormBuilder_15 = new import13.FormBuilder()); }
+    return this.__FormBuilder_15;
   }
-  get _NgLocalization_15():import13.NgLocaleLocalization {
-    if ((this.__NgLocalization_15 == null)) { (this.__NgLocalization_15 = new import13.NgLocaleLocalization(this.parent.get(import18.LOCALE_ID))); }
-    return this.__NgLocalization_15;
+  get _NgLocalization_16():import14.NgLocaleLocalization {
+    if ((this.__NgLocalization_16 == null)) { (this.__NgLocalization_16 = new import14.NgLocaleLocalization(this.parent.get(import20.LOCALE_ID))); }
+    return this.__NgLocalization_16;
   }
-  get _WeatherDTOtoWeatherConverter_16():import14.WeatherDTOtoWeatherConverter {
-    if ((this.__WeatherDTOtoWeatherConverter_16 == null)) { (this.__WeatherDTOtoWeatherConverter_16 = new import14.WeatherDTOtoWeatherConverter()); }
-    return this.__WeatherDTOtoWeatherConverter_16;
+  get _WeatherDTOtoWeatherConverter_17():import15.WeatherDTOtoWeatherConverter {
+    if ((this.__WeatherDTOtoWeatherConverter_17 == null)) { (this.__WeatherDTOtoWeatherConverter_17 = new import15.WeatherDTOtoWeatherConverter()); }
+    return this.__WeatherDTOtoWeatherConverter_17;
   }
-  get _WeatherApiService_17():import15.WeatherApiService {
-    if ((this.__WeatherApiService_17 == null)) { (this.__WeatherApiService_17 = new import15.WeatherApiService(this._WeatherDTOtoWeatherConverter_16,this._Http_13)); }
-    return this.__WeatherApiService_17;
+  get _WeatherApiService_18():import16.WeatherApiService {
+    if ((this.__WeatherApiService_18 == null)) { (this.__WeatherApiService_18 = new import16.WeatherApiService(this._WeatherDTOtoWeatherConverter_17,this._Http_14)); }
+    return this.__WeatherApiService_18;
   }
-  get _WeatherActions_18():import16.WeatherActions {
-    if ((this.__WeatherActions_18 == null)) { (this.__WeatherActions_18 = new import16.WeatherActions()); }
-    return this.__WeatherActions_18;
+  get _WeatherActions_19():import17.WeatherActions {
+    if ((this.__WeatherActions_19 == null)) { (this.__WeatherActions_19 = new import17.WeatherActions()); }
+    return this.__WeatherActions_19;
+  }
+  get _WeatherDetailsResolver_20():import18.WeatherDetailsResolver {
+    if ((this.__WeatherDetailsResolver_20 == null)) { (this.__WeatherDetailsResolver_20 = new import18.WeatherDetailsResolver(this._WeatherApiService_18,this.parent.get(import21.Router))); }
+    return this.__WeatherDetailsResolver_20;
   }
   createInternal():import1.WeatherModule {
     this._InternalFormsSharedModule_0 = new import2.InternalFormsSharedModule();
@@ -104,8 +113,9 @@ class WeatherModuleInjector extends import0.NgModuleInjector<import1.WeatherModu
     this._ReactiveFormsModule_3 = new import3.ReactiveFormsModule();
     this._CommonModule_4 = new import5.CommonModule();
     this._SharedModule_5 = new import6.SharedModule();
-    this._WeatherModule_6 = new import1.WeatherModule();
-    return this._WeatherModule_6;
+    this._RouterModule_6 = new import7.RouterModule(this.parent.get(import7.ROUTER_FORROOT_GUARD,(null as any)));
+    this._WeatherModule_7 = new import1.WeatherModule();
+    return this._WeatherModule_7;
   }
   getInternal(token:any,notFoundResult:any):any {
     if ((token === import2.InternalFormsSharedModule)) { return this._InternalFormsSharedModule_0; }
@@ -114,19 +124,21 @@ class WeatherModuleInjector extends import0.NgModuleInjector<import1.WeatherModu
     if ((token === import3.ReactiveFormsModule)) { return this._ReactiveFormsModule_3; }
     if ((token === import5.CommonModule)) { return this._CommonModule_4; }
     if ((token === import6.SharedModule)) { return this._SharedModule_5; }
-    if ((token === import1.WeatherModule)) { return this._WeatherModule_6; }
-    if ((token === import7.RadioControlRegistry)) { return this._RadioControlRegistry_7; }
-    if ((token === import8.BrowserXhr)) { return this._BrowserXhr_8; }
-    if ((token === import9.ResponseOptions)) { return this._ResponseOptions_9; }
-    if ((token === import19.XSRFStrategy)) { return this._XSRFStrategy_10; }
-    if ((token === import10.XHRBackend)) { return this._XHRBackend_11; }
-    if ((token === import11.RequestOptions)) { return this._RequestOptions_12; }
-    if ((token === import20.Http)) { return this._Http_13; }
-    if ((token === import12.FormBuilder)) { return this._FormBuilder_14; }
-    if ((token === import13.NgLocalization)) { return this._NgLocalization_15; }
-    if ((token === import14.WeatherDTOtoWeatherConverter)) { return this._WeatherDTOtoWeatherConverter_16; }
-    if ((token === import15.WeatherApiService)) { return this._WeatherApiService_17; }
-    if ((token === import16.WeatherActions)) { return this._WeatherActions_18; }
+    if ((token === import7.RouterModule)) { return this._RouterModule_6; }
+    if ((token === import1.WeatherModule)) { return this._WeatherModule_7; }
+    if ((token === import8.RadioControlRegistry)) { return this._RadioControlRegistry_8; }
+    if ((token === import9.BrowserXhr)) { return this._BrowserXhr_9; }
+    if ((token === import10.ResponseOptions)) { return this._ResponseOptions_10; }
+    if ((token === import22.XSRFStrategy)) { return this._XSRFStrategy_11; }
+    if ((token === import11.XHRBackend)) { return this._XHRBackend_12; }
+    if ((token === import12.RequestOptions)) { return this._RequestOptions_13; }
+    if ((token === import23.Http)) { return this._Http_14; }
+    if ((token === import13.FormBuilder)) { return this._FormBuilder_15; }
+    if ((token === import14.NgLocalization)) { return this._NgLocalization_16; }
+    if ((token === import15.WeatherDTOtoWeatherConverter)) { return this._WeatherDTOtoWeatherConverter_17; }
+    if ((token === import16.WeatherApiService)) { return this._WeatherApiService_18; }
+    if ((token === import17.WeatherActions)) { return this._WeatherActions_19; }
+    if ((token === import18.WeatherDetailsResolver)) { return this._WeatherDetailsResolver_20; }
     return notFoundResult;
   }
   destroyInternal():void {

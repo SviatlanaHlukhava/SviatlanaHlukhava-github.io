@@ -3,6 +3,7 @@ import { SharedModule } from './shared.module';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from '@angular/router';
 import { CityWeatherTableComponent } from './../components/cityWeatherTable.component';
 import { CityWeatherSectionComponent } from './../components/cityWeatherSection.component';
 import { CityWeatherComponent } from './../components/cityWeather.component';
@@ -20,17 +21,19 @@ import { WeatherDTOtoWeatherConverter } from './../services/WeatherDTOtoWeatherC
 import { WeatherApiService } from './../services/WeatherAPI';
 import { WeatherActions } from './../actions/WeatherActions';
 import { CityWeatherSectionRouterComponent } from './../components/cityWeatherSectionRouter.component';
+import { WeatherDetailsComponent } from './../components/weatherDetails.component';
+import { WeatherDetailsResolver } from './../services/WeatherDetailsResolver';
 export var WeatherModule = (function () {
     function WeatherModule() {
     }
     WeatherModule.decorators = [
         { type: NgModule, args: [{
-                    imports: [FormsModule, HttpModule, ReactiveFormsModule, SharedModule],
+                    imports: [FormsModule, HttpModule, ReactiveFormsModule, SharedModule, RouterModule],
                     declarations: [CityWeatherSectionComponent, CityWeatherTableComponent, CityWeatherComponent, CityFormComponent, TableFormComponent, ValidationErrorComponent,
-                        CityWeatherSectionRouterComponent,
+                        CityWeatherSectionRouterComponent, WeatherDetailsComponent,
                         KelvinToCelsiusPipe, CityWeatherPipe, WeatherColorDirective, WindIconDirective, WindSectionComponent, WeatherIconComponent, MultiselectControlComponent],
-                    exports: [CityWeatherSectionRouterComponent],
-                    providers: [WeatherDTOtoWeatherConverter, WeatherApiService, WeatherActions]
+                    exports: [CityWeatherSectionRouterComponent, WeatherDetailsComponent],
+                    providers: [WeatherDTOtoWeatherConverter, WeatherApiService, WeatherActions, WeatherDetailsResolver]
                 },] },
     ];
     /** @nocollapse */
