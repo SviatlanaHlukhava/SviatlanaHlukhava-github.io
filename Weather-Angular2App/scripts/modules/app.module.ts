@@ -6,7 +6,9 @@ import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AppComponent }   from './../components/app.component';
 import { MapModule }   from './map.module';
-import { WeatherModule }   from './weather.module';
+import { WeatherSectionModule }   from './weatherSection.module';
+import { WeatherDetailsModule }   from './weatherDetails.module';
+import { MyCityWeatherDetailsModule }   from './myCityWeatherDetails.module';
 import { FooterModule }   from './footer.module';
 import { HeaderModule }   from './header.module';
 import { LoaderModule }   from './loader.module';
@@ -22,7 +24,8 @@ import  { CoordinateReducer } from './../reducers/CoordinateReducer';
 import  { LoadingReducer } from './../reducers/LoadingReducer';
 
 @NgModule({
-    imports:      [BrowserModule, FormsModule, ReactiveFormsModule, FooterModule, HeaderModule, LoaderModule, MapModule, WeatherModule, RoutingModule,
+    imports:      [BrowserModule, FormsModule, ReactiveFormsModule, FooterModule, HeaderModule, LoaderModule, MapModule, RoutingModule,
+    WeatherSectionModule, WeatherDetailsModule, MyCityWeatherDetailsModule,
     StoreModule.provideStore({
           coordinate: CoordinateReducer,
           loading: LoadingReducer,

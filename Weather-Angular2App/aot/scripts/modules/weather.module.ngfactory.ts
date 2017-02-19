@@ -7,138 +7,34 @@
 
 import * as import0 from '@angular/core/src/linker/ng_module_factory';
 import * as import1 from '../../../scripts/modules/weather.module';
-import * as import2 from '@angular/forms/src/directives';
-import * as import3 from '@angular/forms/src/form_providers';
-import * as import4 from '@angular/http/src/http_module';
-import * as import5 from '@angular/common/src/common_module';
-import * as import6 from '../../../scripts/modules/shared.module';
-import * as import7 from '@angular/router/src/router_module';
-import * as import8 from '@angular/forms/src/directives/radio_control_value_accessor';
-import * as import9 from '@angular/http/src/backends/browser_xhr';
-import * as import10 from '@angular/http/src/base_response_options';
-import * as import11 from '@angular/http/src/backends/xhr_backend';
-import * as import12 from '@angular/http/src/base_request_options';
-import * as import13 from '@angular/forms/src/form_builder';
-import * as import14 from '@angular/common/src/localization';
-import * as import15 from '../../../scripts/services/WeatherDTOtoWeatherConverter';
-import * as import16 from '../../../scripts/services/WeatherAPI';
-import * as import17 from '../../../scripts/actions/WeatherActions';
-import * as import18 from '../../../scripts/services/WeatherDetailsResolver';
-import * as import19 from '@angular/core/src/di/injector';
-import * as import20 from '@angular/core/src/i18n/tokens';
-import * as import21 from '@angular/router/src/router';
-import * as import22 from '@angular/http/src/interfaces';
-import * as import23 from '@angular/http/src/http';
+import * as import2 from '@angular/common/src/common_module';
+import * as import3 from '../../../scripts/modules/shared.module';
+import * as import4 from '@angular/common/src/localization';
+import * as import5 from '@angular/core/src/di/injector';
+import * as import6 from '@angular/core/src/i18n/tokens';
 class WeatherModuleInjector extends import0.NgModuleInjector<import1.WeatherModule> {
-  _InternalFormsSharedModule_0:import2.InternalFormsSharedModule;
-  _FormsModule_1:import3.FormsModule;
-  _HttpModule_2:import4.HttpModule;
-  _ReactiveFormsModule_3:import3.ReactiveFormsModule;
-  _CommonModule_4:import5.CommonModule;
-  _SharedModule_5:import6.SharedModule;
-  _RouterModule_6:import7.RouterModule;
-  _WeatherModule_7:import1.WeatherModule;
-  __RadioControlRegistry_8:import8.RadioControlRegistry;
-  __BrowserXhr_9:import9.BrowserXhr;
-  __ResponseOptions_10:import10.BaseResponseOptions;
-  __XSRFStrategy_11:any;
-  __XHRBackend_12:import11.XHRBackend;
-  __RequestOptions_13:import12.BaseRequestOptions;
-  __Http_14:any;
-  __FormBuilder_15:import13.FormBuilder;
-  __NgLocalization_16:import14.NgLocaleLocalization;
-  __WeatherDTOtoWeatherConverter_17:import15.WeatherDTOtoWeatherConverter;
-  __WeatherApiService_18:import16.WeatherApiService;
-  __WeatherActions_19:import17.WeatherActions;
-  __WeatherDetailsResolver_20:import18.WeatherDetailsResolver;
-  constructor(parent:import19.Injector) {
+  _CommonModule_0:import2.CommonModule;
+  _SharedModule_1:import3.SharedModule;
+  _WeatherModule_2:import1.WeatherModule;
+  __NgLocalization_3:import4.NgLocaleLocalization;
+  constructor(parent:import5.Injector) {
     super(parent,([] as any[]),([] as any[]));
   }
-  get _RadioControlRegistry_8():import8.RadioControlRegistry {
-    if ((this.__RadioControlRegistry_8 == null)) { (this.__RadioControlRegistry_8 = new import8.RadioControlRegistry()); }
-    return this.__RadioControlRegistry_8;
-  }
-  get _BrowserXhr_9():import9.BrowserXhr {
-    if ((this.__BrowserXhr_9 == null)) { (this.__BrowserXhr_9 = new import9.BrowserXhr()); }
-    return this.__BrowserXhr_9;
-  }
-  get _ResponseOptions_10():import10.BaseResponseOptions {
-    if ((this.__ResponseOptions_10 == null)) { (this.__ResponseOptions_10 = new import10.BaseResponseOptions()); }
-    return this.__ResponseOptions_10;
-  }
-  get _XSRFStrategy_11():any {
-    if ((this.__XSRFStrategy_11 == null)) { (this.__XSRFStrategy_11 = import4._createDefaultCookieXSRFStrategy()); }
-    return this.__XSRFStrategy_11;
-  }
-  get _XHRBackend_12():import11.XHRBackend {
-    if ((this.__XHRBackend_12 == null)) { (this.__XHRBackend_12 = new import11.XHRBackend(this._BrowserXhr_9,this._ResponseOptions_10,this._XSRFStrategy_11)); }
-    return this.__XHRBackend_12;
-  }
-  get _RequestOptions_13():import12.BaseRequestOptions {
-    if ((this.__RequestOptions_13 == null)) { (this.__RequestOptions_13 = new import12.BaseRequestOptions()); }
-    return this.__RequestOptions_13;
-  }
-  get _Http_14():any {
-    if ((this.__Http_14 == null)) { (this.__Http_14 = import4.httpFactory(this._XHRBackend_12,this._RequestOptions_13)); }
-    return this.__Http_14;
-  }
-  get _FormBuilder_15():import13.FormBuilder {
-    if ((this.__FormBuilder_15 == null)) { (this.__FormBuilder_15 = new import13.FormBuilder()); }
-    return this.__FormBuilder_15;
-  }
-  get _NgLocalization_16():import14.NgLocaleLocalization {
-    if ((this.__NgLocalization_16 == null)) { (this.__NgLocalization_16 = new import14.NgLocaleLocalization(this.parent.get(import20.LOCALE_ID))); }
-    return this.__NgLocalization_16;
-  }
-  get _WeatherDTOtoWeatherConverter_17():import15.WeatherDTOtoWeatherConverter {
-    if ((this.__WeatherDTOtoWeatherConverter_17 == null)) { (this.__WeatherDTOtoWeatherConverter_17 = new import15.WeatherDTOtoWeatherConverter()); }
-    return this.__WeatherDTOtoWeatherConverter_17;
-  }
-  get _WeatherApiService_18():import16.WeatherApiService {
-    if ((this.__WeatherApiService_18 == null)) { (this.__WeatherApiService_18 = new import16.WeatherApiService(this._WeatherDTOtoWeatherConverter_17,this._Http_14)); }
-    return this.__WeatherApiService_18;
-  }
-  get _WeatherActions_19():import17.WeatherActions {
-    if ((this.__WeatherActions_19 == null)) { (this.__WeatherActions_19 = new import17.WeatherActions()); }
-    return this.__WeatherActions_19;
-  }
-  get _WeatherDetailsResolver_20():import18.WeatherDetailsResolver {
-    if ((this.__WeatherDetailsResolver_20 == null)) { (this.__WeatherDetailsResolver_20 = new import18.WeatherDetailsResolver(this._WeatherApiService_18,this.parent.get(import21.Router))); }
-    return this.__WeatherDetailsResolver_20;
+  get _NgLocalization_3():import4.NgLocaleLocalization {
+    if ((this.__NgLocalization_3 == null)) { (this.__NgLocalization_3 = new import4.NgLocaleLocalization(this.parent.get(import6.LOCALE_ID))); }
+    return this.__NgLocalization_3;
   }
   createInternal():import1.WeatherModule {
-    this._InternalFormsSharedModule_0 = new import2.InternalFormsSharedModule();
-    this._FormsModule_1 = new import3.FormsModule();
-    this._HttpModule_2 = new import4.HttpModule();
-    this._ReactiveFormsModule_3 = new import3.ReactiveFormsModule();
-    this._CommonModule_4 = new import5.CommonModule();
-    this._SharedModule_5 = new import6.SharedModule();
-    this._RouterModule_6 = new import7.RouterModule(this.parent.get(import7.ROUTER_FORROOT_GUARD,(null as any)));
-    this._WeatherModule_7 = new import1.WeatherModule();
-    return this._WeatherModule_7;
+    this._CommonModule_0 = new import2.CommonModule();
+    this._SharedModule_1 = new import3.SharedModule();
+    this._WeatherModule_2 = new import1.WeatherModule();
+    return this._WeatherModule_2;
   }
   getInternal(token:any,notFoundResult:any):any {
-    if ((token === import2.InternalFormsSharedModule)) { return this._InternalFormsSharedModule_0; }
-    if ((token === import3.FormsModule)) { return this._FormsModule_1; }
-    if ((token === import4.HttpModule)) { return this._HttpModule_2; }
-    if ((token === import3.ReactiveFormsModule)) { return this._ReactiveFormsModule_3; }
-    if ((token === import5.CommonModule)) { return this._CommonModule_4; }
-    if ((token === import6.SharedModule)) { return this._SharedModule_5; }
-    if ((token === import7.RouterModule)) { return this._RouterModule_6; }
-    if ((token === import1.WeatherModule)) { return this._WeatherModule_7; }
-    if ((token === import8.RadioControlRegistry)) { return this._RadioControlRegistry_8; }
-    if ((token === import9.BrowserXhr)) { return this._BrowserXhr_9; }
-    if ((token === import10.ResponseOptions)) { return this._ResponseOptions_10; }
-    if ((token === import22.XSRFStrategy)) { return this._XSRFStrategy_11; }
-    if ((token === import11.XHRBackend)) { return this._XHRBackend_12; }
-    if ((token === import12.RequestOptions)) { return this._RequestOptions_13; }
-    if ((token === import23.Http)) { return this._Http_14; }
-    if ((token === import13.FormBuilder)) { return this._FormBuilder_15; }
-    if ((token === import14.NgLocalization)) { return this._NgLocalization_16; }
-    if ((token === import15.WeatherDTOtoWeatherConverter)) { return this._WeatherDTOtoWeatherConverter_17; }
-    if ((token === import16.WeatherApiService)) { return this._WeatherApiService_18; }
-    if ((token === import17.WeatherActions)) { return this._WeatherActions_19; }
-    if ((token === import18.WeatherDetailsResolver)) { return this._WeatherDetailsResolver_20; }
+    if ((token === import2.CommonModule)) { return this._CommonModule_0; }
+    if ((token === import3.SharedModule)) { return this._SharedModule_1; }
+    if ((token === import1.WeatherModule)) { return this._WeatherModule_2; }
+    if ((token === import4.NgLocalization)) { return this._NgLocalization_3; }
     return notFoundResult;
   }
   destroyInternal():void {

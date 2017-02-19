@@ -12,27 +12,26 @@ import * as import3 from '@angular/common/src/location/location';
 import * as import4 from '@angular/router/src/url_tree';
 import * as import5 from '@angular/router/src/router_outlet_map';
 import * as import6 from '@angular/core/src/linker/system_js_ng_module_factory_loader';
-import * as import7 from '@angular/router/src/router_preloader';
-import * as import8 from '@angular/core/src/di/injector';
-import * as import9 from '../components/cityWeatherSectionRouter.component.ngfactory';
-import * as import10 from '../components/myCityWeatherDetailsRouter.component.ngfactory';
+import * as import7 from '../../../scripts/services/preloadSelectedModulesList';
+import * as import8 from '@angular/router/src/router_preloader';
+import * as import9 from '@angular/core/src/di/injector';
+import * as import10 from '../components/cityWeatherSectionRouter.component.ngfactory';
 import * as import11 from '../components/weatherDetails.component.ngfactory';
 import * as import12 from '../components/pageNotFound.component.ngfactory';
 import * as import13 from '@angular/common/src/location/platform_location';
 import * as import14 from '@angular/common/src/location/location_strategy';
 import * as import15 from '@angular/core/src/linker/compiler';
 import * as import16 from '../../../scripts/components/cityWeatherSectionRouter.component';
-import * as import17 from '../../../scripts/components/myCityWeatherDetailsRouter.component';
-import * as import18 from '../../../scripts/components/weatherDetails.component';
-import * as import19 from '../../../scripts/services/WeatherDetailsResolver';
-import * as import20 from '../../../scripts/components/pageNotFound.component';
-import * as import21 from '@angular/core/src/application_ref';
-import * as import22 from '@angular/router/src/url_handling_strategy';
-import * as import23 from '@angular/router/src/router';
-import * as import24 from '@angular/core/src/linker/ng_module_factory_loader';
-import * as import25 from '@angular/router/src/router_config_loader';
-import * as import26 from '@angular/router/src/router_state';
-import * as import27 from '@angular/core/src/application_tokens';
+import * as import17 from '../../../scripts/components/weatherDetails.component';
+import * as import18 from '../../../scripts/services/WeatherDetailsResolver';
+import * as import19 from '../../../scripts/components/pageNotFound.component';
+import * as import20 from '@angular/core/src/application_ref';
+import * as import21 from '@angular/router/src/url_handling_strategy';
+import * as import22 from '@angular/router/src/router';
+import * as import23 from '@angular/core/src/linker/ng_module_factory_loader';
+import * as import24 from '@angular/router/src/router_config_loader';
+import * as import25 from '@angular/router/src/router_state';
+import * as import26 from '@angular/core/src/application_tokens';
 class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModule> {
   _ROUTER_FORROOT_GUARD_0:any;
   _RouterModule_1:import2.RouterModule;
@@ -46,23 +45,27 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
   __ROUTES_9:any[];
   __Router_10:any;
   __ActivatedRoute_11:any;
-  _NoPreloading_12:import7.NoPreloading;
+  _PreloadSelectedModulesList_12:import7.PreloadSelectedModulesList;
   _PreloadingStrategy_13:any;
-  _RouterPreloader_14:import7.RouterPreloader;
-  __PreloadAllModules_15:import7.PreloadAllModules;
-  __ROUTER_INITIALIZER_16:any;
-  __APP_BOOTSTRAP_LISTENER_17:any[];
-  constructor(parent:import8.Injector) {
+  _RouterPreloader_14:import8.RouterPreloader;
+  __NoPreloading_15:import8.NoPreloading;
+  __PreloadAllModules_16:import8.PreloadAllModules;
+  __ROUTER_INITIALIZER_17:any;
+  __APP_BOOTSTRAP_LISTENER_18:any[];
+  constructor(parent:import9.Injector) {
     super(parent,[
-      import9.CityWeatherSectionRouterComponentNgFactory,
-      import10.MyCityWeatherDetailsRouterComponentNgFactory,
+      import10.CityWeatherSectionRouterComponentNgFactory,
       import11.WeatherDetailsComponentNgFactory,
       import12.PageNotFoundComponentNgFactory
     ]
     ,([] as any[]));
   }
   get _ROUTER_CONFIGURATION_3():any {
-    if ((this.__ROUTER_CONFIGURATION_3 == null)) { (this.__ROUTER_CONFIGURATION_3 = {useHash: true}); }
+    if ((this.__ROUTER_CONFIGURATION_3 == null)) { (this.__ROUTER_CONFIGURATION_3 = {
+      useHash: true,
+      preloadingStrategy: import7.PreloadSelectedModulesList
+    }
+    ); }
     return this.__ROUTER_CONFIGURATION_3;
   }
   get _LocationStrategy_4():any {
@@ -94,16 +97,16 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
         ,
         {
           path: 'myCityDetails',
-          component: import17.MyCityWeatherDetailsRouterComponent,
-          outlet: 'myCityWeather'
+          loadChildren: './myCityWeatherDetails.module#MyCityWeatherDetailsModule',
+          data: {preload: true}
         }
         ,
         {
           path: 'weatherDetails',
             children: [{
               path: ':id',
-              component: import18.WeatherDetailsComponent,
-              resolve: {weather: import19.WeatherDetailsResolver}
+              component: import17.WeatherDetailsComponent,
+              resolve: {weather: import18.WeatherDetailsResolver}
             }
           ]
         }
@@ -121,7 +124,7 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
         ,
         {
           path: '**',
-          component: import20.PageNotFoundComponent
+          component: import19.PageNotFoundComponent
         }
 
       ]
@@ -129,32 +132,36 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
     return this.__ROUTES_9;
   }
   get _Router_10():any {
-    if ((this.__Router_10 == null)) { (this.__Router_10 = import2.setupRouter(this.parent.get(import21.ApplicationRef),this._UrlSerializer_6,this._RouterOutletMap_7,this._Location_5,this,this._NgModuleFactoryLoader_8,this.parent.get(import15.Compiler),this._ROUTES_9,this._ROUTER_CONFIGURATION_3,this.parent.get(import22.UrlHandlingStrategy,(null as any)))); }
+    if ((this.__Router_10 == null)) { (this.__Router_10 = import2.setupRouter(this.parent.get(import20.ApplicationRef),this._UrlSerializer_6,this._RouterOutletMap_7,this._Location_5,this,this._NgModuleFactoryLoader_8,this.parent.get(import15.Compiler),this._ROUTES_9,this._ROUTER_CONFIGURATION_3,this.parent.get(import21.UrlHandlingStrategy,(null as any)))); }
     return this.__Router_10;
   }
   get _ActivatedRoute_11():any {
     if ((this.__ActivatedRoute_11 == null)) { (this.__ActivatedRoute_11 = import2.rootRoute(this._Router_10)); }
     return this.__ActivatedRoute_11;
   }
-  get _PreloadAllModules_15():import7.PreloadAllModules {
-    if ((this.__PreloadAllModules_15 == null)) { (this.__PreloadAllModules_15 = new import7.PreloadAllModules()); }
-    return this.__PreloadAllModules_15;
+  get _NoPreloading_15():import8.NoPreloading {
+    if ((this.__NoPreloading_15 == null)) { (this.__NoPreloading_15 = new import8.NoPreloading()); }
+    return this.__NoPreloading_15;
   }
-  get _ROUTER_INITIALIZER_16():any {
-    if ((this.__ROUTER_INITIALIZER_16 == null)) { (this.__ROUTER_INITIALIZER_16 = import2.initialRouterNavigation(this._Router_10,this.parent.get(import21.ApplicationRef),this._RouterPreloader_14,this._ROUTER_CONFIGURATION_3)); }
-    return this.__ROUTER_INITIALIZER_16;
+  get _PreloadAllModules_16():import8.PreloadAllModules {
+    if ((this.__PreloadAllModules_16 == null)) { (this.__PreloadAllModules_16 = new import8.PreloadAllModules()); }
+    return this.__PreloadAllModules_16;
   }
-  get _APP_BOOTSTRAP_LISTENER_17():any[] {
-    if ((this.__APP_BOOTSTRAP_LISTENER_17 == null)) { (this.__APP_BOOTSTRAP_LISTENER_17 = [this._ROUTER_INITIALIZER_16]); }
-    return this.__APP_BOOTSTRAP_LISTENER_17;
+  get _ROUTER_INITIALIZER_17():any {
+    if ((this.__ROUTER_INITIALIZER_17 == null)) { (this.__ROUTER_INITIALIZER_17 = import2.initialRouterNavigation(this._Router_10,this.parent.get(import20.ApplicationRef),this._RouterPreloader_14,this._ROUTER_CONFIGURATION_3)); }
+    return this.__ROUTER_INITIALIZER_17;
+  }
+  get _APP_BOOTSTRAP_LISTENER_18():any[] {
+    if ((this.__APP_BOOTSTRAP_LISTENER_18 == null)) { (this.__APP_BOOTSTRAP_LISTENER_18 = [this._ROUTER_INITIALIZER_17]); }
+    return this.__APP_BOOTSTRAP_LISTENER_18;
   }
   createInternal():import1.RoutingModule {
-    this._ROUTER_FORROOT_GUARD_0 = import2.provideForRootGuard(this.parent.get(import23.Router,(null as any)));
+    this._ROUTER_FORROOT_GUARD_0 = import2.provideForRootGuard(this.parent.get(import22.Router,(null as any)));
     this._RouterModule_1 = new import2.RouterModule(this._ROUTER_FORROOT_GUARD_0);
     this._RoutingModule_2 = new import1.RoutingModule();
-    this._NoPreloading_12 = new import7.NoPreloading();
-    this._PreloadingStrategy_13 = this._NoPreloading_12;
-    this._RouterPreloader_14 = new import7.RouterPreloader(this._Router_10,this._NgModuleFactoryLoader_8,this.parent.get(import15.Compiler),this,this._PreloadingStrategy_13);
+    this._PreloadSelectedModulesList_12 = new import7.PreloadSelectedModulesList();
+    this._PreloadingStrategy_13 = this._PreloadSelectedModulesList_12;
+    this._RouterPreloader_14 = new import8.RouterPreloader(this._Router_10,this._NgModuleFactoryLoader_8,this.parent.get(import15.Compiler),this,this._PreloadingStrategy_13);
     return this._RoutingModule_2;
   }
   getInternal(token:any,notFoundResult:any):any {
@@ -166,16 +173,17 @@ class RoutingModuleInjector extends import0.NgModuleInjector<import1.RoutingModu
     if ((token === import3.Location)) { return this._Location_5; }
     if ((token === import4.UrlSerializer)) { return this._UrlSerializer_6; }
     if ((token === import5.RouterOutletMap)) { return this._RouterOutletMap_7; }
-    if ((token === import24.NgModuleFactoryLoader)) { return this._NgModuleFactoryLoader_8; }
-    if ((token === import25.ROUTES)) { return this._ROUTES_9; }
-    if ((token === import23.Router)) { return this._Router_10; }
-    if ((token === import26.ActivatedRoute)) { return this._ActivatedRoute_11; }
-    if ((token === import7.NoPreloading)) { return this._NoPreloading_12; }
-    if ((token === import7.PreloadingStrategy)) { return this._PreloadingStrategy_13; }
-    if ((token === import7.RouterPreloader)) { return this._RouterPreloader_14; }
-    if ((token === import7.PreloadAllModules)) { return this._PreloadAllModules_15; }
-    if ((token === import2.ROUTER_INITIALIZER)) { return this._ROUTER_INITIALIZER_16; }
-    if ((token === import27.APP_BOOTSTRAP_LISTENER)) { return this._APP_BOOTSTRAP_LISTENER_17; }
+    if ((token === import23.NgModuleFactoryLoader)) { return this._NgModuleFactoryLoader_8; }
+    if ((token === import24.ROUTES)) { return this._ROUTES_9; }
+    if ((token === import22.Router)) { return this._Router_10; }
+    if ((token === import25.ActivatedRoute)) { return this._ActivatedRoute_11; }
+    if ((token === import7.PreloadSelectedModulesList)) { return this._PreloadSelectedModulesList_12; }
+    if ((token === import8.PreloadingStrategy)) { return this._PreloadingStrategy_13; }
+    if ((token === import8.RouterPreloader)) { return this._RouterPreloader_14; }
+    if ((token === import8.NoPreloading)) { return this._NoPreloading_15; }
+    if ((token === import8.PreloadAllModules)) { return this._PreloadAllModules_16; }
+    if ((token === import2.ROUTER_INITIALIZER)) { return this._ROUTER_INITIALIZER_17; }
+    if ((token === import26.APP_BOOTSTRAP_LISTENER)) { return this._APP_BOOTSTRAP_LISTENER_18; }
     return notFoundResult;
   }
   destroyInternal():void {

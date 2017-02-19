@@ -4,10 +4,12 @@ import { CityWeatherSectionRouterComponent } from './../components/cityWeatherSe
 import { PageNotFoundComponent } from './../components/pageNotFound.component';
 import { WeatherDetailsComponent } from './../components/weatherDetails.component';
 import { WeatherDetailsResolver } from './../services/WeatherDetailsResolver';
-import { MyCityWeatherDetailsRouterComponent } from './../components/myCityWeatherDetailsRouter.component';
+import { PreloadSelectedModulesList } from './../services/preloadSelectedModulesList';
 var appRoutes = [
     { path: 'weather-list', component: CityWeatherSectionRouterComponent },
-    { path: 'myCityDetails', component: MyCityWeatherDetailsRouterComponent, outlet: 'myCityWeather' },
+    { path: 'myCityDetails', loadChildren: './myCityWeatherDetails.module#MyCityWeatherDetailsModule', data: {
+            preload: true
+        } },
     { path: 'weatherDetails', children: [
             {
                 path: ':id',
@@ -26,9 +28,10 @@ export var RoutingModule = (function () {
     }
     RoutingModule.decorators = [
         { type: NgModule, args: [{
-                    imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
+                    imports: [RouterModule.forRoot(appRoutes, { useHash: true, preloadingStrategy: PreloadSelectedModulesList })],
                     declarations: [PageNotFoundComponent],
-                    exports: [RouterModule]
+                    exports: [RouterModule],
+                    providers: [PreloadSelectedModulesList]
                 },] },
     ];
     /** @nocollapse */
