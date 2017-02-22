@@ -9,7 +9,7 @@
     "removeComments": false,
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
-    "types": ["node", "core-js"]
+    "types": ["node", "core-js", "jasmine"]
   },
   "files": [
     "app.ts",

@@ -21,7 +21,6 @@ export class CityWeatherTableComponent {
       this.deleteNotify.emit($event);
   }
   select($event: number) {
-    console.log(this.tableParameters);
       this.selectNotify.emit($event);
   }
 }
